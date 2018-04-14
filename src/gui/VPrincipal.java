@@ -262,6 +262,14 @@ public class VPrincipal extends javax.swing.JFrame {
         panelBase.add(panelHistorial, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 680, 580));
         panelActivo=panelHistorial;
     }
+     
+     public void ventanaInicial(VUsr v){
+         v.setVisible(false);
+         panelActivo.setVisible(false);
+         panelLocPaquete.setVisible(true);
+         panelLogin.setVisible(true);
+         panelLogo.setVisible(true);
+     }
     /**
      * @param args the command line arguments
      */

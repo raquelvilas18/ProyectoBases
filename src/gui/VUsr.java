@@ -5,7 +5,10 @@
  */
 package gui;
 
+import AppPackage.AnimationClass;
 import java.awt.Color;
+import java.awt.Desktop;
+import java.net.URI;
 import javax.swing.JFrame;
 
 /**
@@ -50,6 +53,9 @@ public class VUsr extends javax.swing.JPanel {
         jPanel5 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        Maps = new javax.swing.JLabel();
+        CerrarSesion = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(65, 105, 225));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -245,6 +251,34 @@ public class VUsr extends javax.swing.JPanel {
         );
 
         add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 410, -1, -1));
+
+        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-lista-con-viñetas-50.png"))); // NOI18N
+        jLabel13.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel13.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
+        jLabel13.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel13MouseClicked(evt);
+            }
+        });
+        add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+
+        Maps.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-mapas-de-google-32(1).png"))); // NOI18N
+        Maps.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Maps.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                MapsMouseClicked(evt);
+            }
+        });
+        add(Maps, new org.netbeans.lib.awtextra.AbsoluteConstraints(-40, 150, 40, -1));
+
+        CerrarSesion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-apagar-26.png"))); // NOI18N
+        CerrarSesion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        CerrarSesion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                CerrarSesionMouseClicked(evt);
+            }
+        });
+        add(CerrarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(-40, 120, 40, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseClicked
@@ -308,12 +342,46 @@ public class VUsr extends javax.swing.JPanel {
         parent.ventanaHistorial();
     }//GEN-LAST:event_jPanel3MouseClicked
 
+    private void jLabel13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel13MouseClicked
+        AnimationClass maps = new AnimationClass();
+        maps.jLabelXRight(-40, 10, 10, 5, Maps);
+        
+        AnimationClass sesion = new AnimationClass();
+        maps.jLabelXRight(-40, 10, 10, 5, CerrarSesion);
+        
+        AnimationClass mapsl= new AnimationClass();
+        maps.jLabelXLeft(10,-40, 10, 5, Maps);
+        
+        AnimationClass sesionl = new AnimationClass();
+        maps.jLabelXLeft(10,-40, 10, 5, CerrarSesion);
+        
+    }//GEN-LAST:event_jLabel13MouseClicked
+
+    private void MapsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MapsMouseClicked
+        openInternet();
+    }//GEN-LAST:event_MapsMouseClicked
+
+    private void CerrarSesionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CerrarSesionMouseClicked
+        // TODO add your handling code here:
+        parent.ventanaInicial(this);
+    }//GEN-LAST:event_CerrarSesionMouseClicked
+
+    public void openInternet(){
+        try{
+            Desktop.getDesktop().browse(URI.create("https://www.google.es/maps"));
+        }catch(Exception e){
+            
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel CerrarSesion;
+    private javax.swing.JLabel Maps;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
