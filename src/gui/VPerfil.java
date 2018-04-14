@@ -76,13 +76,14 @@ public class VPerfil extends javax.swing.JPanel {
         add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 150, 470, 30));
 
         jLabel3.setBackground(new java.awt.Color(65, 105, 225));
-        jLabel3.setFont(new java.awt.Font("Samanata", 0, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(65, 105, 225));
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-derecha-3-24.png"))); // NOI18N
         jLabel3.setText("Id:");
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 150, -1, -1));
 
         jPanel1.setBackground(new java.awt.Color(65, 105, 255));
+        jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-actualizar-26.png"))); // NOI18N
         jLabel10.setText("jLabel1");
@@ -135,42 +136,42 @@ public class VPerfil extends javax.swing.JPanel {
         add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 390, 470, 30));
 
         jLabel12.setBackground(new java.awt.Color(65, 105, 225));
-        jLabel12.setFont(new java.awt.Font("Samanata", 0, 18)); // NOI18N
+        jLabel12.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(65, 105, 225));
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-derecha-3-24.png"))); // NOI18N
         jLabel12.setText("Nombre:");
         add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 190, -1, -1));
 
         jLabel13.setBackground(new java.awt.Color(65, 105, 225));
-        jLabel13.setFont(new java.awt.Font("Samanata", 0, 18)); // NOI18N
+        jLabel13.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(65, 105, 225));
         jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-derecha-3-24.png"))); // NOI18N
         jLabel13.setText("Apellidos");
         add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 230, -1, -1));
 
         jLabel14.setBackground(new java.awt.Color(65, 105, 225));
-        jLabel14.setFont(new java.awt.Font("Samanata", 0, 18)); // NOI18N
+        jLabel14.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(65, 105, 225));
         jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-derecha-3-24.png"))); // NOI18N
         jLabel14.setText("Correo");
         add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 270, -1, -1));
 
         jLabel15.setBackground(new java.awt.Color(65, 105, 225));
-        jLabel15.setFont(new java.awt.Font("Samanata", 0, 18)); // NOI18N
+        jLabel15.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(65, 105, 225));
         jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-derecha-3-24.png"))); // NOI18N
         jLabel15.setText("Telefono");
         add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 310, -1, -1));
 
         jLabel16.setBackground(new java.awt.Color(65, 105, 225));
-        jLabel16.setFont(new java.awt.Font("Samanata", 0, 18)); // NOI18N
+        jLabel16.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(65, 105, 225));
         jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-derecha-3-24.png"))); // NOI18N
         jLabel16.setText("dni");
         add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 350, -1, -1));
 
         jLabel17.setBackground(new java.awt.Color(65, 105, 225));
-        jLabel17.setFont(new java.awt.Font("Samanata", 0, 18)); // NOI18N
+        jLabel17.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(65, 105, 225));
         jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-derecha-3-24.png"))); // NOI18N
         jLabel17.setText("password");

@@ -249,6 +249,20 @@ public class VPrincipal extends javax.swing.JFrame {
         panelBase.add(panelPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 680, 580));
         panelActivo=panelPerfil;
     }
+    
+    public void ventanaPedidosActivos(){
+        panelActivo.setVisible(false);
+        VPedidosActivos panelPedidosA  = new VPedidosActivos();
+        panelBase.add(panelPedidosA, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 680, 580));
+        panelActivo=panelPedidosA;
+    }
+    
+     public void ventanaHistorial(){
+        panelActivo.setVisible(false);
+        VHistorialPedidos panelHistorial = new VHistorialPedidos();
+        panelBase.add(panelHistorial, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 680, 580));
+        panelActivo=panelHistorial;
+    }
     /**
      * @param args the command line arguments
      */
