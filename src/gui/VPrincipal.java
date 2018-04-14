@@ -64,7 +64,7 @@ public class VPrincipal extends javax.swing.JFrame {
         panelBase.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         panelLocPaquete.setBackground(new java.awt.Color(255, 255, 255));
-        panelLocPaquete.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
+        panelLocPaquete.setBorder(javax.swing.BorderFactory.createMatteBorder(5, 0, 0, 0, new java.awt.Color(253, 156, 104)));
         panelLocPaquete.setForeground(new java.awt.Color(255, 255, 255));
         panelLocPaquete.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -93,7 +93,7 @@ public class VPrincipal extends javax.swing.JFrame {
         jButton4.setActionCommand("botonBuscar");
         jButton4.setBorderPainted(false);
         jButton4.setContentAreaFilled(false);
-        jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
@@ -103,8 +103,8 @@ public class VPrincipal extends javax.swing.JFrame {
 
         panelBase.add(panelLocPaquete, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 290, 740, 290));
 
-        panelLogin.setBackground(new java.awt.Color(255, 255, 255));
-        panelLogin.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
+        panelLogin.setBackground(new java.awt.Color(214, 225, 254));
+        panelLogin.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         panelLogin.setForeground(new java.awt.Color(255, 255, 255));
         panelLogin.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -140,7 +140,7 @@ public class VPrincipal extends javax.swing.JFrame {
         botonRegistrarse.setText("Registrarse");
         botonRegistrarse.setBorder(null);
         botonRegistrarse.setContentAreaFilled(false);
-        botonRegistrarse.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        botonRegistrarse.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         botonRegistrarse.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonRegistrarseActionPerformed(evt);
@@ -154,7 +154,7 @@ public class VPrincipal extends javax.swing.JFrame {
         botonEntrar.setText("Entrar");
         botonEntrar.setBorder(null);
         botonEntrar.setContentAreaFilled(false);
-        botonEntrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        botonEntrar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         botonEntrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonEntrarActionPerformed(evt);
@@ -175,7 +175,7 @@ public class VPrincipal extends javax.swing.JFrame {
         panelBase.add(panelLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 310, 580));
 
         panelLogo.setBackground(new java.awt.Color(255, 255, 255));
-        panelLogo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        panelLogo.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         panelLogo.setForeground(new java.awt.Color(255, 255, 255));
         panelLogo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -189,7 +189,7 @@ public class VPrincipal extends javax.swing.JFrame {
         botonCerrar.setActionCommand("botonBuscar");
         botonCerrar.setBorderPainted(false);
         botonCerrar.setContentAreaFilled(false);
-        botonCerrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        botonCerrar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         botonCerrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonCerrarActionPerformed(evt);
@@ -209,7 +209,6 @@ public class VPrincipal extends javax.swing.JFrame {
 
     private void botonRegistrarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegistrarseActionPerformed
         // TODO add your handling code here:
-        panelLocPaquete.setVisible(false);
         panelLogin.setVisible(false);
         VRegistro panelRegistro = new VRegistro();
         panelBase.add(panelRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 310, 580));
