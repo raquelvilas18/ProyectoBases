@@ -5,11 +5,14 @@
  */
 package gui;
 
+import javax.swing.JPanel;
+
 /**
  *
  * @author carlo
  */
 public class VPrincipal extends javax.swing.JFrame {
+    JPanel panelActivo;
 
     /**
      * Creates new form vPrincipal
@@ -211,6 +214,7 @@ public class VPrincipal extends javax.swing.JFrame {
         VRegistro panelRegistro = new VRegistro();
         panelBase.add(panelRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 310, 580));
         panelRegistro.setVisible(true);
+        panelActivo=panelRegistro;
 
     }//GEN-LAST:event_botonRegistrarseActionPerformed
 
@@ -219,11 +223,12 @@ public class VPrincipal extends javax.swing.JFrame {
         panelLocPaquete.setVisible(false);
         panelLogin.setVisible(false);
         panelLogo.setVisible(false);
-        VUsr panelUsr = new VUsr();
+        VUsr panelUsr = new VUsr(this);
         panelBase.add(panelUsr, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 310, 580));
         panelUsr.setVisible(true);
         VPerfil panelPerfil = new VPerfil();
         panelBase.add(panelPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 680, 580));
+        panelActivo=panelPerfil;
 
     }//GEN-LAST:event_botonEntrarActionPerformed
 
@@ -231,6 +236,12 @@ public class VPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
 
+    public void ventanaPedido(){
+        panelActivo.setVisible(false);
+        VPedido panelPedido  = new VPedido();
+        panelBase.add(panelPedido, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 680, 580));
+        panelActivo=panelPedido;
+    }
     /**
      * @param args the command line arguments
      */

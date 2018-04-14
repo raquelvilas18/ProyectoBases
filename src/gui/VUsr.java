@@ -5,17 +5,25 @@
  */
 package gui;
 
+import javax.swing.JFrame;
+
 /**
  *
  * @author raquel
  */
 public class VUsr extends javax.swing.JPanel {
+    VPrincipal parent;
 
     /**
      * Creates new form VUsr
      */
     public VUsr() {
         initComponents();
+    }
+    
+    public VUsr(VPrincipal parent){
+        initComponents();
+        this.parent=parent;
     }
 
     /**
@@ -50,6 +58,11 @@ public class VUsr extends javax.swing.JPanel {
 
         jPanel1.setBackground(new java.awt.Color(111, 133, 255));
         jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel1MouseClicked(evt);
+            }
+        });
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-usuario-de-género-neutro-32.png"))); // NOI18N
         jLabel2.setText("jLabel1");
@@ -155,6 +168,11 @@ public class VUsr extends javax.swing.JPanel {
 
         jPanel5.setBackground(new java.awt.Color(111, 133, 255));
         jPanel5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel5MouseClicked(evt);
+            }
+        });
 
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-camión-24.png"))); // NOI18N
         jLabel11.setText("jLabel1");
@@ -192,6 +210,17 @@ public class VUsr extends javax.swing.JPanel {
 
         add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 410, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseClicked
+        // TODO add your handling code here:
+        parent.ventanaPedido();
+
+    }//GEN-LAST:event_jPanel1MouseClicked
+
+    private void jPanel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseClicked
+        // TODO add your handling code here:
+        parent.ventanaPedido();
+    }//GEN-LAST:event_jPanel5MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
