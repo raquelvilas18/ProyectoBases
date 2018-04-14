@@ -30,6 +30,7 @@ public class VPerfil extends javax.swing.JPanel {
         jLabel6 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 32767));
+        jTextField16 = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
@@ -38,40 +39,48 @@ public class VPerfil extends javax.swing.JPanel {
         jLabel11 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jTextField9 = new javax.swing.JTextField();
-        jTextField10 = new javax.swing.JTextField();
-        jTextField11 = new javax.swing.JTextField();
-        jTextField12 = new javax.swing.JTextField();
-        jTextField13 = new javax.swing.JTextField();
-        jTextField14 = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
+        jTextField15 = new javax.swing.JTextField();
+        jTextField17 = new javax.swing.JTextField();
+        jTextField18 = new javax.swing.JTextField();
+        jTextField19 = new javax.swing.JTextField();
+        jTextField20 = new javax.swing.JTextField();
 
         jLabel6.setBackground(new java.awt.Color(65, 105, 225));
         jLabel6.setFont(new java.awt.Font("Samanata", 0, 24)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(65, 105, 225));
         jLabel6.setText("Correo:");
 
+        jTextField16.setBackground(new java.awt.Color(165, 180, 253));
+        jTextField16.setForeground(new java.awt.Color(153, 153, 153));
+        jTextField16.setBorder(null);
+
         setBackground(new java.awt.Color(254, 254, 254));
         setPreferredSize(new java.awt.Dimension(680, 580));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/logoPequeno.png"))); // NOI18N
         jLabel1.setText("jLabel1");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 10, 300, 110));
 
         jTextField2.setBackground(new java.awt.Color(165, 180, 253));
         jTextField2.setForeground(new java.awt.Color(153, 153, 153));
         jTextField2.setBorder(null);
+        add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 150, 470, 30));
 
         jLabel3.setBackground(new java.awt.Color(65, 105, 225));
         jLabel3.setFont(new java.awt.Font("Samanata", 0, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(65, 105, 225));
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-derecha-3-24.png"))); // NOI18N
         jLabel3.setText("Id:");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 150, -1, -1));
 
-        jPanel1.setBackground(new java.awt.Color(111, 133, 255));
+        jPanel1.setBackground(new java.awt.Color(65, 105, 255));
 
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-actualizar-26.png"))); // NOI18N
         jLabel10.setText("jLabel1");
@@ -101,6 +110,10 @@ public class VPerfil extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 500, -1, -1));
+
+        jPanel2.setPreferredSize(new java.awt.Dimension(10, 550));
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -109,144 +122,82 @@ public class VPerfil extends javax.swing.JPanel {
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 550, Short.MAX_VALUE)
         );
+
+        add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 12, 10, 550));
 
         jTextField9.setBackground(new java.awt.Color(165, 180, 253));
         jTextField9.setForeground(new java.awt.Color(153, 153, 153));
         jTextField9.setBorder(null);
-
-        jTextField10.setBackground(new java.awt.Color(165, 180, 253));
-        jTextField10.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField10.setBorder(null);
-
-        jTextField11.setBackground(new java.awt.Color(165, 180, 253));
-        jTextField11.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField11.setBorder(null);
-
-        jTextField12.setBackground(new java.awt.Color(165, 180, 253));
-        jTextField12.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField12.setBorder(null);
-
-        jTextField13.setBackground(new java.awt.Color(165, 180, 253));
-        jTextField13.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField13.setBorder(null);
-
-        jTextField14.setBackground(new java.awt.Color(165, 180, 253));
-        jTextField14.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField14.setBorder(null);
+        add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 390, 470, 30));
 
         jLabel12.setBackground(new java.awt.Color(65, 105, 225));
         jLabel12.setFont(new java.awt.Font("Samanata", 0, 18)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(65, 105, 225));
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-derecha-3-24.png"))); // NOI18N
         jLabel12.setText("Nombre:");
+        add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 190, -1, -1));
 
         jLabel13.setBackground(new java.awt.Color(65, 105, 225));
         jLabel13.setFont(new java.awt.Font("Samanata", 0, 18)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(65, 105, 225));
         jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-derecha-3-24.png"))); // NOI18N
         jLabel13.setText("Apellidos");
+        add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 230, -1, -1));
 
         jLabel14.setBackground(new java.awt.Color(65, 105, 225));
         jLabel14.setFont(new java.awt.Font("Samanata", 0, 18)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(65, 105, 225));
         jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-derecha-3-24.png"))); // NOI18N
         jLabel14.setText("Correo");
+        add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 270, -1, -1));
 
         jLabel15.setBackground(new java.awt.Color(65, 105, 225));
         jLabel15.setFont(new java.awt.Font("Samanata", 0, 18)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(65, 105, 225));
         jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-derecha-3-24.png"))); // NOI18N
         jLabel15.setText("Telefono");
+        add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 310, -1, -1));
 
         jLabel16.setBackground(new java.awt.Color(65, 105, 225));
         jLabel16.setFont(new java.awt.Font("Samanata", 0, 18)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(65, 105, 225));
         jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-derecha-3-24.png"))); // NOI18N
         jLabel16.setText("dni");
+        add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 350, -1, -1));
 
         jLabel17.setBackground(new java.awt.Color(65, 105, 225));
         jLabel17.setFont(new java.awt.Font("Samanata", 0, 18)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(65, 105, 225));
         jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-derecha-3-24.png"))); // NOI18N
         jLabel17.setText("password");
+        add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 390, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel12)
-                            .addComponent(jLabel17, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel16)
-                            .addComponent(jLabel15)
-                            .addComponent(jLabel14)
-                            .addComponent(jLabel13))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jTextField12)
-                                .addComponent(jTextField14)
-                                .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 485, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, 486, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 486, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField13, javax.swing.GroupLayout.PREFERRED_SIZE, 485, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 486, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jTextField9, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel12)
-                            .addComponent(jTextField13, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel13)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel14)
-                            .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel15)
-                            .addComponent(jTextField14, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel16)
-                            .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel17)
-                            .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(168, 168, 168)))
-                .addContainerGap())
-        );
+        jTextField15.setBackground(new java.awt.Color(165, 180, 253));
+        jTextField15.setForeground(new java.awt.Color(153, 153, 153));
+        jTextField15.setBorder(null);
+        add(jTextField15, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 190, 470, 30));
+
+        jTextField17.setBackground(new java.awt.Color(165, 180, 253));
+        jTextField17.setForeground(new java.awt.Color(153, 153, 153));
+        jTextField17.setBorder(null);
+        add(jTextField17, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 230, 470, 30));
+
+        jTextField18.setBackground(new java.awt.Color(165, 180, 253));
+        jTextField18.setForeground(new java.awt.Color(153, 153, 153));
+        jTextField18.setBorder(null);
+        add(jTextField18, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 270, 470, 30));
+
+        jTextField19.setBackground(new java.awt.Color(165, 180, 253));
+        jTextField19.setForeground(new java.awt.Color(153, 153, 153));
+        jTextField19.setBorder(null);
+        add(jTextField19, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 310, 470, 30));
+
+        jTextField20.setBackground(new java.awt.Color(165, 180, 253));
+        jTextField20.setForeground(new java.awt.Color(153, 153, 153));
+        jTextField20.setBorder(null);
+        add(jTextField20, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 350, 470, 30));
     }// </editor-fold>//GEN-END:initComponents
 
 
@@ -266,12 +217,13 @@ public class VPerfil extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTextField jTextField10;
-    private javax.swing.JTextField jTextField11;
-    private javax.swing.JTextField jTextField12;
-    private javax.swing.JTextField jTextField13;
-    private javax.swing.JTextField jTextField14;
+    private javax.swing.JTextField jTextField15;
+    private javax.swing.JTextField jTextField16;
+    private javax.swing.JTextField jTextField17;
+    private javax.swing.JTextField jTextField18;
+    private javax.swing.JTextField jTextField19;
     private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField20;
     private javax.swing.JTextField jTextField9;
     // End of variables declaration//GEN-END:variables
 }
