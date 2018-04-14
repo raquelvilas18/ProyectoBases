@@ -216,6 +216,11 @@ public class VPrincipal extends javax.swing.JFrame {
 
     private void botonEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEntrarActionPerformed
         // TODO add your handling code here:
+        panelLocPaquete.setVisible(false);
+        panelLogin.setVisible(false);
+        VUsr panelUsr = new VUsr();
+        panelBase.add(panelUsr, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 310, 580));
+        panelUsr.setVisible(true);
     }//GEN-LAST:event_botonEntrarActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
