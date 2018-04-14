@@ -242,6 +242,13 @@ public class VPrincipal extends javax.swing.JFrame {
         panelBase.add(panelPedido, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 680, 580));
         panelActivo=panelPedido;
     }
+    
+    public void ventanaPerfil(){
+        panelActivo.setVisible(false);
+        VPerfil panelPerfil  = new VPerfil();
+        panelBase.add(panelPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 680, 580));
+        panelActivo=panelPerfil;
+    }
     /**
      * @param args the command line arguments
      */

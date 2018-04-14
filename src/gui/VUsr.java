@@ -5,6 +5,7 @@
  */
 package gui;
 
+import java.awt.Color;
 import javax.swing.JFrame;
 
 /**
@@ -12,6 +13,7 @@ import javax.swing.JFrame;
  * @author raquel
  */
 public class VUsr extends javax.swing.JPanel {
+
     VPrincipal parent;
 
     /**
@@ -20,10 +22,10 @@ public class VUsr extends javax.swing.JPanel {
     public VUsr() {
         initComponents();
     }
-    
-    public VUsr(VPrincipal parent){
+
+    public VUsr(VPrincipal parent) {
         initComponents();
-        this.parent=parent;
+        this.parent = parent;
     }
 
     /**
@@ -62,6 +64,12 @@ public class VUsr extends javax.swing.JPanel {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jPanel1MouseClicked(evt);
             }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jPanel1MouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jPanel1MouseEntered(evt);
+            }
         });
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-usuario-de-género-neutro-32.png"))); // NOI18N
@@ -96,6 +104,14 @@ public class VUsr extends javax.swing.JPanel {
 
         jPanel3.setBackground(new java.awt.Color(111, 133, 255));
         jPanel3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jPanel3MouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jPanel3MouseEntered(evt);
+            }
+        });
 
         jLabel7.setFont(new java.awt.Font("Noto Sans", 1, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(215, 215, 215));
@@ -129,6 +145,14 @@ public class VUsr extends javax.swing.JPanel {
 
         jPanel4.setBackground(new java.awt.Color(111, 133, 255));
         jPanel4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jPanel4MouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jPanel4MouseEntered(evt);
+            }
+        });
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-caja-vacía-24(1).png"))); // NOI18N
         jLabel8.setText("jLabel1");
@@ -172,6 +196,12 @@ public class VUsr extends javax.swing.JPanel {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jPanel5MouseClicked(evt);
             }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jPanel5MouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jPanel5MouseEntered(evt);
+            }
         });
 
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-camión-24.png"))); // NOI18N
@@ -213,7 +243,7 @@ public class VUsr extends javax.swing.JPanel {
 
     private void jPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseClicked
         // TODO add your handling code here:
-        parent.ventanaPedido();
+        parent.ventanaPerfil();
 
     }//GEN-LAST:event_jPanel1MouseClicked
 
@@ -221,6 +251,46 @@ public class VUsr extends javax.swing.JPanel {
         // TODO add your handling code here:
         parent.ventanaPedido();
     }//GEN-LAST:event_jPanel5MouseClicked
+
+    private void jPanel1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseEntered
+        // TODO add your handling code here:
+        jPanel1.setBackground(new Color(166, 179, 253));
+    }//GEN-LAST:event_jPanel1MouseEntered
+
+    private void jPanel1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseExited
+        // TODO add your handling code here:
+        jPanel1.setBackground(new Color(111, 133, 255));
+    }//GEN-LAST:event_jPanel1MouseExited
+
+    private void jPanel3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseEntered
+        // TODO add your handling code here:
+        jPanel3.setBackground(new Color(166, 179, 253));
+    }//GEN-LAST:event_jPanel3MouseEntered
+
+    private void jPanel3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseExited
+        // TODO add your handling code here:
+        jPanel3.setBackground(new Color(111, 133, 255));
+    }//GEN-LAST:event_jPanel3MouseExited
+
+    private void jPanel4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseEntered
+        // TODO add your handling code here:
+        jPanel4.setBackground(new Color(166, 179, 253));
+    }//GEN-LAST:event_jPanel4MouseEntered
+
+    private void jPanel4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseExited
+        // TODO add your handling code here:
+        jPanel4.setBackground(new Color(111, 133, 255));
+    }//GEN-LAST:event_jPanel4MouseExited
+
+    private void jPanel5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseEntered
+        // TODO add your handling code here:
+        jPanel5.setBackground(new Color(166, 179, 253));
+    }//GEN-LAST:event_jPanel5MouseEntered
+
+    private void jPanel5MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseExited
+        // TODO add your handling code here:
+        jPanel5.setBackground(new Color(111, 133, 255));
+    }//GEN-LAST:event_jPanel5MouseExited
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
