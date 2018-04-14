@@ -50,6 +50,8 @@ public class VPerfil extends javax.swing.JPanel {
         jTextField18 = new javax.swing.JTextField();
         jTextField19 = new javax.swing.JTextField();
         jTextField20 = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
 
         jLabel6.setBackground(new java.awt.Color(65, 105, 225));
         jLabel6.setFont(new java.awt.Font("Samanata", 0, 24)); // NOI18N
@@ -198,6 +200,26 @@ public class VPerfil extends javax.swing.JPanel {
         jTextField20.setForeground(new java.awt.Color(153, 153, 153));
         jTextField20.setBorder(null);
         add(jTextField20, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 350, 470, 30));
+
+        jLabel2.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(221, 61, 1));
+        jLabel2.setText("Datos personales");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, 260, -1));
+
+        jPanel4.setBackground(new java.awt.Color(225, 181, 158));
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 600, Short.MAX_VALUE)
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 10, Short.MAX_VALUE)
+        );
+
+        add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 130, 600, 10));
     }// </editor-fold>//GEN-END:initComponents
 
 
@@ -212,10 +234,12 @@ public class VPerfil extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTextField jTextField15;
     private javax.swing.JTextField jTextField16;

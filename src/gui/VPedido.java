@@ -46,6 +46,8 @@ public class VPedido extends javax.swing.JPanel {
         jPanel3 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
 
         setBackground(new java.awt.Color(254, 254, 254));
         setPreferredSize(new java.awt.Dimension(680, 580));
@@ -56,7 +58,7 @@ public class VPedido extends javax.swing.JPanel {
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 10, 300, 110));
 
         jLabel3.setBackground(new java.awt.Color(65, 105, 225));
-        jLabel3.setFont(new java.awt.Font("Samanata", 0, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(65, 105, 225));
         jLabel3.setText("Destinatario");
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 240, -1, -1));
@@ -82,7 +84,7 @@ public class VPedido extends javax.swing.JPanel {
         add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 12, 10, 550));
 
         jLabel5.setBackground(new java.awt.Color(65, 105, 225));
-        jLabel5.setFont(new java.awt.Font("Samanata", 0, 18)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(65, 105, 225));
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-derecha-3-24.png"))); // NOI18N
         jLabel5.setText("Destino");
@@ -91,28 +93,28 @@ public class VPedido extends javax.swing.JPanel {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel6.setBackground(new java.awt.Color(65, 105, 225));
-        jLabel6.setFont(new java.awt.Font("Samanata", 0, 18)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(65, 105, 225));
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-derecha-3-24.png"))); // NOI18N
         jLabel6.setText("telefono");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, -1, -1));
 
         jLabel8.setBackground(new java.awt.Color(65, 105, 225));
-        jLabel8.setFont(new java.awt.Font("Samanata", 0, 18)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(65, 105, 225));
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-derecha-3-24.png"))); // NOI18N
         jLabel8.setText("Nombre");
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
 
         jLabel9.setBackground(new java.awt.Color(65, 105, 225));
-        jLabel9.setFont(new java.awt.Font("Samanata", 0, 18)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(65, 105, 225));
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-derecha-3-24.png"))); // NOI18N
         jLabel9.setText("Apellidos");
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, -1, -1));
 
         jLabel10.setBackground(new java.awt.Color(65, 105, 225));
-        jLabel10.setFont(new java.awt.Font("Samanata", 0, 18)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(65, 105, 225));
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-derecha-3-24.png"))); // NOI18N
         jLabel10.setText("dni");
@@ -141,7 +143,7 @@ public class VPedido extends javax.swing.JPanel {
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 270, 600, 200));
 
         jLabel7.setBackground(new java.awt.Color(65, 105, 225));
-        jLabel7.setFont(new java.awt.Font("Samanata", 0, 18)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(65, 105, 225));
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-derecha-3-24.png"))); // NOI18N
         jLabel7.setText("Origen:");
@@ -153,6 +155,7 @@ public class VPedido extends javax.swing.JPanel {
         add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 150, 470, 30));
 
         jPanel3.setBackground(new java.awt.Color(65, 105, 255));
+        jPanel3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-comprobado-24.png"))); // NOI18N
         jLabel11.setText("jLabel1");
@@ -183,6 +186,26 @@ public class VPedido extends javax.swing.JPanel {
         );
 
         add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 500, -1, -1));
+
+        jLabel2.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(221, 61, 1));
+        jLabel2.setText("Realizar un nuevo pedido");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, 260, -1));
+
+        jPanel4.setBackground(new java.awt.Color(225, 181, 158));
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 600, Short.MAX_VALUE)
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 10, Short.MAX_VALUE)
+        );
+
+        add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 130, 600, 10));
     }// </editor-fold>//GEN-END:initComponents
 
 
@@ -191,6 +214,7 @@ public class VPedido extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -200,6 +224,7 @@ public class VPedido extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
