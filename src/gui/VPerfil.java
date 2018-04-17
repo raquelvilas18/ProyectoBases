@@ -72,6 +72,7 @@ public class VPerfil extends javax.swing.JPanel {
 
         jTextField2.setBackground(new java.awt.Color(165, 180, 253));
         jTextField2.setForeground(new java.awt.Color(153, 153, 153));
+        jTextField2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField2.setBorder(null);
         add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 150, 470, 30));
 
@@ -83,7 +84,7 @@ public class VPerfil extends javax.swing.JPanel {
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 150, -1, -1));
 
         jPanel1.setBackground(new java.awt.Color(65, 105, 255));
-        jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-actualizar-26.png"))); // NOI18N
         jLabel10.setText("jLabel1");
@@ -132,6 +133,7 @@ public class VPerfil extends javax.swing.JPanel {
 
         jTextField9.setBackground(new java.awt.Color(165, 180, 253));
         jTextField9.setForeground(new java.awt.Color(153, 153, 153));
+        jTextField9.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField9.setBorder(null);
         add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 390, 470, 30));
 
@@ -179,26 +181,31 @@ public class VPerfil extends javax.swing.JPanel {
 
         jTextField15.setBackground(new java.awt.Color(165, 180, 253));
         jTextField15.setForeground(new java.awt.Color(153, 153, 153));
+        jTextField15.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField15.setBorder(null);
         add(jTextField15, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 190, 470, 30));
 
         jTextField17.setBackground(new java.awt.Color(165, 180, 253));
         jTextField17.setForeground(new java.awt.Color(153, 153, 153));
+        jTextField17.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField17.setBorder(null);
         add(jTextField17, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 230, 470, 30));
 
         jTextField18.setBackground(new java.awt.Color(165, 180, 253));
         jTextField18.setForeground(new java.awt.Color(153, 153, 153));
+        jTextField18.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField18.setBorder(null);
         add(jTextField18, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 270, 470, 30));
 
         jTextField19.setBackground(new java.awt.Color(165, 180, 253));
         jTextField19.setForeground(new java.awt.Color(153, 153, 153));
+        jTextField19.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField19.setBorder(null);
         add(jTextField19, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 310, 470, 30));
 
         jTextField20.setBackground(new java.awt.Color(165, 180, 253));
         jTextField20.setForeground(new java.awt.Color(153, 153, 153));
+        jTextField20.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField20.setBorder(null);
         add(jTextField20, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 350, 470, 30));
 
