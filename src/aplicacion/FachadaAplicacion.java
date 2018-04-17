@@ -19,6 +19,7 @@ public class FachadaAplicacion {
     
     public FachadaAplicacion(){
         fgui=new gui.FachadaGui(this);
+        fbd = new FachadaBaseDatos(this);
         gUsuarios = new GestionUsuarios(fgui, fbd);
     }
     /**

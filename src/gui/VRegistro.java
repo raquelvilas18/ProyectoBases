@@ -10,13 +10,17 @@ package gui;
  * @author carlo
  */
 public class VRegistro extends javax.swing.JPanel {
+    private aplicacion.FachadaAplicacion fa;
+    private boolean captcha;
 
     /**
      * Creates new form VRegistro
      */
-    public VRegistro() {
+    public VRegistro(aplicacion.FachadaAplicacion fa) {
         initComponents();
+        this.fa = fa;
         this.setVisible(false);
+        captcha = false;
     }
 
     /**
@@ -217,6 +221,7 @@ public class VRegistro extends javax.swing.JPanel {
         // TODO add your handling code here:
         jButton1.setVisible(false);
         jButton2.setVisible(true);
+        captcha = true;
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -234,7 +239,7 @@ public class VRegistro extends javax.swing.JPanel {
         String contraseña = textContraseña.getText();
         String id = textID.getText();
         String sexo = textSexo.getText();
-        if(nombre!= null && dni!=null && email!=null && contraseña!=null && id!=null){
+        if(nombre!= "" && dni!="" && email!="" && contraseña!="" && id!="" && captcha==true){
             fa.registrarUsuario(id, contraseña, dni, nombre, email, direccion, telefono, sexo);
         }
 

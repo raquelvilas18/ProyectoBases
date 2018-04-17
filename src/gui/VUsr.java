@@ -17,7 +17,9 @@ import javax.swing.JFrame;
  */
 public class VUsr extends javax.swing.JPanel {
 
-    VPrincipal parent;
+    private VPrincipal parent;
+    private String usuario;
+    
 
     /**
      * Creates new form VUsr
@@ -26,9 +28,10 @@ public class VUsr extends javax.swing.JPanel {
         initComponents();
     }
 
-    public VUsr(VPrincipal parent) {
+    public VUsr(VPrincipal parent, String idUsuario) {
         initComponents();
         this.parent = parent;
+        this.usuario = idUsuario;
     }
 
     /**
@@ -283,7 +286,7 @@ public class VUsr extends javax.swing.JPanel {
 
     private void jPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseClicked
         // TODO add your handling code here:
-        parent.ventanaPerfil();
+        parent.ventanaPerfil(usuario);
 
     }//GEN-LAST:event_jPanel1MouseClicked
 

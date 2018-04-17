@@ -10,12 +10,15 @@ package gui;
  * @author raquel
  */
 public class VPerfil extends javax.swing.JPanel {
+    
+    private String usuario;
 
     /**
      * Creates new form VPerfil
      */
-    public VPerfil() {
+    public VPerfil(String usuario) {
         initComponents();
+        this.usuario = usuario;
     }
 
     /**

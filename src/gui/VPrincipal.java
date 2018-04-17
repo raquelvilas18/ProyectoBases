@@ -22,6 +22,7 @@ public class VPrincipal extends javax.swing.JFrame {
         this.fa = fa;
         initComponents();
         this.setLocationRelativeTo(null);
+        autentificacionIncorrecta.setVisible(false);
     }
 
     /**
@@ -52,6 +53,7 @@ public class VPrincipal extends javax.swing.JFrame {
         botonEntrar = new javax.swing.JButton();
         JUsuario = new javax.swing.JTextField();
         textoUsuario3 = new javax.swing.JLabel();
+        autentificacionIncorrecta = new javax.swing.JLabel();
         panelLogo = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         botonCerrar = new javax.swing.JButton();
@@ -184,6 +186,10 @@ public class VPrincipal extends javax.swing.JFrame {
         textoUsuario3.setText("Usuario:");
         panelLogin.add(textoUsuario3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, -1, -1));
 
+        autentificacionIncorrecta.setForeground(new java.awt.Color(255, 0, 0));
+        autentificacionIncorrecta.setText("Autentificación incorrecta");
+        panelLogin.add(autentificacionIncorrecta, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 380, -1, -1));
+
         panelBase.add(panelLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 310, 580));
 
         panelLogo.setBackground(new java.awt.Color(255, 255, 255));
@@ -222,7 +228,7 @@ public class VPrincipal extends javax.swing.JFrame {
     private void botonRegistrarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegistrarseActionPerformed
         // TODO add your handling code here:
         panelLogin.setVisible(false);
-        VRegistro panelRegistro = new VRegistro();
+        VRegistro panelRegistro = new VRegistro(fa);
         panelBase.add(panelRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 310, 580));
         panelRegistro.setVisible(true);
         panelActivo=panelRegistro;
@@ -232,17 +238,18 @@ public class VPrincipal extends javax.swing.JFrame {
     private void botonEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEntrarActionPerformed
         // TODO add your handling code here:
         
-        if(fa.comprobarAutentificacion(JUsuario.getText(), JContrasena.getText())){
+        if((!JUsuario.getText().equals("")) && (!JContrasena.getText().equals("")) &&fa.comprobarAutentificacion(JUsuario.getText(), JContrasena.getText())){
             panelLocPaquete.setVisible(false);
             panelLogin.setVisible(false);
             panelLogo.setVisible(false);
-            VUsr panelUsr = new VUsr(this);
+            VUsr panelUsr = new VUsr(this, JUsuario.getText());
             panelBase.add(panelUsr, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 310, 580));
             panelUsr.setVisible(true);
-            VPerfil panelPerfil = new VPerfil();
+            VPerfil panelPerfil = new VPerfil(JUsuario.getText());
             panelBase.add(panelPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 680, 580));
             panelActivo=panelPerfil;
-        }
+            autentificacionIncorrecta.setVisible(false);
+        } else autentificacionIncorrecta.setVisible(true);
         
 
     }//GEN-LAST:event_botonEntrarActionPerformed
@@ -266,9 +273,9 @@ public class VPrincipal extends javax.swing.JFrame {
         panelActivo=panelPedido;
     }
     
-    public void ventanaPerfil(){
+    public void ventanaPerfil(String usuario){
         panelActivo.setVisible(false);
-        VPerfil panelPerfil  = new VPerfil();
+        VPerfil panelPerfil  = new VPerfil(usuario);
         panelBase.add(panelPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 680, 580));
         panelActivo=panelPerfil;
     }
@@ -294,11 +301,13 @@ public class VPrincipal extends javax.swing.JFrame {
          panelLogin.setVisible(true);
          panelLogo.setVisible(true);
      }
+    
   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPasswordField JContrasena;
     private javax.swing.JTextField JUsuario;
+    private javax.swing.JLabel autentificacionIncorrecta;
     private javax.swing.JButton botonCerrar;
     private javax.swing.JButton botonEntrar;
     private javax.swing.JButton botonRegistrarse;

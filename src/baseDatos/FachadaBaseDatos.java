@@ -24,7 +24,7 @@ public class FachadaBaseDatos {
         Properties configuracion = new Properties();
         this.fa=fa;
         FileInputStream arqConfiguracion;
-        daoUsuarios = new DAOUsuarios(conexion, fa);
+        
 
         try {
             arqConfiguracion = new FileInputStream("baseDatos.properties");
@@ -43,7 +43,7 @@ public class FachadaBaseDatos {
                     configuracion.getProperty("puerto")+"/"+
                     configuracion.getProperty("baseDatos"),
                     usuario);
-            daoUsuarios = new DAOUsuarios(conexion, fa);
+            daoUsuarios = new DAOUsuarios(conexion, this.fa);
           
 
 
@@ -64,6 +64,6 @@ public class FachadaBaseDatos {
     }
     
     public Usuario registrarUsuario(String id, String clave, String dni, String nombre,String email,String direccion,String telefono,String sexo){
-        return 
+        return daoUsuarios.registrarUsuario(id, clave, dni, nombre, email, direccion, telefono, sexo);
     }
 }
