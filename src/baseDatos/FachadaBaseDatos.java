@@ -17,11 +17,13 @@ import java.util.Properties;
 public class FachadaBaseDatos {
     private aplicacion.FachadaAplicacion fa;
     private java.sql.Connection conexion;
+    private DAOUsuarios daoUsuarios;
     public FachadaBaseDatos (aplicacion.FachadaAplicacion fa){
         
         Properties configuracion = new Properties();
         this.fa=fa;
         FileInputStream arqConfiguracion;
+        daoUsuarios = new DAOUsuarios(conexion, fa);
 
         try {
             arqConfiguracion = new FileInputStream("baseDatos.properties");
@@ -58,5 +60,9 @@ public class FachadaBaseDatos {
         
         
         
+    }
+    
+    public Usuario registrarUsuario(String id, String clave, String dni, String nombre,String email,String direccion,String telefono,String sexo){
+        return 
     }
 }

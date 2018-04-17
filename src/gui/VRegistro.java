@@ -30,21 +30,28 @@ public class VRegistro extends javax.swing.JPanel {
 
         panelRegistro = new javax.swing.JPanel();
         textoUsuario6 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        textNombre = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         textoUsuario7 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
+        textDni = new javax.swing.JTextField();
         textoUsuario8 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
+        textID = new javax.swing.JTextField();
         textoUsuario9 = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
+        textEmail = new javax.swing.JTextField();
         textoUsuario10 = new javax.swing.JLabel();
         textoUsuario11 = new javax.swing.JLabel();
-        jTextField8 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jSeparator3 = new javax.swing.JSeparator();
+        botonRegistrarse = new javax.swing.JButton();
+        textoUsuario12 = new javax.swing.JLabel();
+        textTelefono = new javax.swing.JTextField();
+        textDireccion = new javax.swing.JTextField();
+        textoUsuario13 = new javax.swing.JLabel();
+        textContraseña = new javax.swing.JPasswordField();
+        textoUsuario14 = new javax.swing.JLabel();
+        textSexo = new javax.swing.JTextField();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -58,9 +65,14 @@ public class VRegistro extends javax.swing.JPanel {
         textoUsuario6.setText("Nuevo usuario");
         panelRegistro.add(textoUsuario6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 30, -1, -1));
 
-        jTextField4.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
-        panelRegistro.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 70, 220, 30));
+        textNombre.setForeground(new java.awt.Color(153, 153, 153));
+        textNombre.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
+        textNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textNombreActionPerformed(evt);
+            }
+        });
+        panelRegistro.add(textNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 70, 190, 30));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8_User_32px.png"))); // NOI18N
         panelRegistro.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
@@ -69,52 +81,43 @@ public class VRegistro extends javax.swing.JPanel {
         textoUsuario7.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         textoUsuario7.setForeground(new java.awt.Color(65, 105, 225));
         textoUsuario7.setText("Nombre:");
-        panelRegistro.add(textoUsuario7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, -1, -1));
+        panelRegistro.add(textoUsuario7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, -1, -1));
 
-        jTextField5.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
-        panelRegistro.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 110, 220, 30));
+        textDni.setForeground(new java.awt.Color(153, 153, 153));
+        textDni.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
+        panelRegistro.add(textDni, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 110, 190, 30));
 
         textoUsuario8.setBackground(new java.awt.Color(65, 105, 225));
         textoUsuario8.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         textoUsuario8.setForeground(new java.awt.Color(65, 105, 225));
         textoUsuario8.setText("DNI:");
-        panelRegistro.add(textoUsuario8, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, -1, -1));
+        panelRegistro.add(textoUsuario8, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 120, -1, -1));
 
-        jTextField6.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
-        panelRegistro.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 150, 220, 30));
+        textID.setForeground(new java.awt.Color(153, 153, 153));
+        textID.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
+        panelRegistro.add(textID, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 150, 190, 30));
 
         textoUsuario9.setBackground(new java.awt.Color(65, 105, 225));
         textoUsuario9.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         textoUsuario9.setForeground(new java.awt.Color(65, 105, 225));
         textoUsuario9.setText("ID:");
-        panelRegistro.add(textoUsuario9, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 160, -1, -1));
+        panelRegistro.add(textoUsuario9, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 160, -1, -1));
 
-        jTextField7.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
-        panelRegistro.add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 190, 220, 30));
+        textEmail.setForeground(new java.awt.Color(153, 153, 153));
+        textEmail.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
+        panelRegistro.add(textEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 190, 190, 30));
 
         textoUsuario10.setBackground(new java.awt.Color(65, 105, 225));
         textoUsuario10.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         textoUsuario10.setForeground(new java.awt.Color(65, 105, 225));
         textoUsuario10.setText("Email:");
-        panelRegistro.add(textoUsuario10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, -1, -1));
+        panelRegistro.add(textoUsuario10, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 200, -1, -1));
 
         textoUsuario11.setBackground(new java.awt.Color(65, 105, 225));
         textoUsuario11.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         textoUsuario11.setForeground(new java.awt.Color(65, 105, 225));
-        textoUsuario11.setText("Teléfono:");
+        textoUsuario11.setText("Contraseña:");
         panelRegistro.add(textoUsuario11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, -1, -1));
-
-        jTextField8.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
-        jTextField8.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField8ActionPerformed(evt);
-            }
-        });
-        panelRegistro.add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 230, 220, 30));
 
         jButton1.setBackground(new java.awt.Color(255, 255, 255));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8_Unchecked_Checkbox_36px_1.png"))); // NOI18N
@@ -126,7 +129,7 @@ public class VRegistro extends javax.swing.JPanel {
                 jButton1ActionPerformed(evt);
             }
         });
-        panelRegistro.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 420, 50, 30));
+        panelRegistro.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 440, 50, 30));
 
         jButton2.setBackground(new java.awt.Color(255, 255, 255));
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8_Checked_Checkbox_36px_1.png"))); // NOI18N
@@ -138,18 +141,77 @@ public class VRegistro extends javax.swing.JPanel {
                 jButton2ActionPerformed(evt);
             }
         });
-        panelRegistro.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 410, 30, 50));
+        panelRegistro.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 430, 30, 50));
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/captcha_1.JPG"))); // NOI18N
-        panelRegistro.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 400, 300, 70));
+        panelRegistro.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 420, 300, 70));
         panelRegistro.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 280, -1));
+
+        botonRegistrarse.setBackground(new java.awt.Color(204, 204, 204));
+        botonRegistrarse.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        botonRegistrarse.setForeground(new java.awt.Color(65, 105, 225));
+        botonRegistrarse.setText("Registrarse");
+        botonRegistrarse.setBorder(null);
+        botonRegistrarse.setContentAreaFilled(false);
+        botonRegistrarse.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        botonRegistrarse.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonRegistrarseActionPerformed(evt);
+            }
+        });
+        panelRegistro.add(botonRegistrarse, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 490, 120, 30));
+
+        textoUsuario12.setBackground(new java.awt.Color(65, 105, 225));
+        textoUsuario12.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        textoUsuario12.setForeground(new java.awt.Color(65, 105, 225));
+        textoUsuario12.setText("Teléfono:");
+        panelRegistro.add(textoUsuario12, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 280, -1, -1));
+
+        textTelefono.setForeground(new java.awt.Color(153, 153, 153));
+        textTelefono.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
+        textTelefono.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textTelefonoActionPerformed(evt);
+            }
+        });
+        panelRegistro.add(textTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 270, 190, 30));
+
+        textDireccion.setForeground(new java.awt.Color(153, 153, 153));
+        textDireccion.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
+        textDireccion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textDireccionActionPerformed(evt);
+            }
+        });
+        panelRegistro.add(textDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 310, 190, 30));
+
+        textoUsuario13.setBackground(new java.awt.Color(65, 105, 225));
+        textoUsuario13.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        textoUsuario13.setForeground(new java.awt.Color(65, 105, 225));
+        textoUsuario13.setText("Dirección:");
+        panelRegistro.add(textoUsuario13, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 320, -1, -1));
+
+        textContraseña.setText("jPasswordField1");
+        textContraseña.setBorder(null);
+        panelRegistro.add(textContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 230, 190, 30));
+
+        textoUsuario14.setBackground(new java.awt.Color(65, 105, 225));
+        textoUsuario14.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        textoUsuario14.setForeground(new java.awt.Color(65, 105, 225));
+        textoUsuario14.setText("Sexo: (H/M)");
+        panelRegistro.add(textoUsuario14, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 360, -1, -1));
+
+        textSexo.setForeground(new java.awt.Color(153, 153, 153));
+        textSexo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
+        textSexo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textSexoActionPerformed(evt);
+            }
+        });
+        panelRegistro.add(textSexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 350, 190, 30));
 
         add(panelRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 310, 580));
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jTextField8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField8ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField8ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
@@ -162,21 +224,60 @@ public class VRegistro extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void botonRegistrarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegistrarseActionPerformed
+        // TODO add your handling code here:
+        String nombre = textNombre.getText();
+        String dni = textDni.getText();
+        String email = textEmail.getText();
+        String direccion = textDireccion.getText();
+        String telefono = textTelefono.getText();
+        String contraseña = textContraseña.getText();
+        String id = textID.getText();
+        String sexo = textSexo.getText();
+        if(nombre!= null && dni!=null && email!=null && contraseña!=null && id!=null){
+            fa.registrarUsuario(id, contraseña, dni, nombre, email, direccion, telefono, sexo);
+        }
+
+    }//GEN-LAST:event_botonRegistrarseActionPerformed
+
+    private void textTelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textTelefonoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textTelefonoActionPerformed
+
+    private void textDireccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textDireccionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textDireccionActionPerformed
+
+    private void textNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textNombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textNombreActionPerformed
+
+    private void textSexoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textSexoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textSexoActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botonRegistrarse;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JSeparator jSeparator3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
     private javax.swing.JPanel panelRegistro;
+    private javax.swing.JPasswordField textContraseña;
+    private javax.swing.JTextField textDireccion;
+    private javax.swing.JTextField textDni;
+    private javax.swing.JTextField textEmail;
+    private javax.swing.JTextField textID;
+    private javax.swing.JTextField textNombre;
+    private javax.swing.JTextField textSexo;
+    private javax.swing.JTextField textTelefono;
     private javax.swing.JLabel textoUsuario10;
     private javax.swing.JLabel textoUsuario11;
+    private javax.swing.JLabel textoUsuario12;
+    private javax.swing.JLabel textoUsuario13;
+    private javax.swing.JLabel textoUsuario14;
     private javax.swing.JLabel textoUsuario6;
     private javax.swing.JLabel textoUsuario7;
     private javax.swing.JLabel textoUsuario8;

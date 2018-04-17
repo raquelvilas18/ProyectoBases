@@ -41,5 +41,9 @@ public class FachadaAplicacion {
     public Boolean comprobarAutentificacion(String idUsuario, String clave){
         return gUsuarios.comprobarAutentificacion(idUsuario, clave);
     }
+    
+    public Usuario registrarUsuario(String id, String clave, String dni, String nombre,String email,String direccion,String telefono,String sexo){
+        return gUsuarios.registrarUsuario(id, clave, dni,nombre, email, direccion, telefono, sexo);
+    }
 
 }
