@@ -12,12 +12,14 @@ import javax.swing.JPanel;
  * @author carlo
  */
 public class VPrincipal extends javax.swing.JFrame {
+    aplicacion.FachadaAplicacion fa;
     JPanel panelActivo;
 
     /**
      * Creates new form vPrincipal
      */
-    public VPrincipal() {
+    public VPrincipal(aplicacion.FachadaAplicacion fa) {
+        this.fa = fa;
         initComponents();
         this.setLocationRelativeTo(null);
     }
@@ -319,7 +321,7 @@ public class VPrincipal extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new VPrincipal().setVisible(true);
+                new VPrincipal(fa).setVisible(true);
             }
         });
         
