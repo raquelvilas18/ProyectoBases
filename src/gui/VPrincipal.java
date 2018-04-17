@@ -86,7 +86,7 @@ public class VPrincipal extends javax.swing.JFrame {
 
         jTextField3.setForeground(new java.awt.Color(153, 153, 153));
         jTextField3.setBorder(null);
-        panelLocPaquete.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 70, 250, 30));
+        panelLocPaquete.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 70, 250, 30));
 
         jButton4.setBackground(new java.awt.Color(255, 255, 255));
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8_Search_30px.png"))); // NOI18N
@@ -140,7 +140,7 @@ public class VPrincipal extends javax.swing.JFrame {
         botonRegistrarse.setText("Registrarse");
         botonRegistrarse.setBorder(null);
         botonRegistrarse.setContentAreaFilled(false);
-        botonRegistrarse.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        botonRegistrarse.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         botonRegistrarse.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonRegistrarseActionPerformed(evt);
@@ -154,7 +154,7 @@ public class VPrincipal extends javax.swing.JFrame {
         botonEntrar.setText("Entrar");
         botonEntrar.setBorder(null);
         botonEntrar.setContentAreaFilled(false);
-        botonEntrar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        botonEntrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         botonEntrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonEntrarActionPerformed(evt);
@@ -164,6 +164,11 @@ public class VPrincipal extends javax.swing.JFrame {
 
         jTextField2.setForeground(new java.awt.Color(153, 153, 153));
         jTextField2.setBorder(null);
+        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField2ActionPerformed(evt);
+            }
+        });
         panelLogin.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 260, 170, 30));
 
         textoUsuario3.setBackground(new java.awt.Color(65, 105, 225));
@@ -234,6 +239,10 @@ public class VPrincipal extends javax.swing.JFrame {
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField2ActionPerformed
 
     public void ventanaPedido(){
         panelActivo.setVisible(false);
