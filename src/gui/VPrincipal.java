@@ -45,12 +45,12 @@ public class VPrincipal extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        JContrasena = new javax.swing.JPasswordField();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         botonRegistrarse = new javax.swing.JButton();
         botonEntrar = new javax.swing.JButton();
-        jTextField2 = new javax.swing.JTextField();
+        JUsuario = new javax.swing.JTextField();
         textoUsuario3 = new javax.swing.JLabel();
         panelLogo = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -126,14 +126,14 @@ public class VPrincipal extends javax.swing.JFrame {
         jSeparator2.setForeground(new java.awt.Color(0, 0, 0));
         panelLogin.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 295, 230, 10));
 
-        jPasswordField1.setForeground(new java.awt.Color(153, 153, 153));
-        jPasswordField1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 5));
-        jPasswordField1.addActionListener(new java.awt.event.ActionListener() {
+        JContrasena.setForeground(new java.awt.Color(153, 153, 153));
+        JContrasena.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 5));
+        JContrasena.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jPasswordField1ActionPerformed(evt);
+                JContrasenaActionPerformed(evt);
             }
         });
-        panelLogin.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 340, 170, 30));
+        panelLogin.add(JContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 340, 170, 30));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8_User_32px.png"))); // NOI18N
         panelLogin.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, -1, -1));
@@ -169,14 +169,14 @@ public class VPrincipal extends javax.swing.JFrame {
         });
         panelLogin.add(botonEntrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 400, 100, 30));
 
-        jTextField2.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 5));
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        JUsuario.setForeground(new java.awt.Color(153, 153, 153));
+        JUsuario.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 5));
+        JUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                JUsuarioActionPerformed(evt);
             }
         });
-        panelLogin.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 260, 170, 30));
+        panelLogin.add(JUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 260, 170, 30));
 
         textoUsuario3.setBackground(new java.awt.Color(65, 105, 225));
         textoUsuario3.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
@@ -231,15 +231,19 @@ public class VPrincipal extends javax.swing.JFrame {
 
     private void botonEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEntrarActionPerformed
         // TODO add your handling code here:
-        panelLocPaquete.setVisible(false);
-        panelLogin.setVisible(false);
-        panelLogo.setVisible(false);
-        VUsr panelUsr = new VUsr(this);
-        panelBase.add(panelUsr, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 310, 580));
-        panelUsr.setVisible(true);
-        VPerfil panelPerfil = new VPerfil();
-        panelBase.add(panelPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 680, 580));
-        panelActivo=panelPerfil;
+        
+        if(fa.comprobarAutentificacion(JUsuario.getText(), JContrasena.getText())){
+            panelLocPaquete.setVisible(false);
+            panelLogin.setVisible(false);
+            panelLogo.setVisible(false);
+            VUsr panelUsr = new VUsr(this);
+            panelBase.add(panelUsr, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 310, 580));
+            panelUsr.setVisible(true);
+            VPerfil panelPerfil = new VPerfil();
+            panelBase.add(panelPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 680, 580));
+            panelActivo=panelPerfil;
+        }
+        
 
     }//GEN-LAST:event_botonEntrarActionPerformed
 
@@ -247,13 +251,13 @@ public class VPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void JUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JUsuarioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_JUsuarioActionPerformed
 
-    private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
+    private void JContrasenaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JContrasenaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jPasswordField1ActionPerformed
+    }//GEN-LAST:event_JContrasenaActionPerformed
 
     public void ventanaPedido(){
         panelActivo.setVisible(false);
@@ -293,6 +297,8 @@ public class VPrincipal extends javax.swing.JFrame {
   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPasswordField JContrasena;
+    private javax.swing.JTextField JUsuario;
     private javax.swing.JButton botonCerrar;
     private javax.swing.JButton botonEntrar;
     private javax.swing.JButton botonRegistrarse;
@@ -301,11 +307,9 @@ public class VPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator4;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JPanel panelBase;
     private javax.swing.JPanel panelLocPaquete;
