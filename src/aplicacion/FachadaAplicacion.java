@@ -11,6 +11,11 @@ package aplicacion;
  */
 public class FachadaAplicacion {
 
+    private gui.FachadaGui fgui;
+    
+    public FachadaAplicacion(){
+        fgui=new gui.FachadaGui(this);
+    }
     /**
      * @param args the command line arguments
      */
