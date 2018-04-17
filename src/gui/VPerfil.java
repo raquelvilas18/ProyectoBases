@@ -169,7 +169,7 @@ public class VPerfil extends javax.swing.JPanel {
         jLabel16.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(65, 105, 225));
         jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-derecha-3-24.png"))); // NOI18N
-        jLabel16.setText("dni");
+        jLabel16.setText("DNI");
         add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 350, -1, -1));
 
         jLabel17.setBackground(new java.awt.Color(65, 105, 225));

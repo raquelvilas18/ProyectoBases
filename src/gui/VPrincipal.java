@@ -93,7 +93,7 @@ public class VPrincipal extends javax.swing.JFrame {
         jButton4.setActionCommand("botonBuscar");
         jButton4.setBorderPainted(false);
         jButton4.setContentAreaFilled(false);
-        jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
@@ -125,7 +125,12 @@ public class VPrincipal extends javax.swing.JFrame {
         panelLogin.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 295, 230, 10));
 
         jPasswordField1.setForeground(new java.awt.Color(153, 153, 153));
-        jPasswordField1.setBorder(null);
+        jPasswordField1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 5));
+        jPasswordField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jPasswordField1ActionPerformed(evt);
+            }
+        });
         panelLogin.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 340, 170, 30));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8_User_32px.png"))); // NOI18N
@@ -163,7 +168,7 @@ public class VPrincipal extends javax.swing.JFrame {
         panelLogin.add(botonEntrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 400, 100, 30));
 
         jTextField2.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField2.setBorder(null);
+        jTextField2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 5));
         jTextField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField2ActionPerformed(evt);
@@ -194,7 +199,7 @@ public class VPrincipal extends javax.swing.JFrame {
         botonCerrar.setActionCommand("botonBuscar");
         botonCerrar.setBorderPainted(false);
         botonCerrar.setContentAreaFilled(false);
-        botonCerrar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        botonCerrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         botonCerrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonCerrarActionPerformed(evt);
@@ -243,6 +248,10 @@ public class VPrincipal extends javax.swing.JFrame {
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField2ActionPerformed
+
+    private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPasswordField1ActionPerformed
 
     public void ventanaPedido(){
         panelActivo.setVisible(false);

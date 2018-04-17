@@ -29,7 +29,6 @@ public class VPedido extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
@@ -48,6 +47,7 @@ public class VPedido extends javax.swing.JPanel {
         jLabel12 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
+        jTextField9 = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(254, 254, 254));
         setPreferredSize(new java.awt.Dimension(680, 580));
@@ -62,11 +62,6 @@ public class VPedido extends javax.swing.JPanel {
         jLabel3.setForeground(new java.awt.Color(65, 105, 225));
         jLabel3.setText("Destinatario");
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 240, -1, -1));
-
-        jTextField2.setBackground(new java.awt.Color(165, 180, 253));
-        jTextField2.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField2.setBorder(null);
-        add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 190, 470, 30));
 
         jPanel2.setPreferredSize(new java.awt.Dimension(10, 550));
 
@@ -87,7 +82,7 @@ public class VPedido extends javax.swing.JPanel {
         jLabel5.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(65, 105, 225));
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-derecha-3-24.png"))); // NOI18N
-        jLabel5.setText("Destino");
+        jLabel5.setText("Destino:");
         add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 190, -1, -1));
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -117,26 +112,30 @@ public class VPedido extends javax.swing.JPanel {
         jLabel10.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(65, 105, 225));
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-derecha-3-24.png"))); // NOI18N
-        jLabel10.setText("dni");
+        jLabel10.setText("DNI");
         jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, -1, -1));
 
         jTextField4.setBackground(new java.awt.Color(165, 180, 253));
         jTextField4.setForeground(new java.awt.Color(153, 153, 153));
+        jTextField4.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField4.setBorder(null);
         jPanel1.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 140, 470, 30));
 
         jTextField6.setBackground(new java.awt.Color(165, 180, 253));
         jTextField6.setForeground(new java.awt.Color(153, 153, 153));
+        jTextField6.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField6.setBorder(null);
         jPanel1.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, 470, 30));
 
         jTextField7.setBackground(new java.awt.Color(165, 180, 253));
         jTextField7.setForeground(new java.awt.Color(153, 153, 153));
+        jTextField7.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField7.setBorder(null);
         jPanel1.add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 60, 470, 30));
 
         jTextField8.setBackground(new java.awt.Color(165, 180, 253));
         jTextField8.setForeground(new java.awt.Color(153, 153, 153));
+        jTextField8.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField8.setBorder(null);
         jPanel1.add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 100, 470, 30));
 
@@ -151,8 +150,8 @@ public class VPedido extends javax.swing.JPanel {
 
         jTextField5.setBackground(new java.awt.Color(165, 180, 253));
         jTextField5.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField5.setBorder(null);
-        add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 150, 470, 30));
+        jTextField5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 5));
+        add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 190, 470, 30));
 
         jPanel3.setBackground(new java.awt.Color(65, 105, 255));
         jPanel3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -206,6 +205,11 @@ public class VPedido extends javax.swing.JPanel {
         );
 
         add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 130, 600, 10));
+
+        jTextField9.setBackground(new java.awt.Color(165, 180, 253));
+        jTextField9.setForeground(new java.awt.Color(153, 153, 153));
+        jTextField9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 5));
+        add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 150, 470, 30));
     }// </editor-fold>//GEN-END:initComponents
 
 
@@ -225,11 +229,11 @@ public class VPedido extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
+    private javax.swing.JTextField jTextField9;
     // End of variables declaration//GEN-END:variables
 }

@@ -118,6 +118,7 @@ public class VRegistro extends javax.swing.JPanel {
 
         jButton1.setBackground(new java.awt.Color(255, 255, 255));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8_Unchecked_Checkbox_36px_1.png"))); // NOI18N
+        jButton1.setBorderPainted(false);
         jButton1.setContentAreaFilled(false);
         jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -125,10 +126,11 @@ public class VRegistro extends javax.swing.JPanel {
                 jButton1ActionPerformed(evt);
             }
         });
-        panelRegistro.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 30, 40));
+        panelRegistro.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 420, 50, 30));
 
         jButton2.setBackground(new java.awt.Color(255, 255, 255));
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8_Checked_Checkbox_36px_1.png"))); // NOI18N
+        jButton2.setBorderPainted(false);
         jButton2.setContentAreaFilled(false);
         jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -136,13 +138,13 @@ public class VRegistro extends javax.swing.JPanel {
                 jButton2ActionPerformed(evt);
             }
         });
-        panelRegistro.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 30, 40));
+        panelRegistro.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 410, 30, 50));
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/captcha_1.JPG"))); // NOI18N
-        panelRegistro.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 320, 300, 70));
+        panelRegistro.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 400, 300, 70));
         panelRegistro.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 280, -1));
 
-        add(panelRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 310, 580));
+        add(panelRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 310, 580));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextField8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField8ActionPerformed
