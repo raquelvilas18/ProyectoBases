@@ -12,15 +12,18 @@ package gui;
 public class VRegistro extends javax.swing.JPanel {
     private aplicacion.FachadaAplicacion fa;
     private boolean captcha;
+    private VPrincipal vp;
 
     /**
      * Creates new form VRegistro
      */
-    public VRegistro(aplicacion.FachadaAplicacion fa) {
+    public VRegistro(aplicacion.FachadaAplicacion fa, VPrincipal vp) {
         initComponents();
         this.fa = fa;
         this.setVisible(false);
         captcha = false;
+        this.vp = vp;
+        jButton2.setVisible(false);
     }
 
     /**
@@ -44,7 +47,7 @@ public class VRegistro extends javax.swing.JPanel {
         textEmail = new javax.swing.JTextField();
         textoUsuario10 = new javax.swing.JLabel();
         textoUsuario11 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        unchecked = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jSeparator3 = new javax.swing.JSeparator();
@@ -123,17 +126,17 @@ public class VRegistro extends javax.swing.JPanel {
         textoUsuario11.setText("Contraseña:");
         panelRegistro.add(textoUsuario11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, -1, -1));
 
-        jButton1.setBackground(new java.awt.Color(255, 255, 255));
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8_Unchecked_Checkbox_36px_1.png"))); // NOI18N
-        jButton1.setBorderPainted(false);
-        jButton1.setContentAreaFilled(false);
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        unchecked.setBackground(new java.awt.Color(255, 255, 255));
+        unchecked.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8_Unchecked_Checkbox_36px_1.png"))); // NOI18N
+        unchecked.setBorderPainted(false);
+        unchecked.setContentAreaFilled(false);
+        unchecked.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        unchecked.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                uncheckedActionPerformed(evt);
             }
         });
-        panelRegistro.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 440, 50, 30));
+        panelRegistro.add(unchecked, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 440, 50, 30));
 
         jButton2.setBackground(new java.awt.Color(255, 255, 255));
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8_Checked_Checkbox_36px_1.png"))); // NOI18N
@@ -195,7 +198,6 @@ public class VRegistro extends javax.swing.JPanel {
         textoUsuario13.setText("Dirección:");
         panelRegistro.add(textoUsuario13, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 320, -1, -1));
 
-        textContraseña.setText("jPasswordField1");
         textContraseña.setBorder(null);
         panelRegistro.add(textContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 230, 190, 30));
 
@@ -217,13 +219,13 @@ public class VRegistro extends javax.swing.JPanel {
         add(panelRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 310, 580));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void uncheckedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uncheckedActionPerformed
         // TODO add your handling code here:
-        jButton1.setVisible(false);
+        unchecked.setVisible(false);
         jButton2.setVisible(true);
         captcha = true;
 
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_uncheckedActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
@@ -239,8 +241,9 @@ public class VRegistro extends javax.swing.JPanel {
         String contraseña = textContraseña.getText();
         String id = textID.getText();
         String sexo = textSexo.getText();
-        if(nombre!= "" && dni!="" && email!="" && contraseña!="" && id!="" && captcha==true){
+        if(nombre!=null && dni!=null && email!=null && contraseña!=null && id!=null && captcha==true){
             fa.registrarUsuario(id, contraseña, dni, nombre, email, direccion, telefono, sexo);
+            vp.ventanaUsuario(id);
         }
 
     }//GEN-LAST:event_botonRegistrarseActionPerformed
@@ -264,7 +267,6 @@ public class VRegistro extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonRegistrarse;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -287,5 +289,6 @@ public class VRegistro extends javax.swing.JPanel {
     private javax.swing.JLabel textoUsuario7;
     private javax.swing.JLabel textoUsuario8;
     private javax.swing.JLabel textoUsuario9;
+    private javax.swing.JButton unchecked;
     // End of variables declaration//GEN-END:variables
 }

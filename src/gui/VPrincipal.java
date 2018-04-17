@@ -228,7 +228,7 @@ public class VPrincipal extends javax.swing.JFrame {
     private void botonRegistrarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegistrarseActionPerformed
         // TODO add your handling code here:
         panelLogin.setVisible(false);
-        VRegistro panelRegistro = new VRegistro(fa);
+        VRegistro panelRegistro = new VRegistro(fa, this);
         panelBase.add(panelRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 310, 580));
         panelRegistro.setVisible(true);
         panelActivo=panelRegistro;
@@ -271,6 +271,20 @@ public class VPrincipal extends javax.swing.JFrame {
         VPedido panelPedido  = new VPedido();
         panelBase.add(panelPedido, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 680, 580));
         panelActivo=panelPedido;
+    }
+    
+    public void ventanaUsuario(String usuario){
+        panelActivo.setVisible(false);
+        panelLocPaquete.setVisible(false);
+            panelLogin.setVisible(false);
+            panelLogo.setVisible(false);
+            VUsr panelUsr = new VUsr(this, usuario);
+            panelBase.add(panelUsr, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 310, 580));
+            panelUsr.setVisible(true);
+            VPerfil panelPerfil = new VPerfil(usuario);
+            panelBase.add(panelPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 680, 580));
+            panelActivo=panelPerfil;
+        
     }
     
     public void ventanaPerfil(String usuario){

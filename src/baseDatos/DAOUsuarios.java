@@ -24,7 +24,7 @@ public class DAOUsuarios extends AbstractDAO {
         con=this.getConexion();
         if(idUsuario!=null && clave!= null){
         try {
-        stmUsuario=con.prepareStatement("SELECT usuario,dni,nombre,correo,direccion,telefono,sexo\n" +
+        stmUsuario=con.prepareStatement("SELECT *\n" +
                                             "FROM usuarios\n" +
                                             "WHERE usuario=? AND password=(SELECT md5(?))");
         stmUsuario.setString(1, idUsuario);
