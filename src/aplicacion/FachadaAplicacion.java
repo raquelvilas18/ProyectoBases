@@ -5,19 +5,26 @@
  */
 package aplicacion;
 import gui.*;
+import baseDatos.*;
 
 /**
  *
  * @author ferho
  */
 public class FachadaAplicacion {
-     gui.FachadaGui fgui;
-     
-     public FachadaAplicacion() {
-        fgui = new gui.FachadaGui(this);
-    }
 
-     public static void main(String args[]) {
+    private gui.FachadaGui fgui;
+    private FachadaBaseDatos fbd;
+    private GestionUsuarios gUsuarios;
+    
+    public FachadaAplicacion(){
+        fgui=new gui.FachadaGui(this);
+        gUsuarios = new GestionUsuarios(fgui, fbd);
+    }
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
         FachadaAplicacion fa;
 
         fa = new FachadaAplicacion();
@@ -27,4 +34,12 @@ public class FachadaAplicacion {
     public void iniciaInterfazUsuario() {
         fgui.iniciaVista();
     }
+
+    public void muestraExcepcion(String e){
+        //fgui.muestraExcepcion(e);
+    }
+    public Boolean comprobarAutentificacion(String idUsuario, String clave){
+        return gUsuarios.comprobarAutentificacion(idUsuario, clave);
+    }
+
 }
