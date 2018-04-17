@@ -4,18 +4,27 @@
  * and open the template in the editor.
  */
 package aplicacion;
+import gui.*;
 
 /**
  *
  * @author ferho
  */
 public class FachadaAplicacion {
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
+     gui.FachadaGui fgui;
+     
+     public FachadaAplicacion() {
+        fgui = new gui.FachadaGui(this);
     }
-    
+
+     public static void main(String args[]) {
+        FachadaAplicacion fa;
+
+        fa = new FachadaAplicacion();
+        fa.iniciaInterfazUsuario();
+    }
+
+    public void iniciaInterfazUsuario() {
+        fgui.iniciaVista();
+    }
 }
