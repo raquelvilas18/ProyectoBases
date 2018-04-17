@@ -12,6 +12,7 @@ package aplicacion;
 public class FachadaAplicacion {
 
     private gui.FachadaGui fgui;
+    private GestionUsuarios gUsuarios;
     
     public FachadaAplicacion(){
         fgui=new gui.FachadaGui(this);
@@ -21,6 +22,12 @@ public class FachadaAplicacion {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+    }
+    public void muestraExcepcion(String e){
+        //fgui.muestraExcepcion(e);
+    }
+    public Boolean comprobarAutentificacion(String idUsuario, String clave){
+        return gUsuarios.comprobarAutentificacion(idUsuario, clave);
     }
     
 }
