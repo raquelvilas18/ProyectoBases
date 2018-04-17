@@ -23,7 +23,12 @@ public class GestionUsuarios {
     }  
     
     public Boolean comprobarAutentificacion(String idUsuario, String clave){
-        return true;
+        Usuario u;
+
+        u=fbd.validarUsuario(idUsuario, clave);
+        if (u!=null){
+            return true;
+        } else return false;
     }
     public Usuario resgistrarUsuario(String id, String clave, String dni, String nombre,String email,String direccion,String telefono,String sexo){
         return fbd.registrarUsuario(id, clave, dni, nombre, email, direccion, telefono, sexo);

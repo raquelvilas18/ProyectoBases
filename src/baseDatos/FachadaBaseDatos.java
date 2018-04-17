@@ -5,6 +5,7 @@
  */
 package baseDatos;
 
+import aplicacion.Usuario;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -42,7 +43,7 @@ public class FachadaBaseDatos {
                     configuracion.getProperty("puerto")+"/"+
                     configuracion.getProperty("baseDatos"),
                     usuario);
-
+            daoUsuarios = new DAOUsuarios(conexion, fa);
           
 
 
@@ -57,9 +58,9 @@ public class FachadaBaseDatos {
             System.out.println(e.getMessage());
             fa.muestraExcepcion(e.getMessage());
         }
-        
-        
-        
+    }
+    public Usuario validarUsuario(String idUsuario, String clave){
+        return daoUsuarios.validarUsuario(idUsuario, clave);
     }
     
     public Usuario registrarUsuario(String id, String clave, String dni, String nombre,String email,String direccion,String telefono,String sexo){
