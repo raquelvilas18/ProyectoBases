@@ -10,5 +10,13 @@ package aplicacion;
  * @author ferho
  */
 public class Usuario {
-    
+    private String usuario;
+    private String password;
+    private String dni;
+    private String nombre;
+    private String correo;
+    private String direccion;
+    private String telefono;
+    private String sexo;
+
 }
