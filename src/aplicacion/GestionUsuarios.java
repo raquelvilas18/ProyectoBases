@@ -23,6 +23,11 @@ public class GestionUsuarios {
     }  
     
     public Boolean comprobarAutentificacion(String idUsuario, String clave){
-        return true;
+        Usuario u;
+
+        u=fbd.validarUsuario(idUsuario, clave);
+        if (u!=null){
+            return true;
+        } else return false;
     }
 }

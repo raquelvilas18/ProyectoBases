@@ -24,17 +24,17 @@ public class DAOUsuarios extends AbstractDAO {
         con=this.getConexion();
 
         try {
-        stmUsuario=con.prepareStatement("select id_usuario, clave, nombre, direccion, email, tipo_usuario "+
-                                        "from usuario "+
-                                        "where id_usuario = ? and clave = ?");
+        stmUsuario=con.prepareStatement("SELECT usuario,dni,nombre,correo,direccion,telefono,sexo\n" +
+                                            "FROM usuarios\n" +
+                                            "WHERE usuario=? AND password=(SELECT md5(?))");
         stmUsuario.setString(1, idUsuario);
         stmUsuario.setString(2, clave);
         rsUsuario=stmUsuario.executeQuery();
         if (rsUsuario.next())
         {
-            resultado = new Usuario(rsUsuario.getString("id_usuario"), rsUsuario.getString("clave"),
-                                      rsUsuario.getString("nombre"), rsUsuario.getString("direccion"),
-                                      rsUsuario.getString("email"), TipoUsuario.valueOf(rsUsuario.getString("tipo_usuario")));
+            resultado = new Usuario(rsUsuario.getString("usuario"), rsUsuario.getString("password"),rsUsuario.getString("dni"),
+                                      rsUsuario.getString("nombre"), rsUsuario.getString("correo"),
+                                      rsUsuario.getString("direccion"), rsUsuario.getString("telefono"),rsUsuario.getString("sexo"));
 
         }
         } catch (SQLException e){
