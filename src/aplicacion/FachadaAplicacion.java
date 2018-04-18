@@ -49,9 +49,14 @@ public class FachadaAplicacion {
         return gUsuarios.registrarUsuario(id, clave, dni,nombre, email, direccion, telefono, sexo);
     }
     
-    public java.util.List<Pedido> obtenerPedidos(String usuario)
+    public java.util.List<Pedido> obtenerHistorialPedidos(String usuario)
     {
-        return gPedidos.obtenerPedidos(usuario);
+        return gPedidos.obtenerHistorialPedidos(usuario);
+    }
+    
+    public java.util.List<Pedido> obtenerPedidosActivos(String usuario)
+    {
+        return gPedidos.obtenerPedidosActivos(usuario);
     }
 
 }

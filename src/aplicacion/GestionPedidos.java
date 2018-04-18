@@ -22,9 +22,14 @@ public class GestionPedidos{
      this.fbd=fbd;
     }
     
-    public java.util.List<Pedido> obtenerPedidos(String usuario)
+    public java.util.List<Pedido> obtenerHistorialPedidos(String usuario)
     {
-         return fbd.obtenerPedidos(usuario);
+         return fbd.obtenerHistorialPedidos(usuario);
+    }
+    
+    public java.util.List<Pedido> obtenerPedidosActivos(String usuario)
+    {
+         return fbd.obtenerPedidosActivos(usuario);
     }
  
 }

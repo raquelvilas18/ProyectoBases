@@ -24,7 +24,7 @@ public class VHistorialPedidos extends javax.swing.JPanel {
         initComponents();
         tablaPedidos.setModel(tp);
         this.usuario=usuario;
-        tp.setFilas(fa.obtenerPedidos(usuario));
+        tp.setFilas(fa.obtenerHistorialPedidos(usuario));
         //SELECCION Y CENTRADO DE TEXTO
         tablaPedidos.changeSelection(0,0,false,false);
         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();

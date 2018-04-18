@@ -337,9 +337,9 @@ public class VPrincipal extends javax.swing.JFrame {
         panelActivo = panelPerfil;
     }
 
-    public void ventanaPedidosActivos() {
+    public void ventanaPedidosActivos(String usuario) {
         panelActivo.setVisible(false);
-        VPedidosActivos panelPedidosA = new VPedidosActivos();
+        VPedidosActivos panelPedidosA = new VPedidosActivos(fa,this, usuario);
         panelBase.add(panelPedidosA, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 680, 580));
         panelActivo = panelPedidosA;
     }
