@@ -51,10 +51,13 @@ public class VPrincipal extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         botonRegistrarse = new javax.swing.JButton();
-        botonEntrar = new javax.swing.JButton();
         JUsuario = new javax.swing.JTextField();
         textoUsuario3 = new javax.swing.JLabel();
         autentificacionIncorrecta = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jSeparator3 = new javax.swing.JSeparator();
         panelLogo = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         botonCerrar = new javax.swing.JButton();
@@ -74,13 +77,13 @@ public class VPrincipal extends javax.swing.JFrame {
         panelLocPaquete.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         textoUsuario4.setBackground(new java.awt.Color(65, 105, 225));
-        textoUsuario4.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        textoUsuario4.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         textoUsuario4.setForeground(new java.awt.Color(65, 105, 225));
         textoUsuario4.setText("Localizador de paquetes");
         panelLocPaquete.add(textoUsuario4, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 40, -1, -1));
 
         textoUsuario5.setBackground(new java.awt.Color(65, 105, 225));
-        textoUsuario5.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        textoUsuario5.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         textoUsuario5.setForeground(new java.awt.Color(65, 105, 225));
         textoUsuario5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8_Cardboard_Box_30px.png"))); // NOI18N
         textoUsuario5.setText("Identificador:");
@@ -114,7 +117,7 @@ public class VPrincipal extends javax.swing.JFrame {
         panelLogin.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         textoUsuario.setBackground(new java.awt.Color(65, 105, 225));
-        textoUsuario.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        textoUsuario.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         textoUsuario.setForeground(new java.awt.Color(65, 105, 225));
         textoUsuario.setText("Contraseña:");
         panelLogin.add(textoUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 320, -1, -1));
@@ -126,11 +129,12 @@ public class VPrincipal extends javax.swing.JFrame {
         jSeparator1.setForeground(new java.awt.Color(0, 0, 0));
         panelLogin.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 370, 230, 10));
 
-        jSeparator2.setForeground(new java.awt.Color(0, 0, 0));
-        panelLogin.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 295, 230, 10));
+        jSeparator2.setForeground(new java.awt.Color(255, 102, 0));
+        panelLogin.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 510, 80, 20));
 
+        JContrasena.setBackground(new java.awt.Color(214, 225, 254));
         JContrasena.setForeground(new java.awt.Color(153, 153, 153));
-        JContrasena.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 5));
+        JContrasena.setBorder(null);
         JContrasena.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JContrasenaActionPerformed(evt);
@@ -145,9 +149,9 @@ public class VPrincipal extends javax.swing.JFrame {
         panelLogin.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 340, -1, -1));
 
         botonRegistrarse.setBackground(new java.awt.Color(204, 204, 204));
-        botonRegistrarse.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        botonRegistrarse.setForeground(new java.awt.Color(65, 105, 225));
-        botonRegistrarse.setText("Registrarse");
+        botonRegistrarse.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        botonRegistrarse.setForeground(new java.awt.Color(255, 102, 0));
+        botonRegistrarse.setText("Registrate");
         botonRegistrarse.setBorder(null);
         botonRegistrarse.setContentAreaFilled(false);
         botonRegistrarse.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -156,24 +160,11 @@ public class VPrincipal extends javax.swing.JFrame {
                 botonRegistrarseActionPerformed(evt);
             }
         });
-        panelLogin.add(botonRegistrarse, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 440, 120, 30));
+        panelLogin.add(botonRegistrarse, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 480, 120, 40));
 
-        botonEntrar.setBackground(new java.awt.Color(204, 204, 204));
-        botonEntrar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        botonEntrar.setForeground(new java.awt.Color(65, 105, 225));
-        botonEntrar.setText("Entrar");
-        botonEntrar.setBorder(null);
-        botonEntrar.setContentAreaFilled(false);
-        botonEntrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        botonEntrar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonEntrarActionPerformed(evt);
-            }
-        });
-        panelLogin.add(botonEntrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 400, 100, 30));
-
+        JUsuario.setBackground(new java.awt.Color(214, 225, 254));
         JUsuario.setForeground(new java.awt.Color(153, 153, 153));
-        JUsuario.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 5));
+        JUsuario.setBorder(null);
         JUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JUsuarioActionPerformed(evt);
@@ -182,14 +173,41 @@ public class VPrincipal extends javax.swing.JFrame {
         panelLogin.add(JUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 260, 170, 30));
 
         textoUsuario3.setBackground(new java.awt.Color(65, 105, 225));
-        textoUsuario3.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        textoUsuario3.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         textoUsuario3.setForeground(new java.awt.Color(65, 105, 225));
         textoUsuario3.setText("Usuario:");
         panelLogin.add(textoUsuario3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, -1, -1));
 
+        autentificacionIncorrecta.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         autentificacionIncorrecta.setForeground(new java.awt.Color(255, 0, 0));
         autentificacionIncorrecta.setText("Autentificación incorrecta");
         panelLogin.add(autentificacionIncorrecta, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 380, -1, -1));
+
+        jPanel1.setBackground(new java.awt.Color(65, 105, 225));
+        jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel1.setEnabled(false);
+        jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel1MouseClicked(evt);
+            }
+        });
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel5.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel5.setText("Entrar");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 70, 20));
+
+        panelLogin.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 430, 130, 40));
+
+        jLabel6.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel6.setText("Aun no tienes cuenta? ");
+        panelLogin.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 490, -1, 20));
+
+        jSeparator3.setForeground(new java.awt.Color(0, 0, 0));
+        panelLogin.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 295, 230, 10));
 
         panelBase.add(panelLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 310, 580));
 
@@ -236,19 +254,6 @@ public class VPrincipal extends javax.swing.JFrame {
 
     }//GEN-LAST:event_botonRegistrarseActionPerformed
 
-    private void botonEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEntrarActionPerformed
-        // TODO add your handling code here:
-
-        if ((!JUsuario.getText().equals("")) && (!JContrasena.getText().equals("")) && fa.comprobarAutentificacion(JUsuario.getText(), JContrasena.getText())) {
-            ventanaUsuario(JUsuario.getText());
-            autentificacionIncorrecta.setVisible(false);
-        } else {
-            autentificacionIncorrecta.setVisible(true);
-        }
-
-
-    }//GEN-LAST:event_botonEntrarActionPerformed
-
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
@@ -261,6 +266,14 @@ public class VPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_JContrasenaActionPerformed
 
+    private void jPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseClicked
+        if ((!JUsuario.getText().equals("")) && (!JContrasena.getText().equals("")) && fa.comprobarAutentificacion(JUsuario.getText(), JContrasena.getText())) {
+            ventanaUsuario(JUsuario.getText());
+            autentificacionIncorrecta.setVisible(false);
+        } else {
+            autentificacionIncorrecta.setVisible(true);
+        }    }//GEN-LAST:event_jPanel1MouseClicked
+
     public void ventanaPedido() {
         panelActivo.setVisible(false);
         VPedido panelPedido = new VPedido(fa);
@@ -269,7 +282,9 @@ public class VPrincipal extends javax.swing.JFrame {
     }
 
     public void ventanaUsuario(String usuario) {
-        if(panelActivo!=null)panelActivo.setVisible(false);
+        if (panelActivo != null) {
+            panelActivo.setVisible(false);
+        }
         panelLocPaquete.setVisible(false);
         panelLogin.setVisible(false);
         panelLogo.setVisible(false);
@@ -280,8 +295,8 @@ public class VPrincipal extends javax.swing.JFrame {
         panelBase.add(panelPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 680, 580));
         panelActivo = panelPerfil;
     }
-    
-    public void ventanaPerfilAdmin(){
+
+    public void ventanaPerfilAdmin() {
         panelActivo.setVisible(false);
         VPerfilAdmin panel = new VPerfilAdmin();
         panelBase.add(panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 680, 580));
@@ -289,7 +304,9 @@ public class VPrincipal extends javax.swing.JFrame {
     }
 
     public void ventanaAdmin() {
-        if(panelActivo!=null)panelActivo.setVisible(false);
+        if (panelActivo != null) {
+            panelActivo.setVisible(false);
+        }
         panelLocPaquete.setVisible(false);
         panelLogin.setVisible(false);
         panelLogo.setVisible(false);
@@ -300,8 +317,8 @@ public class VPrincipal extends javax.swing.JFrame {
         panelBase.add(panelPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 680, 580));
         panelActivo = panelPerfil;
     }
-    
-    public void ventanaGestionEmpleados(){
+
+    public void ventanaGestionEmpleados() {
         panelActivo.setVisible(false);
         VGestionEmpleados panelGU = new VGestionEmpleados();
         panelBase.add(panelGU, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 680, 580));
@@ -343,15 +360,18 @@ public class VPrincipal extends javax.swing.JFrame {
     private javax.swing.JTextField JUsuario;
     private javax.swing.JLabel autentificacionIncorrecta;
     private javax.swing.JButton botonCerrar;
-    private javax.swing.JButton botonEntrar;
     private javax.swing.JButton botonRegistrarse;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JPanel panelBase;
