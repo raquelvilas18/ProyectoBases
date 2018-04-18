@@ -5,6 +5,9 @@
  */
 package gui;
 
+import javax.swing.JLabel;
+import javax.swing.table.DefaultTableCellRenderer;
+
 /**
  *
  * @author raquel
@@ -14,8 +17,21 @@ public class VPedidosActivos extends javax.swing.JPanel {
     /**
      * Creates new form VPedidosActivos
      */
-    public VPedidosActivos() {
+    private String usuario;
+    public VPedidosActivos(aplicacion.FachadaAplicacion fa,java.awt.Frame parent,String usuario) {
         initComponents();
+        ModeloTablaPedidos tp=new ModeloTablaPedidos();
+        initComponents();
+        tablaPedidos.setModel(tp);
+        this.usuario=usuario;
+        tp.setFilas(fa.obtenerPedidosActivos(usuario));
+        //SELECCION Y CENTRADO DE TEXTO
+        tablaPedidos.changeSelection(0,0,false,false);
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment( JLabel.CENTER );
+        tablaPedidos.setDefaultRenderer(String.class, centerRenderer);
+        tablaPedidos.setDefaultRenderer(Integer.class, centerRenderer);
+        /////////////////////////////////
     }
 
     /**
@@ -32,7 +48,7 @@ public class VPedidosActivos extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tablaPedidos = new javax.swing.JTable();
 
         setBackground(new java.awt.Color(254, 254, 254));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -76,25 +92,15 @@ public class VPedidosActivos extends javax.swing.JPanel {
 
         add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 130, 600, 10));
 
-        jTable1.setBackground(new java.awt.Color(254, 254, 254));
-        jTable1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        jTable1.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
-        jTable1.setForeground(new java.awt.Color(220, 72, 72));
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jTable1.setSelectionBackground(new java.awt.Color(119, 159, 254));
-        jTable1.setSelectionForeground(new java.awt.Color(194, 212, 254));
-        jTable1.setShowVerticalLines(false);
-        jScrollPane1.setViewportView(jTable1);
+        tablaPedidos.setBackground(new java.awt.Color(254, 254, 254));
+        tablaPedidos.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        tablaPedidos.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        tablaPedidos.setForeground(new java.awt.Color(220, 72, 72));
+        tablaPedidos.setModel(new ModeloTablaPedidos());
+        tablaPedidos.setSelectionBackground(new java.awt.Color(204, 204, 204));
+        tablaPedidos.setSelectionForeground(new java.awt.Color(0, 0, 0));
+        tablaPedidos.setShowVerticalLines(false);
+        jScrollPane1.setViewportView(tablaPedidos);
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, 600, 370));
     }// </editor-fold>//GEN-END:initComponents
@@ -106,6 +112,6 @@ public class VPedidosActivos extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tablaPedidos;
     // End of variables declaration//GEN-END:variables
 }
