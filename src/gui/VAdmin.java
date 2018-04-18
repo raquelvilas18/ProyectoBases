@@ -115,7 +115,7 @@ public class VAdmin extends javax.swing.JPanel {
         jLabel3.setText("Gestion sucursales");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, 212, -1));
 
-        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 440, 310, 40));
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 470, 310, 40));
 
         jPanel2.setBackground(new java.awt.Color(250, 170, 49));
         jPanel2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -146,7 +146,7 @@ public class VAdmin extends javax.swing.JPanel {
         });
         jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, 212, -1));
 
-        add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 310, 40));
+        add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, 310, 40));
 
         jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-lista-con-viñetas-50.png"))); // NOI18N
         jLabel13.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -182,7 +182,7 @@ public class VAdmin extends javax.swing.JPanel {
         jLabel16.setText("Gestion empleados");
         jPanel7.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, 212, -1));
 
-        add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 310, 40));
+        add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 270, 310, 40));
 
         jPanel8.setBackground(new java.awt.Color(250, 170, 49));
         jPanel8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -208,7 +208,7 @@ public class VAdmin extends javax.swing.JPanel {
         jLabel18.setText("Gestion usuarios");
         jPanel8.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, 212, -1));
 
-        add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, 310, 40));
+        add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 320, 310, 40));
 
         jPanel9.setBackground(new java.awt.Color(250, 170, 49));
         jPanel9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -234,7 +234,7 @@ public class VAdmin extends javax.swing.JPanel {
         jLabel20.setText("Gestion paquetes");
         jPanel9.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, 212, -1));
 
-        add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 340, 310, 40));
+        add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 370, 310, 40));
 
         jPanel10.setBackground(new java.awt.Color(250, 170, 49));
         jPanel10.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -260,7 +260,7 @@ public class VAdmin extends javax.swing.JPanel {
         jLabel22.setText("Gestion vehículos");
         jPanel10.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, 212, -1));
 
-        add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 390, 310, 40));
+        add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 420, 310, 40));
 
         Maps.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-mapas-de-google-32(1).png"))); // NOI18N
         Maps.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));

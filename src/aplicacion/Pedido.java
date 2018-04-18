@@ -18,8 +18,7 @@ public class Pedido {
    private String destinatario;
    private String tramitador;
    
-   public Pedido(String fecha,String cliente,Integer codigo,boolean express,String direccion,String destinatario,String tramitador)
-   {
+    public Pedido(String fecha, String cliente, Integer codigo, boolean express, String direccion, String destinatario, String tramitador)   {
        this.fecha=fecha;
        this.cliente=cliente;
        this.codigo=codigo;

@@ -240,7 +240,7 @@ public class VPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
 
         if ((!JUsuario.getText().equals("")) && (!JContrasena.getText().equals("")) && fa.comprobarAutentificacion(JUsuario.getText(), JContrasena.getText())) {
-            ventanaUsuario();
+            ventanaUsuario(JUsuario.getText());
             autentificacionIncorrecta.setVisible(false);
         } else {
             autentificacionIncorrecta.setVisible(true);
@@ -263,7 +263,7 @@ public class VPrincipal extends javax.swing.JFrame {
 
     public void ventanaPedido() {
         panelActivo.setVisible(false);
-        VPedido panelPedido = new VPedido();
+        VPedido panelPedido = new VPedido(fa);
         panelBase.add(panelPedido, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 680, 580));
         panelActivo = panelPedido;
     }
