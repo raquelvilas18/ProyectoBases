@@ -5,6 +5,7 @@
  */
 package gui;
 
+import java.awt.event.KeyEvent;
 import javax.swing.JPanel;
 
 /**
@@ -140,6 +141,11 @@ public class VPrincipal extends javax.swing.JFrame {
                 JContrasenaActionPerformed(evt);
             }
         });
+        JContrasena.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                JContrasenaKeyPressed(evt);
+            }
+        });
         panelLogin.add(JContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 340, 170, 30));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8_User_32px.png"))); // NOI18N
@@ -170,7 +176,7 @@ public class VPrincipal extends javax.swing.JFrame {
                 JUsuarioActionPerformed(evt);
             }
         });
-        panelLogin.add(JUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 260, 170, 30));
+        panelLogin.add(JUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 260, 170, 30));
 
         textoUsuario3.setBackground(new java.awt.Color(65, 105, 225));
         textoUsuario3.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
@@ -265,7 +271,9 @@ public class VPrincipal extends javax.swing.JFrame {
     private void JContrasenaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JContrasenaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_JContrasenaActionPerformed
+    
 
+    
     private void jPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseClicked
         if ((!JUsuario.getText().equals("")) && (!JContrasena.getText().equals("")) && fa.comprobarAutentificacion(JUsuario.getText(), JContrasena.getText())) {
             ventanaUsuario(JUsuario.getText());
@@ -273,6 +281,18 @@ public class VPrincipal extends javax.swing.JFrame {
         } else {
             autentificacionIncorrecta.setVisible(true);
         }    }//GEN-LAST:event_jPanel1MouseClicked
+
+    private void JContrasenaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JContrasenaKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            autentificacionIncorrecta.setVisible(false);
+            if ((!JUsuario.getText().equals("")) && (!JContrasena.getText().equals("")) && fa.comprobarAutentificacion(JUsuario.getText(), JContrasena.getText())) {
+            ventanaUsuario(JUsuario.getText());
+            } else {
+                autentificacionIncorrecta.setVisible(true);
+            }
+        }
+    }//GEN-LAST:event_JContrasenaKeyPressed
 
     public void ventanaPedido() {
         panelActivo.setVisible(false);
