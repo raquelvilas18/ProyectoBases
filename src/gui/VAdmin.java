@@ -60,7 +60,7 @@ public class VAdmin extends javax.swing.JPanel {
         Maps = new javax.swing.JLabel();
         CerrarSesion = new javax.swing.JLabel();
 
-        jPanel6.setBackground(new java.awt.Color(250, 183, 75));
+        jPanel6.setBackground(new java.awt.Color(255, 157, 110));
         jPanel6.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jPanel6.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -110,7 +110,7 @@ public class VAdmin extends javax.swing.JPanel {
         jLabel2.setText("jLabel1");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 33, 36));
 
-        jLabel3.setFont(new java.awt.Font("Noto Sans", 1, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Noto Sans", 0, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(215, 215, 215));
         jLabel3.setText("Gestion sucursales");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, 212, -1));
@@ -136,9 +136,14 @@ public class VAdmin extends javax.swing.JPanel {
         jLabel4.setText("jLabel1");
         jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 33, 36));
 
-        jLabel5.setFont(new java.awt.Font("Noto Sans", 1, 18)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(215, 215, 215));
         jLabel5.setText("Perfil de usuario");
+        jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel5MouseClicked(evt);
+            }
+        });
         jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, 212, -1));
 
         add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 310, 40));
@@ -172,7 +177,7 @@ public class VAdmin extends javax.swing.JPanel {
         jLabel15.setText("jLabel1");
         jPanel7.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 33, 36));
 
-        jLabel16.setFont(new java.awt.Font("Noto Sans", 1, 18)); // NOI18N
+        jLabel16.setFont(new java.awt.Font("Noto Sans", 0, 18)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(215, 215, 215));
         jLabel16.setText("Gestion empleados");
         jPanel7.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, 212, -1));
@@ -198,7 +203,7 @@ public class VAdmin extends javax.swing.JPanel {
         jLabel17.setText("jLabel1");
         jPanel8.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 33, 36));
 
-        jLabel18.setFont(new java.awt.Font("Noto Sans", 1, 18)); // NOI18N
+        jLabel18.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(215, 215, 215));
         jLabel18.setText("Gestion usuarios");
         jPanel8.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, 212, -1));
@@ -224,7 +229,7 @@ public class VAdmin extends javax.swing.JPanel {
         jLabel19.setText("jLabel1");
         jPanel9.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 33, 36));
 
-        jLabel20.setFont(new java.awt.Font("Noto Sans", 1, 18)); // NOI18N
+        jLabel20.setFont(new java.awt.Font("Noto Sans", 0, 18)); // NOI18N
         jLabel20.setForeground(new java.awt.Color(215, 215, 215));
         jLabel20.setText("Gestion paquetes");
         jPanel9.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, 212, -1));
@@ -250,7 +255,7 @@ public class VAdmin extends javax.swing.JPanel {
         jLabel21.setText("jLabel1");
         jPanel10.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 33, 36));
 
-        jLabel22.setFont(new java.awt.Font("Noto Sans", 1, 18)); // NOI18N
+        jLabel22.setFont(new java.awt.Font("Noto Sans", 0, 18)); // NOI18N
         jLabel22.setForeground(new java.awt.Color(215, 215, 215));
         jLabel22.setText("Gestion vehículos");
         jPanel10.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, 212, -1));
@@ -298,7 +303,7 @@ public class VAdmin extends javax.swing.JPanel {
 
     private void jPanel1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseExited
         // TODO add your handling code here:
-        jPanel1.setBackground(new Color(250, 183, 75));
+        jPanel1.setBackground(new Color(250, 170, 49));
     }//GEN-LAST:event_jPanel1MouseExited
 
     private void jPanel1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseEntered
@@ -311,7 +316,7 @@ public class VAdmin extends javax.swing.JPanel {
     }//GEN-LAST:event_jPanel2MouseClicked
 
     private void jPanel2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseExited
-        jPanel2.setBackground(new Color(250, 183, 75));
+        jPanel2.setBackground(new Color(250, 170, 49));
     }//GEN-LAST:event_jPanel2MouseExited
 
     private void jPanel2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseEntered
@@ -323,19 +328,19 @@ public class VAdmin extends javax.swing.JPanel {
     }//GEN-LAST:event_jPanel6MouseClicked
 
     private void jPanel6MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel6MouseExited
-        jPanel6.setBackground(new Color(250, 183, 75));
+        jPanel6.setBackground(new Color(250, 170, 49));
     }//GEN-LAST:event_jPanel6MouseExited
 
     private void jPanel6MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel6MouseEntered
-        jPanel6.setBackground(new Color(255, 183, 75));
+        jPanel6.setBackground(new Color(250, 170, 49));
     }//GEN-LAST:event_jPanel6MouseEntered
 
     private void jPanel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel7MouseClicked
-        // TODO add your handling code here:
+        parent.ventanaGestionEmpleados();
     }//GEN-LAST:event_jPanel7MouseClicked
 
     private void jPanel7MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel7MouseExited
-        jPanel7.setBackground(new Color(250, 183, 75));
+        jPanel7.setBackground(new Color(250, 170, 49));
     }//GEN-LAST:event_jPanel7MouseExited
 
     private void jPanel7MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel7MouseEntered
@@ -347,7 +352,7 @@ public class VAdmin extends javax.swing.JPanel {
     }//GEN-LAST:event_jPanel8MouseClicked
 
     private void jPanel8MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel8MouseExited
-        jPanel8.setBackground(new Color(250, 183, 75));
+        jPanel8.setBackground(new Color(250, 170, 49));
     }//GEN-LAST:event_jPanel8MouseExited
 
     private void jPanel8MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel8MouseEntered
@@ -359,7 +364,7 @@ public class VAdmin extends javax.swing.JPanel {
     }//GEN-LAST:event_jPanel9MouseClicked
 
     private void jPanel9MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel9MouseExited
-        jPanel9.setBackground(new Color(250, 183, 75));
+        jPanel9.setBackground(new Color(250, 170, 49));
     }//GEN-LAST:event_jPanel9MouseExited
 
     private void jPanel9MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel9MouseEntered
@@ -371,7 +376,7 @@ public class VAdmin extends javax.swing.JPanel {
     }//GEN-LAST:event_jPanel10MouseClicked
 
     private void jPanel10MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel10MouseExited
-        jPanel10.setBackground(new Color(250, 183, 75));
+        jPanel10.setBackground(new Color(250, 170, 49));
     }//GEN-LAST:event_jPanel10MouseExited
 
     private void jPanel10MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel10MouseEntered
@@ -386,6 +391,10 @@ public class VAdmin extends javax.swing.JPanel {
         // TODO add your handling code here:
         //parent.ventanaInicial(this);
     }//GEN-LAST:event_CerrarSesionMouseClicked
+
+    private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
+        parent.ventanaPerfilAdmin();
+    }//GEN-LAST:event_jLabel5MouseClicked
     
     public void openInternet(){
         try{

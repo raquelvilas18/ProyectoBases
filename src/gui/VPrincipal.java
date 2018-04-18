@@ -240,7 +240,7 @@ public class VPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
 
         if ((!JUsuario.getText().equals("")) && (!JContrasena.getText().equals("")) && fa.comprobarAutentificacion(JUsuario.getText(), JContrasena.getText())) {
-            ventanaAdmin();
+            ventanaUsuario();
             autentificacionIncorrecta.setVisible(false);
         } else {
             autentificacionIncorrecta.setVisible(true);
@@ -269,7 +269,7 @@ public class VPrincipal extends javax.swing.JFrame {
     }
 
     public void ventanaUsuario(String usuario) {
-        panelActivo.setVisible(false);
+        if(panelActivo!=null)panelActivo.setVisible(false);
         panelLocPaquete.setVisible(false);
         panelLogin.setVisible(false);
         panelLogo.setVisible(false);
@@ -279,11 +279,17 @@ public class VPrincipal extends javax.swing.JFrame {
         VPerfil panelPerfil = new VPerfil(usuario);
         panelBase.add(panelPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 680, 580));
         panelActivo = panelPerfil;
-
+    }
+    
+    public void ventanaPerfilAdmin(){
+        panelActivo.setVisible(false);
+        VPerfilAdmin panel = new VPerfilAdmin();
+        panelBase.add(panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 680, 580));
+        panelActivo = panel;
     }
 
     public void ventanaAdmin() {
-        panelActivo.setVisible(false);
+        if(panelActivo!=null)panelActivo.setVisible(false);
         panelLocPaquete.setVisible(false);
         panelLogin.setVisible(false);
         panelLogo.setVisible(false);
@@ -293,6 +299,13 @@ public class VPrincipal extends javax.swing.JFrame {
         VPerfilAdmin panelPerfil = new VPerfilAdmin();
         panelBase.add(panelPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 680, 580));
         panelActivo = panelPerfil;
+    }
+    
+    public void ventanaGestionEmpleados(){
+        panelActivo.setVisible(false);
+        VGestionEmpleados panelGU = new VGestionEmpleados();
+        panelBase.add(panelGU, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 680, 580));
+        panelActivo = panelGU;
     }
 
     public void ventanaPerfil(String usuario) {
