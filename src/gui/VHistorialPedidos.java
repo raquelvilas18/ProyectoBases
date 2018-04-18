@@ -6,7 +6,8 @@
 package gui;
 
 import javax.swing.JTable;
-
+import javax.swing.table.*;
+import javax.swing.JLabel;
 /**
  *
  * @author raquel
@@ -24,7 +25,13 @@ public class VHistorialPedidos extends javax.swing.JPanel {
         tablaPedidos.setModel(tp);
         this.usuario=usuario;
         tp.setFilas(fa.obtenerPedidos(usuario));
+        //SELECCION Y CENTRADO DE TEXTO
         tablaPedidos.changeSelection(0,0,false,false);
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment( JLabel.CENTER );
+        tablaPedidos.setDefaultRenderer(String.class, centerRenderer);
+        tablaPedidos.setDefaultRenderer(Integer.class, centerRenderer);
+        /////////////////////////////////
     }
 
     /**
