@@ -60,7 +60,7 @@ public class VAdmin extends javax.swing.JPanel {
         Maps = new javax.swing.JLabel();
         CerrarSesion = new javax.swing.JLabel();
 
-        jPanel6.setBackground(new java.awt.Color(255, 157, 110));
+        jPanel6.setBackground(new java.awt.Color(250, 183, 75));
         jPanel6.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jPanel6.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -84,14 +84,14 @@ public class VAdmin extends javax.swing.JPanel {
         jLabel14.setText("Perfil de usuario");
         jPanel6.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, 212, -1));
 
-        setBackground(new java.awt.Color(255, 133, 74));
+        setBackground(new java.awt.Color(255, 148, 42));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-colaborador-hombre-96.png"))); // NOI18N
         jLabel1.setText("jLabel1");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 60, 110, 110));
 
-        jPanel1.setBackground(new java.awt.Color(255, 157, 110));
+        jPanel1.setBackground(new java.awt.Color(250, 170, 49));
         jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -117,7 +117,7 @@ public class VAdmin extends javax.swing.JPanel {
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 440, 310, 40));
 
-        jPanel2.setBackground(new java.awt.Color(255, 157, 110));
+        jPanel2.setBackground(new java.awt.Color(250, 170, 49));
         jPanel2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -153,7 +153,7 @@ public class VAdmin extends javax.swing.JPanel {
         });
         add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
-        jPanel7.setBackground(new java.awt.Color(255, 157, 110));
+        jPanel7.setBackground(new java.awt.Color(250, 170, 49));
         jPanel7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel7.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -179,7 +179,7 @@ public class VAdmin extends javax.swing.JPanel {
 
         add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 310, 40));
 
-        jPanel8.setBackground(new java.awt.Color(255, 157, 110));
+        jPanel8.setBackground(new java.awt.Color(250, 170, 49));
         jPanel8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel8.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -205,7 +205,7 @@ public class VAdmin extends javax.swing.JPanel {
 
         add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, 310, 40));
 
-        jPanel9.setBackground(new java.awt.Color(255, 157, 110));
+        jPanel9.setBackground(new java.awt.Color(250, 170, 49));
         jPanel9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel9.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -231,7 +231,7 @@ public class VAdmin extends javax.swing.JPanel {
 
         add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 340, 310, 40));
 
-        jPanel10.setBackground(new java.awt.Color(255, 157, 110));
+        jPanel10.setBackground(new java.awt.Color(250, 170, 49));
         jPanel10.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel10.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -298,12 +298,12 @@ public class VAdmin extends javax.swing.JPanel {
 
     private void jPanel1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseExited
         // TODO add your handling code here:
-        jPanel1.setBackground(new Color(255, 157, 110));
+        jPanel1.setBackground(new Color(250, 183, 75));
     }//GEN-LAST:event_jPanel1MouseExited
 
     private void jPanel1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseEntered
         // TODO add your handling code here:
-        jPanel1.setBackground(new Color(255, 185, 151));
+        jPanel1.setBackground(new Color(255, 183, 75));
     }//GEN-LAST:event_jPanel1MouseEntered
 
     private void jPanel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseClicked
@@ -311,11 +311,11 @@ public class VAdmin extends javax.swing.JPanel {
     }//GEN-LAST:event_jPanel2MouseClicked
 
     private void jPanel2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseExited
-        jPanel2.setBackground(new Color(255, 157, 110));
+        jPanel2.setBackground(new Color(250, 183, 75));
     }//GEN-LAST:event_jPanel2MouseExited
 
     private void jPanel2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseEntered
-        jPanel2.setBackground(new Color(255, 185, 151));
+        jPanel2.setBackground(new Color(255, 183, 75));
     }//GEN-LAST:event_jPanel2MouseEntered
 
     private void jPanel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel6MouseClicked
@@ -323,11 +323,11 @@ public class VAdmin extends javax.swing.JPanel {
     }//GEN-LAST:event_jPanel6MouseClicked
 
     private void jPanel6MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel6MouseExited
-        jPanel6.setBackground(new Color(255, 157, 110));
+        jPanel6.setBackground(new Color(250, 183, 75));
     }//GEN-LAST:event_jPanel6MouseExited
 
     private void jPanel6MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel6MouseEntered
-        jPanel6.setBackground(new Color(255, 185, 151));
+        jPanel6.setBackground(new Color(255, 183, 75));
     }//GEN-LAST:event_jPanel6MouseEntered
 
     private void jPanel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel7MouseClicked
@@ -335,11 +335,11 @@ public class VAdmin extends javax.swing.JPanel {
     }//GEN-LAST:event_jPanel7MouseClicked
 
     private void jPanel7MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel7MouseExited
-        jPanel7.setBackground(new Color(255, 157, 110));
+        jPanel7.setBackground(new Color(250, 183, 75));
     }//GEN-LAST:event_jPanel7MouseExited
 
     private void jPanel7MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel7MouseEntered
-        jPanel7.setBackground(new Color(255, 185, 151));
+        jPanel7.setBackground(new Color(255, 183, 75));
     }//GEN-LAST:event_jPanel7MouseEntered
 
     private void jPanel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel8MouseClicked
@@ -347,11 +347,11 @@ public class VAdmin extends javax.swing.JPanel {
     }//GEN-LAST:event_jPanel8MouseClicked
 
     private void jPanel8MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel8MouseExited
-        jPanel8.setBackground(new Color(255, 157, 110));
+        jPanel8.setBackground(new Color(250, 183, 75));
     }//GEN-LAST:event_jPanel8MouseExited
 
     private void jPanel8MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel8MouseEntered
-        jPanel8.setBackground(new Color(255, 185, 151));
+        jPanel8.setBackground(new Color(255, 183, 75));
     }//GEN-LAST:event_jPanel8MouseEntered
 
     private void jPanel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel9MouseClicked
@@ -359,11 +359,11 @@ public class VAdmin extends javax.swing.JPanel {
     }//GEN-LAST:event_jPanel9MouseClicked
 
     private void jPanel9MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel9MouseExited
-        jPanel9.setBackground(new Color(255, 157, 110));
+        jPanel9.setBackground(new Color(250, 183, 75));
     }//GEN-LAST:event_jPanel9MouseExited
 
     private void jPanel9MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel9MouseEntered
-        jPanel9.setBackground(new Color(255, 185, 151));
+        jPanel9.setBackground(new Color(255, 183, 75));
     }//GEN-LAST:event_jPanel9MouseEntered
 
     private void jPanel10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel10MouseClicked
@@ -371,11 +371,11 @@ public class VAdmin extends javax.swing.JPanel {
     }//GEN-LAST:event_jPanel10MouseClicked
 
     private void jPanel10MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel10MouseExited
-        jPanel10.setBackground(new Color(255, 157, 110));
+        jPanel10.setBackground(new Color(250, 183, 75));
     }//GEN-LAST:event_jPanel10MouseExited
 
     private void jPanel10MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel10MouseEntered
-        jPanel10.setBackground(new Color(255, 185, 151));
+        jPanel10.setBackground(new Color(255, 183, 75));
     }//GEN-LAST:event_jPanel10MouseEntered
 
     private void MapsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MapsMouseClicked
