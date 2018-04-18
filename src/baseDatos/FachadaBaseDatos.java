@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package baseDatos;
+import aplicacion.Pedido;
 import aplicacion.Usuario;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -20,7 +21,8 @@ public class FachadaBaseDatos {
     private aplicacion.FachadaAplicacion fa;
     private java.sql.Connection conexion;
     private DAOUsuarios daoUsuarios;
-
+    private DAOPedidos daoPedidos;
+    
     public FachadaBaseDatos (aplicacion.FachadaAplicacion fa){
         
         Properties configuracion = new Properties();
@@ -45,7 +47,7 @@ public class FachadaBaseDatos {
                     configuracion.getProperty("baseDatos"),
                     usuario);
             daoUsuarios = new DAOUsuarios(conexion, this.fa);
-
+            daoPedidos = new DAOPedidos(conexion, this.fa);
 
         } catch (FileNotFoundException f) {
             System.out.println(f.getMessage());
@@ -65,5 +67,10 @@ public class FachadaBaseDatos {
 
     public Usuario registrarUsuario(String id, String clave, String dni, String nombre, String email, String direccion, String telefono, String sexo) {
         return daoUsuarios.registrarUsuario(id, clave, dni, nombre, email, direccion, telefono, sexo);
+    }
+    
+    public java.util.List<Pedido> obtenerPedidos(String usuario)
+    {
+        return daoPedidos.obtenerPedidos(usuario);
     }
 }

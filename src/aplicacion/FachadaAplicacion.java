@@ -16,11 +16,13 @@ public class FachadaAplicacion {
     private gui.FachadaGui fgui;
     private FachadaBaseDatos fbd;
     private GestionUsuarios gUsuarios;
+    private GestionPedidos gPedidos;
     
     public FachadaAplicacion(){
         fgui=new gui.FachadaGui(this);
         fbd = new FachadaBaseDatos(this);
         gUsuarios = new GestionUsuarios(fgui, fbd);
+        gPedidos = new GestionPedidos(fgui,fbd);
     }
     /**
      * @param args the command line arguments
@@ -45,6 +47,11 @@ public class FachadaAplicacion {
     
     public Usuario registrarUsuario(String id, String clave, String dni, String nombre,String email,String direccion,String telefono,String sexo){
         return gUsuarios.registrarUsuario(id, clave, dni,nombre, email, direccion, telefono, sexo);
+    }
+    
+    public java.util.List<Pedido> obtenerPedidos(String usuario)
+    {
+        return gPedidos.obtenerPedidos(usuario);
     }
 
 }

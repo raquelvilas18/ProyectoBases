@@ -301,9 +301,9 @@ public class VPrincipal extends javax.swing.JFrame {
         panelActivo=panelPedidosA;
     }
     
-     public void ventanaHistorial(){
+     public void ventanaHistorial(String usuario){
         panelActivo.setVisible(false);
-        VHistorialPedidos panelHistorial = new VHistorialPedidos();
+        VHistorialPedidos panelHistorial = new VHistorialPedidos(fa,this,usuario);
         panelBase.add(panelHistorial, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 680, 580));
         panelActivo=panelHistorial;
     }
