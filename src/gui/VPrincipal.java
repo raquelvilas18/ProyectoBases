@@ -12,6 +12,7 @@ import javax.swing.JPanel;
  * @author carlo
  */
 public class VPrincipal extends javax.swing.JFrame {
+
     aplicacion.FachadaAplicacion fa;
     JPanel panelActivo;
 
@@ -231,26 +232,20 @@ public class VPrincipal extends javax.swing.JFrame {
         VRegistro panelRegistro = new VRegistro(fa, this);
         panelBase.add(panelRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 310, 580));
         panelRegistro.setVisible(true);
-        panelActivo=panelRegistro;
+        panelActivo = panelRegistro;
 
     }//GEN-LAST:event_botonRegistrarseActionPerformed
 
     private void botonEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEntrarActionPerformed
         // TODO add your handling code here:
-        
-        if((!JUsuario.getText().equals("")) && (!JContrasena.getText().equals("")) &&fa.comprobarAutentificacion(JUsuario.getText(), JContrasena.getText())){
-            panelLocPaquete.setVisible(false);
-            panelLogin.setVisible(false);
-            panelLogo.setVisible(false);
-            VUsr panelUsr = new VUsr(this, JUsuario.getText());
-            panelBase.add(panelUsr, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 310, 580));
-            panelUsr.setVisible(true);
-            VPerfil panelPerfil = new VPerfil(JUsuario.getText());
-            panelBase.add(panelPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 680, 580));
-            panelActivo=panelPerfil;
+
+        if ((!JUsuario.getText().equals("")) && (!JContrasena.getText().equals("")) && fa.comprobarAutentificacion(JUsuario.getText(), JContrasena.getText())) {
+            ventanaAdmin();
             autentificacionIncorrecta.setVisible(false);
-        } else autentificacionIncorrecta.setVisible(true);
-        
+        } else {
+            autentificacionIncorrecta.setVisible(true);
+        }
+
 
     }//GEN-LAST:event_botonEntrarActionPerformed
 
@@ -266,57 +261,69 @@ public class VPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_JContrasenaActionPerformed
 
-    public void ventanaPedido(){
+    public void ventanaPedido() {
         panelActivo.setVisible(false);
-        VPedido panelPedido  = new VPedido();
+        VPedido panelPedido = new VPedido();
         panelBase.add(panelPedido, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 680, 580));
-        panelActivo=panelPedido;
+        panelActivo = panelPedido;
     }
-    
-    public void ventanaUsuario(String usuario){
+
+    public void ventanaUsuario(String usuario) {
         panelActivo.setVisible(false);
         panelLocPaquete.setVisible(false);
-            panelLogin.setVisible(false);
-            panelLogo.setVisible(false);
-            VUsr panelUsr = new VUsr(this, usuario);
-            panelBase.add(panelUsr, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 310, 580));
-            panelUsr.setVisible(true);
-            VPerfil panelPerfil = new VPerfil(usuario);
-            panelBase.add(panelPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 680, 580));
-            panelActivo=panelPerfil;
-        
-    }
-    
-    public void ventanaPerfil(String usuario){
-        panelActivo.setVisible(false);
-        VPerfil panelPerfil  = new VPerfil(usuario);
+        panelLogin.setVisible(false);
+        panelLogo.setVisible(false);
+        VUsr panelUsr = new VUsr(this, usuario);
+        panelBase.add(panelUsr, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 310, 580));
+        panelUsr.setVisible(true);
+        VPerfil panelPerfil = new VPerfil(usuario);
         panelBase.add(panelPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 680, 580));
-        panelActivo=panelPerfil;
+        panelActivo = panelPerfil;
+
     }
-    
-    public void ventanaPedidosActivos(){
+
+    public void ventanaAdmin() {
         panelActivo.setVisible(false);
-        VPedidosActivos panelPedidosA  = new VPedidosActivos();
+        panelLocPaquete.setVisible(false);
+        panelLogin.setVisible(false);
+        panelLogo.setVisible(false);
+        VAdmin panelAdmin = new VAdmin(this);
+        panelBase.add(panelAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 310, 580));
+        panelAdmin.setVisible(true);
+        VPerfilAdmin panelPerfil = new VPerfilAdmin();
+        panelBase.add(panelPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 680, 580));
+        panelActivo = panelPerfil;
+    }
+
+    public void ventanaPerfil(String usuario) {
+        panelActivo.setVisible(false);
+        VPerfil panelPerfil = new VPerfil(usuario);
+        panelBase.add(panelPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 680, 580));
+        panelActivo = panelPerfil;
+    }
+
+    public void ventanaPedidosActivos() {
+        panelActivo.setVisible(false);
+        VPedidosActivos panelPedidosA = new VPedidosActivos();
         panelBase.add(panelPedidosA, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 680, 580));
-        panelActivo=panelPedidosA;
+        panelActivo = panelPedidosA;
     }
-    
-     public void ventanaHistorial(String usuario){
+
+    public void ventanaHistorial(String usuario) {
         panelActivo.setVisible(false);
-        VHistorialPedidos panelHistorial = new VHistorialPedidos(fa,this,usuario);
+        VHistorialPedidos panelHistorial = new VHistorialPedidos(fa, this, usuario);
         panelBase.add(panelHistorial, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 680, 580));
-        panelActivo=panelHistorial;
+        panelActivo = panelHistorial;
     }
-     
-     public void ventanaInicial(VUsr v){
-         v.setVisible(false);
-         panelActivo.setVisible(false);
-         panelLocPaquete.setVisible(true);
-         panelLogin.setVisible(true);
-         panelLogo.setVisible(true);
-     }
-    
-  
+
+    public void ventanaInicial(VUsr v) {
+        v.setVisible(false);
+        panelActivo.setVisible(false);
+        panelLocPaquete.setVisible(true);
+        panelLogin.setVisible(true);
+        panelLogo.setVisible(true);
+    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPasswordField JContrasena;
