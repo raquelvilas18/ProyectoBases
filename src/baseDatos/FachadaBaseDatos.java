@@ -74,6 +74,18 @@ public class FachadaBaseDatos {
         return daoUsuarios.registrarUsuario(id, clave, dni, nombre, email, direccion, telefono, sexo);
     }
     
+    /*----------  PEDIDOS ----------*/
+    
+    public void nuevoPedido(Pedido pd)
+    {
+        daoPedidos.nuevoPedido(pd);
+    }
+    
+    public void tramitarPedido(Pedido pd)
+    {
+        daoPedidos.tramitarPedido(pd);
+    }
+    
     public java.util.List<Pedido> obtenerHistorialPedidos(String usuario)
     {
         return daoPedidos.obtenerHistorialPedidos(usuario);
@@ -83,4 +95,10 @@ public class FachadaBaseDatos {
     {
         return daoPedidos.obtenerPedidosActivos(usuario);
     }
+     
+    public Pedido comprobarLocalizacion(String codigo)
+     {
+         return daoPedidos.comprobarLocalizacion(codigo);
+     }
+     
 }
