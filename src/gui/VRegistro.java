@@ -313,7 +313,7 @@ public class VRegistro extends javax.swing.JPanel {
         String sexo = textSexo.getText();
         if(nombre!=null && dni!=null && email!=null && contraseña!=null && id!=null && captcha==true){
             fa.registrarUsuario(id, contraseña, dni, nombre, email, direccion, telefono, sexo);
-            vp.ventanaUsuario(id);
+            vp.ventanaUsuario(fa.consultarUsuario(id, contraseña));
         }
     }//GEN-LAST:event_jPanel1MouseClicked
 

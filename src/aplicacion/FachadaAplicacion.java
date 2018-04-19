@@ -47,7 +47,12 @@ public class FachadaAplicacion {
     public Usuario consultarUsuario(String idUsuario, String clave){
         return gUsuarios.consultarUsuario(idUsuario, clave);   
     }
-    
+    public boolean consultarId(String idUsuario){
+        return gUsuarios.consultarId(idUsuario);
+    }    
+    public void actualizar(Usuario usuario){
+        gUsuarios.actualizar(usuario);
+    }
     public Usuario registrarUsuario(String id, String clave, String dni, String nombre,String email,String direccion,String telefono,String sexo){
         return gUsuarios.registrarUsuario(id, clave, dni,nombre, email, direccion, telefono, sexo);
     }

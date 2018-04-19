@@ -80,6 +80,61 @@ public class DAOUsuarios extends AbstractDAO {
         }
         else return null;
     }
+    public boolean consultarId(String idUsuario){
+        boolean resultado=true;
+        Connection con;
+        PreparedStatement stmUsuario=null;
+        ResultSet rsUsuario;
 
-   
+        con=this.getConexion();
+        
+        try {
+        stmUsuario=con.prepareStatement("SELECT *\n" +
+                                            "FROM usuarios\n" +
+                                            "WHERE usuario=? ");
+        stmUsuario.setString(1, idUsuario);
+        rsUsuario=stmUsuario.executeQuery();
+        if (rsUsuario.next())
+        {
+            resultado=false;
+
+        }
+        } catch (SQLException e){
+          System.out.println(e.getMessage());
+          this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
+        }finally{
+            try {stmUsuario.close();} catch (SQLException e){System.out.println("Imposible cerrar cursores");}
+        }
+        return resultado;
+    }
+    public void actualizar(Usuario usuario){
+        Connection con;
+        PreparedStatement stmUsuario=null;
+        ResultSet rsUsuario;
+
+        con=this.getConexion();
+        
+        try {
+        stmUsuario=con.prepareStatement("UPDATE usuarios\n" +
+                                        " SET usuario=?, dni=?, nombre=?, correo=?, direccion=?, \n" +
+                                        "       telefono=?, sexo=?\n" +
+                                        " WHERE usuario=? ");
+        stmUsuario.setString(1, usuario.getUsuario());
+        stmUsuario.setString(2, usuario.getDni());
+        stmUsuario.setString(3, usuario.getNombre());
+        stmUsuario.setString(4, usuario.getCorreo());
+        stmUsuario.setString(5, usuario.getDireccion());
+        stmUsuario.setString(6, usuario.getSexo());
+        stmUsuario.setString(7, usuario.getUsuario());
+        stmUsuario.executeUpdate();
+        } catch (SQLException e){
+          System.out.println(e.getMessage());
+          this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
+        }
+        finally{
+            try {stmUsuario.close();} catch (SQLException e){System.out.println("Imposible cerrar cursores");}
+        }
+    }
+        
+    
 }

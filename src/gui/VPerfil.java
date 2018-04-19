@@ -5,6 +5,7 @@
  */
 package gui;
 
+import aplicacion.FachadaAplicacion;
 import aplicacion.Usuario;
 
 /**
@@ -14,14 +15,16 @@ import aplicacion.Usuario;
 public class VPerfil extends javax.swing.JPanel {
     
     private Usuario usuario;
-
+    private FachadaAplicacion fa;
     /**
      * Creates new form VPerfil
      */
-    public VPerfil(Usuario usuario) {
+    public VPerfil(FachadaAplicacion fa,Usuario usuario) {
         initComponents();
+        JLabelMensaje.setVisible(false);
         this.usuario = usuario;
         this.actualizador(usuario);
+        this.fa=fa;
     }
 
     /**
@@ -40,7 +43,7 @@ public class VPerfil extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jId = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
+        JActualizar = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
@@ -51,9 +54,14 @@ public class VPerfil extends javax.swing.JPanel {
         JNombre = new javax.swing.JTextField();
         JCorreo = new javax.swing.JTextField();
         JTelefono = new javax.swing.JTextField();
-        JDNI = new javax.swing.JTextField();
+        JDireccion = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
+        JLabelMensaje = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        sexo = new javax.swing.JComboBox<>();
+        jLabel18 = new javax.swing.JLabel();
+        JDNI = new javax.swing.JTextField();
 
         jLabel6.setBackground(new java.awt.Color(65, 105, 225));
         jLabel6.setFont(new java.awt.Font("Samanata", 0, 24)); // NOI18N
@@ -76,17 +84,22 @@ public class VPerfil extends javax.swing.JPanel {
         jId.setForeground(new java.awt.Color(0, 0, 0));
         jId.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jId.setBorder(null);
-        add(jId, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 150, 470, 30));
+        add(jId, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 170, 470, 30));
 
         jLabel3.setBackground(new java.awt.Color(65, 105, 225));
         jLabel3.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(65, 105, 225));
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-derecha-3-24.png"))); // NOI18N
         jLabel3.setText("Id:");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 150, -1, -1));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, -1, -1));
 
-        jPanel1.setBackground(new java.awt.Color(65, 105, 255));
-        jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        JActualizar.setBackground(new java.awt.Color(65, 105, 255));
+        JActualizar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        JActualizar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jActualizarMouseClicked(evt);
+            }
+        });
 
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-actualizar-26.png"))); // NOI18N
         jLabel10.setText("jLabel1");
@@ -94,29 +107,34 @@ public class VPerfil extends javax.swing.JPanel {
         jLabel11.setFont(new java.awt.Font("Noto Sans", 1, 18)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(215, 215, 215));
         jLabel11.setText("Actualizar");
+        jLabel11.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jLabel11MousePressed(evt);
+            }
+        });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout JActualizarLayout = new javax.swing.GroupLayout(JActualizar);
+        JActualizar.setLayout(JActualizarLayout);
+        JActualizarLayout.setHorizontalGroup(
+            JActualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(JActualizarLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
                 .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(92, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+        JActualizarLayout.setVerticalGroup(
+            JActualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JActualizarLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(JActualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel11))
                 .addContainerGap())
         );
 
-        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 500, -1, -1));
+        add(JActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 500, -1, -1));
 
         jPanel2.setPreferredSize(new java.awt.Dimension(10, 550));
 
@@ -145,20 +163,20 @@ public class VPerfil extends javax.swing.JPanel {
         jLabel14.setForeground(new java.awt.Color(65, 105, 225));
         jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-derecha-3-24.png"))); // NOI18N
         jLabel14.setText("Correo");
-        add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 290, -1, -1));
+        add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 280, -1, -1));
 
         jLabel15.setBackground(new java.awt.Color(65, 105, 225));
         jLabel15.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(65, 105, 225));
         jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-derecha-3-24.png"))); // NOI18N
-        jLabel15.setText("Telefono");
-        add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 360, -1, -1));
+        jLabel15.setText("Sexo");
+        add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 480, -1, -1));
 
         jLabel16.setBackground(new java.awt.Color(65, 105, 225));
         jLabel16.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(65, 105, 225));
         jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-derecha-3-24.png"))); // NOI18N
-        jLabel16.setText("DNI");
+        jLabel16.setText("DIreccion");
         add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 430, -1, -1));
 
         JNombre.setBackground(new java.awt.Color(165, 180, 253));
@@ -171,19 +189,19 @@ public class VPerfil extends javax.swing.JPanel {
         JCorreo.setForeground(new java.awt.Color(0, 0, 0));
         JCorreo.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         JCorreo.setBorder(null);
-        add(JCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 290, 470, 30));
+        add(JCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 270, 470, 30));
 
         JTelefono.setBackground(new java.awt.Color(165, 180, 253));
         JTelefono.setForeground(new java.awt.Color(0, 0, 0));
         JTelefono.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         JTelefono.setBorder(null);
-        add(JTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 360, 470, 30));
+        add(JTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 320, 470, 30));
 
-        JDNI.setBackground(new java.awt.Color(165, 180, 253));
-        JDNI.setForeground(new java.awt.Color(0, 0, 0));
-        JDNI.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        JDNI.setBorder(null);
-        add(JDNI, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 430, 470, 30));
+        JDireccion.setBackground(new java.awt.Color(165, 180, 253));
+        JDireccion.setForeground(new java.awt.Color(0, 0, 0));
+        JDireccion.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        JDireccion.setBorder(null);
+        add(JDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 420, 470, 30));
 
         jLabel2.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(221, 61, 1));
@@ -204,12 +222,76 @@ public class VPerfil extends javax.swing.JPanel {
         );
 
         add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 130, 600, 10));
+
+        JLabelMensaje.setForeground(new java.awt.Color(255, 0, 0));
+        JLabelMensaje.setText("Id ya existente!");
+        add(JLabelMensaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 140, -1, 20));
+
+        jLabel17.setBackground(new java.awt.Color(65, 105, 225));
+        jLabel17.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        jLabel17.setForeground(new java.awt.Color(65, 105, 225));
+        jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-derecha-3-24.png"))); // NOI18N
+        jLabel17.setText("Telefono");
+        add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 330, -1, -1));
+
+        sexo.setBackground(new java.awt.Color(165, 180, 253));
+        sexo.setForeground(new java.awt.Color(0, 0, 0));
+        sexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "H", "M" }));
+        sexo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sexoActionPerformed(evt);
+            }
+        });
+        add(sexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 480, 50, 30));
+
+        jLabel18.setBackground(new java.awt.Color(65, 105, 225));
+        jLabel18.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(65, 105, 225));
+        jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-derecha-3-24.png"))); // NOI18N
+        jLabel18.setText("DNI");
+        add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 380, -1, -1));
+
+        JDNI.setBackground(new java.awt.Color(165, 180, 253));
+        JDNI.setForeground(new java.awt.Color(0, 0, 0));
+        JDNI.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        JDNI.setBorder(null);
+        add(JDNI, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 370, 470, 30));
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jActualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jActualizarMouseClicked
+        // TODO add your handling code here:
+        if(fa.consultarId(jId.getText()) || (jId.getText().equals(usuario.getUsuario()))){
+            JLabelMensaje.setVisible(false);
+            usuario.setCorreo(JCorreo.getText());
+            usuario.setDireccion(JDireccion.getText());
+            usuario.setDni(JDNI.getText());
+            usuario.setNombre(JNombre.getText());
+            usuario.setSexo((String) sexo.getSelectedItem());
+            usuario.setTelefono(JTelefono.getText());
+            usuario.setUsuario(jId.getText());
+            fa.actualizar(usuario);
+        }
+        else{
+            JLabelMensaje.setVisible(true);
+        }
+    }//GEN-LAST:event_jActualizarMouseClicked
+
+    private void sexoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sexoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_sexoActionPerformed
+
+   
+    private void jLabel11MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel11MousePressed
+        
+    }//GEN-LAST:event_jLabel11MousePressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel JActualizar;
     private javax.swing.JTextField JCorreo;
     private javax.swing.JTextField JDNI;
+    private javax.swing.JTextField JDireccion;
+    private javax.swing.JLabel JLabelMensaje;
     private javax.swing.JTextField JNombre;
     private javax.swing.JTextField JTelefono;
     private javax.swing.Box.Filler filler1;
@@ -221,20 +303,25 @@ public class VPerfil extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTextField jTextField16;
+    private javax.swing.JComboBox<String> sexo;
     // End of variables declaration//GEN-END:variables
     public void actualizador(Usuario usuario){
         JNombre.setText(usuario.getNombre());
-        JDNI.setText(usuario.getDni());
+        JDireccion.setText(usuario.getDni());
         JCorreo.setText(usuario.getCorreo());
+        JDNI.setText(usuario.getDni());
         JTelefono.setText(usuario.getTelefono());
+        JDireccion.setText(usuario.getDireccion());
         jId.setText(usuario.getUsuario());
+        sexo.setSelectedItem(usuario.getSexo());
     }
 }
