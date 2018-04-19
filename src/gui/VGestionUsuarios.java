@@ -70,8 +70,6 @@ public class VGestionUsuarios extends javax.swing.JPanel {
         TxCorreo = new javax.swing.JTextField();
         TxDni = new javax.swing.JTextField();
         jLabel22 = new javax.swing.JLabel();
-        TxContraseña = new javax.swing.JPasswordField();
-        jLabel26 = new javax.swing.JLabel();
         sexo = new javax.swing.JComboBox();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaUsr = new javax.swing.JTable();
@@ -217,7 +215,7 @@ public class VGestionUsuarios extends javax.swing.JPanel {
 
         jLabel8.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel8.setText("Dirección:");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, -1, -1));
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 40, -1, -1));
 
         jLabel9.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel9.setText("Id:");
@@ -247,7 +245,7 @@ public class VGestionUsuarios extends javax.swing.JPanel {
                 TxDireccionActionPerformed(evt);
             }
         });
-        jPanel1.add(TxDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 80, 180, -1));
+        jPanel1.add(TxDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 40, 220, -1));
 
         TxId.setBackground(new java.awt.Color(255, 232, 185));
         TxId.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 1));
@@ -280,14 +278,6 @@ public class VGestionUsuarios extends javax.swing.JPanel {
         jLabel22.setText("Sexo:");
         jPanel1.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 60, -1, -1));
 
-        TxContraseña.setBackground(new java.awt.Color(255, 232, 185));
-        TxContraseña.setBorder(null);
-        jPanel1.add(TxContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 40, 220, -1));
-
-        jLabel26.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        jLabel26.setText("Contraseña:");
-        jPanel1.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 40, -1, -1));
-
         sexo.setBackground(new java.awt.Color(255, 232, 185));
         sexo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "M", "H" }));
         jPanel1.add(sexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 60, -1, -1));
@@ -296,6 +286,13 @@ public class VGestionUsuarios extends javax.swing.JPanel {
 
         tablaUsr.setModel(new ModeloTablaUsuarios());
         tablaUsr.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        tablaUsr.setGridColor(new java.awt.Color(255, 189, 72));
+        tablaUsr.setSelectionBackground(new java.awt.Color(255, 189, 72));
+        tablaUsr.setShowHorizontalLines(false);
+        tablaUsr.setShowVerticalLines(false);
+        tablaUsr.setSurrendersFocusOnKeystroke(true);
+        tablaUsr.getTableHeader().setResizingAllowed(false);
+        tablaUsr.getTableHeader().setReorderingAllowed(false);
         tablaUsr.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tablaUsrMouseClicked(evt);
@@ -350,7 +347,6 @@ public class VGestionUsuarios extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField FiltroId;
     private javax.swing.JTextField FiltroNombre;
-    private javax.swing.JPasswordField TxContraseña;
     private javax.swing.JTextField TxCorreo;
     private javax.swing.JTextField TxDireccion;
     private javax.swing.JTextField TxDni;
@@ -367,7 +363,6 @@ public class VGestionUsuarios extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
-    private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
