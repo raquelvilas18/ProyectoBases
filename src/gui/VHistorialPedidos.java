@@ -5,6 +5,7 @@
  */
 package gui;
 
+import aplicacion.Usuario;
 import javax.swing.JTable;
 import javax.swing.table.*;
 import javax.swing.JLabel;
@@ -18,13 +19,13 @@ public class VHistorialPedidos extends javax.swing.JPanel {
      * Creates new form VHistorialPedidos
      */
 
-    private String usuario;
-    public VHistorialPedidos(aplicacion.FachadaAplicacion fa,java.awt.Frame parent,String usuario) {
+    private Usuario usuario;
+    public VHistorialPedidos(aplicacion.FachadaAplicacion fa,java.awt.Frame parent,Usuario usuario) {
         ModeloTablaPedidos tp=new ModeloTablaPedidos();
         initComponents();
         tablaPedidos.setModel(tp);
         this.usuario=usuario;
-        tp.setFilas(fa.obtenerHistorialPedidos(usuario));
+        tp.setFilas(fa.obtenerHistorialPedidos(usuario.getUsuario()));
         //SELECCION Y CENTRADO DE TEXTO
         tablaPedidos.changeSelection(0,0,false,false);
         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
@@ -98,7 +99,7 @@ public class VHistorialPedidos extends javax.swing.JPanel {
         tablaPedidos.setBackground(new java.awt.Color(254, 254, 254));
         tablaPedidos.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         tablaPedidos.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
-        tablaPedidos.setForeground(new java.awt.Color(220, 72, 72));
+        tablaPedidos.setForeground(new java.awt.Color(0, 0, 0));
         tablaPedidos.setModel(new ModeloTablaPedidos());
         tablaPedidos.setSelectionBackground(new java.awt.Color(204, 204, 204));
         tablaPedidos.setSelectionForeground(new java.awt.Color(0, 0, 0));

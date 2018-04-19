@@ -22,6 +22,16 @@ public class GestionPedidos{
      this.fbd=fbd;
     }
     
+    public void nuevoPedido(Pedido pd)
+    {
+        fbd.nuevoPedido(pd);
+    }
+    
+    public void tramitarPedido(Pedido pd)
+    {
+        fbd.tramitarPedido(pd);
+    }
+    
     public java.util.List<Pedido> obtenerHistorialPedidos(String usuario)
     {
          return fbd.obtenerHistorialPedidos(usuario);
@@ -32,4 +42,8 @@ public class GestionPedidos{
          return fbd.obtenerPedidosActivos(usuario);
     }
  
+    public Pedido comprobarLocalizacion(String codigo)
+    {
+         return fbd.comprobarLocalizacion(codigo);
+    }
 }

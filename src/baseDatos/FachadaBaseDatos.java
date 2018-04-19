@@ -60,13 +60,30 @@ public class FachadaBaseDatos {
             fa.muestraExcepcion(e.getMessage());
         }
     }
-
+    public boolean consultarId(String idUsuario){
+        return daoUsuarios.consultarId(idUsuario);
+    }
+    public void actualizar(Usuario usuario){
+        daoUsuarios.actualizar(usuario);
+    }
     public Usuario validarUsuario(String idUsuario, String clave) {
         return daoUsuarios.validarUsuario(idUsuario, clave);
     }
 
     public Usuario registrarUsuario(String id, String clave, String dni, String nombre, String email, String direccion, String telefono, String sexo) {
         return daoUsuarios.registrarUsuario(id, clave, dni, nombre, email, direccion, telefono, sexo);
+    }
+    
+    /*----------  PEDIDOS ----------*/
+    
+    public void nuevoPedido(Pedido pd)
+    {
+        daoPedidos.nuevoPedido(pd);
+    }
+    
+    public void tramitarPedido(Pedido pd)
+    {
+        daoPedidos.tramitarPedido(pd);
     }
     
     public java.util.List<Pedido> obtenerHistorialPedidos(String usuario)
@@ -78,4 +95,10 @@ public class FachadaBaseDatos {
     {
         return daoPedidos.obtenerPedidosActivos(usuario);
     }
+     
+    public Pedido comprobarLocalizacion(String codigo)
+     {
+         return daoPedidos.comprobarLocalizacion(codigo);
+     }
+     
 }
