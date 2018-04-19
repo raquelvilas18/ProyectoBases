@@ -21,6 +21,7 @@ public class VPerfil extends javax.swing.JPanel {
     public VPerfil(Usuario usuario) {
         initComponents();
         this.usuario = usuario;
+        this.actualizador(usuario);
     }
 
     /**
@@ -43,15 +44,11 @@ public class VPerfil extends javax.swing.JPanel {
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        JPassword = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
         JNombre = new javax.swing.JTextField();
-        JApellidos = new javax.swing.JTextField();
         JCorreo = new javax.swing.JTextField();
         JTelefono = new javax.swing.JTextField();
         JDNI = new javax.swing.JTextField();
@@ -76,7 +73,7 @@ public class VPerfil extends javax.swing.JPanel {
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 10, 300, 110));
 
         jId.setBackground(new java.awt.Color(165, 180, 253));
-        jId.setForeground(new java.awt.Color(153, 153, 153));
+        jId.setForeground(new java.awt.Color(0, 0, 0));
         jId.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jId.setBorder(null);
         add(jId, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 150, 470, 30));
@@ -136,83 +133,57 @@ public class VPerfil extends javax.swing.JPanel {
 
         add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 12, 10, 550));
 
-        JPassword.setBackground(new java.awt.Color(165, 180, 253));
-        JPassword.setForeground(new java.awt.Color(153, 153, 153));
-        JPassword.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        JPassword.setBorder(null);
-        add(JPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 390, 470, 30));
-
         jLabel12.setBackground(new java.awt.Color(65, 105, 225));
         jLabel12.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(65, 105, 225));
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-derecha-3-24.png"))); // NOI18N
         jLabel12.setText("Nombre:");
-        add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 190, -1, -1));
-
-        jLabel13.setBackground(new java.awt.Color(65, 105, 225));
-        jLabel13.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(65, 105, 225));
-        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-derecha-3-24.png"))); // NOI18N
-        jLabel13.setText("Apellidos");
-        add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 230, -1, -1));
+        add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 220, -1, -1));
 
         jLabel14.setBackground(new java.awt.Color(65, 105, 225));
         jLabel14.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(65, 105, 225));
         jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-derecha-3-24.png"))); // NOI18N
         jLabel14.setText("Correo");
-        add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 270, -1, -1));
+        add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 290, -1, -1));
 
         jLabel15.setBackground(new java.awt.Color(65, 105, 225));
         jLabel15.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(65, 105, 225));
         jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-derecha-3-24.png"))); // NOI18N
         jLabel15.setText("Telefono");
-        add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 310, -1, -1));
+        add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 360, -1, -1));
 
         jLabel16.setBackground(new java.awt.Color(65, 105, 225));
         jLabel16.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(65, 105, 225));
         jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-derecha-3-24.png"))); // NOI18N
         jLabel16.setText("DNI");
-        add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 350, -1, -1));
-
-        jLabel17.setBackground(new java.awt.Color(65, 105, 225));
-        jLabel17.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        jLabel17.setForeground(new java.awt.Color(65, 105, 225));
-        jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-derecha-3-24.png"))); // NOI18N
-        jLabel17.setText("password");
-        add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 390, -1, -1));
+        add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 430, -1, -1));
 
         JNombre.setBackground(new java.awt.Color(165, 180, 253));
-        JNombre.setForeground(new java.awt.Color(153, 153, 153));
+        JNombre.setForeground(new java.awt.Color(0, 0, 0));
         JNombre.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         JNombre.setBorder(null);
-        add(JNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 190, 470, 30));
-
-        JApellidos.setBackground(new java.awt.Color(165, 180, 253));
-        JApellidos.setForeground(new java.awt.Color(153, 153, 153));
-        JApellidos.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        JApellidos.setBorder(null);
-        add(JApellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 230, 470, 30));
+        add(JNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 220, 470, 30));
 
         JCorreo.setBackground(new java.awt.Color(165, 180, 253));
-        JCorreo.setForeground(new java.awt.Color(153, 153, 153));
+        JCorreo.setForeground(new java.awt.Color(0, 0, 0));
         JCorreo.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         JCorreo.setBorder(null);
-        add(JCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 270, 470, 30));
+        add(JCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 290, 470, 30));
 
         JTelefono.setBackground(new java.awt.Color(165, 180, 253));
-        JTelefono.setForeground(new java.awt.Color(153, 153, 153));
+        JTelefono.setForeground(new java.awt.Color(0, 0, 0));
         JTelefono.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         JTelefono.setBorder(null);
-        add(JTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 310, 470, 30));
+        add(JTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 360, 470, 30));
 
         JDNI.setBackground(new java.awt.Color(165, 180, 253));
-        JDNI.setForeground(new java.awt.Color(153, 153, 153));
+        JDNI.setForeground(new java.awt.Color(0, 0, 0));
         JDNI.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         JDNI.setBorder(null);
-        add(JDNI, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 350, 470, 30));
+        add(JDNI, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 430, 470, 30));
 
         jLabel2.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(221, 61, 1));
@@ -237,11 +208,9 @@ public class VPerfil extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField JApellidos;
     private javax.swing.JTextField JCorreo;
     private javax.swing.JTextField JDNI;
     private javax.swing.JTextField JNombre;
-    private javax.swing.JTextField JPassword;
     private javax.swing.JTextField JTelefono;
     private javax.swing.Box.Filler filler1;
     private javax.swing.JTextField jId;
@@ -249,11 +218,9 @@ public class VPerfil extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel6;
@@ -265,6 +232,9 @@ public class VPerfil extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
     public void actualizador(Usuario usuario){
         JNombre.setText(usuario.getNombre());
-        
+        JDNI.setText(usuario.getDni());
+        JCorreo.setText(usuario.getCorreo());
+        JTelefono.setText(usuario.getTelefono());
+        jId.setText(usuario.getUsuario());
     }
 }
