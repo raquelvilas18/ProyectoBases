@@ -194,12 +194,12 @@ public class DAOUsuarios extends AbstractDAO {
         con = super.getConexion();
 
         try {
-            stm = con.prepareStatement("SELECT *\n"
-                    + "FROM usuarios\n"
+            stm = con.prepareStatement("SELECT * "
+                    + "FROM usuarios "
                     + "WHERE usuario LIKE ? "
-                    + "AND nombre LIKE ?");
-            stm.setString(1, id);
-            stm.setString(2, nombre);
+                    + "AND nombre LIKE ? ");
+            stm.setString(1, "%"+id+"%");
+            stm.setString(2, "%"+nombre+"%");
             rs= stm.executeQuery();
             while(rs.next()){
                 resultado.add(new Usuario(rs.getString("usuario"), rs.getString("password"), rs.getString("dni"), rs.getString("nombre"),  rs.getString("correo"), rs.getString("direccion"), rs.getString("telefono"), rs.getString("sexo")));

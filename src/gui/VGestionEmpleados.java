@@ -122,7 +122,7 @@ public class VGestionEmpleados extends javax.swing.JPanel {
         jTable1.setModel(new ModeloTablaEmpleados());
         jScrollPane1.setViewportView(jTable1);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, 600, 200));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 190, 600, 180));
 
         jSeparator2.setForeground(new java.awt.Color(0, 0, 0));
         add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 150, 230, 10));

@@ -19,6 +19,11 @@ public class VGestionUsuarios extends javax.swing.JPanel {
     public VGestionUsuarios(aplicacion.FachadaAplicacion fa) {
         initComponents();
         this.fa=fa;
+        
+        ModeloTablaUsuarios tp=new ModeloTablaUsuarios();
+        initComponents();
+        tablaUsr.setModel(tp);
+        tp.setFilas(fa.obtenerUsuarios(this.FiltroId.getText(), this.FiltroNombre.getText()));
     }
 
     /**
@@ -67,7 +72,7 @@ public class VGestionUsuarios extends javax.swing.JPanel {
         jLabel26 = new javax.swing.JLabel();
         sexo = new javax.swing.JComboBox();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tablaUsr = new javax.swing.JTable();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -287,25 +292,17 @@ public class VGestionUsuarios extends javax.swing.JPanel {
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 381, 600, 170));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane1.setViewportView(jTable1);
+        tablaUsr.setModel(new ModeloTablaUsuarios());
+        jScrollPane1.setViewportView(tablaUsr);
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(63, 190, 590, 170));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
-        fa.obtenerUsuarios(FiltroId.getText(), FiltroNombre.getText());// TODO add your handling code here:
-    }//GEN-LAST:event_jLabel6MouseClicked
+        ModeloTablaUsuarios tp=new ModeloTablaUsuarios();
+        initComponents();
+        tablaUsr.setModel(tp);
+        tp.setFilas(fa.obtenerUsuarios(this.FiltroId.getText(), this.FiltroNombre.getText()));    }//GEN-LAST:event_jLabel6MouseClicked
 
     private void FiltroNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FiltroNombreActionPerformed
         // TODO add your handling code here:
@@ -368,12 +365,12 @@ public class VGestionUsuarios extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JComboBox sexo;
+    private javax.swing.JTable tablaUsr;
     // End of variables declaration//GEN-END:variables
 }
