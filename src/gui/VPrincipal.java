@@ -287,7 +287,7 @@ public class VPrincipal extends javax.swing.JFrame {
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             autentificacionIncorrecta.setVisible(false);
             if ((!JUsuario.getText().equals("")) && (!JContrasena.getText().equals("")) && fa.comprobarAutentificacion(JUsuario.getText(), JContrasena.getText())) {
-            ventanaUsuario(JUsuario.getText());
+            ventanaAdmin();
             } else {
                 autentificacionIncorrecta.setVisible(true);
             }
