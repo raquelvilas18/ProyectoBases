@@ -5,22 +5,24 @@
  */
 package gui;
 
+import aplicacion.Usuario;
+
 /**
  *
  * @author alumnogreibd
  */
 public class VGestionUsuarios extends javax.swing.JPanel {
 
-        aplicacion.FachadaAplicacion fa;
+    aplicacion.FachadaAplicacion fa;
 
     /**
      * Creates new form VGestionUsuarios
      */
     public VGestionUsuarios(aplicacion.FachadaAplicacion fa) {
         initComponents();
-        this.fa=fa;
-        
-        ModeloTablaUsuarios tp=new ModeloTablaUsuarios();
+        this.fa = fa;
+
+        ModeloTablaUsuarios tp = new ModeloTablaUsuarios();
         initComponents();
         tablaUsr.setModel(tp);
         tp.setFilas(fa.obtenerUsuarios(this.FiltroId.getText(), this.FiltroNombre.getText()));
@@ -62,13 +64,13 @@ public class VGestionUsuarios extends javax.swing.JPanel {
         jLabel9 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
+        TxNombre = new javax.swing.JTextField();
+        TxDireccion = new javax.swing.JTextField();
+        TxId = new javax.swing.JTextField();
+        TxCorreo = new javax.swing.JTextField();
+        TxDni = new javax.swing.JTextField();
         jLabel22 = new javax.swing.JLabel();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        TxContraseña = new javax.swing.JPasswordField();
         jLabel26 = new javax.swing.JLabel();
         sexo = new javax.swing.JComboBox();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -229,58 +231,58 @@ public class VGestionUsuarios extends javax.swing.JPanel {
         jLabel21.setText("DNI:");
         jPanel1.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, -1, -1));
 
-        jTextField1.setBackground(new java.awt.Color(255, 232, 185));
-        jTextField1.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 1));
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        TxNombre.setBackground(new java.awt.Color(255, 232, 185));
+        TxNombre.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 1));
+        TxNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                TxNombreActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 20, 220, -1));
+        jPanel1.add(TxNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 20, 220, -1));
 
-        jTextField2.setBackground(new java.awt.Color(255, 232, 185));
-        jTextField2.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 1));
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        TxDireccion.setBackground(new java.awt.Color(255, 232, 185));
+        TxDireccion.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 1));
+        TxDireccion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                TxDireccionActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 80, 180, -1));
+        jPanel1.add(TxDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 80, 180, -1));
 
-        jTextField3.setBackground(new java.awt.Color(255, 232, 185));
-        jTextField3.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 1));
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+        TxId.setBackground(new java.awt.Color(255, 232, 185));
+        TxId.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 1));
+        TxId.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
+                TxIdActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 20, 180, -1));
+        jPanel1.add(TxId, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 20, 180, -1));
 
-        jTextField4.setBackground(new java.awt.Color(255, 232, 185));
-        jTextField4.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 1));
-        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+        TxCorreo.setBackground(new java.awt.Color(255, 232, 185));
+        TxCorreo.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 1));
+        TxCorreo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField4ActionPerformed(evt);
+                TxCorreoActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 40, 180, -1));
+        jPanel1.add(TxCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 40, 180, -1));
 
-        jTextField5.setBackground(new java.awt.Color(255, 232, 185));
-        jTextField5.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 1));
-        jTextField5.addActionListener(new java.awt.event.ActionListener() {
+        TxDni.setBackground(new java.awt.Color(255, 232, 185));
+        TxDni.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 1));
+        TxDni.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField5ActionPerformed(evt);
+                TxDniActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 60, 180, -1));
+        jPanel1.add(TxDni, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 60, 180, -1));
 
         jLabel22.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel22.setText("Sexo:");
         jPanel1.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 60, -1, -1));
 
-        jPasswordField1.setBackground(new java.awt.Color(255, 232, 185));
-        jPasswordField1.setBorder(null);
-        jPanel1.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 40, 220, -1));
+        TxContraseña.setBackground(new java.awt.Color(255, 232, 185));
+        TxContraseña.setBorder(null);
+        jPanel1.add(TxContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 40, 220, -1));
 
         jLabel26.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel26.setText("Contraseña:");
@@ -293,16 +295,23 @@ public class VGestionUsuarios extends javax.swing.JPanel {
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 381, 600, 170));
 
         tablaUsr.setModel(new ModeloTablaUsuarios());
+        tablaUsr.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        tablaUsr.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tablaUsrMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tablaUsr);
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(63, 190, 590, 170));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
-        ModeloTablaUsuarios tp=new ModeloTablaUsuarios();
-        initComponents();
+        ModeloTablaUsuarios tp = new ModeloTablaUsuarios();
         tablaUsr.setModel(tp);
-        tp.setFilas(fa.obtenerUsuarios(this.FiltroId.getText(), this.FiltroNombre.getText()));    }//GEN-LAST:event_jLabel6MouseClicked
+        tp.setFilas(fa.obtenerUsuarios(this.FiltroId.getText(), this.FiltroNombre.getText()));
+
+    }//GEN-LAST:event_jLabel6MouseClicked
 
     private void FiltroNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FiltroNombreActionPerformed
         // TODO add your handling code here:
@@ -312,30 +321,41 @@ public class VGestionUsuarios extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_FiltroIdActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void TxNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxNombreActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_TxNombreActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void TxDireccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxDireccionActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_TxDireccionActionPerformed
 
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+    private void TxIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxIdActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
+    }//GEN-LAST:event_TxIdActionPerformed
 
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+    private void TxCorreoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxCorreoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4ActionPerformed
+    }//GEN-LAST:event_TxCorreoActionPerformed
 
-    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
+    private void TxDniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxDniActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField5ActionPerformed
+    }//GEN-LAST:event_TxDniActionPerformed
+
+    private void tablaUsrMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaUsrMouseClicked
+        // TODO add your handling code here:
+        actualizarDatos();
+    }//GEN-LAST:event_tablaUsrMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField FiltroId;
     private javax.swing.JTextField FiltroNombre;
+    private javax.swing.JPasswordField TxContraseña;
+    private javax.swing.JTextField TxCorreo;
+    private javax.swing.JTextField TxDireccion;
+    private javax.swing.JTextField TxDni;
+    private javax.swing.JTextField TxId;
+    private javax.swing.JTextField TxNombre;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
@@ -360,17 +380,23 @@ public class VGestionUsuarios extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
-    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
     private javax.swing.JComboBox sexo;
     private javax.swing.JTable tablaUsr;
     // End of variables declaration//GEN-END:variables
+    public void actualizarDatos() {
+        ModeloTablaUsuarios m;
+
+        m = (ModeloTablaUsuarios) tablaUsr.getModel();
+        this.TxId.setText(m.getFila(tablaUsr.getSelectedRow()).getUsuario());
+        this.TxNombre.setText(m.getFila(tablaUsr.getSelectedRow()).getNombre());
+        this.TxCorreo.setText(m.getFila(tablaUsr.getSelectedRow()).getCorreo());
+        this.TxDireccion.setText(m.getFila(tablaUsr.getSelectedRow()).getDireccion());
+        this.TxDni.setText(m.getFila(tablaUsr.getSelectedRow()).getDni());
+        this.sexo.setSelectedItem((m.getFila(tablaUsr.getSelectedRow())).getSexo());
+    }
+
 }

@@ -101,5 +101,9 @@ public class ModeloTablaUsuarios extends AbstractTableModel {
         this.usuarios = usuarios;
         fireTableDataChanged();
     }
+    
+    public Usuario getFila(int fila){
+        return usuarios.get(fila);
+    }
 
 }

@@ -26,7 +26,6 @@ public class ModeloTablaEmpleados extends AbstractTableModel {
             case 0: nombre= "Id"; break;
             case 1: nombre="Nombre";break;
             case 2: nombre="Tipo";break;
-            case 3: nombre="Administrador";break;
         }
         return nombre;
     }
@@ -39,7 +38,6 @@ public class ModeloTablaEmpleados extends AbstractTableModel {
             case 0: clase= java.lang.String.class; break;
             case 1: clase=java.lang.String.class;break;
             case 2: clase=java.lang.String.class;break;
-            case 3: clase= java.lang.Boolean.class; break;
         }
         return clase;
     }
@@ -57,7 +55,7 @@ public class ModeloTablaEmpleados extends AbstractTableModel {
 
     @Override
       public int getColumnCount (){
-        return 4;
+        return 3;
     }
 
     @Override

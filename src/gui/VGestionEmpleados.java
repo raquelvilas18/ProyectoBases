@@ -136,7 +136,7 @@ public class VGestionEmpleados extends javax.swing.JPanel {
         jLabel5.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 133, 74));
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-derechaNaranja.png"))); // NOI18N
-        jLabel5.setText("Nombre:");
+        jLabel5.setText("Año Ingreso:");
         add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 130, -1, -1));
 
         jSeparator3.setForeground(new java.awt.Color(0, 0, 0));
