@@ -60,7 +60,12 @@ public class FachadaBaseDatos {
             fa.muestraExcepcion(e.getMessage());
         }
     }
-
+    public boolean consultarId(String idUsuario){
+        return daoUsuarios.consultarId(idUsuario);
+    }
+    public void actualizar(Usuario usuario){
+        daoUsuarios.actualizar(usuario);
+    }
     public Usuario validarUsuario(String idUsuario, String clave) {
         return daoUsuarios.validarUsuario(idUsuario, clave);
     }
