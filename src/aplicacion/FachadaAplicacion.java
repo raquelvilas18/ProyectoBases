@@ -45,8 +45,7 @@ public class FachadaAplicacion {
         return gUsuarios.comprobarAutentificacion(idUsuario, clave);
     }
     public Usuario consultarUsuario(String idUsuario, String clave){
-        //return gUsuarios.consultarUsuario(idUsuario, clave);  
-        return null;
+        return gUsuarios.consultarUsuario(idUsuario, clave);   
     }
     
     public Usuario registrarUsuario(String id, String clave, String dni, String nombre,String email,String direccion,String telefono,String sexo){

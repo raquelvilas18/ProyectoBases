@@ -61,11 +61,10 @@ public class FachadaBaseDatos {
         }
     }
     public boolean consultarId(String idUsuario){
-        //return daoUsuarios.consultarId(idUsuario);
-        return true;
+        return daoUsuarios.consultarId(idUsuario);
     }
     public void actualizar(Usuario usuario){
-        //daoUsuarios.actualizar(usuario);
+        daoUsuarios.actualizar(usuario);
     }
     public Usuario validarUsuario(String idUsuario, String clave) {
         return daoUsuarios.validarUsuario(idUsuario, clave);

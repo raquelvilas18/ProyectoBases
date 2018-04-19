@@ -34,6 +34,4 @@ public class GestionUsuarios {
     public Usuario registrarUsuario(String id, String clave, String dni, String nombre,String email,String direccion,String telefono,String sexo){
         return fbd.registrarUsuario(id, clave, dni, nombre, email, direccion, telefono, sexo);
     }
-    
-   // public Usuario consultarUsuario(String)
 }

@@ -134,9 +134,8 @@ public class VPrincipal extends javax.swing.JFrame {
         panelLogin.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 510, 80, 20));
 
         JContrasena.setBackground(new java.awt.Color(214, 225, 254));
-        JContrasena.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        JContrasena.setForeground(new java.awt.Color(0, 0, 0));
-        JContrasena.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        JContrasena.setForeground(new java.awt.Color(153, 153, 153));
+        JContrasena.setBorder(null);
         JContrasena.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JContrasenaActionPerformed(evt);
@@ -170,9 +169,8 @@ public class VPrincipal extends javax.swing.JFrame {
         panelLogin.add(botonRegistrarse, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 480, 120, 40));
 
         JUsuario.setBackground(new java.awt.Color(214, 225, 254));
-        JUsuario.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        JUsuario.setForeground(new java.awt.Color(0, 0, 0));
-        JUsuario.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        JUsuario.setForeground(new java.awt.Color(153, 153, 153));
+        JUsuario.setBorder(null);
         JUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JUsuarioActionPerformed(evt);
@@ -289,7 +287,7 @@ public class VPrincipal extends javax.swing.JFrame {
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             autentificacionIncorrecta.setVisible(false);
             if ((!JUsuario.getText().equals("")) && (!JContrasena.getText().equals("")) && fa.comprobarAutentificacion(JUsuario.getText(), JContrasena.getText())) {
-            ventanaUsuario(JUsuario.getText());
+            ventanaAdmin();
             } else {
                 autentificacionIncorrecta.setVisible(true);
             }
@@ -318,7 +316,7 @@ public class VPrincipal extends javax.swing.JFrame {
         VUsr panelUsr = new VUsr(this, usuario);
         panelBase.add(panelUsr, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 310, 580));
         panelUsr.setVisible(true);
-        VPerfil panelPerfil = new VPerfil(null);
+        VPerfil panelPerfil = new VPerfil(usuario);
         panelBase.add(panelPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 680, 580));
         panelActivo = panelPerfil;
     }
@@ -354,7 +352,7 @@ public class VPrincipal extends javax.swing.JFrame {
 
     public void ventanaPerfil(String usuario) {
         panelActivo.setVisible(false);
-        VPerfil panelPerfil = new VPerfil(null);
+        VPerfil panelPerfil = new VPerfil(usuario);
         panelBase.add(panelPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 680, 580));
         panelActivo = panelPerfil;
     }
@@ -368,7 +366,7 @@ public class VPrincipal extends javax.swing.JFrame {
 
     public void ventanaHistorial(String usuario) {
         panelActivo.setVisible(false);
-        VHistorialPedidos panelHistorial = new VHistorialPedidos(fa, this, null);
+        VHistorialPedidos panelHistorial = new VHistorialPedidos(fa, this, usuario);
         panelBase.add(panelHistorial, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 680, 580));
         panelActivo = panelHistorial;
     }
