@@ -6,6 +6,7 @@
 package gui;
 
 import AppPackage.AnimationClass;
+import aplicacion.Usuario;
 import java.awt.Color;
 import java.awt.Desktop;
 import java.net.URI;
@@ -18,7 +19,7 @@ import javax.swing.JFrame;
 public class VUsr extends javax.swing.JPanel {
 
     private VPrincipal parent;
-    private String usuario;
+    private Usuario usuario;
     
 
     /**
@@ -28,10 +29,10 @@ public class VUsr extends javax.swing.JPanel {
         initComponents();
     }
 
-    public VUsr(VPrincipal parent, String idUsuario) {
+    public VUsr(VPrincipal parent, Usuario usuario) {
         initComponents();
         this.parent = parent;
-        this.usuario = idUsuario;
+        this.usuario = usuario;
     }
 
     /**

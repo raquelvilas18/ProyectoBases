@@ -5,6 +5,7 @@
  */
 package gui;
 
+import aplicacion.Usuario;
 import javax.swing.JLabel;
 import javax.swing.table.DefaultTableCellRenderer;
 
@@ -17,14 +18,15 @@ public class VPedidosActivos extends javax.swing.JPanel {
     /**
      * Creates new form VPedidosActivos
      */
-    private String usuario;
-    public VPedidosActivos(aplicacion.FachadaAplicacion fa,java.awt.Frame parent,String usuario) {
+    private Usuario usuario;
+    
+    public VPedidosActivos(aplicacion.FachadaAplicacion fa,java.awt.Frame parent,Usuario usuario) {
         initComponents();
         ModeloTablaPedidos tp=new ModeloTablaPedidos();
         initComponents();
         tablaPedidos.setModel(tp);
         this.usuario=usuario;
-        tp.setFilas(fa.obtenerPedidosActivos(usuario));
+        tp.setFilas(fa.obtenerPedidosActivos(usuario.getUsuario()));
         //SELECCION Y CENTRADO DE TEXTO
         tablaPedidos.changeSelection(0,0,false,false);
         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
@@ -95,7 +97,7 @@ public class VPedidosActivos extends javax.swing.JPanel {
         tablaPedidos.setBackground(new java.awt.Color(254, 254, 254));
         tablaPedidos.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         tablaPedidos.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
-        tablaPedidos.setForeground(new java.awt.Color(220, 72, 72));
+        tablaPedidos.setForeground(new java.awt.Color(0, 0, 0));
         tablaPedidos.setModel(new ModeloTablaPedidos());
         tablaPedidos.setSelectionBackground(new java.awt.Color(204, 204, 204));
         tablaPedidos.setSelectionForeground(new java.awt.Color(0, 0, 0));

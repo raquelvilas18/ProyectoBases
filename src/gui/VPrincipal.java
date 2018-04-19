@@ -5,6 +5,7 @@
  */
 package gui;
 
+import aplicacion.Usuario;
 import java.awt.event.KeyEvent;
 import javax.swing.JPanel;
 
@@ -134,7 +135,7 @@ public class VPrincipal extends javax.swing.JFrame {
         panelLogin.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 510, 80, 20));
 
         JContrasena.setBackground(new java.awt.Color(214, 225, 254));
-        JContrasena.setForeground(new java.awt.Color(153, 153, 153));
+        JContrasena.setForeground(new java.awt.Color(0, 0, 0));
         JContrasena.setBorder(null);
         JContrasena.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -169,7 +170,7 @@ public class VPrincipal extends javax.swing.JFrame {
         panelLogin.add(botonRegistrarse, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 480, 120, 40));
 
         JUsuario.setBackground(new java.awt.Color(214, 225, 254));
-        JUsuario.setForeground(new java.awt.Color(153, 153, 153));
+        JUsuario.setForeground(new java.awt.Color(0, 0, 0));
         JUsuario.setBorder(null);
         JUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -276,7 +277,7 @@ public class VPrincipal extends javax.swing.JFrame {
     
     private void jPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseClicked
         if ((!JUsuario.getText().equals("")) && (!JContrasena.getText().equals("")) && fa.comprobarAutentificacion(JUsuario.getText(), JContrasena.getText())) {
-            ventanaUsuario(JUsuario.getText());
+            ventanaUsuario(fa.consultarUsuario(JUsuario.getText(),JContrasena.getText()));
             autentificacionIncorrecta.setVisible(false);
         } else {
             autentificacionIncorrecta.setVisible(true);
@@ -287,7 +288,7 @@ public class VPrincipal extends javax.swing.JFrame {
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             autentificacionIncorrecta.setVisible(false);
             if ((!JUsuario.getText().equals("")) && (!JContrasena.getText().equals("")) && fa.comprobarAutentificacion(JUsuario.getText(), JContrasena.getText())) {
-            ventanaAdmin();
+                ventanaUsuario(fa.consultarUsuario(JUsuario.getText(),JContrasena.getText()));
             } else {
                 autentificacionIncorrecta.setVisible(true);
             }
@@ -306,7 +307,7 @@ public class VPrincipal extends javax.swing.JFrame {
         panelLogin.setVisible(true);
     }
 
-    public void ventanaUsuario(String usuario) {
+    public void ventanaUsuario(Usuario usuario) {
         if (panelActivo != null) {
             panelActivo.setVisible(false);
         }
@@ -316,7 +317,7 @@ public class VPrincipal extends javax.swing.JFrame {
         VUsr panelUsr = new VUsr(this, usuario);
         panelBase.add(panelUsr, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 310, 580));
         panelUsr.setVisible(true);
-        VPerfil panelPerfil = new VPerfil(usuario);
+        VPerfil panelPerfil = new VPerfil(fa,usuario);
         panelBase.add(panelPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 680, 580));
         panelActivo = panelPerfil;
     }
@@ -350,21 +351,21 @@ public class VPrincipal extends javax.swing.JFrame {
         panelActivo = panelGU;
     }
 
-    public void ventanaPerfil(String usuario) {
+    public void ventanaPerfil(Usuario usuario) {
         panelActivo.setVisible(false);
-        VPerfil panelPerfil = new VPerfil(usuario);
+        VPerfil panelPerfil = new VPerfil(fa,usuario);
         panelBase.add(panelPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 680, 580));
         panelActivo = panelPerfil;
     }
 
-    public void ventanaPedidosActivos(String usuario) {
+    public void ventanaPedidosActivos(Usuario usuario) {
         panelActivo.setVisible(false);
         VPedidosActivos panelPedidosA = new VPedidosActivos(fa,this, usuario);
         panelBase.add(panelPedidosA, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 680, 580));
         panelActivo = panelPedidosA;
     }
 
-    public void ventanaHistorial(String usuario) {
+    public void ventanaHistorial(Usuario usuario) {
         panelActivo.setVisible(false);
         VHistorialPedidos panelHistorial = new VHistorialPedidos(fa, this, usuario);
         panelBase.add(panelHistorial, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 680, 580));

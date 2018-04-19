@@ -31,7 +31,20 @@ public class GestionUsuarios {
             return true;
         } else return false;
     }
+    public Usuario consultarUsuario(String idUsuario, String clave){
+        Usuario u = null;
+        if(idUsuario!=null && clave!=null){
+            u=fbd.validarUsuario(idUsuario, clave);
+        }
+        return u;
+    }
     public Usuario registrarUsuario(String id, String clave, String dni, String nombre,String email,String direccion,String telefono,String sexo){
         return fbd.registrarUsuario(id, clave, dni, nombre, email, direccion, telefono, sexo);
+    }
+    public boolean consultarId(String idUsuario){
+        return fbd.consultarId(idUsuario);
+    }
+    public void actualizar(Usuario usuario){
+        fbd.actualizar(usuario);
     }
 }
