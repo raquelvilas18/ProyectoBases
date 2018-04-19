@@ -5,18 +5,20 @@
  */
 package gui;
 
+import aplicacion.Usuario;
+
 /**
  *
  * @author raquel
  */
 public class VPerfil extends javax.swing.JPanel {
     
-    private String usuario;
+    private Usuario usuario;
 
     /**
      * Creates new form VPerfil
      */
-    public VPerfil(String usuario) {
+    public VPerfil(Usuario usuario) {
         initComponents();
         this.usuario = usuario;
     }
@@ -35,24 +37,24 @@ public class VPerfil extends javax.swing.JPanel {
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 32767));
         jTextField16 = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        jId = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        jTextField9 = new javax.swing.JTextField();
+        JPassword = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
-        jTextField15 = new javax.swing.JTextField();
-        jTextField17 = new javax.swing.JTextField();
-        jTextField18 = new javax.swing.JTextField();
-        jTextField19 = new javax.swing.JTextField();
-        jTextField20 = new javax.swing.JTextField();
+        JNombre = new javax.swing.JTextField();
+        JApellidos = new javax.swing.JTextField();
+        JCorreo = new javax.swing.JTextField();
+        JTelefono = new javax.swing.JTextField();
+        JDNI = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
 
@@ -73,11 +75,11 @@ public class VPerfil extends javax.swing.JPanel {
         jLabel1.setText("jLabel1");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 10, 300, 110));
 
-        jTextField2.setBackground(new java.awt.Color(165, 180, 253));
-        jTextField2.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField2.setBorder(null);
-        add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 150, 470, 30));
+        jId.setBackground(new java.awt.Color(165, 180, 253));
+        jId.setForeground(new java.awt.Color(153, 153, 153));
+        jId.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jId.setBorder(null);
+        add(jId, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 150, 470, 30));
 
         jLabel3.setBackground(new java.awt.Color(65, 105, 225));
         jLabel3.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
@@ -134,11 +136,11 @@ public class VPerfil extends javax.swing.JPanel {
 
         add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 12, 10, 550));
 
-        jTextField9.setBackground(new java.awt.Color(165, 180, 253));
-        jTextField9.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField9.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField9.setBorder(null);
-        add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 390, 470, 30));
+        JPassword.setBackground(new java.awt.Color(165, 180, 253));
+        JPassword.setForeground(new java.awt.Color(153, 153, 153));
+        JPassword.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        JPassword.setBorder(null);
+        add(JPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 390, 470, 30));
 
         jLabel12.setBackground(new java.awt.Color(65, 105, 225));
         jLabel12.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
@@ -182,35 +184,35 @@ public class VPerfil extends javax.swing.JPanel {
         jLabel17.setText("password");
         add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 390, -1, -1));
 
-        jTextField15.setBackground(new java.awt.Color(165, 180, 253));
-        jTextField15.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField15.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField15.setBorder(null);
-        add(jTextField15, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 190, 470, 30));
+        JNombre.setBackground(new java.awt.Color(165, 180, 253));
+        JNombre.setForeground(new java.awt.Color(153, 153, 153));
+        JNombre.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        JNombre.setBorder(null);
+        add(JNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 190, 470, 30));
 
-        jTextField17.setBackground(new java.awt.Color(165, 180, 253));
-        jTextField17.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField17.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField17.setBorder(null);
-        add(jTextField17, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 230, 470, 30));
+        JApellidos.setBackground(new java.awt.Color(165, 180, 253));
+        JApellidos.setForeground(new java.awt.Color(153, 153, 153));
+        JApellidos.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        JApellidos.setBorder(null);
+        add(JApellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 230, 470, 30));
 
-        jTextField18.setBackground(new java.awt.Color(165, 180, 253));
-        jTextField18.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField18.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField18.setBorder(null);
-        add(jTextField18, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 270, 470, 30));
+        JCorreo.setBackground(new java.awt.Color(165, 180, 253));
+        JCorreo.setForeground(new java.awt.Color(153, 153, 153));
+        JCorreo.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        JCorreo.setBorder(null);
+        add(JCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 270, 470, 30));
 
-        jTextField19.setBackground(new java.awt.Color(165, 180, 253));
-        jTextField19.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField19.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField19.setBorder(null);
-        add(jTextField19, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 310, 470, 30));
+        JTelefono.setBackground(new java.awt.Color(165, 180, 253));
+        JTelefono.setForeground(new java.awt.Color(153, 153, 153));
+        JTelefono.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        JTelefono.setBorder(null);
+        add(JTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 310, 470, 30));
 
-        jTextField20.setBackground(new java.awt.Color(165, 180, 253));
-        jTextField20.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField20.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField20.setBorder(null);
-        add(jTextField20, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 350, 470, 30));
+        JDNI.setBackground(new java.awt.Color(165, 180, 253));
+        JDNI.setForeground(new java.awt.Color(153, 153, 153));
+        JDNI.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        JDNI.setBorder(null);
+        add(JDNI, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 350, 470, 30));
 
         jLabel2.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(221, 61, 1));
@@ -235,7 +237,14 @@ public class VPerfil extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField JApellidos;
+    private javax.swing.JTextField JCorreo;
+    private javax.swing.JTextField JDNI;
+    private javax.swing.JTextField JNombre;
+    private javax.swing.JTextField JPassword;
+    private javax.swing.JTextField JTelefono;
     private javax.swing.Box.Filler filler1;
+    private javax.swing.JTextField jId;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -252,13 +261,10 @@ public class VPerfil extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTextField jTextField15;
     private javax.swing.JTextField jTextField16;
-    private javax.swing.JTextField jTextField17;
-    private javax.swing.JTextField jTextField18;
-    private javax.swing.JTextField jTextField19;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField20;
-    private javax.swing.JTextField jTextField9;
     // End of variables declaration//GEN-END:variables
+    public void actualizador(Usuario usuario){
+        JNombre.setText(usuario.getNombre());
+        
+    }
 }
