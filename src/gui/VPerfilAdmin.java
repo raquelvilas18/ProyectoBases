@@ -5,17 +5,28 @@
  */
 package gui;
 
+import aplicacion.Usuario;
+
 /**
  *
  * @author alumnogreibd
  */
 public class VPerfilAdmin extends javax.swing.JPanel {
-
+    
+    Usuario usr;
     /**
      * Creates new form VPerfilAdmin
      */
-    public VPerfilAdmin() {
+    public VPerfilAdmin(Usuario usr) {
         initComponents();
+        this.usr=usr;
+        this.TxId.setText(usr.getUsuario());
+        this.TxCorreo.setText(usr.getCorreo());
+        this.TxDni.setText(usr.getDni());
+        this.TxNombre.setText(usr.getNombre());
+        this.TxTelefono.setText(usr.getTelefono());
+        this.sexo.setSelectedItem(usr.getSexo());
+
     }
 
     /**
@@ -30,14 +41,13 @@ public class VPerfilAdmin extends javax.swing.JPanel {
         jPanel4 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField15 = new javax.swing.JTextField();
-        jTextField17 = new javax.swing.JTextField();
-        jTextField18 = new javax.swing.JTextField();
-        jTextField19 = new javax.swing.JTextField();
-        jTextField20 = new javax.swing.JTextField();
-        jTextField9 = new javax.swing.JTextField();
-        jPanel1 = new javax.swing.JPanel();
+        TxId = new javax.swing.JTextField();
+        TxNombre = new javax.swing.JTextField();
+        TxPassword = new javax.swing.JTextField();
+        TxCorreo = new javax.swing.JTextField();
+        TxTelefono = new javax.swing.JTextField();
+        TxDni = new javax.swing.JTextField();
+        Actualizar = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
@@ -48,6 +58,7 @@ public class VPerfilAdmin extends javax.swing.JPanel {
         jLabel13 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        sexo = new javax.swing.JComboBox<String>();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -71,43 +82,44 @@ public class VPerfilAdmin extends javax.swing.JPanel {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/logoPequeno.png"))); // NOI18N
         jLabel1.setText("jLabel1");
 
-        jTextField2.setBackground(new java.awt.Color(255, 183, 75));
-        jTextField2.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField2.setBorder(null);
+        TxId.setBackground(new java.awt.Color(255, 185, 151));
+        TxId.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        TxId.setForeground(new java.awt.Color(0, 0, 0));
+        TxId.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        TxId.setBorder(null);
 
-        jTextField15.setBackground(new java.awt.Color(255, 183, 75));
-        jTextField15.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField15.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField15.setBorder(null);
+        TxNombre.setBackground(new java.awt.Color(255, 185, 151));
+        TxNombre.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        TxNombre.setForeground(new java.awt.Color(0, 0, 0));
+        TxNombre.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        TxNombre.setBorder(null);
 
-        jTextField17.setBackground(new java.awt.Color(255, 183, 75));
-        jTextField17.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField17.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField17.setBorder(null);
+        TxPassword.setBackground(new java.awt.Color(255, 185, 151));
+        TxPassword.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        TxPassword.setForeground(new java.awt.Color(0, 0, 0));
+        TxPassword.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        TxPassword.setBorder(null);
 
-        jTextField18.setBackground(new java.awt.Color(255, 183, 75));
-        jTextField18.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField18.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField18.setBorder(null);
+        TxCorreo.setBackground(new java.awt.Color(255, 185, 151));
+        TxCorreo.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        TxCorreo.setForeground(new java.awt.Color(0, 0, 0));
+        TxCorreo.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        TxCorreo.setBorder(null);
 
-        jTextField19.setBackground(new java.awt.Color(255, 183, 75));
-        jTextField19.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField19.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField19.setBorder(null);
+        TxTelefono.setBackground(new java.awt.Color(255, 185, 151));
+        TxTelefono.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        TxTelefono.setForeground(new java.awt.Color(0, 0, 0));
+        TxTelefono.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        TxTelefono.setBorder(null);
 
-        jTextField20.setBackground(new java.awt.Color(255, 183, 75));
-        jTextField20.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField20.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField20.setBorder(null);
+        TxDni.setBackground(new java.awt.Color(255, 185, 151));
+        TxDni.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        TxDni.setForeground(new java.awt.Color(0, 0, 0));
+        TxDni.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        TxDni.setBorder(null);
 
-        jTextField9.setBackground(new java.awt.Color(255, 183, 75));
-        jTextField9.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField9.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField9.setBorder(null);
-
-        jPanel1.setBackground(new java.awt.Color(255, 133, 74));
-        jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        Actualizar.setBackground(new java.awt.Color(255, 133, 74));
+        Actualizar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-actualizar-26.png"))); // NOI18N
         jLabel10.setText("jLabel1");
@@ -116,22 +128,22 @@ public class VPerfilAdmin extends javax.swing.JPanel {
         jLabel11.setForeground(new java.awt.Color(215, 215, 215));
         jLabel11.setText("Actualizar");
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout ActualizarLayout = new javax.swing.GroupLayout(Actualizar);
+        Actualizar.setLayout(ActualizarLayout);
+        ActualizarLayout.setHorizontalGroup(
+            ActualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ActualizarLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
                 .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(92, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+        ActualizarLayout.setVerticalGroup(
+            ActualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ActualizarLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(ActualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel11))
                 .addContainerGap())
@@ -178,7 +190,7 @@ public class VPerfilAdmin extends javax.swing.JPanel {
         jLabel13.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(255, 133, 74));
         jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-derechaNaranja.png"))); // NOI18N
-        jLabel13.setText("Apellidos");
+        jLabel13.setText("Sexo");
 
         jLabel12.setBackground(new java.awt.Color(65, 105, 225));
         jLabel12.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
@@ -192,11 +204,28 @@ public class VPerfilAdmin extends javax.swing.JPanel {
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-derechaNaranja.png"))); // NOI18N
         jLabel3.setText("Id:");
 
+        sexo.setBackground(new java.awt.Color(255, 185, 151));
+        sexo.setForeground(new java.awt.Color(0, 0, 0));
+        sexo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "H", "M" }));
+        sexo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sexoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 680, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(58, 58, 58)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel17)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel13)
+                        .addGap(70, 70, 70)
+                        .addComponent(sexo, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(440, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -211,39 +240,41 @@ public class VPerfilAdmin extends javax.swing.JPanel {
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(jLabel3)
                             .addGap(85, 85, 85)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(TxId, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(jLabel12)
                             .addGap(42, 42, 42)
-                            .addComponent(jTextField15, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(TxNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabel13)
-                            .addGap(40, 40, 40)
-                            .addComponent(jTextField17, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGap(130, 130, 130)
+                            .addComponent(TxPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(jLabel14)
                             .addGap(55, 55, 55)
-                            .addComponent(jTextField18, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(TxCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(jLabel15)
                             .addGap(41, 41, 41)
-                            .addComponent(jTextField19, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(TxTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(jLabel16)
                             .addGap(78, 78, 78)
-                            .addComponent(jTextField20, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabel17)
-                            .addGap(35, 35, 35)
-                            .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(TxDni, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(layout.createSequentialGroup()
                             .addGap(280, 280, 280)
-                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(Actualizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 580, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(234, Short.MAX_VALUE)
+                .addComponent(jLabel17)
+                .addGap(137, 137, 137)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel13)
+                    .addComponent(sexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(161, 161, 161))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -263,39 +294,44 @@ public class VPerfilAdmin extends javax.swing.JPanel {
                             .addGap(10, 10, 10)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel3)
-                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(TxId, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGap(10, 10, 10)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel12)
-                                .addComponent(jTextField15, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(TxNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGap(10, 10, 10)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel13)
-                                .addComponent(jTextField17, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(TxPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(10, 10, 10)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel14)
-                                .addComponent(jTextField18, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(TxCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGap(10, 10, 10)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel15)
-                                .addComponent(jTextField19, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(TxTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGap(10, 10, 10)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel16)
-                                .addComponent(jTextField20, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(10, 10, 10)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel17)
-                                .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(80, 80, 80)
-                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(TxDni, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGap(120, 120, 120)
+                            .addComponent(Actualizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void sexoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sexoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_sexoActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel Actualizar;
+    private javax.swing.JTextField TxCorreo;
+    private javax.swing.JTextField TxDni;
+    private javax.swing.JTextField TxId;
+    private javax.swing.JTextField TxNombre;
+    private javax.swing.JTextField TxPassword;
+    private javax.swing.JTextField TxTelefono;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -307,15 +343,8 @@ public class VPerfilAdmin extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JTextField jTextField15;
-    private javax.swing.JTextField jTextField17;
-    private javax.swing.JTextField jTextField18;
-    private javax.swing.JTextField jTextField19;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField20;
-    private javax.swing.JTextField jTextField9;
+    private javax.swing.JComboBox<String> sexo;
     // End of variables declaration//GEN-END:variables
 }

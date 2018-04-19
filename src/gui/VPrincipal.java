@@ -272,13 +272,16 @@ public class VPrincipal extends javax.swing.JFrame {
     private void JContrasenaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JContrasenaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_JContrasenaActionPerformed
-    
 
-    
+
     private void jPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseClicked
         if ((!JUsuario.getText().equals("")) && (!JContrasena.getText().equals("")) && fa.comprobarAutentificacion(JUsuario.getText(), JContrasena.getText())) {
-            ventanaUsuario(fa.consultarUsuario(JUsuario.getText(),JContrasena.getText()));
-            autentificacionIncorrecta.setVisible(false);
+            if (fa.esAdministrador(JUsuario.getText())) {
+                ventanaAdmin();
+            } else {
+                ventanaUsuario(fa.consultarUsuario(JUsuario.getText(), JContrasena.getText()));
+                autentificacionIncorrecta.setVisible(false);
+            }
         } else {
             autentificacionIncorrecta.setVisible(true);
         }    }//GEN-LAST:event_jPanel1MouseClicked
@@ -288,7 +291,7 @@ public class VPrincipal extends javax.swing.JFrame {
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             autentificacionIncorrecta.setVisible(false);
             if ((!JUsuario.getText().equals("")) && (!JContrasena.getText().equals("")) && fa.comprobarAutentificacion(JUsuario.getText(), JContrasena.getText())) {
-                ventanaUsuario(fa.consultarUsuario(JUsuario.getText(),JContrasena.getText()));
+                ventanaUsuario(fa.consultarUsuario(JUsuario.getText(), JContrasena.getText()));
             } else {
                 autentificacionIncorrecta.setVisible(true);
             }
@@ -301,8 +304,8 @@ public class VPrincipal extends javax.swing.JFrame {
         panelBase.add(panelPedido, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 680, 580));
         panelActivo = panelPedido;
     }
-    
-    public void ventanaPrincipal(){
+
+    public void ventanaPrincipal() {
         panelActivo.setVisible(false);
         panelLogin.setVisible(true);
     }
@@ -317,14 +320,14 @@ public class VPrincipal extends javax.swing.JFrame {
         VUsr panelUsr = new VUsr(this, usuario);
         panelBase.add(panelUsr, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 310, 580));
         panelUsr.setVisible(true);
-        VPerfil panelPerfil = new VPerfil(fa,usuario);
+        VPerfil panelPerfil = new VPerfil(fa, usuario);
         panelBase.add(panelPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 680, 580));
         panelActivo = panelPerfil;
     }
 
     public void ventanaPerfilAdmin() {
         panelActivo.setVisible(false);
-        VPerfilAdmin panel = new VPerfilAdmin();
+        VPerfilAdmin panel = new VPerfilAdmin(fa.consultarUsuario(JUsuario.getText(), JContrasena.getText()));
         panelBase.add(panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 680, 580));
         panelActivo = panel;
     }
@@ -339,28 +342,28 @@ public class VPrincipal extends javax.swing.JFrame {
         VAdmin panelAdmin = new VAdmin(this);
         panelBase.add(panelAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 310, 580));
         panelAdmin.setVisible(true);
-        VPerfilAdmin panelPerfil = new VPerfilAdmin();
+        VPerfilAdmin panelPerfil = new VPerfilAdmin(fa.consultarUsuario(JUsuario.getText(), JContrasena.getText()));
         panelBase.add(panelPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 680, 580));
         panelActivo = panelPerfil;
     }
 
     public void ventanaGestionEmpleados() {
         panelActivo.setVisible(false);
-        VGestionEmpleados panelGU = new VGestionEmpleados();
+        VGestionEmpleados panelGU = new VGestionEmpleados(fa);
         panelBase.add(panelGU, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 680, 580));
         panelActivo = panelGU;
     }
 
     public void ventanaPerfil(Usuario usuario) {
         panelActivo.setVisible(false);
-        VPerfil panelPerfil = new VPerfil(fa,usuario);
+        VPerfil panelPerfil = new VPerfil(fa, usuario);
         panelBase.add(panelPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 680, 580));
         panelActivo = panelPerfil;
     }
 
     public void ventanaPedidosActivos(Usuario usuario) {
         panelActivo.setVisible(false);
-        VPedidosActivos panelPedidosA = new VPedidosActivos(fa,this, usuario);
+        VPedidosActivos panelPedidosA = new VPedidosActivos(fa, this, usuario);
         panelBase.add(panelPedidosA, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 680, 580));
         panelActivo = panelPedidosA;
     }
