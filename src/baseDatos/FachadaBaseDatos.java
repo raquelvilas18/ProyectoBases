@@ -73,6 +73,14 @@ public class FachadaBaseDatos {
     public void actualizar(Usuario usuario) {
         daoUsuarios.actualizar(usuario);
     }
+    
+    public void actualizarUsr(String id,Usuario usuario) {
+        daoUsuarios.actualizarUsr(id, usuario);
+    }
+    
+    public void eliminarUsuario(String id){
+        daoUsuarios.eliminarUsuario(id);
+    }
 
     public Usuario validarUsuario(String idUsuario, String clave) {
         return daoUsuarios.validarUsuario(idUsuario, clave);
@@ -89,6 +97,8 @@ public class FachadaBaseDatos {
     public ArrayList<Usuario> obtenerUsuarios(String id, String nombre){
         return daoUsuarios.obtenerUsuarios(id, nombre);
     }
+    
+
 
     /*----------  PEDIDOS ----------*/
     public void nuevoPedido(Pedido pd) {

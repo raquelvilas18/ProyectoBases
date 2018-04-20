@@ -82,37 +82,37 @@ public class VPerfilAdmin extends javax.swing.JPanel {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/logoPequeno.png"))); // NOI18N
         jLabel1.setText("jLabel1");
 
-        TxId.setBackground(new java.awt.Color(255, 185, 151));
+        TxId.setBackground(new java.awt.Color(255, 226, 154));
         TxId.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         TxId.setForeground(new java.awt.Color(0, 0, 0));
         TxId.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         TxId.setBorder(null);
 
-        TxNombre.setBackground(new java.awt.Color(255, 185, 151));
+        TxNombre.setBackground(new java.awt.Color(255, 226, 154));
         TxNombre.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         TxNombre.setForeground(new java.awt.Color(0, 0, 0));
         TxNombre.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         TxNombre.setBorder(null);
 
-        TxPassword.setBackground(new java.awt.Color(255, 185, 151));
+        TxPassword.setBackground(new java.awt.Color(255, 226, 154));
         TxPassword.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         TxPassword.setForeground(new java.awt.Color(0, 0, 0));
         TxPassword.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         TxPassword.setBorder(null);
 
-        TxCorreo.setBackground(new java.awt.Color(255, 185, 151));
+        TxCorreo.setBackground(new java.awt.Color(255, 226, 154));
         TxCorreo.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         TxCorreo.setForeground(new java.awt.Color(0, 0, 0));
         TxCorreo.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         TxCorreo.setBorder(null);
 
-        TxTelefono.setBackground(new java.awt.Color(255, 185, 151));
+        TxTelefono.setBackground(new java.awt.Color(255, 226, 154));
         TxTelefono.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         TxTelefono.setForeground(new java.awt.Color(0, 0, 0));
         TxTelefono.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         TxTelefono.setBorder(null);
 
-        TxDni.setBackground(new java.awt.Color(255, 185, 151));
+        TxDni.setBackground(new java.awt.Color(255, 226, 154));
         TxDni.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         TxDni.setForeground(new java.awt.Color(0, 0, 0));
         TxDni.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -204,7 +204,7 @@ public class VPerfilAdmin extends javax.swing.JPanel {
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-derechaNaranja.png"))); // NOI18N
         jLabel3.setText("Id:");
 
-        sexo.setBackground(new java.awt.Color(255, 185, 151));
+        sexo.setBackground(new java.awt.Color(255, 226, 154));
         sexo.setForeground(new java.awt.Color(0, 0, 0));
         sexo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "H", "M" }));
         sexo.addActionListener(new java.awt.event.ActionListener() {

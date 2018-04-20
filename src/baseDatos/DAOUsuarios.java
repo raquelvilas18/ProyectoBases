@@ -198,11 +198,11 @@ public class DAOUsuarios extends AbstractDAO {
                     + "FROM usuarios "
                     + "WHERE usuario LIKE ? "
                     + "AND nombre LIKE ? ");
-            stm.setString(1, "%"+id+"%");
-            stm.setString(2, "%"+nombre+"%");
-            rs= stm.executeQuery();
-            while(rs.next()){
-                resultado.add(new Usuario(rs.getString("usuario"), rs.getString("password"), rs.getString("dni"), rs.getString("nombre"),  rs.getString("correo"), rs.getString("direccion"), rs.getString("telefono"), rs.getString("sexo")));
+            stm.setString(1, "%" + id + "%");
+            stm.setString(2, "%" + nombre + "%");
+            rs = stm.executeQuery();
+            while (rs.next()) {
+                resultado.add(new Usuario(rs.getString("usuario"), rs.getString("password"), rs.getString("dni"), rs.getString("nombre"), rs.getString("correo"), rs.getString("direccion"), rs.getString("telefono"), rs.getString("sexo")));
             }
 
         } catch (SQLException e) {
@@ -217,5 +217,63 @@ public class DAOUsuarios extends AbstractDAO {
         }
         return resultado;
     }
+
+    public void actualizarUsr(String id, Usuario usuario) {
+        Connection con;
+        PreparedStatement stmUsuario = null;
+        ResultSet rsUsuario;
+
+        con = this.getConexion();
+
+        try {
+            stmUsuario = con.prepareStatement("UPDATE usuarios\n"
+                    + " SET usuario=?, dni=?, nombre=?, correo=?, direccion=?, \n"
+                    + "       telefono=?, sexo=?\n"
+                    + " WHERE usuario=? ");
+            stmUsuario.setString(1, usuario.getUsuario());
+            stmUsuario.setString(2, usuario.getDni());
+            stmUsuario.setString(3, usuario.getNombre());
+            stmUsuario.setString(4, usuario.getCorreo());
+            stmUsuario.setString(5, usuario.getDireccion());
+            stmUsuario.setString(6, usuario.getTelefono());
+            stmUsuario.setString(7, usuario.getSexo());
+            stmUsuario.setString(8, id);
+
+            stmUsuario.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
+        } finally {
+            try {
+                stmUsuario.close();
+            } catch (SQLException e) {
+                System.out.println("Imposible cerrar cursores");
+            }
+        }
+    }
+    
+    public void eliminarUsuario(String id) {
+        Connection con;
+        PreparedStatement stmUsuario = null;
+        ResultSet rsUsuario;
+
+        con = this.getConexion();
+
+        try {
+            stmUsuario = con.prepareStatement("DELETE FROM usuarios WHERE usuario = ?");
+            stmUsuario.setString(1, id);
+            stmUsuario.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
+        } finally {
+            try {
+                stmUsuario.close();
+            } catch (SQLException e) {
+                System.out.println("Imposible cerrar cursores");
+            }
+        }
+    }
+    
 
 }

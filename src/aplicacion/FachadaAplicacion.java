@@ -60,9 +60,16 @@ public class FachadaAplicacion {
     public void actualizar(Usuario usuario) {
         gUsuarios.actualizar(usuario);
     }
+    public void actualizarUsr(String id,Usuario usuario) {
+        gUsuarios.actualizarUsr(id, usuario);
+    }
 
     public Usuario registrarUsuario(String id, String clave, String dni, String nombre, String email, String direccion, String telefono, String sexo) {
         return gUsuarios.registrarUsuario(id, clave, dni, nombre, email, direccion, telefono, sexo);
+    }
+    
+    public void eliminarUsuario(String id){
+        gUsuarios.eliminarUsuario(id);
     }
 
     public void nuevoPedido(Pedido pd) {
@@ -84,16 +91,17 @@ public class FachadaAplicacion {
     public Pedido comprobarLocalizacion(String codigo) {
         return fbd.comprobarLocalizacion(codigo);
     }
-    
-    public boolean esAdministrador(String id){
+
+    public boolean esAdministrador(String id) {
         return fbd.esAdministrador(id);
     }
 
-    public ArrayList<Empleado> obtenerEmpleados(String id, String nombre){
+    public ArrayList<Empleado> obtenerEmpleados(String id, String nombre) {
         return fbd.obtenerEmpleados(id, nombre);
     }
-    
-     public ArrayList<Usuario> obtenerUsuarios(String id, String nombre){
+
+    public ArrayList<Usuario> obtenerUsuarios(String id, String nombre) {
         return fbd.obtenerUsuarios(id, nombre);
     }
+
 }
