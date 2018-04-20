@@ -138,8 +138,9 @@ public class DAOUsuarios extends AbstractDAO {
             stmUsuario.setString(3, usuario.getNombre());
             stmUsuario.setString(4, usuario.getCorreo());
             stmUsuario.setString(5, usuario.getDireccion());
-            stmUsuario.setString(6, usuario.getSexo());
-            stmUsuario.setString(7, usuario.getUsuario());
+            stmUsuario.setString(6, usuario.getTelefono());
+            stmUsuario.setString(7, usuario.getSexo());
+            stmUsuario.setString(8, usuario.getUsuario());
             stmUsuario.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
