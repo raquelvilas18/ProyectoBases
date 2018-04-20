@@ -360,6 +360,13 @@ public class VPrincipal extends javax.swing.JFrame {
         panelBase.add(panelGU, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 680, 580));
         panelActivo = panelGU;
     }
+    
+    public void ventanagestionPaquetes() {
+        panelActivo.setVisible(false);
+        VGestionPaquetes panelGU = new VGestionPaquetes(fa);
+        panelBase.add(panelGU, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 680, 580));
+        panelActivo = panelGU;
+    }
 
     public void ventanaPerfil(Usuario usuario) {
         panelActivo.setVisible(false);

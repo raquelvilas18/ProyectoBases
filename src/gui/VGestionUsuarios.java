@@ -6,6 +6,7 @@
 package gui;
 
 import aplicacion.Usuario;
+import java.awt.Color;
 
 /**
  *
@@ -14,6 +15,7 @@ import aplicacion.Usuario;
 public class VGestionUsuarios extends javax.swing.JPanel {
 
     aplicacion.FachadaAplicacion fa;
+    private boolean nuevo;
 
     /**
      * Creates new form VGestionUsuarios
@@ -26,7 +28,15 @@ public class VGestionUsuarios extends javax.swing.JPanel {
         initComponents();
         tablaUsr.setModel(tp);
         tp.setFilas(fa.obtenerUsuarios(this.FiltroId.getText(), this.FiltroNombre.getText()));
+        ErrorAlta.setVisible(false);
+        LConfirmar.setVisible(false);
+        LAlta.setVisible(true);
+        BtAlta.setVisible(true);
+        ErrorAlta.setVisible(false);
+        AltaCorrecta.setVisible(false);
         LabelActualizar.setVisible(false);
+        ContrasenaL.setVisible(false);
+        TxContrasena.setVisible(false);
     }
 
     /**
@@ -39,6 +49,7 @@ public class VGestionUsuarios extends javax.swing.JPanel {
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
+        jLabel3 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
@@ -54,14 +65,11 @@ public class VGestionUsuarios extends javax.swing.JPanel {
         BtActualizar = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
-        BtAlta = new javax.swing.JPanel();
-        jLabel16 = new javax.swing.JLabel();
-        jLabel18 = new javax.swing.JLabel();
         BtBaja = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
+        ContrasenaL = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
@@ -74,9 +82,19 @@ public class VGestionUsuarios extends javax.swing.JPanel {
         sexo = new javax.swing.JComboBox();
         TxDni = new javax.swing.JTextField();
         jLabel23 = new javax.swing.JLabel();
+        ErrorAlta = new javax.swing.JLabel();
+        BtAlta = new javax.swing.JPanel();
+        LConfirmar = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        LAlta = new javax.swing.JLabel();
         LabelActualizar = new javax.swing.JLabel();
+        AltaCorrecta = new javax.swing.JLabel();
+        TxContrasena = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaUsr = new javax.swing.JTable();
+
+        jLabel3.setText("jLabel3");
 
         setBackground(new java.awt.Color(255, 255, 255));
         addMouseListener(new java.awt.event.MouseAdapter() {
@@ -194,21 +212,6 @@ public class VGestionUsuarios extends javax.swing.JPanel {
 
         jPanel1.add(BtActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 170, 41));
 
-        BtAlta.setBackground(new java.awt.Color(255, 148, 42));
-        BtAlta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        BtAlta.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel16.setFont(new java.awt.Font("Noto Sans", 0, 18)); // NOI18N
-        jLabel16.setForeground(new java.awt.Color(215, 215, 215));
-        jLabel16.setText("Dar alta");
-        BtAlta.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, 110, -1));
-
-        jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-añadir-32.png"))); // NOI18N
-        jLabel18.setText("jLabel1");
-        BtAlta.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 33, 36));
-
-        jPanel1.add(BtAlta, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 120, 190, 41));
-
         BtBaja.setBackground(new java.awt.Color(255, 148, 42));
         BtBaja.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BtBaja.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -233,9 +236,9 @@ public class VGestionUsuarios extends javax.swing.JPanel {
         jLabel7.setText("Nombre:");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 20, -1, -1));
 
-        jLabel8.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        jLabel8.setText("Dirección:");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 40, -1, -1));
+        ContrasenaL.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        ContrasenaL.setText("Password:");
+        jPanel1.add(ContrasenaL, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 60, -1, -1));
 
         jLabel9.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel9.setText("Id:");
@@ -250,6 +253,7 @@ public class VGestionUsuarios extends javax.swing.JPanel {
         jPanel1.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, -1, -1));
 
         TxNombre.setBackground(new java.awt.Color(255, 232, 185));
+        TxNombre.setForeground(new java.awt.Color(102, 102, 102));
         TxNombre.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 1));
         TxNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -259,6 +263,7 @@ public class VGestionUsuarios extends javax.swing.JPanel {
         jPanel1.add(TxNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 20, 220, -1));
 
         TxDireccion.setBackground(new java.awt.Color(255, 232, 185));
+        TxDireccion.setForeground(new java.awt.Color(102, 102, 102));
         TxDireccion.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 1));
         TxDireccion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -268,6 +273,7 @@ public class VGestionUsuarios extends javax.swing.JPanel {
         jPanel1.add(TxDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 40, 220, -1));
 
         TxId.setBackground(new java.awt.Color(255, 232, 185));
+        TxId.setForeground(new java.awt.Color(102, 102, 102));
         TxId.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 1));
         TxId.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -277,6 +283,7 @@ public class VGestionUsuarios extends javax.swing.JPanel {
         jPanel1.add(TxId, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 20, 180, -1));
 
         TxCorreo.setBackground(new java.awt.Color(255, 232, 185));
+        TxCorreo.setForeground(new java.awt.Color(102, 102, 102));
         TxCorreo.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 1));
         TxCorreo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -286,6 +293,7 @@ public class VGestionUsuarios extends javax.swing.JPanel {
         jPanel1.add(TxCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 40, 180, -1));
 
         TxTelefono.setBackground(new java.awt.Color(255, 232, 185));
+        TxTelefono.setForeground(new java.awt.Color(102, 102, 102));
         TxTelefono.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 1));
         TxTelefono.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -296,13 +304,14 @@ public class VGestionUsuarios extends javax.swing.JPanel {
 
         jLabel22.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel22.setText("Sexo:");
-        jPanel1.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 60, -1, -1));
+        jPanel1.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 80, -1, -1));
 
         sexo.setBackground(new java.awt.Color(255, 232, 185));
         sexo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "M", "H" }));
-        jPanel1.add(sexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 60, -1, -1));
+        jPanel1.add(sexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 80, -1, -1));
 
         TxDni.setBackground(new java.awt.Color(255, 232, 185));
+        TxDni.setForeground(new java.awt.Color(102, 102, 102));
         TxDni.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 1));
         TxDni.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -315,10 +324,59 @@ public class VGestionUsuarios extends javax.swing.JPanel {
         jLabel23.setText("DNI:");
         jPanel1.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, -1, -1));
 
+        ErrorAlta.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        ErrorAlta.setForeground(new java.awt.Color(255, 51, 51));
+        ErrorAlta.setText("Todos los campos son obligatorios");
+        jPanel1.add(ErrorAlta, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 100, -1, -1));
+
+        BtAlta.setBackground(new java.awt.Color(255, 148, 42));
+        BtAlta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        BtAlta.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BtAltaMouseClicked(evt);
+            }
+        });
+        BtAlta.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        LConfirmar.setFont(new java.awt.Font("Noto Sans", 0, 18)); // NOI18N
+        LConfirmar.setForeground(new java.awt.Color(215, 215, 215));
+        LConfirmar.setText("Confirmar Alta");
+        BtAlta.add(LConfirmar, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, 140, -1));
+
+        jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-añadir-32.png"))); // NOI18N
+        jLabel18.setText("jLabel1");
+        BtAlta.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 33, 36));
+
+        LAlta.setFont(new java.awt.Font("Noto Sans", 0, 18)); // NOI18N
+        LAlta.setForeground(new java.awt.Color(215, 215, 215));
+        LAlta.setText("Dar alta");
+        BtAlta.add(LAlta, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, 110, -1));
+
+        jPanel1.add(BtAlta, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 120, 190, 41));
+
         LabelActualizar.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         LabelActualizar.setForeground(new java.awt.Color(0, 153, 0));
         LabelActualizar.setText("Datos actualizados");
         jPanel1.add(LabelActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, -1, -1));
+
+        AltaCorrecta.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        AltaCorrecta.setForeground(new java.awt.Color(0, 153, 0));
+        AltaCorrecta.setText("Usuario registrado correctamente");
+        jPanel1.add(AltaCorrecta, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 100, -1, -1));
+
+        TxContrasena.setBackground(new java.awt.Color(255, 232, 185));
+        TxContrasena.setForeground(new java.awt.Color(102, 102, 102));
+        TxContrasena.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 1));
+        TxContrasena.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TxContrasenaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(TxContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 60, 220, -1));
+
+        jLabel10.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        jLabel10.setText("Dirección:");
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 40, -1, -1));
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 381, 600, 170));
 
@@ -342,6 +400,7 @@ public class VGestionUsuarios extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
+
         ModeloTablaUsuarios tp = new ModeloTablaUsuarios();
         tablaUsr.setModel(tp);
         tp.setFilas(fa.obtenerUsuarios(this.FiltroId.getText(), this.FiltroNombre.getText()));
@@ -379,11 +438,14 @@ public class VGestionUsuarios extends javax.swing.JPanel {
     private void tablaUsrMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaUsrMouseClicked
         // TODO add your handling code here:
         actualizarDatos();
+        ErrorAlta.setVisible(false);
+        AltaCorrecta.setVisible(false);
         LabelActualizar.setVisible(false);
 
     }//GEN-LAST:event_tablaUsrMouseClicked
 
     private void BtActualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtActualizarMouseClicked
+        restablecerBoton();
         actualizarUsuario();
         // TODO add your handling code here:
     }//GEN-LAST:event_BtActualizarMouseClicked
@@ -393,22 +455,55 @@ public class VGestionUsuarios extends javax.swing.JPanel {
     }//GEN-LAST:event_TxDniActionPerformed
 
     private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
-        LabelActualizar.setVisible(false);
+        ErrorAlta.setVisible(false);
     }//GEN-LAST:event_formMouseClicked
 
     private void BtBajaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtBajaMouseClicked
+        restablecerBoton();
         eliminarUsuario();
-    // TODO add your handling code here:
+        // TODO add your handling code here:
     }//GEN-LAST:event_BtBajaMouseClicked
+
+    private void BtAltaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtAltaMouseClicked
+        if (!nuevo) {
+            BtAlta.setBackground(new Color(245, 184, 0));
+            LConfirmar.setVisible(true);
+            LAlta.setVisible(false);
+            vaciarTxt();
+            nuevo = true;
+            ContrasenaL.setVisible(true);
+            TxContrasena.setVisible(true);
+        } else {
+            if (TxId.getText().isEmpty() || TxNombre.getText().isEmpty() || TxCorreo.getText().isEmpty() || TxDireccion.getText().isEmpty() || TxTelefono.getText().isEmpty() || TxContrasena.getText().isEmpty()) {
+                ErrorAlta.setVisible(true);
+            } else {
+                fa.registrarUsuario(TxId.getText(), TxContrasena.getText(), TxDni.getText(), TxNombre.getText(), TxCorreo.getText(), TxDireccion.getText(), TxTelefono.getText(), null);
+                AltaCorrecta.setVisible(true);
+                restablecerBoton();
+                actualizarTabla();
+            }
+        }
+// TODO add your handling code here:
+    }//GEN-LAST:event_BtAltaMouseClicked
+
+    private void TxContrasenaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxContrasenaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TxContrasenaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel AltaCorrecta;
     private javax.swing.JPanel BtActualizar;
     private javax.swing.JPanel BtAlta;
     private javax.swing.JPanel BtBaja;
+    private javax.swing.JLabel ContrasenaL;
+    private javax.swing.JLabel ErrorAlta;
     private javax.swing.JTextField FiltroId;
     private javax.swing.JTextField FiltroNombre;
+    private javax.swing.JLabel LAlta;
+    private javax.swing.JLabel LConfirmar;
     private javax.swing.JLabel LabelActualizar;
+    private javax.swing.JTextField TxContrasena;
     private javax.swing.JTextField TxCorreo;
     private javax.swing.JTextField TxDireccion;
     private javax.swing.JTextField TxDni;
@@ -416,9 +511,9 @@ public class VGestionUsuarios extends javax.swing.JPanel {
     private javax.swing.JTextField TxNombre;
     private javax.swing.JTextField TxTelefono;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
@@ -427,11 +522,11 @@ public class VGestionUsuarios extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -473,5 +568,34 @@ public class VGestionUsuarios extends javax.swing.JPanel {
         m = (ModeloTablaUsuarios) tablaUsr.getModel();
         fa.eliminarUsuario((m.getFila(tablaUsr.getSelectedRow()).getUsuario()));
         m.setFilas(fa.obtenerUsuarios(this.FiltroId.getText(), this.FiltroNombre.getText()));
+    }
+    
+    public void actualizarTabla(){
+        ModeloTablaUsuarios m;
+
+        m = (ModeloTablaUsuarios) tablaUsr.getModel();
+        m.setFilas(fa.obtenerUsuarios(this.FiltroId.getText(), this.FiltroNombre.getText()));
+    }
+
+    public void vaciarTxt() {
+        ModeloTablaUsuarios m;
+
+        m = (ModeloTablaUsuarios) tablaUsr.getModel();
+        this.TxId.setText(null);
+        this.TxNombre.setText(null);
+        this.TxCorreo.setText(null);
+        this.TxDireccion.setText(null);
+        this.TxTelefono.setText(null);
+        this.TxDni.setText(null);
+    }
+
+    public void restablecerBoton() {
+        nuevo = false;
+        BtAlta.setBackground(new Color(255, 148, 42));
+        ErrorAlta.setVisible(false);
+        LConfirmar.setVisible(false);
+        LAlta.setVisible(true);
+        ContrasenaL.setVisible(false);
+        TxContrasena.setVisible(false);
     }
 }
