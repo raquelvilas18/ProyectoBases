@@ -6,6 +6,7 @@
 package baseDatos;
 
 import aplicacion.Empleado;
+import aplicacion.Paquete;
 import aplicacion.Pedido;
 import aplicacion.Usuario;
 import java.io.FileInputStream;
@@ -105,8 +106,8 @@ public class FachadaBaseDatos {
         daoPedidos.nuevoPedido(pd);
     }
 
-    public void tramitarPedido(Pedido pd) {
-        daoPedidos.tramitarPedido(pd);
+    public void tramitarPedido(Integer codigo) {
+        daoPedidos.tramitarPedido(codigo);
     }
 
     public java.util.List<Pedido> obtenerHistorialPedidos(String usuario) {
@@ -117,13 +118,25 @@ public class FachadaBaseDatos {
         return daoPedidos.obtenerPedidosActivos(usuario);
     }
 
-    public Pedido comprobarLocalizacion(String codigo) {
+    public java.util.List<Paquete> comprobarLocalizacion(Integer codigo) {
         return daoPedidos.comprobarLocalizacion(codigo);
     }
 
     //------EMPLEADOS-------//
     public ArrayList<Empleado> obtenerEmpleados(String id, String nombre) {
         return daoEmpleados.obtenerEmpleados(id, nombre);
+    }
+    
+    public Empleado nuevoEmpleado(String usuario, int nomina, int anoIngreso, boolean administrador){
+        return daoEmpleados.nuevoEmpleado(usuario, nomina, anoIngreso, administrador);
+    }
+    
+    public void actualizarEmpleado(Empleado emp){
+        daoEmpleados.actualizarEmpleado(emp);
+    }
+    
+    public void actualizarEmp(String id, Empleado emp){
+        daoEmpleados.actualizarEmp(id,emp);
     }
 
 }

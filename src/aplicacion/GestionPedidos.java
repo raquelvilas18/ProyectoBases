@@ -27,11 +27,6 @@ public class GestionPedidos{
         fbd.nuevoPedido(pd);
     }
     
-    public void tramitarPedido(Pedido pd)
-    {
-        fbd.tramitarPedido(pd);
-    }
-    
     public java.util.List<Pedido> obtenerHistorialPedidos(String usuario)
     {
          return fbd.obtenerHistorialPedidos(usuario);
@@ -42,7 +37,7 @@ public class GestionPedidos{
          return fbd.obtenerPedidosActivos(usuario);
     }
  
-    public Pedido comprobarLocalizacion(String codigo)
+    public java.util.List<Paquete> comprobarLocalizacion(Integer codigo)
     {
          return fbd.comprobarLocalizacion(codigo);
     }
