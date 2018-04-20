@@ -47,4 +47,10 @@ public class GestionUsuarios {
     public void actualizar(Usuario usuario){
         fbd.actualizar(usuario);
     }
+    public void actualizarUsr(String id,Usuario usuario) {
+        fbd.actualizarUsr(id, usuario);
+    }
+    public void eliminarUsuario(String id){
+        fbd.eliminarUsuario(id);
+    }
 }

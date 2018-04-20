@@ -11,11 +11,13 @@ package gui;
  */
 public class VGestionEmpleados extends javax.swing.JPanel {
 
+    aplicacion.FachadaAplicacion fa;
     /**
      * Creates new form VGestionUsuarios
      */
-    public VGestionEmpleados() {
+    public VGestionEmpleados(aplicacion.FachadaAplicacion fa) {
         initComponents();
+        this.fa=fa;
     }
 
     /**
@@ -69,6 +71,8 @@ public class VGestionEmpleados extends javax.swing.JPanel {
         jPasswordField1 = new javax.swing.JPasswordField();
         comboTipo = new javax.swing.JComboBox();
         jLabel26 = new javax.swing.JLabel();
+        FiltroNombre = new javax.swing.JTextField();
+        FiltroId = new javax.swing.JTextField();
 
         jLabel3.setText("jLabel3");
 
@@ -111,14 +115,14 @@ public class VGestionEmpleados extends javax.swing.JPanel {
 
         jLabel2.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(60, 60, 159));
-        jLabel2.setText("Gestion Usuarios");
+        jLabel2.setText("Gestion Empleados");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 80, 260, -1));
 
         jTable1.setBackground(new java.awt.Color(255, 232, 185));
         jTable1.setModel(new ModeloTablaEmpleados());
         jScrollPane1.setViewportView(jTable1);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 180, 600, 210));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 190, 600, 180));
 
         jSeparator2.setForeground(new java.awt.Color(0, 0, 0));
         add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 150, 230, 10));
@@ -132,7 +136,7 @@ public class VGestionEmpleados extends javax.swing.JPanel {
         jLabel5.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 133, 74));
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-derechaNaranja.png"))); // NOI18N
-        jLabel5.setText("Nombre:");
+        jLabel5.setText("Año Ingreso:");
         add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 130, -1, -1));
 
         jSeparator3.setForeground(new java.awt.Color(0, 0, 0));
@@ -140,6 +144,11 @@ public class VGestionEmpleados extends javax.swing.JPanel {
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-google-web-search-filled-50.png"))); // NOI18N
         jLabel6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel6MouseClicked(evt);
+            }
+        });
         add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 120, -1, -1));
 
         jPanel1.setBackground(new java.awt.Color(255, 226, 154));
@@ -311,7 +320,25 @@ public class VGestionEmpleados extends javax.swing.JPanel {
         jLabel26.setText("Contraseña:");
         jPanel1.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 80, -1, -1));
 
-        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 381, 600, 190));
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 381, 600, 200));
+
+        FiltroNombre.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        FiltroNombre.setBorder(null);
+        FiltroNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                FiltroNombreActionPerformed(evt);
+            }
+        });
+        add(FiltroNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 130, 150, -1));
+
+        FiltroId.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        FiltroId.setBorder(null);
+        FiltroId.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                FiltroIdActionPerformed(evt);
+            }
+        });
+        add(FiltroId, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 130, 190, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
@@ -346,8 +373,22 @@ public class VGestionEmpleados extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField8ActionPerformed
 
+    private void FiltroNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FiltroNombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_FiltroNombreActionPerformed
+
+    private void FiltroIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FiltroIdActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_FiltroIdActionPerformed
+
+    private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
+        fa.obtenerEmpleados(FiltroId.getText(), FiltroNombre.getText());// TODO add your handling code here:
+    }//GEN-LAST:event_jLabel6MouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField FiltroId;
+    private javax.swing.JTextField FiltroNombre;
     private javax.swing.JComboBox comboTipo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel14;

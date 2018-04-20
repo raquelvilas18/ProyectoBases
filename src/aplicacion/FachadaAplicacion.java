@@ -4,8 +4,10 @@
  * and open the template in the editor.
  */
 package aplicacion;
+
 import gui.*;
 import baseDatos.*;
+import java.util.ArrayList;
 
 /**
  *
@@ -17,13 +19,14 @@ public class FachadaAplicacion {
     private FachadaBaseDatos fbd;
     private GestionUsuarios gUsuarios;
     private GestionPedidos gPedidos;
-    
-    public FachadaAplicacion(){
-        fgui=new gui.FachadaGui(this);
+
+    public FachadaAplicacion() {
+        fgui = new gui.FachadaGui(this);
         fbd = new FachadaBaseDatos(this);
         gUsuarios = new GestionUsuarios(fgui, fbd);
-        gPedidos = new GestionPedidos(fgui,fbd);
+        gPedidos = new GestionPedidos(fgui, fbd);
     }
+
     /**
      * @param args the command line arguments
      */
@@ -38,48 +41,67 @@ public class FachadaAplicacion {
         fgui.iniciaVista();
     }
 
-    public void muestraExcepcion(String e){
+    public void muestraExcepcion(String e) {
         //fgui.muestraExcepcion(e);
     }
-    public Boolean comprobarAutentificacion(String idUsuario, String clave){
+
+    public Boolean comprobarAutentificacion(String idUsuario, String clave) {
         return gUsuarios.comprobarAutentificacion(idUsuario, clave);
     }
-    public Usuario consultarUsuario(String idUsuario, String clave){
-        return gUsuarios.consultarUsuario(idUsuario, clave);   
+
+    public Usuario consultarUsuario(String idUsuario, String clave) {
+        return gUsuarios.consultarUsuario(idUsuario, clave);
     }
-    public boolean consultarId(String idUsuario){
+
+    public boolean consultarId(String idUsuario) {
         return gUsuarios.consultarId(idUsuario);
-    }    
-    public void actualizar(Usuario usuario){
+    }
+
+    public void actualizar(Usuario usuario) {
         gUsuarios.actualizar(usuario);
     }
-    public Usuario registrarUsuario(String id, String clave, String dni, String nombre,String email,String direccion,String telefono,String sexo){
-        return gUsuarios.registrarUsuario(id, clave, dni,nombre, email, direccion, telefono, sexo);
+    public void actualizarUsr(String id,Usuario usuario) {
+        gUsuarios.actualizarUsr(id, usuario);
+    }
+
+    public Usuario registrarUsuario(String id, String clave, String dni, String nombre, String email, String direccion, String telefono, String sexo) {
+        return gUsuarios.registrarUsuario(id, clave, dni, nombre, email, direccion, telefono, sexo);
     }
     
-    public void nuevoPedido(Pedido pd)
-    {
+    public void eliminarUsuario(String id){
+        gUsuarios.eliminarUsuario(id);
+    }
+
+    public void nuevoPedido(Pedido pd) {
         gPedidos.nuevoPedido(pd);
     }
-    
-    public void tramitarPedido(Pedido pd)
-    {
+
+    public void tramitarPedido(Pedido pd) {
         gPedidos.tramitarPedido(pd);
     }
-    
-    public java.util.List<Pedido> obtenerHistorialPedidos(String usuario)
-    {
+
+    public java.util.List<Pedido> obtenerHistorialPedidos(String usuario) {
         return gPedidos.obtenerHistorialPedidos(usuario);
     }
-    
-    public java.util.List<Pedido> obtenerPedidosActivos(String usuario)
-    {
+
+    public java.util.List<Pedido> obtenerPedidosActivos(String usuario) {
         return gPedidos.obtenerPedidosActivos(usuario);
     }
 
-    public Pedido comprobarLocalizacion(String codigo)
-    {
-         return fbd.comprobarLocalizacion(codigo);
+    public Pedido comprobarLocalizacion(String codigo) {
+        return fbd.comprobarLocalizacion(codigo);
     }
-    
+
+    public boolean esAdministrador(String id) {
+        return fbd.esAdministrador(id);
+    }
+
+    public ArrayList<Empleado> obtenerEmpleados(String id, String nombre) {
+        return fbd.obtenerEmpleados(id, nombre);
+    }
+
+    public ArrayList<Usuario> obtenerUsuarios(String id, String nombre) {
+        return fbd.obtenerUsuarios(id, nombre);
+    }
+
 }
