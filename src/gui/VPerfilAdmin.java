@@ -71,43 +71,43 @@ public class VPerfilAdmin extends javax.swing.JPanel {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/logoPequeno.png"))); // NOI18N
         jLabel1.setText("jLabel1");
 
-        jTextField2.setBackground(new java.awt.Color(255, 183, 75));
+        jTextField2.setBackground(new java.awt.Color(255, 185, 151));
         jTextField2.setForeground(new java.awt.Color(153, 153, 153));
         jTextField2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField2.setBorder(null);
 
-        jTextField15.setBackground(new java.awt.Color(255, 183, 75));
+        jTextField15.setBackground(new java.awt.Color(255, 185, 151));
         jTextField15.setForeground(new java.awt.Color(153, 153, 153));
         jTextField15.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField15.setBorder(null);
 
-        jTextField17.setBackground(new java.awt.Color(255, 183, 75));
+        jTextField17.setBackground(new java.awt.Color(255, 185, 151));
         jTextField17.setForeground(new java.awt.Color(153, 153, 153));
         jTextField17.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField17.setBorder(null);
 
-        jTextField18.setBackground(new java.awt.Color(255, 183, 75));
+        jTextField18.setBackground(new java.awt.Color(255, 185, 151));
         jTextField18.setForeground(new java.awt.Color(153, 153, 153));
         jTextField18.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField18.setBorder(null);
 
-        jTextField19.setBackground(new java.awt.Color(255, 183, 75));
+        jTextField19.setBackground(new java.awt.Color(255, 185, 151));
         jTextField19.setForeground(new java.awt.Color(153, 153, 153));
         jTextField19.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField19.setBorder(null);
 
-        jTextField20.setBackground(new java.awt.Color(255, 183, 75));
+        jTextField20.setBackground(new java.awt.Color(255, 185, 151));
         jTextField20.setForeground(new java.awt.Color(153, 153, 153));
         jTextField20.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField20.setBorder(null);
 
-        jTextField9.setBackground(new java.awt.Color(255, 183, 75));
+        jTextField9.setBackground(new java.awt.Color(255, 185, 151));
         jTextField9.setForeground(new java.awt.Color(153, 153, 153));
         jTextField9.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField9.setBorder(null);
 
         jPanel1.setBackground(new java.awt.Color(255, 133, 74));
-        jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-actualizar-26.png"))); // NOI18N
         jLabel10.setText("jLabel1");
