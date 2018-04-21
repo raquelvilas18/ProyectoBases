@@ -260,7 +260,7 @@ public class VPerfil extends javax.swing.JPanel {
 
     private void jActualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jActualizarMouseClicked
         // TODO add your handling code here:
-        if(fa.consultarId(jId.getText()) || (jId.getText().equals(usuario.getUsuario()))){
+        if((fa.consultarId(jId.getText()) || (jId.getText().equals(usuario.getUsuario()))) && !jId.getText().isEmpty()){
             JLabelMensaje.setVisible(false);
             usuario.setCorreo(JCorreo.getText());
             usuario.setDireccion(JDireccion.getText());
