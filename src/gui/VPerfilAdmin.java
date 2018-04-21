@@ -5,6 +5,7 @@
  */
 package gui;
 
+import aplicacion.FachadaAplicacion;
 import aplicacion.Usuario;
 
 /**
@@ -13,19 +14,23 @@ import aplicacion.Usuario;
  */
 public class VPerfilAdmin extends javax.swing.JPanel {
     
-    Usuario usr;
+    private Usuario usuario;
+    private FachadaAplicacion fa;
     /**
      * Creates new form VPerfilAdmin
      */
-    public VPerfilAdmin(Usuario usr) {
+    public VPerfilAdmin(FachadaAplicacion fa,Usuario usr) {
         initComponents();
-        this.usr=usr;
-        this.TxId.setText(usr.getUsuario());
-        this.TxCorreo.setText(usr.getCorreo());
-        this.TxDni.setText(usr.getDni());
-        this.TxNombre.setText(usr.getNombre());
-        this.TxTelefono.setText(usr.getTelefono());
-        this.sexo.setSelectedItem(usr.getSexo());
+        this.fa=fa;
+        this.usuario=usr;
+        this.TxId.setText(usuario.getUsuario());
+        this.TxCorreo.setText(usuario.getCorreo());
+        this.TxDni.setText(usuario.getDni());
+        this.TxNombre.setText(usuario.getNombre());
+        this.TxTelefono.setText(usuario.getTelefono());
+        this.sexo.setSelectedItem(usuario.getSexo());
+        this.TxDireccion.setText(usuario.getDireccion());
+        JLabelMensaje.setVisible(false);
 
     }
 
@@ -48,7 +53,7 @@ public class VPerfilAdmin extends javax.swing.JPanel {
         TxDni = new javax.swing.JTextField();
         Actualizar = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
+        jActualizar = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
@@ -56,7 +61,10 @@ public class VPerfilAdmin extends javax.swing.JPanel {
         jLabel13 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        sexo = new javax.swing.JComboBox<String>();
+        sexo = new javax.swing.JComboBox<>();
+        jLabel17 = new javax.swing.JLabel();
+        TxDireccion = new javax.swing.JTextField();
+        JLabelMensaje = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -111,14 +119,19 @@ public class VPerfilAdmin extends javax.swing.JPanel {
         TxDni.setBorder(null);
 
         Actualizar.setBackground(new java.awt.Color(255, 133, 74));
-        Actualizar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        Actualizar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-actualizar-26.png"))); // NOI18N
         jLabel10.setText("jLabel1");
 
-        jLabel11.setFont(new java.awt.Font("Noto Sans", 1, 18)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(215, 215, 215));
-        jLabel11.setText("Actualizar");
+        jActualizar.setFont(new java.awt.Font("Noto Sans", 1, 18)); // NOI18N
+        jActualizar.setForeground(new java.awt.Color(215, 215, 215));
+        jActualizar.setText("Actualizar");
+        jActualizar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jActualizarMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout ActualizarLayout = new javax.swing.GroupLayout(Actualizar);
         Actualizar.setLayout(ActualizarLayout);
@@ -128,7 +141,7 @@ public class VPerfilAdmin extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
-                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(92, Short.MAX_VALUE))
         );
         ActualizarLayout.setVerticalGroup(
@@ -137,7 +150,7 @@ public class VPerfilAdmin extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(ActualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel11))
+                    .addComponent(jActualizar))
                 .addContainerGap())
         );
 
@@ -192,12 +205,27 @@ public class VPerfilAdmin extends javax.swing.JPanel {
 
         sexo.setBackground(new java.awt.Color(255, 226, 154));
         sexo.setForeground(new java.awt.Color(0, 0, 0));
-        sexo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "H", "M" }));
+        sexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "H", "M" }));
         sexo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 sexoActionPerformed(evt);
             }
         });
+
+        jLabel17.setBackground(new java.awt.Color(65, 105, 225));
+        jLabel17.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        jLabel17.setForeground(new java.awt.Color(255, 133, 74));
+        jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-derechaNaranja.png"))); // NOI18N
+        jLabel17.setText("Direccion");
+
+        TxDireccion.setBackground(new java.awt.Color(255, 226, 154));
+        TxDireccion.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        TxDireccion.setForeground(new java.awt.Color(0, 0, 0));
+        TxDireccion.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        TxDireccion.setBorder(null);
+
+        JLabelMensaje.setForeground(new java.awt.Color(255, 0, 0));
+        JLabelMensaje.setText("Id ya existente!");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -209,13 +237,21 @@ public class VPerfilAdmin extends javax.swing.JPanel {
                     .addComponent(jLabel13)
                     .addComponent(jLabel14)
                     .addComponent(jLabel15)
-                    .addComponent(jLabel16))
-                .addGap(43, 43, 43)
+                    .addComponent(jLabel16)
+                    .addComponent(jLabel17)
+                    .addComponent(jLabel12)
+                    .addComponent(jLabel3))
+                .addGap(39, 39, 39)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(TxDni, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(TxTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(TxCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(sexo, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(JLabelMensaje)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(TxNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 470, Short.MAX_VALUE)
+                        .addComponent(TxDireccion, javax.swing.GroupLayout.DEFAULT_SIZE, 470, Short.MAX_VALUE)
+                        .addComponent(TxDni, javax.swing.GroupLayout.DEFAULT_SIZE, 470, Short.MAX_VALUE)
+                        .addComponent(TxTelefono, javax.swing.GroupLayout.DEFAULT_SIZE, 470, Short.MAX_VALUE)
+                        .addComponent(sexo, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(TxId, javax.swing.GroupLayout.DEFAULT_SIZE, 470, Short.MAX_VALUE)
+                        .addComponent(TxCorreo)))
                 .addContainerGap(20, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
@@ -229,14 +265,6 @@ public class VPerfilAdmin extends javax.swing.JPanel {
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabel3)
-                            .addGap(85, 85, 85)
-                            .addComponent(TxId, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabel12)
-                            .addGap(42, 42, 42)
-                            .addComponent(TxNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
                             .addGap(280, 280, 280)
                             .addComponent(Actualizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGap(0, 0, Short.MAX_VALUE)))
@@ -244,23 +272,37 @@ public class VPerfilAdmin extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(236, Short.MAX_VALUE)
+                .addContainerGap(153, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel14)
-                    .addComponent(TxCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(jLabel3)
+                    .addComponent(TxId, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(5, 5, 5)
+                .addComponent(JLabelMensaje, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(TxNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel12))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(TxCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel14))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(TxTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel15))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(TxDni, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel16))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(TxDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel17))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
                     .addComponent(sexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(188, 188, 188))
+                .addGap(102, 102, 102))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -277,15 +319,7 @@ public class VPerfilAdmin extends javax.swing.JPanel {
                                 .addGroup(layout.createSequentialGroup()
                                     .addGap(120, 120, 120)
                                     .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGap(10, 10, 10)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel3)
-                                .addComponent(TxId, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(10, 10, 10)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel12)
-                                .addComponent(TxNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(280, 280, 280)
+                            .addGap(360, 360, 360)
                             .addComponent(Actualizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
@@ -295,22 +329,43 @@ public class VPerfilAdmin extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_sexoActionPerformed
 
+    private void jActualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jActualizarMouseClicked
+        // TODO add your handling code here:
+        if(fa.consultarId(TxId.getText()) || (TxId.getText().equals(usuario.getUsuario()))){
+            JLabelMensaje.setVisible(false);
+            usuario.setCorreo(TxCorreo.getText());
+            usuario.setDireccion(TxDireccion.getText());
+            usuario.setDni(TxDni.getText());
+            usuario.setNombre(TxNombre.getText());
+            usuario.setSexo((String) sexo.getSelectedItem());
+            usuario.setTelefono(TxTelefono.getText());
+            usuario.setUsuario(TxId.getText());
+            fa.actualizar(usuario);
+        }
+        else{
+            JLabelMensaje.setVisible(true);
+        }
+    }//GEN-LAST:event_jActualizarMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Actualizar;
+    private javax.swing.JLabel JLabelMensaje;
     private javax.swing.JTextField TxCorreo;
+    private javax.swing.JTextField TxDireccion;
     private javax.swing.JTextField TxDni;
     private javax.swing.JTextField TxId;
     private javax.swing.JTextField TxNombre;
     private javax.swing.JTextField TxTelefono;
+    private javax.swing.JLabel jActualizar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel2;

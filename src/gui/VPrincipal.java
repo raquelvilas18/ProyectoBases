@@ -327,7 +327,7 @@ public class VPrincipal extends javax.swing.JFrame {
 
     public void ventanaPerfilAdmin() {
         panelActivo.setVisible(false);
-        VPerfilAdmin panel = new VPerfilAdmin(fa.consultarUsuario(JUsuario.getText(), JContrasena.getText()));
+        VPerfilAdmin panel = new VPerfilAdmin(fa,fa.consultarUsuario(JUsuario.getText(), JContrasena.getText()));
         panelBase.add(panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 680, 580));
         panelActivo = panel;
     }
@@ -342,7 +342,7 @@ public class VPrincipal extends javax.swing.JFrame {
         VAdmin panelAdmin = new VAdmin(this);
         panelBase.add(panelAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 310, 580));
         panelAdmin.setVisible(true);
-        VPerfilAdmin panelPerfil = new VPerfilAdmin(fa.consultarUsuario(JUsuario.getText(), JContrasena.getText()));
+        VPerfilAdmin panelPerfil = new VPerfilAdmin(fa,fa.consultarUsuario(JUsuario.getText(), JContrasena.getText()));
         panelBase.add(panelPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 680, 580));
         panelActivo = panelPerfil;
     }

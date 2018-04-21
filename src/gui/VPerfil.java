@@ -94,7 +94,7 @@ public class VPerfil extends javax.swing.JPanel {
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, -1, -1));
 
         JActualizar.setBackground(new java.awt.Color(65, 105, 255));
-        JActualizar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        JActualizar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         JActualizar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jActualizarMouseClicked(evt);
