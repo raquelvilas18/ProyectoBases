@@ -40,13 +40,16 @@ public class VGestionUsuarios extends javax.swing.JPanel {
         ContrasenaL.setVisible(false);
         TxContrasena.setVisible(false);
         ModeloTablaUsuarios m = (ModeloTablaUsuarios) tablaUsr.getModel();
-        this.TxId.setText(m.getFila(tablaUsr.getSelectedRow()).getUsuario());
-        this.TxNombre.setText(m.getFila(tablaUsr.getSelectedRow()).getNombre());
-        this.TxCorreo.setText(m.getFila(tablaUsr.getSelectedRow()).getCorreo());
-        this.TxDireccion.setText(m.getFila(tablaUsr.getSelectedRow()).getDireccion());
-        this.TxTelefono.setText(m.getFila(tablaUsr.getSelectedRow()).getTelefono());
-        this.TxDni.setText(m.getFila(tablaUsr.getSelectedRow()).getDni());
-        this.sexo.setSelectedItem((m.getFila(tablaUsr.getSelectedRow())).getSexo());
+        if(m.getRowCount()>0){
+            this.TxId.setText(m.getFila(tablaUsr.getSelectedRow()).getUsuario());
+            this.TxNombre.setText(m.getFila(tablaUsr.getSelectedRow()).getNombre());
+            this.TxCorreo.setText(m.getFila(tablaUsr.getSelectedRow()).getCorreo());
+            this.TxDireccion.setText(m.getFila(tablaUsr.getSelectedRow()).getDireccion());
+            this.TxTelefono.setText(m.getFila(tablaUsr.getSelectedRow()).getTelefono());
+            this.TxDni.setText(m.getFila(tablaUsr.getSelectedRow()).getDni());
+            this.sexo.setSelectedItem((m.getFila(tablaUsr.getSelectedRow())).getSexo());
+        }
+        
     }
 
     /**
@@ -98,9 +101,9 @@ public class VGestionUsuarios extends javax.swing.JPanel {
         jLabel18 = new javax.swing.JLabel();
         LAlta = new javax.swing.JLabel();
         LabelActualizar = new javax.swing.JLabel();
-        AltaCorrecta = new javax.swing.JLabel();
         TxContrasena = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
+        AltaCorrecta = new javax.swing.JLabel();
         ErrorAlta1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaUsr = new javax.swing.JTable();
@@ -370,11 +373,6 @@ public class VGestionUsuarios extends javax.swing.JPanel {
         LabelActualizar.setText("Datos actualizados");
         jPanel1.add(LabelActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, -1, -1));
 
-        AltaCorrecta.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
-        AltaCorrecta.setForeground(new java.awt.Color(0, 153, 0));
-        AltaCorrecta.setText("Usuario registrado correctamente");
-        jPanel1.add(AltaCorrecta, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 100, -1, -1));
-
         TxContrasena.setBackground(new java.awt.Color(255, 232, 185));
         TxContrasena.setForeground(new java.awt.Color(102, 102, 102));
         TxContrasena.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 1));
@@ -388,6 +386,11 @@ public class VGestionUsuarios extends javax.swing.JPanel {
         jLabel10.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel10.setText("Dirección:");
         jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 40, -1, -1));
+
+        AltaCorrecta.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        AltaCorrecta.setForeground(new java.awt.Color(0, 153, 0));
+        AltaCorrecta.setText("Usuario registrado correctamente");
+        jPanel1.add(AltaCorrecta, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 90, -1, 40));
 
         ErrorAlta1.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         ErrorAlta1.setForeground(new java.awt.Color(255, 51, 51));
