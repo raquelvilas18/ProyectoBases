@@ -6,6 +6,7 @@
 package baseDatos;
 
 import aplicacion.Empleado;
+import aplicacion.Paquete;
 import aplicacion.Pedido;
 import aplicacion.Usuario;
 import java.io.FileInputStream;
