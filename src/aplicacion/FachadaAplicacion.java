@@ -19,12 +19,14 @@ public class FachadaAplicacion {
     private FachadaBaseDatos fbd;
     private GestionUsuarios gUsuarios;
     private GestionPedidos gPedidos;
+    private GestionEmpleados gEmpleados;
 
     public FachadaAplicacion() {
         fgui = new gui.FachadaGui(this);
         fbd = new FachadaBaseDatos(this);
         gUsuarios = new GestionUsuarios(fgui, fbd);
         gPedidos = new GestionPedidos(fgui, fbd);
+        gEmpleados = new GestionEmpleados(fgui, fbd);
     }
 
     /**
@@ -76,10 +78,6 @@ public class FachadaAplicacion {
         gPedidos.nuevoPedido(pd);
     }
 
-    public void tramitarPedido(Pedido pd) {
-        gPedidos.tramitarPedido(pd);
-    }
-
     public java.util.List<Pedido> obtenerHistorialPedidos(String usuario) {
         return gPedidos.obtenerHistorialPedidos(usuario);
     }
@@ -88,7 +86,27 @@ public class FachadaAplicacion {
         return gPedidos.obtenerPedidosActivos(usuario);
     }
 
-    public Pedido comprobarLocalizacion(String codigo) {
+    public Empleado nuevoEmpleado(String usuario, String password, String dni, String nombre, String correo, String direccion, String telefono, String sexo, int nomina, int anoIngreso, boolean administrador){
+        return gEmpleados.nuevoEmpleado(usuario, password, dni, nombre, correo, direccion, telefono, sexo, nomina, anoIngreso, administrador);
+    }
+    
+    public void actualizar(Empleado emp){
+        gEmpleados.actualizar(emp);
+    }
+    
+    public void actualizarEmpleado(String id, Empleado emp){
+        gEmpleados.actualizarEmpleado(id, emp);
+    }
+    
+    public void tramitarPedido(Integer pd) {
+        gEmpleados.tramitarPedido(pd);
+    }
+    
+    public void actualizarDireccion() {
+        gEmpleados.actualizarDireccion();
+    }
+    
+    public java.util.List<Paquete> comprobarLocalizacion(Integer codigo) {
         return fbd.comprobarLocalizacion(codigo);
     }
 

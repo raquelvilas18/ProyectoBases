@@ -19,6 +19,7 @@ public class Usuario {
     private String telefono;
     private String sexo;
 
+    /* ----------    CONSTRUCTORES   ---------- */
     public Usuario(String usuario, String password, String dni, String nombre, String correo, String direccion, String telefono, String sexo) {
         this.usuario = usuario;
         this.password = password;
@@ -30,6 +31,7 @@ public class Usuario {
         this.sexo = sexo;
     }
 
+    /* ----------    GETTERS Y SETTERS   ---------- */
     public String getUsuario() {
         return usuario;
     }
@@ -93,6 +95,5 @@ public class Usuario {
     public void setSexo(String sexo) {
         this.sexo = sexo;
     }
-    
 
 }

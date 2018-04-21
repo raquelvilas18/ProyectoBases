@@ -59,7 +59,7 @@ public class VPerfil extends javax.swing.JPanel {
         jPanel4 = new javax.swing.JPanel();
         JLabelMensaje = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
-        sexo = new javax.swing.JComboBox<String>();
+        sexo = new javax.swing.JComboBox<>();
         jLabel18 = new javax.swing.JLabel();
         JDNI = new javax.swing.JTextField();
 
@@ -236,7 +236,7 @@ public class VPerfil extends javax.swing.JPanel {
 
         sexo.setBackground(new java.awt.Color(165, 180, 253));
         sexo.setForeground(new java.awt.Color(0, 0, 0));
-        sexo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "H", "M" }));
+        sexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "H", "M" }));
         sexo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 sexoActionPerformed(evt);
@@ -260,7 +260,7 @@ public class VPerfil extends javax.swing.JPanel {
 
     private void jActualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jActualizarMouseClicked
         // TODO add your handling code here:
-        if(fa.consultarId(jId.getText()) || (jId.getText().equals(usuario.getUsuario()))){
+        if((fa.consultarId(jId.getText()) || (jId.getText().equals(usuario.getUsuario()))) && !jId.getText().isEmpty()){
             JLabelMensaje.setVisible(false);
             usuario.setCorreo(JCorreo.getText());
             usuario.setDireccion(JDireccion.getText());

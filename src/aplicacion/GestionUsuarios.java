@@ -21,6 +21,14 @@ public class GestionUsuarios {
      this.fgui=fgui;
      this.fbd=fbd;
     }  
+
+    public FachadaGui getFgui() {
+        return fgui;
+    }
+
+    public FachadaBaseDatos getFbd() {
+        return fbd;
+    }
     
     public Boolean comprobarAutentificacion(String idUsuario, String clave){
         Usuario u = null;
