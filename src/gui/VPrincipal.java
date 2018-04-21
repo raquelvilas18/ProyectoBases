@@ -177,7 +177,7 @@ public class VPrincipal extends javax.swing.JFrame {
                 JUsuarioActionPerformed(evt);
             }
         });
-        panelLogin.add(JUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 260, 170, 30));
+        panelLogin.add(JUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 260, 160, 30));
 
         textoUsuario3.setBackground(new java.awt.Color(65, 105, 225));
         textoUsuario3.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
@@ -393,8 +393,8 @@ public class VPrincipal extends javax.swing.JFrame {
         panelActivo = panelHistorial;
     }
 
-    public void ventanaInicial(VUsr v) {
-        v.setVisible(false);
+    public void ventanaInicial() {
+        
         panelActivo.setVisible(false);
         panelLocPaquete.setVisible(true);
         panelLogin.setVisible(true);

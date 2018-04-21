@@ -367,7 +367,8 @@ public class VUsr extends javax.swing.JPanel {
 
     private void CerrarSesionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CerrarSesionMouseClicked
         // TODO add your handling code here:
-        parent.ventanaInicial(this);
+        this.setVisible(false);
+        parent.ventanaInicial();
     }//GEN-LAST:event_CerrarSesionMouseClicked
 
     public void openInternet(){
