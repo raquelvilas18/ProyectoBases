@@ -7,6 +7,7 @@ package baseDatos;
 
 import aplicacion.Empleado;
 import aplicacion.Pedido;
+import aplicacion.Usuario;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -75,24 +76,27 @@ public class DAOEmpleados extends AbstractDAO {
         return resultado;
     }
     
-    public ArrayList<Empleado> obtenerEmpleados(String id, String nombre) {
+    public ArrayList<Empleado> obtenerEmpleados(String id) {
         java.util.ArrayList<Empleado> resultado = new java.util.ArrayList<Empleado>();
         java.util.ArrayList<String> usuarios = new java.util.ArrayList<String>();
         Connection con;
         PreparedStatement stmEmpleados = null;
         ResultSet rsEmpleados;
-
+        int año=0;       
         con = super.getConexion();
 
         try {
             stmEmpleados = con.prepareStatement("SELECT * \n"
                     + "FROM empleados \n"
-                    + "WHERE cliente=? AND fecha<(SELECT current_date)");
-            
+                    + "WHERE usuario LIKE ?");
+            stmEmpleados.setString(1, "%" + id + "%");
             rsEmpleados = stmEmpleados.executeQuery();
         
             while(rsEmpleados.next()){
-                usuarios.add(rsEmpleados.getString("usuario"));
+                DAOUsuarios daoUs = new DAOUsuarios(this.getConexion(), this.getFachadaAplicacion());
+                Usuario u;
+                u = daoUs.obtenerUsuarios(rsEmpleados.getString("usuario"),"" ).get(0);
+                resultado.add(new Empleado(u.getUsuario(), u.getPassword(), u.getDni(), u.getNombre(), u.getCorreo(), u.getDireccion(), u.getTelefono(), u.getSexo(), rsEmpleados.getInt("nomina"), rsEmpleados.getInt("anoIngreso"), daoUs.esAdministrador(u.getUsuario())));
             }
         
         } catch (SQLException e) {

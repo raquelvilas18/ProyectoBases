@@ -116,8 +116,8 @@ public class FachadaAplicacion {
         return fbd.esAdministrador(id);
     }
 
-    public ArrayList<Empleado> obtenerEmpleados(String id, String nombre) {
-        return fbd.obtenerEmpleados(id, nombre);
+    public ArrayList<Empleado> obtenerEmpleados(String id) {
+        return fbd.obtenerEmpleados(id);
     }
 
     public ArrayList<Usuario> obtenerUsuarios(String id, String nombre) {

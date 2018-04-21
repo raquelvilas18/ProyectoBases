@@ -38,7 +38,7 @@ public class ModeloTablaEmpleados extends AbstractTableModel {
         switch (col){
             case 0: clase= java.lang.String.class; break;
             case 1: clase=java.lang.String.class;break;
-            case 2: clase=java.lang.String.class;break;
+            case 2: clase=java.lang.Boolean.class;break;
         }
         return clase;
     }
@@ -50,7 +50,11 @@ public class ModeloTablaEmpleados extends AbstractTableModel {
 
     public Object getValueAt(int row, int col){
         Object resultado=null;
-        resultado= empleados.get(row).getUsuario();
+        switch(col){
+            case 0: resultado=empleados.get(row).getUsuario();break;
+            case 1: resultado=empleados.get(row).getNombre();break;
+            case 2: resultado=empleados.get(row).getAdministrador();break;
+        }
         return resultado;
     }
 

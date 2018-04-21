@@ -25,7 +25,7 @@ public class VGestionEmpleados extends javax.swing.JPanel {
         ModeloTablaEmpleados tp = new ModeloTablaEmpleados();
         initComponents();
         tablaEmpleados.setModel(tp);
-        tp.setFilas(fa.obtenerEmpleados(this.FiltroId.getText(), this.FiltroNombre.getText()));
+        tp.setFilas(fa.obtenerEmpleados(this.FiltroId.getText()));
         tablaEmpleados.changeSelection(0,0,false,false);
         ErrorID.setVisible(false);
         LConfirmar.setVisible(false);
@@ -69,11 +69,9 @@ public class VGestionEmpleados extends javax.swing.JPanel {
         tablaEmpleados = new javax.swing.JTable();
         jSeparator2 = new javax.swing.JSeparator();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jSeparator3 = new javax.swing.JSeparator();
         jLabel6 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        jPanel8 = new javax.swing.JPanel();
+        panelActualizar = new javax.swing.JPanel();
         BtActualizar = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         BtAlta = new javax.swing.JPanel();
@@ -107,7 +105,6 @@ public class VGestionEmpleados extends javax.swing.JPanel {
         AltaCorrecta = new javax.swing.JLabel();
         ErrorID = new javax.swing.JLabel();
         LabelActualizar = new javax.swing.JLabel();
-        FiltroNombre = new javax.swing.JTextField();
         FiltroId = new javax.swing.JTextField();
 
         jLabel3.setText("jLabel3");
@@ -169,15 +166,6 @@ public class VGestionEmpleados extends javax.swing.JPanel {
         jLabel4.setText("Id:");
         add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 130, -1, -1));
 
-        jLabel5.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 133, 74));
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-derechaNaranja.png"))); // NOI18N
-        jLabel5.setText("Año Ingreso:");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 130, -1, -1));
-
-        jSeparator3.setForeground(new java.awt.Color(0, 0, 0));
-        add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 150, 230, 10));
-
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-google-web-search-filled-50.png"))); // NOI18N
         jLabel6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -185,25 +173,30 @@ public class VGestionEmpleados extends javax.swing.JPanel {
                 jLabel6MouseClicked(evt);
             }
         });
-        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 120, -1, -1));
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 110, -1, -1));
 
         jPanel1.setBackground(new java.awt.Color(255, 226, 154));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel8.setBackground(new java.awt.Color(255, 148, 42));
-        jPanel8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        panelActualizar.setBackground(new java.awt.Color(255, 148, 42));
+        panelActualizar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        panelActualizar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                panelActualizarMouseClicked(evt);
+            }
+        });
+        panelActualizar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         BtActualizar.setFont(new java.awt.Font("Noto Sans", 0, 18)); // NOI18N
         BtActualizar.setForeground(new java.awt.Color(215, 215, 215));
         BtActualizar.setText("Actualizar");
-        jPanel8.add(BtActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, 110, -1));
+        panelActualizar.add(BtActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, 110, -1));
 
         jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-actualizar-26.png"))); // NOI18N
         jLabel15.setText("jLabel1");
-        jPanel8.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 33, 36));
+        panelActualizar.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 33, 36));
 
-        jPanel1.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 170, 41));
+        jPanel1.add(panelActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 170, 41));
 
         BtAlta.setBackground(new java.awt.Color(255, 148, 42));
         BtAlta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -395,15 +388,6 @@ public class VGestionEmpleados extends javax.swing.JPanel {
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 360, 600, 240));
 
-        FiltroNombre.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        FiltroNombre.setBorder(null);
-        FiltroNombre.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                FiltroNombreActionPerformed(evt);
-            }
-        });
-        add(FiltroNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 130, 120, -1));
-
         FiltroId.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         FiltroId.setBorder(null);
         FiltroId.addActionListener(new java.awt.event.ActionListener() {
@@ -442,16 +426,12 @@ public class VGestionEmpleados extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_TxNominaActionPerformed
 
-    private void FiltroNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FiltroNombreActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_FiltroNombreActionPerformed
-
     private void FiltroIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FiltroIdActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_FiltroIdActionPerformed
 
     private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
-        fa.obtenerEmpleados(FiltroId.getText(), FiltroNombre.getText());// TODO add your handling code here:
+        fa.obtenerEmpleados(FiltroId.getText());// TODO add your handling code here:
     }//GEN-LAST:event_jLabel6MouseClicked
 
     private void btDarAlta(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btDarAlta
@@ -484,6 +464,11 @@ public class VGestionEmpleados extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_TxContrasenaActionPerformed
 
+    private void panelActualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelActualizarMouseClicked
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_panelActualizarMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel AltaCorrecta;
@@ -493,7 +478,6 @@ public class VGestionEmpleados extends javax.swing.JPanel {
     private javax.swing.JLabel ErrorAlta1;
     private javax.swing.JLabel ErrorID;
     private javax.swing.JTextField FiltroId;
-    private javax.swing.JTextField FiltroNombre;
     private javax.swing.JLabel LAlta;
     private javax.swing.JLabel LConfirmar;
     private javax.swing.JLabel LabelActualizar;
@@ -521,7 +505,6 @@ public class VGestionEmpleados extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -530,16 +513,15 @@ public class VGestionEmpleados extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JPanel panelActualizar;
     private javax.swing.JTable tablaEmpleados;
     // End of variables declaration//GEN-END:variables
     public void vaciarTxt() {
-        ModeloTablaUsuarios m;
+        ModeloTablaEmpleados m;
 
-        m = (ModeloTablaUsuarios) tablaEmpleados.getModel();
+        m = (ModeloTablaEmpleados) tablaEmpleados.getModel();
         this.TxId.setText(null);
         this.TxEmail.setText(null);
         this.TxDni.setText(null);
