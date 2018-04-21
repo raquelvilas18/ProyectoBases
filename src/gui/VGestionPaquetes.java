@@ -36,7 +36,7 @@ public class VGestionPaquetes extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tablaUsr = new javax.swing.JTable();
+        tablaPedidos = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
         BtActualizar = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
@@ -121,21 +121,21 @@ public class VGestionPaquetes extends javax.swing.JPanel {
         });
         add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 120, -1, -1));
 
-        tablaUsr.setModel(new ModeloTablaPedidos());
-        tablaUsr.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        tablaUsr.setGridColor(new java.awt.Color(255, 189, 72));
-        tablaUsr.setSelectionBackground(new java.awt.Color(255, 189, 72));
-        tablaUsr.setShowHorizontalLines(false);
-        tablaUsr.setShowVerticalLines(false);
-        tablaUsr.setSurrendersFocusOnKeystroke(true);
-        tablaUsr.getTableHeader().setResizingAllowed(false);
-        tablaUsr.getTableHeader().setReorderingAllowed(false);
-        tablaUsr.addMouseListener(new java.awt.event.MouseAdapter() {
+        tablaPedidos.setModel(new ModeloTablaPedidos());
+        tablaPedidos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        tablaPedidos.setGridColor(new java.awt.Color(255, 189, 72));
+        tablaPedidos.setSelectionBackground(new java.awt.Color(255, 189, 72));
+        tablaPedidos.setShowHorizontalLines(false);
+        tablaPedidos.setShowVerticalLines(false);
+        tablaPedidos.setSurrendersFocusOnKeystroke(true);
+        tablaPedidos.getTableHeader().setResizingAllowed(false);
+        tablaPedidos.getTableHeader().setReorderingAllowed(false);
+        tablaPedidos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tablaUsrMouseClicked(evt);
+                tablaPedidosMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(tablaUsr);
+        jScrollPane1.setViewportView(tablaPedidos);
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(63, 190, 590, 170));
 
@@ -348,16 +348,16 @@ public class VGestionPaquetes extends javax.swing.JPanel {
     private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
 
         ModeloTablaUsuarios tp = new ModeloTablaUsuarios();
-        tablaUsr.setModel(tp);
+        tablaPedidos.setModel(tp);
         tp.setFilas(fa.obtenerUsuarios(this.FiltroId.getText(), this.FiltroNombre.getText()));
     }//GEN-LAST:event_jLabel6MouseClicked
 
-    private void tablaUsrMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaUsrMouseClicked
+    private void tablaPedidosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaPedidosMouseClicked
         // TODO add your handling code here:
         ErrorAlta.setVisible(false);
         AltaCorrecta.setVisible(false);
         LabelActualizar.setVisible(false);
-    }//GEN-LAST:event_tablaUsrMouseClicked
+    }//GEN-LAST:event_tablaPedidosMouseClicked
 
     private void BtActualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtActualizarMouseClicked
         
@@ -463,6 +463,6 @@ public class VGestionPaquetes extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JComboBox sexo;
-    private javax.swing.JTable tablaUsr;
+    private javax.swing.JTable tablaPedidos;
     // End of variables declaration//GEN-END:variables
 }
