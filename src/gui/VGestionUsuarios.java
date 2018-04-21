@@ -28,17 +28,25 @@ public class VGestionUsuarios extends javax.swing.JPanel {
         initComponents();
         tablaUsr.setModel(tp);
         tp.setFilas(fa.obtenerUsuarios(this.FiltroId.getText(), this.FiltroNombre.getText()));
+        tablaUsr.changeSelection(0,0,false,false);
         ErrorID.setVisible(false);
         LConfirmar.setVisible(false);
         LAlta.setVisible(true);
         BtAlta.setVisible(true);
-        BtActualizar.setEnabled(false);
         ErrorAlta1.setVisible(false);
         ErrorID.setVisible(false);
         AltaCorrecta.setVisible(false);
         LabelActualizar.setVisible(false);
         ContrasenaL.setVisible(false);
         TxContrasena.setVisible(false);
+        ModeloTablaUsuarios m = (ModeloTablaUsuarios) tablaUsr.getModel();
+        this.TxId.setText(m.getFila(tablaUsr.getSelectedRow()).getUsuario());
+        this.TxNombre.setText(m.getFila(tablaUsr.getSelectedRow()).getNombre());
+        this.TxCorreo.setText(m.getFila(tablaUsr.getSelectedRow()).getCorreo());
+        this.TxDireccion.setText(m.getFila(tablaUsr.getSelectedRow()).getDireccion());
+        this.TxTelefono.setText(m.getFila(tablaUsr.getSelectedRow()).getTelefono());
+        this.TxDni.setText(m.getFila(tablaUsr.getSelectedRow()).getDni());
+        this.sexo.setSelectedItem((m.getFila(tablaUsr.getSelectedRow())).getSexo());
     }
 
     /**
@@ -443,9 +451,24 @@ public class VGestionUsuarios extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_TxTelefonoActionPerformed
 
+    private void actualizarCampos()
+    {
+        tablaUsr.changeSelection(0,0,false,false);
+        ModeloTablaUsuarios m = (ModeloTablaUsuarios) tablaUsr.getModel();
+        this.TxId.setText(m.getFila(tablaUsr.getSelectedRow()).getUsuario());
+        this.TxNombre.setText(m.getFila(tablaUsr.getSelectedRow()).getNombre());
+        this.TxCorreo.setText(m.getFila(tablaUsr.getSelectedRow()).getCorreo());
+        this.TxDireccion.setText(m.getFila(tablaUsr.getSelectedRow()).getDireccion());
+        this.TxTelefono.setText(m.getFila(tablaUsr.getSelectedRow()).getTelefono());
+        this.TxDni.setText(m.getFila(tablaUsr.getSelectedRow()).getDni());
+        this.sexo.setSelectedItem((m.getFila(tablaUsr.getSelectedRow())).getSexo());
+    }
+    
+    
     private void tablaUsrMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaUsrMouseClicked
         // TODO add your handling code here:
         actualizarDatos();
+        ErrorID.setVisible(false);
         BtActualizar.setEnabled(true);
         ErrorAlta1.setVisible(false);
         AltaCorrecta.setVisible(false);
@@ -457,9 +480,15 @@ public class VGestionUsuarios extends javax.swing.JPanel {
        ModeloTablaUsuarios  m = (ModeloTablaUsuarios) tablaUsr.getModel();
         if((fa.consultarId(TxId.getText()) || (TxId.getText().equals(m.getFila(tablaUsr.getSelectedRow()).getUsuario()))) && !TxId.getText().isEmpty())
        {
+        String id=m.getFila(tablaUsr.getSelectedRow()).getUsuario();
         restablecerBoton();
-        actualizarUsuario();
+        actualizarUsuario(id);
+        actualizarCampos();
        }
+        else{ErrorID.setVisible(true);
+        LabelActualizar.setVisible((false));
+        actualizarCampos();
+        }
         // TODO add your handling code here:
     }//GEN-LAST:event_BtActualizarMouseClicked
 
@@ -566,14 +595,14 @@ public class VGestionUsuarios extends javax.swing.JPanel {
     }
 
     //public Usuario(String usuario, String password, String dni, String nombre, String correo, String direccion, String telefono, String sexo) {
-    public void actualizarUsuario() {
+    public void actualizarUsuario(String id) {
         ModeloTablaUsuarios m;
 
         m = (ModeloTablaUsuarios) tablaUsr.getModel();
-        fa.actualizarUsr(m.getFila(tablaUsr.getSelectedRow()).getUsuario(), new Usuario(TxId.getText(), null, TxDni.getText(), TxNombre.getText(), TxCorreo.getText(), TxDireccion.getText(), TxTelefono.getText(), (String) sexo.getSelectedItem()));
+        fa.actualizarUsr(id, new Usuario(TxId.getText(), null, TxDni.getText(), TxNombre.getText(), TxCorreo.getText(), TxDireccion.getText(), TxTelefono.getText(), (String) sexo.getSelectedItem()));
         LabelActualizar.setVisible(true);
         m.setFilas(fa.obtenerUsuarios(this.FiltroId.getText(), this.FiltroNombre.getText()));
-
+        BtActualizar.setEnabled(false);
     }
 
     public void eliminarUsuario() {
@@ -605,12 +634,13 @@ public class VGestionUsuarios extends javax.swing.JPanel {
 
     public void restablecerBoton() {
         nuevo = false;
-        BtActualizar.setEnabled(true);
+        BtActualizar.setEnabled(false);
         BtAlta.setBackground(new Color(255, 148, 42));
         ErrorID.setVisible(false);
         LConfirmar.setVisible(false);
         LAlta.setVisible(true);
         ContrasenaL.setVisible(false);
         TxContrasena.setVisible(false);
+        tablaUsr.changeSelection(0,0,false,false);
     }
 }
