@@ -287,14 +287,15 @@ public class VPrincipal extends javax.swing.JFrame {
         }    }//GEN-LAST:event_jPanel1MouseClicked
 
     private void JContrasenaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JContrasenaKeyPressed
-        // TODO add your handling code here:
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            autentificacionIncorrecta.setVisible(false);
-            if ((!JUsuario.getText().equals("")) && (!JContrasena.getText().equals("")) && fa.comprobarAutentificacion(JUsuario.getText(), JContrasena.getText())) {
-                ventanaUsuario(fa.consultarUsuario(JUsuario.getText(), JContrasena.getText()));
+        if ((!JUsuario.getText().equals("")) && (!JContrasena.getText().equals("")) && fa.comprobarAutentificacion(JUsuario.getText(), JContrasena.getText())) {
+            if (fa.esAdministrador(JUsuario.getText())) {
+                ventanaAdmin();
             } else {
-                autentificacionIncorrecta.setVisible(true);
+                ventanaUsuario(fa.consultarUsuario(JUsuario.getText(), JContrasena.getText()));
+                autentificacionIncorrecta.setVisible(false);
             }
+        } else {
+            autentificacionIncorrecta.setVisible(true);
         }
     }//GEN-LAST:event_JContrasenaKeyPressed
 
