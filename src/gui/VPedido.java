@@ -274,11 +274,13 @@ public class VPedido extends javax.swing.JPanel {
         //public Pedido(String fecha,String cliente,Integer codigo,boolean express,String direccion,String destinatario,String tramitador)
         if (TxApellidos.getText().equals("") || TxNombre.getText().equals("") || TxOrigen.getText().equals("") || Txdestino.getText().equals("") || TxDni.getText().equals("") || TxTlf.getText().equals("")) {
             Error.setVisible(true);
+            Correcto.setVisible(false);
         }
         else
         {
             fa.nuevoPedido(new Pedido(u.getUsuario(),jRadioButton1.isSelected(),Txdestino.getText(),TxNombre.getText()));
             Correcto.setVisible(true);
+            Error.setVisible(false);
             TxApellidos.setText("");
             TxNombre.setText("");
             TxOrigen.setText("");
