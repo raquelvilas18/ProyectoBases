@@ -304,7 +304,7 @@ public class VPrincipal extends javax.swing.JFrame {
 
     public void ventanaPedido() {
         panelActivo.setVisible(false);
-        VPedido panelPedido = new VPedido(fa);
+        VPedido panelPedido = new VPedido(fa,fa.consultarUsuario(JUsuario.getText(), JContrasena.getText()));
         panelBase.add(panelPedido, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 680, 580));
         panelActivo = panelPedido;
     }
