@@ -18,13 +18,20 @@ public class Pedido {
    private String destinatario;
    private String tramitador;
    
-    public Pedido(String fecha, String cliente, Integer codigo, boolean express, String direccion, String destinatario, String tramitador)   {
-       this.fecha=fecha;
+    public Pedido(String cliente, boolean express, String direccion, String destinatario)   {
        this.cliente=cliente;
-       this.codigo=codigo;
        this.express=express;
        this.direccion=direccion;
        this.destinatario=destinatario;
+   }
+    
+    public Pedido(String fecha,String cliente,Integer codigo, boolean express, String direccion, String destinatario,String tramitador)   {
+       this.cliente=cliente;
+       this.express=express;
+       this.direccion=direccion;
+       this.destinatario=destinatario;
+       this.fecha=fecha;
+       this.codigo=codigo;
        this.tramitador=tramitador;
    }
 
