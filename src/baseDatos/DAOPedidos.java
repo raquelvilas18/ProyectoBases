@@ -23,14 +23,12 @@ public class DAOPedidos extends AbstractDAO {
         con = super.getConexion();
         
         try {
-            stmPedidos=con.prepareStatement("Insert into pedidos(cliente, express, direccion, destinatario, tramitador) "
-                    + "values (?,?,?,?,?)");
+            stmPedidos=con.prepareStatement("Insert into pedidos(cliente, express, direccion, destinatario) "
+                    + "values (?,?,?,?)");
             stmPedidos.setString(1, pd.getCliente());
             stmPedidos.setBoolean(2, pd.isExpress());
             stmPedidos.setString(3, pd.getDireccion());
             stmPedidos.setString(4, pd.getDestinatario());
-            stmPedidos.setString(5, pd.getTramitador());
-
             stmPedidos.executeUpdate();
             
             

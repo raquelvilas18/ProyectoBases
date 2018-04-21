@@ -7,6 +7,7 @@ package gui;
 
 import javax.swing.table.AbstractTableModel;
 import aplicacion.Empleado;
+import aplicacion.Usuario;
 /**
  *
  * @author alumnogreibd
@@ -66,6 +67,12 @@ public class ModeloTablaEmpleados extends AbstractTableModel {
     public void setFilas(java.util.List<Empleado> empleados){
         this.empleados=empleados;
         fireTableDataChanged();
+    }
+    public Empleado getFila(int fila){
+        if(empleados.isEmpty()){
+            return null;
+        }
+        return empleados.get(fila);
     }
     
 }

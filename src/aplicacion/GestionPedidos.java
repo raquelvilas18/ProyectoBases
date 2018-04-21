@@ -36,7 +36,7 @@ public class GestionPedidos{
     {
          return fbd.obtenerPedidosActivos(usuario);
     }
- 
+    
     public java.util.List<Paquete> comprobarLocalizacion(Integer codigo)
     {
          return fbd.comprobarLocalizacion(codigo);
