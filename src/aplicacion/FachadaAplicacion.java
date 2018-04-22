@@ -119,6 +119,10 @@ public class FachadaAplicacion {
     public ArrayList<Empleado> obtenerEmpleados(String id) {
         return fbd.obtenerEmpleados(id);
     }
+    
+    public ArrayList<Integer> datosEmpleado(String id){
+        return fbd.datosEmpleado(id);
+    }
 
     public ArrayList<Usuario> obtenerUsuarios(String id, String nombre) {
         return fbd.obtenerUsuarios(id, nombre);

@@ -5,7 +5,9 @@
  */
 package gui;
 
+import aplicacion.Empleado;
 import java.awt.Color;
+import java.util.ArrayList;
 
 /**
  *
@@ -95,16 +97,18 @@ public class VGestionEmpleados extends javax.swing.JPanel {
         TxTelefono = new javax.swing.JTextField();
         jLabel23 = new javax.swing.JLabel();
         TxNomina = new javax.swing.JTextField();
-        jLabel25 = new javax.swing.JLabel();
         TxSexo = new javax.swing.JComboBox();
         jLabel10 = new javax.swing.JLabel();
-        TxTipo1 = new javax.swing.JComboBox();
+        TxAdministrador = new javax.swing.JComboBox();
         TxContrasena = new javax.swing.JTextField();
         ContrasenaL = new javax.swing.JLabel();
         ErrorAlta1 = new javax.swing.JLabel();
         AltaCorrecta = new javax.swing.JLabel();
         ErrorID = new javax.swing.JLabel();
         LabelActualizar = new javax.swing.JLabel();
+        TxTipo2 = new javax.swing.JComboBox();
+        jLabel24 = new javax.swing.JLabel();
+        jLabel25 = new javax.swing.JLabel();
         FiltroId = new javax.swing.JTextField();
 
         jLabel3.setText("jLabel3");
@@ -304,8 +308,8 @@ public class VGestionEmpleados extends javax.swing.JPanel {
         jPanel1.add(TxDni, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 60, 180, -1));
 
         jLabel22.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        jLabel22.setText("Sexo:");
-        jPanel1.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, -1, -1));
+        jLabel22.setText("Administrador:");
+        jPanel1.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 100, -1, -1));
 
         TxTelefono.setBackground(new java.awt.Color(255, 232, 185));
         TxTelefono.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 1));
@@ -329,10 +333,6 @@ public class VGestionEmpleados extends javax.swing.JPanel {
         });
         jPanel1.add(TxNomina, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 60, 220, -1));
 
-        jLabel25.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        jLabel25.setText("Administrador:");
-        jPanel1.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 110, -1, -1));
-
         TxSexo.setBackground(new java.awt.Color(204, 204, 204));
         TxSexo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "H", "M" }));
         TxSexo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -341,16 +341,16 @@ public class VGestionEmpleados extends javax.swing.JPanel {
                 TxSexoActionPerformed(evt);
             }
         });
-        jPanel1.add(TxSexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 110, 50, 20));
+        jPanel1.add(TxSexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 100, 50, 20));
 
         jLabel10.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel10.setText("Dirección:");
         jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, -1, -1));
 
-        TxTipo1.setBackground(new java.awt.Color(204, 204, 204));
-        TxTipo1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tipo", "Oficinista", "Transportista" }));
-        TxTipo1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(TxTipo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 110, 140, 20));
+        TxAdministrador.setBackground(new java.awt.Color(204, 204, 204));
+        TxAdministrador.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "No", "Si" }));
+        TxAdministrador.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel1.add(TxAdministrador, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 100, 60, 20));
 
         TxContrasena.setBackground(new java.awt.Color(255, 232, 185));
         TxContrasena.setForeground(new java.awt.Color(102, 102, 102));
@@ -385,6 +385,24 @@ public class VGestionEmpleados extends javax.swing.JPanel {
         LabelActualizar.setForeground(new java.awt.Color(0, 153, 0));
         LabelActualizar.setText("Datos actualizados");
         jPanel1.add(LabelActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, -1, -1));
+
+        TxTipo2.setBackground(new java.awt.Color(204, 204, 204));
+        TxTipo2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Oficinista", "Transportista" }));
+        TxTipo2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        TxTipo2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TxTipo2ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(TxTipo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 100, 140, 20));
+
+        jLabel24.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        jLabel24.setText("Sexo:");
+        jPanel1.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, -1, -1));
+
+        jLabel25.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        jLabel25.setText("Tipo:");
+        jPanel1.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 100, -1, -1));
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 360, 600, 240));
 
@@ -466,8 +484,23 @@ public class VGestionEmpleados extends javax.swing.JPanel {
 
     private void panelActualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelActualizarMouseClicked
         // TODO add your handling code here:
+        ModeloTablaEmpleados m;
+        m = (ModeloTablaEmpleados) tablaEmpleados.getModel();
+        if((fa.consultarId(TxId.getText()) || (TxId.getText().equals(m.getFila(tablaEmpleados.getSelectedRow()).getUsuario()))) && !TxId.getText().isEmpty())
+       {
+        String id=m.getFila(tablaEmpleados.getSelectedRow()).getUsuario();
+        restablecerBoton();
+        
+       }
+        else{ErrorID.setVisible(true);
+        LabelActualizar.setVisible((false));
+        }
         
     }//GEN-LAST:event_panelActualizarMouseClicked
+
+    private void TxTipo2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxTipo2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TxTipo2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -481,6 +514,7 @@ public class VGestionEmpleados extends javax.swing.JPanel {
     private javax.swing.JLabel LAlta;
     private javax.swing.JLabel LConfirmar;
     private javax.swing.JLabel LabelActualizar;
+    private javax.swing.JComboBox TxAdministrador;
     private javax.swing.JTextField TxContrasena;
     private javax.swing.JTextField TxDireccion;
     private javax.swing.JTextField TxDni;
@@ -490,7 +524,7 @@ public class VGestionEmpleados extends javax.swing.JPanel {
     private javax.swing.JTextField TxNomina;
     private javax.swing.JComboBox TxSexo;
     private javax.swing.JTextField TxTelefono;
-    private javax.swing.JComboBox TxTipo1;
+    private javax.swing.JComboBox TxTipo2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel15;
@@ -502,6 +536,7 @@ public class VGestionEmpleados extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -543,11 +578,41 @@ public class VGestionEmpleados extends javax.swing.JPanel {
         TxContrasena.setVisible(false);
         tablaEmpleados.changeSelection(0,0,false,false);
     }
+    
+    public void actualizarEmpleado(String id) {
+        ModeloTablaEmpleados m;
+
+        m = (ModeloTablaEmpleados) tablaEmpleados.getModel();
+        ArrayList<Integer> datos = new ArrayList<>();
+        datos = fa.datosEmpleado(id);
+        boolean admin;
+        if(TxAdministrador.getSelectedIndex()==0){
+            admin=false;
+        } else admin=true;
+        fa.actualizarEmpleado(id, new Empleado(TxId.getText(), null, TxDni.getText(), TxNombre.getText(), TxEmail.getText(), TxDireccion.getText(), TxTelefono.getText(), (String) TxSexo.getSelectedItem(),Integer.parseInt(TxNomina.getText()),datos.get(0),admin));
+        LabelActualizar.setVisible(true);
+        m.setFilas(fa.obtenerEmpleados(this.FiltroId.getText()));
+        BtActualizar.setEnabled(false);
+    }
     public void actualizarTabla(){
         ModeloTablaUsuarios m;
 
         m = (ModeloTablaUsuarios) tablaEmpleados.getModel();
         //m.setFilas(fa.obtenerUsuarios(this.FiltroId.getText(), this.FiltroNombre.getText()));
+    }
+    
+    private void actualizarCampos()
+    {
+        tablaEmpleados.changeSelection(0,0,false,false);
+        ModeloTablaEmpleados m = (ModeloTablaEmpleados) tablaEmpleados.getModel();
+        this.TxId.setText(m.getFila(tablaEmpleados.getSelectedRow()).getUsuario());
+        this.TxNombre.setText(m.getFila(tablaEmpleados.getSelectedRow()).getNombre());
+        this.TxEmail.setText(m.getFila(tablaEmpleados.getSelectedRow()).getCorreo());
+        this.TxDireccion.setText(m.getFila(tablaEmpleados.getSelectedRow()).getDireccion());
+        this.TxTelefono.setText(m.getFila(tablaEmpleados.getSelectedRow()).getTelefono());
+        this.TxDni.setText(m.getFila(tablaEmpleados.getSelectedRow()).getDni());
+        this.TxSexo.setSelectedItem((m.getFila(tablaEmpleados.getSelectedRow())).getSexo());
+        this.TxAdministrador.setSelectedItem((m.getFila(tablaEmpleados.getSelectedRow())).getAdministrador());
     }
 
 }

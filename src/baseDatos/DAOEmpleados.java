@@ -195,4 +195,36 @@ public class DAOEmpleados extends AbstractDAO {
             }
         }
     }
+    
+    public ArrayList<Integer> datosEmpleado(String id){
+        java.util.ArrayList<Integer> resultado = new java.util.ArrayList<Integer>();
+        Connection con;
+        PreparedStatement stmEmpleados = null;
+        ResultSet rsEmpleados;
+        int año=0;       
+        con = super.getConexion();
+
+        try {
+            stmEmpleados = con.prepareStatement("SELECT * \n"
+                    + "FROM empleados \n"
+                    + "WHERE usuario=?");
+            stmEmpleados.setString(1, id);
+            rsEmpleados = stmEmpleados.executeQuery();
+        
+            while(rsEmpleados.next()){
+                resultado.add(rsEmpleados.getInt("anoIngreso"));
+            }
+        
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
+        } finally {
+            try {
+                stmEmpleados.close();
+            } catch (SQLException e) {
+                System.out.println("Imposible cerrar cursores");
+            }
+        }
+        return resultado;
+    }
 }

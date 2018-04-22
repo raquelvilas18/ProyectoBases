@@ -26,7 +26,7 @@ public class ModeloTablaEmpleados extends AbstractTableModel {
         switch (col){
             case 0: nombre= "Id"; break;
             case 1: nombre="Nombre";break;
-            case 2: nombre="Tipo";break;
+            case 2: nombre="Administrador";break;
         }
         return nombre;
     }
