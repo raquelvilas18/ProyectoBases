@@ -292,7 +292,7 @@ public class VPrincipal extends javax.swing.JFrame {
         if(evt.getKeyCode()==10){
             if ((!JUsuario.getText().equals("")) && (!JContrasena.getText().equals("")) && fa.comprobarAutentificacion(JUsuario.getText(), JContrasena.getText())) {
                 if (fa.esAdministrador(JUsuario.getText())) {
-                    ventanaAdmin();
+                    ventanaTransportista();
                 } else {
                     ventanaUsuario(fa.consultarUsuario(JUsuario.getText(), JContrasena.getText()));
                     autentificacionIncorrecta.setVisible(false);
@@ -335,6 +335,28 @@ public class VPrincipal extends javax.swing.JFrame {
         VPerfilAdmin panel = new VPerfilAdmin(fa,fa.consultarUsuario(JUsuario.getText(), JContrasena.getText()));
         panelBase.add(panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 680, 580));
         panelActivo = panel;
+    }
+    
+    public void ventanaPerfilTransportista() {
+        panelActivo.setVisible(false);
+        VPerfilTransportista panel = new VPerfilTransportista(fa,fa.consultarUsuario(JUsuario.getText(), JContrasena.getText()));
+        panelBase.add(panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 680, 580));
+        panelActivo = panel;
+    }
+    
+    public void ventanaTransportista() {
+        if (panelActivo != null) {
+            panelActivo.setVisible(false);
+        }
+        panelLocPaquete.setVisible(false);
+        panelLogin.setVisible(false);
+        panelLogo.setVisible(false);
+        VTransportista panelTransportista = new VTransportista(this);
+        panelBase.add(panelTransportista, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 310, 580));
+        panelTransportista.setVisible(true);
+        VPerfilTransportista panelPerfil = new VPerfilTransportista(fa,fa.consultarUsuario(JUsuario.getText(), JContrasena.getText()));
+        panelBase.add(panelPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 680, 580));
+        panelActivo = panelPerfil;
     }
 
     public void ventanaAdmin() {
