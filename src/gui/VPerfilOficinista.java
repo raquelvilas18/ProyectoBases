@@ -13,18 +13,20 @@ import aplicacion.Usuario;
  * @author raquel
  */
 public class VPerfilOficinista extends javax.swing.JPanel {
-    
+
     private Usuario usuario;
     private FachadaAplicacion fa;
+
     /**
      * Creates new form VPerfil
      */
-    public VPerfilOficinista(FachadaAplicacion fa,Usuario usuario) {
+    public VPerfilOficinista(FachadaAplicacion fa, Usuario usuario) {
         initComponents();
         JLabelMensaje.setVisible(false);
         this.usuario = usuario;
         this.actualizador(usuario);
-        this.fa=fa;
+        this.fa = fa;
+        this.ActualizarLabel.setVisible(false);
     }
 
     /**
@@ -62,6 +64,7 @@ public class VPerfilOficinista extends javax.swing.JPanel {
         sexo = new javax.swing.JComboBox<String>();
         jLabel18 = new javax.swing.JLabel();
         JDNI = new javax.swing.JTextField();
+        ActualizarLabel = new javax.swing.JLabel();
 
         jLabel6.setBackground(new java.awt.Color(65, 105, 225));
         jLabel6.setFont(new java.awt.Font("Samanata", 0, 24)); // NOI18N
@@ -98,6 +101,9 @@ public class VPerfilOficinista extends javax.swing.JPanel {
         JActualizar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jActualizarMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                JActualizarMouseEntered(evt);
             }
         });
 
@@ -256,11 +262,16 @@ public class VPerfilOficinista extends javax.swing.JPanel {
         JDNI.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         JDNI.setBorder(null);
         add(JDNI, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 370, 470, 30));
+
+        ActualizarLabel.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        ActualizarLabel.setForeground(new java.awt.Color(0, 153, 0));
+        ActualizarLabel.setText("Datos actualizados correctamente");
+        add(ActualizarLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 480, 270, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jActualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jActualizarMouseClicked
         // TODO add your handling code here:
-        if((fa.consultarId(jId.getText()) || (jId.getText().equals(usuario.getUsuario()))) && !jId.getText().isEmpty()){
+        if ((fa.consultarId(jId.getText()) || (jId.getText().equals(usuario.getUsuario()))) && !jId.getText().isEmpty()) {
             JLabelMensaje.setVisible(false);
             usuario.setCorreo(JCorreo.getText());
             usuario.setDireccion(JDireccion.getText());
@@ -270,8 +281,9 @@ public class VPerfilOficinista extends javax.swing.JPanel {
             usuario.setTelefono(JTelefono.getText());
             usuario.setUsuario(jId.getText());
             fa.actualizar(usuario);
-        }
-        else{
+            this.ActualizarLabel.setVisible(true);
+
+        } else {
             JLabelMensaje.setVisible(true);
         }
     }//GEN-LAST:event_jActualizarMouseClicked
@@ -280,13 +292,18 @@ public class VPerfilOficinista extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_sexoActionPerformed
 
-   
+
     private void jLabel11MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel11MousePressed
-        
+
     }//GEN-LAST:event_jLabel11MousePressed
+
+    private void JActualizarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JActualizarMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JActualizarMouseEntered
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel ActualizarLabel;
     private javax.swing.JPanel JActualizar;
     private javax.swing.JTextField JCorreo;
     private javax.swing.JTextField JDNI;
@@ -314,7 +331,7 @@ public class VPerfilOficinista extends javax.swing.JPanel {
     private javax.swing.JTextField jTextField16;
     private javax.swing.JComboBox<String> sexo;
     // End of variables declaration//GEN-END:variables
-    public void actualizador(Usuario usuario){
+    public void actualizador(Usuario usuario) {
         JNombre.setText(usuario.getNombre());
         JDireccion.setText(usuario.getDni());
         JCorreo.setText(usuario.getCorreo());
