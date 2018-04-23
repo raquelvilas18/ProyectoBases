@@ -4,7 +4,8 @@
  * and open the template in the editor.
  */
 package gui;
-
+import aplicacion.Usuario;
+import aplicacion.Pedido;
 /**
  *
  * @author raquel
@@ -12,16 +13,19 @@ package gui;
 public class VPedido extends javax.swing.JPanel {
 
     private aplicacion.FachadaAplicacion fa;
-
+    private Usuario u;
+    private Pedido pd;
     /**
      * Creates new form VPedido
      *
      * @param fa
      */
-    public VPedido(aplicacion.FachadaAplicacion fa) {
+    public VPedido(aplicacion.FachadaAplicacion fa,Usuario u) {
         initComponents();
         this.fa = fa;
+        this.u=u;
         Error.setVisible(false);
+        Correcto.setVisible(false);
     }
 
     /**
@@ -36,7 +40,7 @@ public class VPedido extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
+        Express = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
@@ -54,6 +58,9 @@ public class VPedido extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         TxOrigen = new javax.swing.JTextField();
+        jLabel13 = new javax.swing.JLabel();
+        jRadioButton1 = new javax.swing.JRadioButton();
+        Correcto = new javax.swing.JLabel();
         Error = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(254, 254, 254));
@@ -68,7 +75,7 @@ public class VPedido extends javax.swing.JPanel {
         jLabel3.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(65, 105, 225));
         jLabel3.setText("Destinatario");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 240, -1, -1));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 250, -1, -1));
 
         jPanel2.setPreferredSize(new java.awt.Dimension(10, 550));
 
@@ -85,12 +92,12 @@ public class VPedido extends javax.swing.JPanel {
 
         add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 12, 10, 550));
 
-        jLabel5.setBackground(new java.awt.Color(65, 105, 225));
-        jLabel5.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(65, 105, 225));
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-derecha-3-24.png"))); // NOI18N
-        jLabel5.setText("Destino:");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 190, -1, -1));
+        Express.setBackground(new java.awt.Color(65, 105, 225));
+        Express.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        Express.setForeground(new java.awt.Color(65, 105, 225));
+        Express.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-derecha-3-24.png"))); // NOI18N
+        Express.setText("Express:");
+        add(Express, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 210, -1, -1));
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -123,30 +130,30 @@ public class VPedido extends javax.swing.JPanel {
         jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, -1, -1));
 
         TxTlf.setBackground(new java.awt.Color(165, 180, 253));
-        TxTlf.setForeground(new java.awt.Color(153, 153, 153));
+        TxTlf.setForeground(new java.awt.Color(0, 0, 0));
         TxTlf.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         TxTlf.setBorder(null);
         jPanel1.add(TxTlf, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 140, 470, 30));
 
         TxNombre.setBackground(new java.awt.Color(165, 180, 253));
-        TxNombre.setForeground(new java.awt.Color(153, 153, 153));
+        TxNombre.setForeground(new java.awt.Color(0, 0, 0));
         TxNombre.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         TxNombre.setBorder(null);
         jPanel1.add(TxNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, 470, 30));
 
         TxApellidos.setBackground(new java.awt.Color(165, 180, 253));
-        TxApellidos.setForeground(new java.awt.Color(153, 153, 153));
+        TxApellidos.setForeground(new java.awt.Color(0, 0, 0));
         TxApellidos.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         TxApellidos.setBorder(null);
         jPanel1.add(TxApellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 60, 470, 30));
 
         TxDni.setBackground(new java.awt.Color(165, 180, 253));
-        TxDni.setForeground(new java.awt.Color(153, 153, 153));
+        TxDni.setForeground(new java.awt.Color(0, 0, 0));
         TxDni.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         TxDni.setBorder(null);
         jPanel1.add(TxDni, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 100, 470, 30));
 
-        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 270, 600, 200));
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 280, 600, 200));
 
         jLabel7.setBackground(new java.awt.Color(65, 105, 225));
         jLabel7.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
@@ -156,9 +163,15 @@ public class VPedido extends javax.swing.JPanel {
         add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 150, -1, -1));
 
         Txdestino.setBackground(new java.awt.Color(165, 180, 253));
-        Txdestino.setForeground(new java.awt.Color(153, 153, 153));
+        Txdestino.setForeground(new java.awt.Color(0, 0, 0));
+        Txdestino.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         Txdestino.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 5));
-        add(Txdestino, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 190, 470, 30));
+        Txdestino.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TxdestinoActionPerformed(evt);
+            }
+        });
+        add(Txdestino, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 180, 470, 30));
 
         jPanel3.setBackground(new java.awt.Color(65, 105, 255));
         jPanel3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -219,24 +232,61 @@ public class VPedido extends javax.swing.JPanel {
         add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 130, 600, 10));
 
         TxOrigen.setBackground(new java.awt.Color(165, 180, 253));
-        TxOrigen.setForeground(new java.awt.Color(153, 153, 153));
+        TxOrigen.setForeground(new java.awt.Color(0, 0, 0));
+        TxOrigen.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         TxOrigen.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 5));
+        TxOrigen.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TxOrigenMouseClicked(evt);
+            }
+        });
         TxOrigen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TxOrigenActionPerformed(evt);
             }
         });
-        add(TxOrigen, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 150, 470, 30));
+        add(TxOrigen, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 150, 470, 30));
+
+        jLabel13.setBackground(new java.awt.Color(65, 105, 225));
+        jLabel13.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(65, 105, 225));
+        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-derecha-3-24.png"))); // NOI18N
+        jLabel13.setText("Destino:");
+        add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 180, -1, -1));
+
+        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton1ActionPerformed(evt);
+            }
+        });
+        add(jRadioButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(175, 210, 20, -1));
+
+        Correcto.setForeground(new java.awt.Color(0, 204, 102));
+        Correcto.setText("Pedido realizado correctamente");
+        add(Correcto, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 480, -1, -1));
 
         Error.setForeground(new java.awt.Color(255, 51, 51));
         Error.setText("Todos los campos son obligatorios");
-        add(Error, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 480, -1, -1));
+        add(Error, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 480, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jPanel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseClicked
         //public Pedido(String fecha,String cliente,Integer codigo,boolean express,String direccion,String destinatario,String tramitador)
         if (TxApellidos.getText().equals("") || TxNombre.getText().equals("") || TxOrigen.getText().equals("") || Txdestino.getText().equals("") || TxDni.getText().equals("") || TxTlf.getText().equals("")) {
             Error.setVisible(true);
+            Correcto.setVisible(false);
+        }
+        else
+        {
+            fa.nuevoPedido(new Pedido(u.getUsuario(),jRadioButton1.isSelected(),Txdestino.getText(),TxNombre.getText()));
+            Correcto.setVisible(true);
+            Error.setVisible(false);
+            TxApellidos.setText("");
+            TxNombre.setText("");
+            TxOrigen.setText("");
+            Txdestino.setText("");
+            TxDni.setText("");
+            TxTlf.setText("");
         }
     }//GEN-LAST:event_jPanel3MouseClicked
 
@@ -244,9 +294,23 @@ public class VPedido extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_TxOrigenActionPerformed
 
+    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRadioButton1ActionPerformed
+
+    private void TxdestinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxdestinoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TxdestinoActionPerformed
+
+    private void TxOrigenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TxOrigenMouseClicked
+        Correcto.setVisible(false);
+    }//GEN-LAST:event_TxOrigenMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Correcto;
     private javax.swing.JLabel Error;
+    private javax.swing.JLabel Express;
     private javax.swing.JTextField TxApellidos;
     private javax.swing.JTextField TxDni;
     private javax.swing.JTextField TxNombre;
@@ -257,9 +321,9 @@ public class VPedido extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -268,5 +332,6 @@ public class VPedido extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JRadioButton jRadioButton1;
     // End of variables declaration//GEN-END:variables
 }

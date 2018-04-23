@@ -7,6 +7,7 @@ package gui;
 
 import javax.swing.table.AbstractTableModel;
 import aplicacion.Empleado;
+import aplicacion.Usuario;
 /**
  *
  * @author alumnogreibd
@@ -25,7 +26,7 @@ public class ModeloTablaEmpleados extends AbstractTableModel {
         switch (col){
             case 0: nombre= "Id"; break;
             case 1: nombre="Nombre";break;
-            case 2: nombre="Tipo";break;
+            case 2: nombre="Administrador";break;
         }
         return nombre;
     }
@@ -37,7 +38,7 @@ public class ModeloTablaEmpleados extends AbstractTableModel {
         switch (col){
             case 0: clase= java.lang.String.class; break;
             case 1: clase=java.lang.String.class;break;
-            case 2: clase=java.lang.String.class;break;
+            case 2: clase=java.lang.Boolean.class;break;
         }
         return clase;
     }
@@ -49,7 +50,11 @@ public class ModeloTablaEmpleados extends AbstractTableModel {
 
     public Object getValueAt(int row, int col){
         Object resultado=null;
-        resultado= empleados.get(row).getUsuario();
+        switch(col){
+            case 0: resultado=empleados.get(row).getUsuario();break;
+            case 1: resultado=empleados.get(row).getNombre();break;
+            case 2: resultado=empleados.get(row).getAdministrador();break;
+        }
         return resultado;
     }
 
@@ -66,6 +71,12 @@ public class ModeloTablaEmpleados extends AbstractTableModel {
     public void setFilas(java.util.List<Empleado> empleados){
         this.empleados=empleados;
         fireTableDataChanged();
+    }
+    public Empleado getFila(int fila){
+        if(empleados.isEmpty()){
+            return null;
+        }
+        return empleados.get(fila);
     }
     
 }

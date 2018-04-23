@@ -65,6 +65,11 @@ public class FachadaAplicacion {
     public void actualizarUsr(String id,Usuario usuario) {
         gUsuarios.actualizarUsr(id, usuario);
     }
+    
+    public void nuevoPedido(Pedido p)
+    {
+        gPedidos.nuevoPedido(p);
+    }
 
     public Usuario registrarUsuario(String id, String clave, String dni, String nombre, String email, String direccion, String telefono, String sexo) {
         return gUsuarios.registrarUsuario(id, clave, dni, nombre, email, direccion, telefono, sexo);
@@ -74,9 +79,6 @@ public class FachadaAplicacion {
         gUsuarios.eliminarUsuario(id);
     }
 
-    public void nuevoPedido(Pedido pd) {
-        gPedidos.nuevoPedido(pd);
-    }
 
     public java.util.List<Pedido> obtenerHistorialPedidos(String usuario) {
         return gPedidos.obtenerHistorialPedidos(usuario);
@@ -114,8 +116,12 @@ public class FachadaAplicacion {
         return fbd.esAdministrador(id);
     }
 
-    public ArrayList<Empleado> obtenerEmpleados(String id, String nombre) {
-        return fbd.obtenerEmpleados(id, nombre);
+    public ArrayList<Empleado> obtenerEmpleados(String id) {
+        return fbd.obtenerEmpleados(id);
+    }
+    
+    public ArrayList<Integer> datosEmpleado(String id){
+        return fbd.datosEmpleado(id);
     }
 
     public ArrayList<Usuario> obtenerUsuarios(String id, String nombre) {

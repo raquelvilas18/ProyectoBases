@@ -123,8 +123,12 @@ public class FachadaBaseDatos {
     }
 
     //------EMPLEADOS-------//
-    public ArrayList<Empleado> obtenerEmpleados(String id, String nombre) {
-        return daoEmpleados.obtenerEmpleados(id, nombre);
+    public ArrayList<Empleado> obtenerEmpleados(String id ) {
+        return daoEmpleados.obtenerEmpleados(id);
+    }
+    
+    public ArrayList<Integer> datosEmpleado(String id){
+        return daoEmpleados.datosEmpleado(id);
     }
     
     public Empleado nuevoEmpleado(String usuario, int nomina, int anoIngreso, boolean administrador){

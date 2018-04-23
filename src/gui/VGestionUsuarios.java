@@ -28,15 +28,28 @@ public class VGestionUsuarios extends javax.swing.JPanel {
         initComponents();
         tablaUsr.setModel(tp);
         tp.setFilas(fa.obtenerUsuarios(this.FiltroId.getText(), this.FiltroNombre.getText()));
-        ErrorAlta.setVisible(false);
+        tablaUsr.changeSelection(0,0,false,false);
+        ErrorID.setVisible(false);
         LConfirmar.setVisible(false);
         LAlta.setVisible(true);
         BtAlta.setVisible(true);
-        ErrorAlta.setVisible(false);
+        ErrorAlta1.setVisible(false);
+        ErrorID.setVisible(false);
         AltaCorrecta.setVisible(false);
         LabelActualizar.setVisible(false);
         ContrasenaL.setVisible(false);
         TxContrasena.setVisible(false);
+        ModeloTablaUsuarios m = (ModeloTablaUsuarios) tablaUsr.getModel();
+        if(m.getRowCount()>0){
+            this.TxId.setText(m.getFila(tablaUsr.getSelectedRow()).getUsuario());
+            this.TxNombre.setText(m.getFila(tablaUsr.getSelectedRow()).getNombre());
+            this.TxCorreo.setText(m.getFila(tablaUsr.getSelectedRow()).getCorreo());
+            this.TxDireccion.setText(m.getFila(tablaUsr.getSelectedRow()).getDireccion());
+            this.TxTelefono.setText(m.getFila(tablaUsr.getSelectedRow()).getTelefono());
+            this.TxDni.setText(m.getFila(tablaUsr.getSelectedRow()).getDni());
+            this.sexo.setSelectedItem((m.getFila(tablaUsr.getSelectedRow())).getSexo());
+        }
+        
     }
 
     /**
@@ -82,15 +95,16 @@ public class VGestionUsuarios extends javax.swing.JPanel {
         sexo = new javax.swing.JComboBox();
         TxDni = new javax.swing.JTextField();
         jLabel23 = new javax.swing.JLabel();
-        ErrorAlta = new javax.swing.JLabel();
+        ErrorID = new javax.swing.JLabel();
         BtAlta = new javax.swing.JPanel();
         LConfirmar = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
         LAlta = new javax.swing.JLabel();
         LabelActualizar = new javax.swing.JLabel();
-        AltaCorrecta = new javax.swing.JLabel();
         TxContrasena = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
+        AltaCorrecta = new javax.swing.JLabel();
+        ErrorAlta1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaUsr = new javax.swing.JTable();
 
@@ -324,10 +338,10 @@ public class VGestionUsuarios extends javax.swing.JPanel {
         jLabel23.setText("DNI:");
         jPanel1.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, -1, -1));
 
-        ErrorAlta.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
-        ErrorAlta.setForeground(new java.awt.Color(255, 51, 51));
-        ErrorAlta.setText("Todos los campos son obligatorios");
-        jPanel1.add(ErrorAlta, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 100, -1, -1));
+        ErrorID.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        ErrorID.setForeground(new java.awt.Color(255, 51, 51));
+        ErrorID.setText("ID ya existente o vacío");
+        jPanel1.add(ErrorID, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, -1, -1));
 
         BtAlta.setBackground(new java.awt.Color(255, 148, 42));
         BtAlta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -359,11 +373,6 @@ public class VGestionUsuarios extends javax.swing.JPanel {
         LabelActualizar.setText("Datos actualizados");
         jPanel1.add(LabelActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, -1, -1));
 
-        AltaCorrecta.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
-        AltaCorrecta.setForeground(new java.awt.Color(0, 153, 0));
-        AltaCorrecta.setText("Usuario registrado correctamente");
-        jPanel1.add(AltaCorrecta, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 100, -1, -1));
-
         TxContrasena.setBackground(new java.awt.Color(255, 232, 185));
         TxContrasena.setForeground(new java.awt.Color(102, 102, 102));
         TxContrasena.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 1));
@@ -377,6 +386,16 @@ public class VGestionUsuarios extends javax.swing.JPanel {
         jLabel10.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel10.setText("Dirección:");
         jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 40, -1, -1));
+
+        AltaCorrecta.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        AltaCorrecta.setForeground(new java.awt.Color(0, 153, 0));
+        AltaCorrecta.setText("Usuario registrado correctamente");
+        jPanel1.add(AltaCorrecta, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 90, -1, 40));
+
+        ErrorAlta1.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        ErrorAlta1.setForeground(new java.awt.Color(255, 51, 51));
+        ErrorAlta1.setText("Todos los campos son obligatorios");
+        jPanel1.add(ErrorAlta1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 100, -1, -1));
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 381, 600, 170));
 
@@ -435,18 +454,44 @@ public class VGestionUsuarios extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_TxTelefonoActionPerformed
 
+    private void actualizarCampos()
+    {
+        tablaUsr.changeSelection(0,0,false,false);
+        ModeloTablaUsuarios m = (ModeloTablaUsuarios) tablaUsr.getModel();
+        this.TxId.setText(m.getFila(tablaUsr.getSelectedRow()).getUsuario());
+        this.TxNombre.setText(m.getFila(tablaUsr.getSelectedRow()).getNombre());
+        this.TxCorreo.setText(m.getFila(tablaUsr.getSelectedRow()).getCorreo());
+        this.TxDireccion.setText(m.getFila(tablaUsr.getSelectedRow()).getDireccion());
+        this.TxTelefono.setText(m.getFila(tablaUsr.getSelectedRow()).getTelefono());
+        this.TxDni.setText(m.getFila(tablaUsr.getSelectedRow()).getDni());
+        this.sexo.setSelectedItem((m.getFila(tablaUsr.getSelectedRow())).getSexo());
+    }
+    
+    
     private void tablaUsrMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaUsrMouseClicked
         // TODO add your handling code here:
         actualizarDatos();
-        ErrorAlta.setVisible(false);
+        ErrorID.setVisible(false);
+        BtActualizar.setEnabled(true);
+        ErrorAlta1.setVisible(false);
         AltaCorrecta.setVisible(false);
         LabelActualizar.setVisible(false);
 
     }//GEN-LAST:event_tablaUsrMouseClicked
 
     private void BtActualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtActualizarMouseClicked
+       ModeloTablaUsuarios  m = (ModeloTablaUsuarios) tablaUsr.getModel();
+        if((fa.consultarId(TxId.getText()) || (TxId.getText().equals(m.getFila(tablaUsr.getSelectedRow()).getUsuario()))) && !TxId.getText().isEmpty())
+       {
+        String id=m.getFila(tablaUsr.getSelectedRow()).getUsuario();
         restablecerBoton();
-        actualizarUsuario();
+        actualizarUsuario(id);
+        actualizarCampos();
+       }
+        else{ErrorID.setVisible(true);
+        LabelActualizar.setVisible((false));
+        actualizarCampos();
+        }
         // TODO add your handling code here:
     }//GEN-LAST:event_BtActualizarMouseClicked
 
@@ -455,7 +500,7 @@ public class VGestionUsuarios extends javax.swing.JPanel {
     }//GEN-LAST:event_TxDniActionPerformed
 
     private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
-        ErrorAlta.setVisible(false);
+        ErrorAlta1.setVisible(false);
     }//GEN-LAST:event_formMouseClicked
 
     private void BtBajaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtBajaMouseClicked
@@ -475,7 +520,7 @@ public class VGestionUsuarios extends javax.swing.JPanel {
             TxContrasena.setVisible(true);
         } else {
             if (TxId.getText().isEmpty() || TxNombre.getText().isEmpty() || TxCorreo.getText().isEmpty() || TxDireccion.getText().isEmpty() || TxTelefono.getText().isEmpty() || TxContrasena.getText().isEmpty()) {
-                ErrorAlta.setVisible(true);
+                ErrorAlta1.setVisible(true);
             } else {
                 fa.registrarUsuario(TxId.getText(), TxContrasena.getText(), TxDni.getText(), TxNombre.getText(), TxCorreo.getText(), TxDireccion.getText(), TxTelefono.getText(), null);
                 AltaCorrecta.setVisible(true);
@@ -497,7 +542,8 @@ public class VGestionUsuarios extends javax.swing.JPanel {
     private javax.swing.JPanel BtAlta;
     private javax.swing.JPanel BtBaja;
     private javax.swing.JLabel ContrasenaL;
-    private javax.swing.JLabel ErrorAlta;
+    private javax.swing.JLabel ErrorAlta1;
+    private javax.swing.JLabel ErrorID;
     private javax.swing.JTextField FiltroId;
     private javax.swing.JTextField FiltroNombre;
     private javax.swing.JLabel LAlta;
@@ -552,14 +598,14 @@ public class VGestionUsuarios extends javax.swing.JPanel {
     }
 
     //public Usuario(String usuario, String password, String dni, String nombre, String correo, String direccion, String telefono, String sexo) {
-    public void actualizarUsuario() {
+    public void actualizarUsuario(String id) {
         ModeloTablaUsuarios m;
 
         m = (ModeloTablaUsuarios) tablaUsr.getModel();
-        fa.actualizarUsr(m.getFila(tablaUsr.getSelectedRow()).getUsuario(), new Usuario(TxId.getText(), null, TxDni.getText(), TxNombre.getText(), TxCorreo.getText(), TxDireccion.getText(), TxTelefono.getText(), (String) sexo.getSelectedItem()));
+        fa.actualizarUsr(id, new Usuario(TxId.getText(), null, TxDni.getText(), TxNombre.getText(), TxCorreo.getText(), TxDireccion.getText(), TxTelefono.getText(), (String) sexo.getSelectedItem()));
         LabelActualizar.setVisible(true);
         m.setFilas(fa.obtenerUsuarios(this.FiltroId.getText(), this.FiltroNombre.getText()));
-
+        BtActualizar.setEnabled(false);
     }
 
     public void eliminarUsuario() {
@@ -591,11 +637,13 @@ public class VGestionUsuarios extends javax.swing.JPanel {
 
     public void restablecerBoton() {
         nuevo = false;
+        BtActualizar.setEnabled(false);
         BtAlta.setBackground(new Color(255, 148, 42));
-        ErrorAlta.setVisible(false);
+        ErrorID.setVisible(false);
         LConfirmar.setVisible(false);
         LAlta.setVisible(true);
         ContrasenaL.setVisible(false);
         TxContrasena.setVisible(false);
+        tablaUsr.changeSelection(0,0,false,false);
     }
 }

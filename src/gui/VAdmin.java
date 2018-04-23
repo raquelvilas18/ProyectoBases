@@ -263,7 +263,7 @@ public class VAdmin extends javax.swing.JPanel {
         add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 420, 310, 40));
 
         Maps.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-mapas-de-google-32(1).png"))); // NOI18N
-        Maps.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        Maps.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Maps.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 MapsMouseClicked(evt);
@@ -272,7 +272,7 @@ public class VAdmin extends javax.swing.JPanel {
         add(Maps, new org.netbeans.lib.awtextra.AbsoluteConstraints(-40, 150, 40, -1));
 
         CerrarSesion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-apagar-26.png"))); // NOI18N
-        CerrarSesion.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        CerrarSesion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         CerrarSesion.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 CerrarSesionMouseClicked(evt);
@@ -390,7 +390,8 @@ public class VAdmin extends javax.swing.JPanel {
 
     private void CerrarSesionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CerrarSesionMouseClicked
         // TODO add your handling code here:
-        //parent.ventanaInicial(this);
+        this.setVisible(false);
+        parent.ventanaInicial();
     }//GEN-LAST:event_CerrarSesionMouseClicked
 
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
