@@ -5,17 +5,24 @@
  */
 package gui;
 
+import AppPackage.AnimationClass;
+import java.awt.Color;
+import java.awt.Desktop;
+import java.net.URI;
+
 /**
  *
  * @author alumnogreibd
  */
 public class VOficinista extends javax.swing.JPanel {
+    VPrincipal parent;
 
     /**
      * Creates new form VOficinista
      */
-    public VOficinista() {
+    public VOficinista(VPrincipal parent) {
         initComponents();
+        this.parent = parent;
     }
 
     /**
@@ -38,6 +45,8 @@ public class VOficinista extends javax.swing.JPanel {
         jPanel4 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
+        Maps = new javax.swing.JLabel();
+        CerrarSesion = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(87, 179, 57));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -193,6 +202,24 @@ public class VOficinista extends javax.swing.JPanel {
         );
 
         add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 400, -1, 70));
+
+        Maps.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-mapas-de-google-32(1).png"))); // NOI18N
+        Maps.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        Maps.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                MapsMouseClicked(evt);
+            }
+        });
+        add(Maps, new org.netbeans.lib.awtextra.AbsoluteConstraints(-40, 150, 40, -1));
+
+        CerrarSesion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-apagar-26.png"))); // NOI18N
+        CerrarSesion.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        CerrarSesion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                CerrarSesionMouseClicked(evt);
+            }
+        });
+        add(CerrarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(-40, 120, 40, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jLabel13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel13MouseClicked
@@ -212,7 +239,7 @@ public class VOficinista extends javax.swing.JPanel {
 
     private void jPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseClicked
         // TODO add your handling code here:
-        parent.ventanaPerfil(usuario);
+       // parent.ventanaPerfil(usuario);
     }//GEN-LAST:event_jPanel1MouseClicked
 
     private void jPanel1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseExited
@@ -227,7 +254,7 @@ public class VOficinista extends javax.swing.JPanel {
 
     private void jPanel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseClicked
         // TODO add your handling code here:
-        parent.ventanaHistorial(usuario);
+        //parent.ventanaHistorial(usuario);
     }//GEN-LAST:event_jPanel3MouseClicked
 
     private void jPanel3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseExited
@@ -242,7 +269,7 @@ public class VOficinista extends javax.swing.JPanel {
 
     private void jPanel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseClicked
         // TODO add your handling code here:
-        parent.ventanaPedidosActivos(usuario);
+        //parent.ventanaPedidosActivos(usuario);
     }//GEN-LAST:event_jPanel4MouseClicked
 
     private void jPanel4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseExited
@@ -255,8 +282,20 @@ public class VOficinista extends javax.swing.JPanel {
         jPanel4.setBackground(new Color(166, 179, 253));
     }//GEN-LAST:event_jPanel4MouseEntered
 
+    private void MapsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MapsMouseClicked
+        openInternet();
+    }//GEN-LAST:event_MapsMouseClicked
+
+    private void CerrarSesionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CerrarSesionMouseClicked
+        // TODO add your handling code here:
+        this.setVisible(false);
+        parent.ventanaInicial();
+    }//GEN-LAST:event_CerrarSesionMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel CerrarSesion;
+    private javax.swing.JLabel Maps;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel13;
@@ -269,4 +308,13 @@ public class VOficinista extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     // End of variables declaration//GEN-END:variables
+
+    public void openInternet(){
+        try{
+            Desktop.getDesktop().browse(URI.create("https://www.google.es/maps"));
+        }catch(Exception e){
+            
+        }
+    }
+
 }
