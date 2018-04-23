@@ -18,9 +18,10 @@ public class Usuario {
     private String direccion;
     private String telefono;
     private String sexo;
+    private String tipo;
 
     /* ----------    CONSTRUCTORES   ---------- */
-    public Usuario(String usuario, String password, String dni, String nombre, String correo, String direccion, String telefono, String sexo) {
+    public Usuario(String usuario, String password, String dni, String nombre, String correo, String direccion, String telefono, String sexo, String tipo) {
         this.usuario = usuario;
         this.password = password;
         this.dni = dni;
@@ -29,6 +30,7 @@ public class Usuario {
         this.direccion = direccion;
         this.telefono = telefono;
         this.sexo = sexo;
+        this.tipo = tipo;
     }
 
     /* ----------    GETTERS Y SETTERS   ---------- */
@@ -94,6 +96,14 @@ public class Usuario {
 
     public void setSexo(String sexo) {
         this.sexo = sexo;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
 
 }

@@ -535,7 +535,7 @@ public class VGestionUsuariosOficinista extends javax.swing.JPanel {
                 ErrorAlta1.setVisible(true);
             } else {
                 
-                fa.registrarUsuario(TxId.getText(), TxContrasena.getText(), TxDni.getText(), TxNombre.getText(), TxCorreo.getText(), TxDireccion.getText(), TxTelefono.getText(), getSexo());
+                fa.registrarUsuario(TxId.getText(), TxContrasena.getText(), TxDni.getText(), TxNombre.getText(), TxCorreo.getText(), TxDireccion.getText(), TxTelefono.getText(), getSexo(), "cliente");
                 AltaCorrecta.setVisible(true);
                 restablecerBoton();
                 actualizarTabla();
@@ -614,7 +614,7 @@ public class VGestionUsuariosOficinista extends javax.swing.JPanel {
         ModeloTablaUsuarios m;
 
         m = (ModeloTablaUsuarios) tablaUsr.getModel();
-        fa.actualizarUsr(id, new Usuario(TxId.getText(), null, TxDni.getText(), TxNombre.getText(), TxCorreo.getText(), TxDireccion.getText(), TxTelefono.getText(), getSexo()));
+        fa.actualizarUsr(id, new Usuario(TxId.getText(), null, TxDni.getText(), TxNombre.getText(), TxCorreo.getText(), TxDireccion.getText(), TxTelefono.getText(), getSexo(), "cliente"));
         LabelActualizar.setVisible(true);
         m.setFilas(fa.obtenerUsuarios(this.FiltroId.getText(), this.FiltroNombre.getText()));
         BtActualizar.setEnabled(false);
