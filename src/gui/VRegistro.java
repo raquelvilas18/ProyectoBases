@@ -312,8 +312,10 @@ public class VRegistro extends javax.swing.JPanel {
         String id = textID.getText();
         String sexo = textSexo.getText();
         if(nombre!=null && dni!=null && email!=null && contraseña!=null && id!=null && captcha==true){
+            if(!nombre.equals("") && !dni.equals("") && !email.equals("") && !contraseña.equals("") && !id.equals("")){
             fa.registrarUsuario(id, contraseña, dni, nombre, email, direccion, telefono, sexo);
             vp.ventanaUsuario(fa.consultarUsuario(id, contraseña));
+            }
         }
     }//GEN-LAST:event_jPanel1MouseClicked
 

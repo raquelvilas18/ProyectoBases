@@ -47,7 +47,7 @@ public class DAOPedidos extends AbstractDAO {
         
     }
     
-    public void tramitarPedido(Pedido pd)
+    public void tramitarPedido(Integer codigo)
     {
         Connection con;
         PreparedStatement stmPedidos=null;
@@ -58,7 +58,7 @@ public class DAOPedidos extends AbstractDAO {
             stmPedidos=con.prepareStatement("update pedidos "
                     + "set fecha=current_date, "
                     + "where codigo=?");
-            stmPedidos.setInt(1, pd.getCodigo());
+            stmPedidos.setInt(1, codigo);
             
             stmPedidos.executeUpdate();
             
@@ -140,9 +140,9 @@ public class DAOPedidos extends AbstractDAO {
         return resultado;
     }
    
-    public Pedido comprobarLocalizacion(String codigo)
+    public java.util.List<Paquete> comprobarLocalizacion(Integer codigo)
     {
-        Pedido resultado = null;
+        java.util.List<Paquete> resultado =new java.util.ArrayList<Paquete>();
         Connection con;
         PreparedStatement stmPedidos=null;
         ResultSet rsPedidos=null;
@@ -151,20 +151,22 @@ public class DAOPedidos extends AbstractDAO {
         
         try{
             stmPedidos=con.prepareStatement("SELECT * "+
-                                            "FROM pedidos " +
+                                            "FROM paquetes " +
                                             "WHERE codigo=?");
-            stmPedidos.setString(1, codigo);
+            stmPedidos.setInt(1, codigo);
             
             rsPedidos = stmPedidos.executeQuery();
-            
+            //String codigo, String pedido, float peso, float alto, float ancho, float largo, String fecha_entrega, String matrcula, String local
             while(rsPedidos.next()){
-                resultado = new Pedido(rsPedidos.getString("fecha"),
-                                                  rsPedidos.getString("cliente"),
-                                                  rsPedidos.getInt("codigo"),
-                                                  rsPedidos.getBoolean("express"),
-                                                  rsPedidos.getString("direccion"),
-                                                  rsPedidos.getString("destinatario"),
-                                                  rsPedidos.getString("tramitador"));
+                resultado.add(new Paquete(rsPedidos.getInt("codigo"),
+                                                  rsPedidos.getInt("pedido"),
+                                                  rsPedidos.getFloat("peso"),
+                                                  rsPedidos.getInt("alto"),
+                                                  rsPedidos.getInt("ancho"),
+                                                  rsPedidos.getInt("largo"),
+                                                  rsPedidos.getString("fecha_entrega"),
+                                                  rsPedidos.getString("vehiculo"),
+                                                  rsPedidos.getString("local")));
             }
         }catch (SQLException e){
                 System.out.println(e.getMessage());
