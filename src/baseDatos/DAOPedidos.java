@@ -115,8 +115,13 @@ public class DAOPedidos extends AbstractDAO {
         try {
                 stmPedidos=con.prepareStatement("SELECT *\n" +
                                                 "FROM pedidos\n" +
-                                                "WHERE cliente=? AND fecha>=(SELECT current_date)");
+                                                "WHERE cliente=? AND fecha>=(SELECT current_date) "
+                        + "UNION\n"
+                        + "SELECT *\n"
+                        + "FROM PEDIDOS\n"
+                        + "WHERE cliente=? AND fecha is null");
                 stmPedidos.setString(1, usuario);
+                stmPedidos.setString(2, usuario);
                 rsPedidos=stmPedidos.executeQuery();
                  while (rsPedidos.next())
                 {
