@@ -157,7 +157,7 @@ public class VGestionUsuariosOficinista extends javax.swing.JPanel {
         jLabel1.setText("jLabel1");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 10, 300, 110));
 
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-google-web-search-filled-50.png"))); // NOI18N
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-google-web-search-Verde.png"))); // NOI18N
         jLabel6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
