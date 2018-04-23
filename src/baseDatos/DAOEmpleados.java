@@ -60,8 +60,7 @@ public class DAOEmpleados extends AbstractDAO {
                                             rsEmpleado.getString("telefono"),
                                             rsEmpleado.getString("sexo"),
                                             rsEmpleado.getInt("nomina"),
-                                            rsEmpleado.getInt("anoingreso"),
-                                            rsEmpleado.getBoolean("administrador"));
+                                            rsEmpleado.getInt("anoingreso"));
             }
         }catch(SQLException e){
             System.out.println(e.getMessage());
@@ -96,7 +95,7 @@ public class DAOEmpleados extends AbstractDAO {
                 DAOUsuarios daoUs = new DAOUsuarios(this.getConexion(), this.getFachadaAplicacion());
                 Usuario u;
                 u = daoUs.obtenerUsuarios(rsEmpleados.getString("usuario"),"" ).get(0);
-                resultado.add(new Empleado(u.getUsuario(), u.getPassword(), u.getDni(), u.getNombre(), u.getCorreo(), u.getDireccion(), u.getTelefono(), u.getSexo(), rsEmpleados.getInt("nomina"), rsEmpleados.getInt("anoIngreso"), daoUs.esAdministrador(u.getUsuario())));
+                resultado.add(new Empleado(u.getUsuario(), u.getPassword(), u.getDni(), u.getNombre(), u.getCorreo(), u.getDireccion(), u.getTelefono(), u.getSexo(), rsEmpleados.getInt("nomina"), rsEmpleados.getInt("anoIngreso")));
             }
         
         } catch (SQLException e) {
@@ -121,13 +120,12 @@ public class DAOEmpleados extends AbstractDAO {
 
         try {
             stmEmpleado = con.prepareStatement("UPDATE empleados\n"
-                    + " SET usuario=?, nomina=?, anoingreso=?, administrador=? \n"
+                    + " SET usuario=?, nomina=?, anoingreso=? \n"
                     + " WHERE usuario=? ");
             stmEmpleado.setString(1, empleado.getUsuario());
             stmEmpleado.setInt(2, empleado.getNomina());
             stmEmpleado.setInt(3, empleado.getAnoIngreso());
-            stmEmpleado.setBoolean(4, empleado.getAdministrador());
-            stmEmpleado.setString(5, empleado.getUsuario());
+            stmEmpleado.setString(4, empleado.getUsuario());
             
             stmEmpleado.executeUpdate();
         } catch (SQLException e) {
@@ -150,13 +148,12 @@ public class DAOEmpleados extends AbstractDAO {
 
         try {
             stmEmpleado = con.prepareStatement("UPDATE empleados\n"
-                    + " SET usuario=?, nomina=?, anoingreso=?, administrador=? \n"
+                    + " SET usuario=?, nomina=?, anoingreso=?\n"
                     + " WHERE usuario=? ");
             stmEmpleado.setString(1, empleado.getUsuario());
             stmEmpleado.setInt(2, empleado.getNomina());
             stmEmpleado.setInt(3, empleado.getAnoIngreso());
-            stmEmpleado.setBoolean(4, empleado.getAdministrador());
-            stmEmpleado.setString(5, id);
+            stmEmpleado.setString(4, id);
             
             stmEmpleado.executeUpdate();
         } catch (SQLException e) {

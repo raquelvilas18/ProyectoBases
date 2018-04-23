@@ -12,13 +12,11 @@ package aplicacion;
 public class Empleado extends Usuario{
     private int nomina;
     private int anoIngreso;
-    private boolean administrador;
     
-    public Empleado(String usuario, String password, String dni, String nombre, String correo, String direccion, String telefono, String sexo, int nomina, int anoIngreso, boolean administrador){
+    public Empleado(String usuario, String password, String dni, String nombre, String correo, String direccion, String telefono, String sexo, int nomina, int anoIngreso){
         super(usuario, password, dni, nombre, correo, direccion, telefono, sexo);
         this.nomina = nomina;
         this.anoIngreso = anoIngreso;
-        this.administrador = administrador;
     }
     
     public int getNomina(){
@@ -36,12 +34,4 @@ public class Empleado extends Usuario{
     public void setAnoIngreso(int anoIngreso){
         this.anoIngreso = anoIngreso;
     }    
-    
-     public Boolean getAdministrador() {
-        return administrador;
-    }
-
-    public void setAdministrador(boolean administrador) {
-        this.administrador = administrador;
-    }
 }

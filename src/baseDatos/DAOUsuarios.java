@@ -154,8 +154,8 @@ public class DAOUsuarios extends AbstractDAO {
         }
     }
 
-    public boolean esAdministrador(String id) {
-        boolean resultado = false;
+    public String getTipo(String id) {
+        String resultado = "";
         Connection con;
         PreparedStatement stmUsuario = null;
         ResultSet rsUsuario;
@@ -163,14 +163,13 @@ public class DAOUsuarios extends AbstractDAO {
         con = this.getConexion();
 
         try {
-            stmUsuario = con.prepareStatement("SELECT *\n"
+            stmUsuario = con.prepareStatement("SELECT tipo\n"
                     + "FROM usuarios\n"
-                    + "WHERE usuario=? "
-                    + "AND administrador = true");
+                    + "WHERE usuario=? " );
             stmUsuario.setString(1, id);
             rsUsuario = stmUsuario.executeQuery();
             if (rsUsuario.next()) {
-                resultado = true;
+                resultado = rsUsuario.getString("tipo");
 
             }
         } catch (SQLException e) {

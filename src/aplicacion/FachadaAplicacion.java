@@ -112,8 +112,8 @@ public class FachadaAplicacion {
         return fbd.comprobarLocalizacion(codigo);
     }
 
-    public boolean esAdministrador(String id) {
-        return fbd.esAdministrador(id);
+    public String getTipo(String id) {
+        return fbd.getTipo(id);
     }
 
     public ArrayList<Empleado> obtenerEmpleados(String id) {

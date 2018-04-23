@@ -25,13 +25,13 @@ public class GestionEmpleados extends GestionUsuarios{
     
     public void actualizar(Empleado emp){
         super.getFbd().actualizar(emp);
-        if(emp.getAdministrador())
+        if(this.getFbd().getTipo(emp.getUsuario()).equals("administrador"))
             super.getFbd().actualizarEmpleado(emp);
     }
     
     public void actualizarEmpleado(String id, Empleado emp){
         super.getFbd().actualizarUsr(id, emp);
-        if(emp.getAdministrador())
+        if(this.getFbd().getTipo(emp.getUsuario()).equals("administrador"))
             super.getFbd().actualizarEmp(id,emp);
     }
     

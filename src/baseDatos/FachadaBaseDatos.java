@@ -91,8 +91,8 @@ public class FachadaBaseDatos {
         return daoUsuarios.registrarUsuario(id, clave, dni, nombre, email, direccion, telefono, sexo);
     }
 
-    public boolean esAdministrador(String id) {
-        return daoUsuarios.esAdministrador(id);
+    public String getTipo(String id) {
+        return daoUsuarios.getTipo(id);
     }
     
     public ArrayList<Usuario> obtenerUsuarios(String id, String nombre){
