@@ -56,7 +56,7 @@ public class VOficinista extends javax.swing.JPanel {
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 60, 110, 110));
 
         jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-lista-con-viñetas-50.png"))); // NOI18N
-        jLabel13.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jLabel13.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel13.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
         jLabel13.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -65,8 +65,8 @@ public class VOficinista extends javax.swing.JPanel {
         });
         add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
-        jPanel1.setBackground(new java.awt.Color(126, 204, 58));
-        jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jPanel1.setBackground(new java.awt.Color(113, 189, 46));
+        jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jPanel1MouseClicked(evt);
@@ -107,10 +107,10 @@ public class VOficinista extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 310, 70));
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 310, 70));
 
-        jPanel3.setBackground(new java.awt.Color(126, 204, 58));
-        jPanel3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jPanel3.setBackground(new java.awt.Color(113, 189, 46));
+        jPanel3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jPanel3MouseClicked(evt);
@@ -151,10 +151,10 @@ public class VOficinista extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 320, 310, 70));
+        add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, 310, 70));
 
-        jPanel4.setBackground(new java.awt.Color(126, 204, 58));
-        jPanel4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jPanel4.setBackground(new java.awt.Color(113, 189, 46));
+        jPanel4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jPanel4MouseClicked(evt);
@@ -201,10 +201,10 @@ public class VOficinista extends javax.swing.JPanel {
                     .addContainerGap(31, Short.MAX_VALUE)))
         );
 
-        add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 400, -1, 70));
+        add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 370, -1, 70));
 
         Maps.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-mapas-de-google-32(1).png"))); // NOI18N
-        Maps.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        Maps.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Maps.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 MapsMouseClicked(evt);
@@ -213,7 +213,7 @@ public class VOficinista extends javax.swing.JPanel {
         add(Maps, new org.netbeans.lib.awtextra.AbsoluteConstraints(-40, 150, 40, -1));
 
         CerrarSesion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-apagar-26.png"))); // NOI18N
-        CerrarSesion.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        CerrarSesion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         CerrarSesion.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 CerrarSesionMouseClicked(evt);
@@ -244,12 +244,12 @@ public class VOficinista extends javax.swing.JPanel {
 
     private void jPanel1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseExited
         // TODO add your handling code here:
-        jPanel1.setBackground(new Color(111, 133, 255));
+        jPanel1.setBackground(new Color(113,189,46));
     }//GEN-LAST:event_jPanel1MouseExited
 
     private void jPanel1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseEntered
         // TODO add your handling code here:
-        jPanel1.setBackground(new Color(166, 179, 253));
+        jPanel1.setBackground(new Color(132,210,64));
     }//GEN-LAST:event_jPanel1MouseEntered
 
     private void jPanel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseClicked
@@ -259,12 +259,12 @@ public class VOficinista extends javax.swing.JPanel {
 
     private void jPanel3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseExited
         // TODO add your handling code here:
-        jPanel3.setBackground(new Color(111, 133, 255));
+        jPanel3.setBackground(new Color(113,189,46));
     }//GEN-LAST:event_jPanel3MouseExited
 
     private void jPanel3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseEntered
         // TODO add your handling code here:
-        jPanel3.setBackground(new Color(166, 179, 253));
+        jPanel3.setBackground(new Color(132,210,64));
     }//GEN-LAST:event_jPanel3MouseEntered
 
     private void jPanel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseClicked
@@ -274,12 +274,12 @@ public class VOficinista extends javax.swing.JPanel {
 
     private void jPanel4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseExited
         // TODO add your handling code here:
-        jPanel4.setBackground(new Color(111, 133, 255));
+        jPanel4.setBackground(new Color(113,189,46));
     }//GEN-LAST:event_jPanel4MouseExited
 
     private void jPanel4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseEntered
         // TODO add your handling code here:
-        jPanel4.setBackground(new Color(166, 179, 253));
+        jPanel4.setBackground(new Color(132,210,64));
     }//GEN-LAST:event_jPanel4MouseEntered
 
     private void MapsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MapsMouseClicked

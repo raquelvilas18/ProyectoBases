@@ -277,7 +277,8 @@ public class VPrincipal extends javax.swing.JFrame {
     private void jPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseClicked
         if ((!JUsuario.getText().equals("")) && (!JContrasena.getText().equals("")) && fa.comprobarAutentificacion(JUsuario.getText(), JContrasena.getText())) {
             if (fa.esAdministrador(JUsuario.getText())) {
-                ventanaAdmin();
+                //ventanaAdmin();
+                ventanaOficinista();
             } else {
                 ventanaUsuario(fa.consultarUsuario(JUsuario.getText(), JContrasena.getText()));
                 autentificacionIncorrecta.setVisible(false);
@@ -347,6 +348,21 @@ public class VPrincipal extends javax.swing.JFrame {
         panelBase.add(panelAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 310, 580));
         panelAdmin.setVisible(true);
         VPerfilAdmin panelPerfil = new VPerfilAdmin(fa,fa.consultarUsuario(JUsuario.getText(), JContrasena.getText()));
+        panelBase.add(panelPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 680, 580));
+        panelActivo = panelPerfil;
+    }
+    
+    public void ventanaOficinista() {
+        if (panelActivo != null) {
+            panelActivo.setVisible(false);
+        }
+        panelLocPaquete.setVisible(false);
+        panelLogin.setVisible(false);
+        panelLogo.setVisible(false);
+        VOficinista panelAdmin = new VOficinista(this);
+        panelBase.add(panelAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 310, 580));
+        panelAdmin.setVisible(true);
+        VPerfilOficinista panelPerfil = new VPerfilOficinista(fa,fa.consultarUsuario(JUsuario.getText(), JContrasena.getText()));
         panelBase.add(panelPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 680, 580));
         panelActivo = panelPerfil;
     }
