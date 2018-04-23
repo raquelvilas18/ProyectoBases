@@ -84,6 +84,7 @@ public class VPerfilOficinista extends javax.swing.JPanel {
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 10, 300, 110));
 
         jId.setBackground(new java.awt.Color(143, 207, 122));
+        jId.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jId.setForeground(new java.awt.Color(0, 0, 0));
         jId.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jId.setBorder(null);
@@ -186,24 +187,28 @@ public class VPerfilOficinista extends javax.swing.JPanel {
         add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 430, -1, -1));
 
         JNombre.setBackground(new java.awt.Color(143, 207, 122));
+        JNombre.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         JNombre.setForeground(new java.awt.Color(0, 0, 0));
         JNombre.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         JNombre.setBorder(null);
         add(JNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 220, 470, 30));
 
         JCorreo.setBackground(new java.awt.Color(143, 207, 122));
+        JCorreo.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         JCorreo.setForeground(new java.awt.Color(0, 0, 0));
         JCorreo.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         JCorreo.setBorder(null);
         add(JCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 270, 470, 30));
 
         JTelefono.setBackground(new java.awt.Color(143, 207, 122));
+        JTelefono.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         JTelefono.setForeground(new java.awt.Color(0, 0, 0));
         JTelefono.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         JTelefono.setBorder(null);
         add(JTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 320, 470, 30));
 
         JDireccion.setBackground(new java.awt.Color(143, 207, 122));
+        JDireccion.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         JDireccion.setForeground(new java.awt.Color(0, 0, 0));
         JDireccion.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         JDireccion.setBorder(null);
@@ -258,6 +263,7 @@ public class VPerfilOficinista extends javax.swing.JPanel {
         add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 380, -1, -1));
 
         JDNI.setBackground(new java.awt.Color(143, 207, 122));
+        JDNI.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         JDNI.setForeground(new java.awt.Color(0, 0, 0));
         JDNI.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         JDNI.setBorder(null);
