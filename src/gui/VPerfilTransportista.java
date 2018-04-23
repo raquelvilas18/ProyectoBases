@@ -20,8 +20,11 @@ public class VPerfilTransportista extends javax.swing.JPanel {
      */
     public VPerfilTransportista(FachadaAplicacion fa, Usuario usuario) {
         initComponents();
-        this.fa=fa;
-        this.usuario=usuario;
+        JLabelMensaje.setVisible(false);
+        this.usuario = usuario;
+        this.actualizador(usuario);
+        this.fa = fa;
+        this.ActualizarLabel.setVisible(false);
     }
 
     /**
@@ -55,6 +58,9 @@ public class VPerfilTransportista extends javax.swing.JPanel {
         sexo = new javax.swing.JComboBox<String>();
         jLabel18 = new javax.swing.JLabel();
         JDNI = new javax.swing.JTextField();
+        ActualizarLabel = new javax.swing.JLabel();
+
+        setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/logoPequeno.png"))); // NOI18N
         jLabel1.setText("jLabel1");
@@ -214,11 +220,18 @@ public class VPerfilTransportista extends javax.swing.JPanel {
         JDNI.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         JDNI.setBorder(null);
 
+        ActualizarLabel.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        ActualizarLabel.setForeground(new java.awt.Color(183, 112, 255));
+        ActualizarLabel.setText("Datos actualizados correctamente");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 657, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(349, Short.MAX_VALUE)
+                .addComponent(ActualizarLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(38, 38, 38))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -266,7 +279,10 @@ public class VPerfilTransportista extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 552, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(472, Short.MAX_VALUE)
+                .addComponent(ActualizarLabel)
+                .addGap(65, 65, 65))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -343,6 +359,7 @@ public class VPerfilTransportista extends javax.swing.JPanel {
             usuario.setTelefono(JTelefono.getText());
             usuario.setUsuario(jId.getText());
             fa.actualizar(usuario);
+            this.ActualizarLabel.setVisible(true);
         }
         else{
             JLabelMensaje.setVisible(true);
@@ -353,8 +370,19 @@ public class VPerfilTransportista extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_sexoActionPerformed
 
+    public void actualizador(Usuario usuario) {
+        JNombre.setText(usuario.getNombre());
+        JDireccion.setText(usuario.getDni());
+        JCorreo.setText(usuario.getCorreo());
+        JDNI.setText(usuario.getDni());
+        JTelefono.setText(usuario.getTelefono());
+        JDireccion.setText(usuario.getDireccion());
+        jId.setText(usuario.getUsuario());
+        sexo.setSelectedItem(usuario.getSexo());
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel ActualizarLabel;
     private javax.swing.JPanel JActualizar;
     private javax.swing.JTextField JCorreo;
     private javax.swing.JTextField JDNI;
@@ -379,3 +407,4 @@ public class VPerfilTransportista extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> sexo;
     // End of variables declaration//GEN-END:variables
 }
+
