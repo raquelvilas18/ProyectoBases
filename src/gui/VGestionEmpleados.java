@@ -155,6 +155,7 @@ public class VGestionEmpleados extends javax.swing.JPanel {
 
         tablaEmpleados.setBackground(new java.awt.Color(255, 232, 185));
         tablaEmpleados.setModel(new ModeloTablaEmpleados());
+        tablaEmpleados.setSurrendersFocusOnKeystroke(true);
         jScrollPane1.setViewportView(tablaEmpleados);
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, 600, 180));

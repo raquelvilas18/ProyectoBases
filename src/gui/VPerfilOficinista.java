@@ -13,18 +13,20 @@ import aplicacion.Usuario;
  * @author raquel
  */
 public class VPerfilOficinista extends javax.swing.JPanel {
-    
+
     private Usuario usuario;
     private FachadaAplicacion fa;
+
     /**
      * Creates new form VPerfil
      */
-    public VPerfilOficinista(FachadaAplicacion fa,Usuario usuario) {
+    public VPerfilOficinista(FachadaAplicacion fa, Usuario usuario) {
         initComponents();
         JLabelMensaje.setVisible(false);
         this.usuario = usuario;
         this.actualizador(usuario);
-        this.fa=fa;
+        this.fa = fa;
+        this.ActualizarLabel.setVisible(false);
     }
 
     /**
@@ -62,6 +64,7 @@ public class VPerfilOficinista extends javax.swing.JPanel {
         sexo = new javax.swing.JComboBox<String>();
         jLabel18 = new javax.swing.JLabel();
         JDNI = new javax.swing.JTextField();
+        ActualizarLabel = new javax.swing.JLabel();
 
         jLabel6.setBackground(new java.awt.Color(65, 105, 225));
         jLabel6.setFont(new java.awt.Font("Samanata", 0, 24)); // NOI18N
@@ -81,6 +84,7 @@ public class VPerfilOficinista extends javax.swing.JPanel {
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 10, 300, 110));
 
         jId.setBackground(new java.awt.Color(143, 207, 122));
+        jId.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jId.setForeground(new java.awt.Color(0, 0, 0));
         jId.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jId.setBorder(null);
@@ -98,6 +102,9 @@ public class VPerfilOficinista extends javax.swing.JPanel {
         JActualizar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jActualizarMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                JActualizarMouseEntered(evt);
             }
         });
 
@@ -180,24 +187,28 @@ public class VPerfilOficinista extends javax.swing.JPanel {
         add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 430, -1, -1));
 
         JNombre.setBackground(new java.awt.Color(143, 207, 122));
+        JNombre.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         JNombre.setForeground(new java.awt.Color(0, 0, 0));
         JNombre.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         JNombre.setBorder(null);
         add(JNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 220, 470, 30));
 
         JCorreo.setBackground(new java.awt.Color(143, 207, 122));
+        JCorreo.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         JCorreo.setForeground(new java.awt.Color(0, 0, 0));
         JCorreo.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         JCorreo.setBorder(null);
         add(JCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 270, 470, 30));
 
         JTelefono.setBackground(new java.awt.Color(143, 207, 122));
+        JTelefono.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         JTelefono.setForeground(new java.awt.Color(0, 0, 0));
         JTelefono.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         JTelefono.setBorder(null);
         add(JTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 320, 470, 30));
 
         JDireccion.setBackground(new java.awt.Color(143, 207, 122));
+        JDireccion.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         JDireccion.setForeground(new java.awt.Color(0, 0, 0));
         JDireccion.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         JDireccion.setBorder(null);
@@ -252,15 +263,21 @@ public class VPerfilOficinista extends javax.swing.JPanel {
         add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 380, -1, -1));
 
         JDNI.setBackground(new java.awt.Color(143, 207, 122));
+        JDNI.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         JDNI.setForeground(new java.awt.Color(0, 0, 0));
         JDNI.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         JDNI.setBorder(null);
         add(JDNI, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 370, 470, 30));
+
+        ActualizarLabel.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        ActualizarLabel.setForeground(new java.awt.Color(0, 153, 0));
+        ActualizarLabel.setText("Datos actualizados correctamente");
+        add(ActualizarLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 480, 270, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jActualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jActualizarMouseClicked
         // TODO add your handling code here:
-        if((fa.consultarId(jId.getText()) || (jId.getText().equals(usuario.getUsuario()))) && !jId.getText().isEmpty()){
+        if ((fa.consultarId(jId.getText()) || (jId.getText().equals(usuario.getUsuario()))) && !jId.getText().isEmpty()) {
             JLabelMensaje.setVisible(false);
             usuario.setCorreo(JCorreo.getText());
             usuario.setDireccion(JDireccion.getText());
@@ -270,8 +287,9 @@ public class VPerfilOficinista extends javax.swing.JPanel {
             usuario.setTelefono(JTelefono.getText());
             usuario.setUsuario(jId.getText());
             fa.actualizar(usuario);
-        }
-        else{
+            this.ActualizarLabel.setVisible(true);
+
+        } else {
             JLabelMensaje.setVisible(true);
         }
     }//GEN-LAST:event_jActualizarMouseClicked
@@ -280,13 +298,18 @@ public class VPerfilOficinista extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_sexoActionPerformed
 
-   
+
     private void jLabel11MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel11MousePressed
-        
+
     }//GEN-LAST:event_jLabel11MousePressed
+
+    private void JActualizarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JActualizarMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JActualizarMouseEntered
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel ActualizarLabel;
     private javax.swing.JPanel JActualizar;
     private javax.swing.JTextField JCorreo;
     private javax.swing.JTextField JDNI;
@@ -314,7 +337,7 @@ public class VPerfilOficinista extends javax.swing.JPanel {
     private javax.swing.JTextField jTextField16;
     private javax.swing.JComboBox<String> sexo;
     // End of variables declaration//GEN-END:variables
-    public void actualizador(Usuario usuario){
+    public void actualizador(Usuario usuario) {
         JNombre.setText(usuario.getNombre());
         JDireccion.setText(usuario.getDni());
         JCorreo.setText(usuario.getCorreo());

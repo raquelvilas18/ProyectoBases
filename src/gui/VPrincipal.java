@@ -364,7 +364,14 @@ public class VPrincipal extends javax.swing.JFrame {
         panelBase.add(panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 680, 580));
         panelActivo = panel;
     }
-
+    
+    public void ventanaPerfilOficinista(){
+        panelActivo.setVisible(false);
+        VPerfilOficinista panel = new VPerfilOficinista(fa,fa.consultarUsuario(JUsuario.getText(), JContrasena.getText()));
+        panelBase.add(panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 680, 580));
+        panelActivo = panel;
+    }
+    
     public void ventanaTransportista() {
         if (panelActivo != null) {
             panelActivo.setVisible(false);
@@ -423,7 +430,14 @@ public class VPrincipal extends javax.swing.JFrame {
         panelBase.add(panelGU, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 680, 580));
         panelActivo = panelGU;
     }
-
+    
+    public void ventanagestionUsuariosOficinista() {
+        panelActivo.setVisible(false);
+        VGestionUsuariosOficinista panelGU = new VGestionUsuariosOficinista(fa);
+        panelBase.add(panelGU, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 680, 580));
+        panelActivo = panelGU;
+    }
+    
     public void ventanagestionPaquetes() {
         panelActivo.setVisible(false);
         VGestionPaquetes panelGU = new VGestionPaquetes(fa);
