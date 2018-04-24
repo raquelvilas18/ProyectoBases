@@ -34,7 +34,7 @@ public class DAOUsuarios extends AbstractDAO {
                 if (rsUsuario.next()) {
                     resultado = new Usuario(rsUsuario.getString("usuario"), rsUsuario.getString("password"), rsUsuario.getString("dni"),
                             rsUsuario.getString("nombre"), rsUsuario.getString("correo"),
-                            rsUsuario.getString("direccion"), rsUsuario.getString("telefono"), rsUsuario.getString("sexo"));
+                            rsUsuario.getString("direccion"), rsUsuario.getString("telefono"), rsUsuario.getString("sexo"), rsUsuario.getString("tipo"));
 
                 }
             } catch (SQLException e) {
@@ -51,7 +51,7 @@ public class DAOUsuarios extends AbstractDAO {
         return resultado;
     }
 
-    public Usuario registrarUsuario(String id, String clave, String dni, String nombre, String email, String direccion, String telefono, String sexo) {
+    public Usuario registrarUsuario(String id, String clave, String dni, String nombre, String email, String direccion, String telefono, String sexo, String tipo) {
         Usuario resultado = null;
         Connection con;
         PreparedStatement stmUsuario = null;
@@ -83,7 +83,7 @@ public class DAOUsuarios extends AbstractDAO {
                     System.out.println("Imposible cerrar cursores");
                 }
             }
-            resultado = new Usuario(id, clave, dni, nombre, email, direccion, telefono, sexo);
+            resultado = new Usuario(id, clave, dni, nombre, email, direccion, telefono, sexo, tipo);
             return resultado;
         } else {
             return null;
@@ -154,8 +154,8 @@ public class DAOUsuarios extends AbstractDAO {
         }
     }
 
-    public boolean esAdministrador(String id) {
-        boolean resultado = false;
+    public String getTipo(String id) {
+        String resultado = "";
         Connection con;
         PreparedStatement stmUsuario = null;
         ResultSet rsUsuario;
@@ -163,14 +163,13 @@ public class DAOUsuarios extends AbstractDAO {
         con = this.getConexion();
 
         try {
-            stmUsuario = con.prepareStatement("SELECT *\n"
+            stmUsuario = con.prepareStatement("SELECT tipo\n"
                     + "FROM usuarios\n"
-                    + "WHERE usuario=? "
-                    + "AND administrador = true");
+                    + "WHERE usuario=? " );
             stmUsuario.setString(1, id);
             rsUsuario = stmUsuario.executeQuery();
             if (rsUsuario.next()) {
-                resultado = true;
+                resultado = rsUsuario.getString("tipo");
 
             }
         } catch (SQLException e) {
@@ -203,7 +202,7 @@ public class DAOUsuarios extends AbstractDAO {
             stm.setString(2, "%" + nombre + "%");
             rs = stm.executeQuery();
             while (rs.next()) {
-                resultado.add(new Usuario(rs.getString("usuario"), rs.getString("password"), rs.getString("dni"), rs.getString("nombre"), rs.getString("correo"), rs.getString("direccion"), rs.getString("telefono"), rs.getString("sexo")));
+                resultado.add(new Usuario(rs.getString("usuario"), rs.getString("password"), rs.getString("dni"), rs.getString("nombre"), rs.getString("correo"), rs.getString("direccion"), rs.getString("telefono"), rs.getString("sexo"), rs.getString("tipo")));
             }
 
         } catch (SQLException e) {

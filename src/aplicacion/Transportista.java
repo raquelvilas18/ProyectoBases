@@ -11,8 +11,8 @@ package aplicacion;
  */
 public class Transportista extends Empleado{
 
-    public Transportista(String usuario, String password, String dni, String nombre, String correo, String direccion, String telefono, String sexo, int nomina, int anoIngreso, boolean administrador) {
-        super(usuario, password, dni, nombre, correo, direccion, telefono, sexo, nomina, anoIngreso, administrador);
+    public Transportista(String usuario, String password, String dni, String nombre, String correo, String direccion, String telefono, String sexo, String tipo, int nomina, int anoIngreso, boolean administrador) {
+        super(usuario, password, dni, nombre, correo, direccion, telefono, sexo, tipo, nomina, anoIngreso);
     }
     
 }

@@ -276,26 +276,47 @@ public class VPrincipal extends javax.swing.JFrame {
 
     private void jPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseClicked
         if ((!JUsuario.getText().equals("")) && (!JContrasena.getText().equals("")) && fa.comprobarAutentificacion(JUsuario.getText(), JContrasena.getText())) {
-            if (fa.esAdministrador(JUsuario.getText())) {
-                //ventanaAdmin();
-                ventanaOficinista();
-            } else {
-                ventanaUsuario(fa.consultarUsuario(JUsuario.getText(), JContrasena.getText()));
+            if (fa.getTipo(JUsuario.getText()).equals("oficinista")) {
                 autentificacionIncorrecta.setVisible(false);
+                ventanaOficinista();
+                JContrasena.setText("");
+            } else if (fa.getTipo(JUsuario.getText()).equals("transportista")) {
+                autentificacionIncorrecta.setVisible(false);
+                ventanaTransportista();
+                JContrasena.setText("");
+            } else if (fa.getTipo(JUsuario.getText()).equals("cliente")) {
+                autentificacionIncorrecta.setVisible(false);
+                ventanaUsuario(fa.consultarUsuario(JUsuario.getText(), JContrasena.getText()));
+                JContrasena.setText("");
+            } else if (fa.getTipo(JUsuario.getText()).equals("administrador")) {
+                autentificacionIncorrecta.setVisible(false);
+                ventanaAdmin();
+                JContrasena.setText("");
             }
         } else {
             autentificacionIncorrecta.setVisible(true);
         }    }//GEN-LAST:event_jPanel1MouseClicked
 
     private void JContrasenaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JContrasenaKeyPressed
-        int key=evt.getKeyCode();
-        if(evt.getKeyCode()==10){
+        int key = evt.getKeyCode();
+        if (evt.getKeyCode() == 10) {
             if ((!JUsuario.getText().equals("")) && (!JContrasena.getText().equals("")) && fa.comprobarAutentificacion(JUsuario.getText(), JContrasena.getText())) {
-                if (fa.esAdministrador(JUsuario.getText())) {
-                    ventanaTransportista();
-                } else {
-                    ventanaUsuario(fa.consultarUsuario(JUsuario.getText(), JContrasena.getText()));
+                if (fa.getTipo(JUsuario.getText()).equals("oficinista")) {
                     autentificacionIncorrecta.setVisible(false);
+                    ventanaOficinista();
+                    JContrasena.setText("");
+                } else if (fa.getTipo(JUsuario.getText()).equals("transportista")) {
+                    autentificacionIncorrecta.setVisible(false);
+                    ventanaTransportista();
+                    JContrasena.setText("");
+                } else if (fa.getTipo(JUsuario.getText()).equals("cliente")) {
+                    autentificacionIncorrecta.setVisible(false);
+                    ventanaUsuario(fa.consultarUsuario(JUsuario.getText(), JContrasena.getText()));
+                    JContrasena.setText("");
+                } else if (fa.getTipo(JUsuario.getText()).equals("administrador")) {
+                    autentificacionIncorrecta.setVisible(false);
+                    ventanaAdmin();
+                    JContrasena.setText("");
                 }
             } else {
                 autentificacionIncorrecta.setVisible(true);
@@ -305,7 +326,7 @@ public class VPrincipal extends javax.swing.JFrame {
 
     public void ventanaPedido() {
         panelActivo.setVisible(false);
-        VPedido panelPedido = new VPedido(fa,fa.consultarUsuario(JUsuario.getText(), JContrasena.getText()));
+        VPedido panelPedido = new VPedido(fa, fa.consultarUsuario(JUsuario.getText(), JContrasena.getText()));
         panelBase.add(panelPedido, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 680, 580));
         panelActivo = panelPedido;
     }
@@ -332,14 +353,14 @@ public class VPrincipal extends javax.swing.JFrame {
 
     public void ventanaPerfilAdmin() {
         panelActivo.setVisible(false);
-        VPerfilAdmin panel = new VPerfilAdmin(fa,fa.consultarUsuario(JUsuario.getText(), JContrasena.getText()));
+        VPerfilAdmin panel = new VPerfilAdmin(fa, fa.consultarUsuario(JUsuario.getText(), JContrasena.getText()));
         panelBase.add(panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 680, 580));
         panelActivo = panel;
     }
-    
+
     public void ventanaPerfilTransportista() {
         panelActivo.setVisible(false);
-        VPerfilTransportista panel = new VPerfilTransportista(fa,fa.consultarUsuario(JUsuario.getText(), JContrasena.getText()));
+        VPerfilTransportista panel = new VPerfilTransportista(fa, fa.consultarUsuario(JUsuario.getText(), JContrasena.getText()));
         panelBase.add(panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 680, 580));
         panelActivo = panel;
     }
@@ -361,7 +382,7 @@ public class VPrincipal extends javax.swing.JFrame {
         VTransportista panelTransportista = new VTransportista(this);
         panelBase.add(panelTransportista, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 310, 580));
         panelTransportista.setVisible(true);
-        VPerfilTransportista panelPerfil = new VPerfilTransportista(fa,fa.consultarUsuario(JUsuario.getText(), JContrasena.getText()));
+        VPerfilTransportista panelPerfil = new VPerfilTransportista(fa, fa.consultarUsuario(JUsuario.getText(), JContrasena.getText()));
         panelBase.add(panelPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 680, 580));
         panelActivo = panelPerfil;
     }
@@ -376,11 +397,11 @@ public class VPrincipal extends javax.swing.JFrame {
         VAdmin panelAdmin = new VAdmin(this);
         panelBase.add(panelAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 310, 580));
         panelAdmin.setVisible(true);
-        VPerfilAdmin panelPerfil = new VPerfilAdmin(fa,fa.consultarUsuario(JUsuario.getText(), JContrasena.getText()));
+        VPerfilAdmin panelPerfil = new VPerfilAdmin(fa, fa.consultarUsuario(JUsuario.getText(), JContrasena.getText()));
         panelBase.add(panelPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 680, 580));
         panelActivo = panelPerfil;
     }
-    
+
     public void ventanaOficinista() {
         if (panelActivo != null) {
             panelActivo.setVisible(false);
@@ -391,7 +412,7 @@ public class VPrincipal extends javax.swing.JFrame {
         VOficinista panelAdmin = new VOficinista(this);
         panelBase.add(panelAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 310, 580));
         panelAdmin.setVisible(true);
-        VPerfilOficinista panelPerfil = new VPerfilOficinista(fa,fa.consultarUsuario(JUsuario.getText(), JContrasena.getText()));
+        VPerfilOficinista panelPerfil = new VPerfilOficinista(fa, fa.consultarUsuario(JUsuario.getText(), JContrasena.getText()));
         panelBase.add(panelPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 680, 580));
         panelActivo = panelPerfil;
     }
@@ -402,7 +423,7 @@ public class VPrincipal extends javax.swing.JFrame {
         panelBase.add(panelGU, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 680, 580));
         panelActivo = panelGU;
     }
-    
+
     public void ventanagestionUsuarios() {
         panelActivo.setVisible(false);
         VGestionUsuarios panelGU = new VGestionUsuarios(fa);
@@ -446,7 +467,7 @@ public class VPrincipal extends javax.swing.JFrame {
     }
 
     public void ventanaInicial() {
-        
+
         panelActivo.setVisible(false);
         panelLocPaquete.setVisible(true);
         panelLogin.setVisible(true);

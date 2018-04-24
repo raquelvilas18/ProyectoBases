@@ -87,12 +87,12 @@ public class FachadaBaseDatos {
         return daoUsuarios.validarUsuario(idUsuario, clave);
     }
 
-    public Usuario registrarUsuario(String id, String clave, String dni, String nombre, String email, String direccion, String telefono, String sexo) {
-        return daoUsuarios.registrarUsuario(id, clave, dni, nombre, email, direccion, telefono, sexo);
+    public Usuario registrarUsuario(String id, String clave, String dni, String nombre, String email, String direccion, String telefono, String sexo, String tipo) {
+        return daoUsuarios.registrarUsuario(id, clave, dni, nombre, email, direccion, telefono, sexo, tipo);
     }
 
-    public boolean esAdministrador(String id) {
-        return daoUsuarios.esAdministrador(id);
+    public String getTipo(String id) {
+        return daoUsuarios.getTipo(id);
     }
     
     public ArrayList<Usuario> obtenerUsuarios(String id, String nombre){
@@ -131,8 +131,8 @@ public class FachadaBaseDatos {
         return daoEmpleados.datosEmpleado(id);
     }
     
-    public Empleado nuevoEmpleado(String usuario, int nomina, int anoIngreso, boolean administrador){
-        return daoEmpleados.nuevoEmpleado(usuario, nomina, anoIngreso, administrador);
+    public Empleado nuevoEmpleado(String usuario, int nomina, int anoIngreso){
+        return daoEmpleados.nuevoEmpleado(usuario, nomina, anoIngreso);
     }
     
     public void actualizarEmpleado(Empleado emp){

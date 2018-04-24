@@ -71,8 +71,8 @@ public class FachadaAplicacion {
         gPedidos.nuevoPedido(p);
     }
 
-    public Usuario registrarUsuario(String id, String clave, String dni, String nombre, String email, String direccion, String telefono, String sexo) {
-        return gUsuarios.registrarUsuario(id, clave, dni, nombre, email, direccion, telefono, sexo);
+    public Usuario registrarUsuario(String id, String clave, String dni, String nombre, String email, String direccion, String telefono, String sexo, String tipo) {
+        return gUsuarios.registrarUsuario(id, clave, dni, nombre, email, direccion, telefono, sexo, tipo);
     }
     
     public void eliminarUsuario(String id){
@@ -88,8 +88,8 @@ public class FachadaAplicacion {
         return gPedidos.obtenerPedidosActivos(usuario);
     }
 
-    public Empleado nuevoEmpleado(String usuario, String password, String dni, String nombre, String correo, String direccion, String telefono, String sexo, int nomina, int anoIngreso, boolean administrador){
-        return gEmpleados.nuevoEmpleado(usuario, password, dni, nombre, correo, direccion, telefono, sexo, nomina, anoIngreso, administrador);
+    public Empleado nuevoEmpleado(String usuario, String password, String dni, String nombre, String correo, String direccion, String telefono, String sexo, String tipo, int nomina, int anoIngreso){
+        return gEmpleados.nuevoEmpleado(usuario, password, dni, nombre, correo, direccion, telefono, sexo, tipo, nomina, anoIngreso);
     }
     
     public void actualizar(Empleado emp){
@@ -112,8 +112,8 @@ public class FachadaAplicacion {
         return fbd.comprobarLocalizacion(codigo);
     }
 
-    public boolean esAdministrador(String id) {
-        return fbd.esAdministrador(id);
+    public String getTipo(String id) {
+        return fbd.getTipo(id);
     }
 
     public ArrayList<Empleado> obtenerEmpleados(String id) {
