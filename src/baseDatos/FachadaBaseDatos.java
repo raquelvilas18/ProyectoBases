@@ -48,6 +48,7 @@ public class FachadaBaseDatos {
             
             String gestor = configuracion.getProperty("gestor");
 
+            /*
             usuario.setProperty("user", configuracion.getProperty("usuario"));
             usuario.setProperty("password", configuracion.getProperty("clave"));
             this.conexion = java.sql.DriverManager.getConnection("jdbc:" + gestor + "://"
@@ -55,8 +56,8 @@ public class FachadaBaseDatos {
                     + configuracion.getProperty("puerto") + "/"
                     + configuracion.getProperty("baseDatos"),
                     usuario);
-            
-            /*Class.forName("org.postgresql.Driver");
+            */
+            Class.forName("org.postgresql.Driver");
 
             usuario.setProperty("user", configuracion.getProperty("usuario"));
             usuario.setProperty("password", configuracion.getProperty("clave"));
@@ -66,7 +67,7 @@ public class FachadaBaseDatos {
             String password = dbUri.getUserInfo().split(":")[1];
             String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + dbUri.getPath() + "?sslmode=require";
             
-            this.conexion = java.sql.DriverManager.getConnection(dbUrl,username,password);*/
+            this.conexion = java.sql.DriverManager.getConnection(dbUrl,username,password);
             
             daoUsuarios = new DAOUsuarios(conexion, this.fa);
             daoPedidos = new DAOPedidos(conexion, this.fa);
@@ -81,11 +82,11 @@ public class FachadaBaseDatos {
         } catch (java.sql.SQLException e) {
             System.out.println(e.getMessage());
             fa.muestraExcepcion(e.getMessage());
-        }/*catch (ClassNotFoundException ex) {
+        }catch (ClassNotFoundException ex) {
             Logger.getLogger(FachadaBaseDatos.class.getName()).log(Level.SEVERE, null, ex);
         } catch (URISyntaxException ex) {
             Logger.getLogger(FachadaBaseDatos.class.getName()).log(Level.SEVERE, null, ex);
-        }*/
+        }
     }
 
     public boolean consultarId(String idUsuario) {

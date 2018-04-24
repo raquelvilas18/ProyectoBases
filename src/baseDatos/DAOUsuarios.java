@@ -2,7 +2,10 @@ package baseDatos;
 
 import aplicacion.*;
 import gui.*;
+import static java.lang.Thread.sleep;
 import java.sql.*;
+import static java.sql.Connection.TRANSACTION_NONE;
+import static java.sql.Connection.TRANSACTION_SERIALIZABLE;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -17,24 +20,23 @@ public class DAOUsuarios extends AbstractDAO {
         super.setConexion(conexion);
         super.setFachadaAplicacion(fa);
     }
-    
-    public void conexion(String idUsuario,boolean accion)
-    {
+
+    public void conexion(String idUsuario, boolean accion) {
         Usuario resultado = null;
         Connection con;
         PreparedStatement stmUsuario = null;
         ResultSet rsUsuario;
-        
+
         con = this.getConexion();
         if (idUsuario != null) {
             try {
                 stmUsuario = con.prepareStatement("UPDATE usuarios\n"
                         + "SET conectado=?\n"
                         + "WHERE usuario=?");
-                 stmUsuario.setBoolean(1, accion);
+                stmUsuario.setBoolean(1, accion);
                 stmUsuario.setString(2, idUsuario);
                 stmUsuario.executeUpdate();
-              
+
             } catch (SQLException e) {
                 System.out.println(e.getMessage());
                 this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
@@ -47,21 +49,25 @@ public class DAOUsuarios extends AbstractDAO {
             }
         }
     }
-    
-    
 
     public Usuario validarUsuario1(String idUsuario, String clave) {
         Usuario resultado = null;
         Connection con;
-        PreparedStatement stmUsuario = null;
+        PreparedStatement stmUsuario = null, stmUsuario2 = null;
         ResultSet rsUsuario;
-        
+
         con = this.getConexion();
         try {
             con.setAutoCommit(false);
         } catch (SQLException ex) {
             Logger.getLogger(DAOUsuarios.class.getName()).log(Level.SEVERE, null, ex);
         }
+        try {
+            con.setTransactionIsolation(TRANSACTION_SERIALIZABLE);
+        } catch (SQLException ex) {
+            Logger.getLogger(DAOUsuarios.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
         if (idUsuario != null && clave != null) {
             try {
                 stmUsuario = con.prepareStatement("SELECT *\n"
@@ -70,18 +76,36 @@ public class DAOUsuarios extends AbstractDAO {
                         + "AND conectado=false");
                 stmUsuario.setString(1, idUsuario);
                 stmUsuario.setString(2, clave);
+
+                stmUsuario2 = con.prepareStatement("UPDATE usuarios\n"
+                        + "SET conectado=?\n"
+                        + "WHERE usuario=?");
+                stmUsuario2.setBoolean(1, true);
+                stmUsuario2.setString(2, idUsuario);
                 rsUsuario = stmUsuario.executeQuery();
+                stmUsuario2.executeUpdate();
+
+                try {
+                    con.setAutoCommit(true);
+                } catch (SQLException ex) {
+                    
+                    Logger.getLogger(DAOUsuarios.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 if (rsUsuario.next()) {
                     resultado = new Usuario(rsUsuario.getString("usuario"), rsUsuario.getString("password"), rsUsuario.getString("dni"),
                             rsUsuario.getString("nombre"), rsUsuario.getString("correo"),
                             rsUsuario.getString("direccion"), rsUsuario.getString("telefono"), rsUsuario.getString("sexo"), rsUsuario.getString("tipo"));
 
-                 
                 }
-                conexion(idUsuario, true);
-                con.commit();
+
             } catch (SQLException e) {
-                System.out.println(e.getMessage());
+                try {
+                    System.out.println("Rollback");
+                    con.rollback();
+                } catch (SQLException ex) {
+                    Logger.getLogger(DAOUsuarios.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
                 this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
             } finally {
                 try {
@@ -91,23 +115,18 @@ public class DAOUsuarios extends AbstractDAO {
                 }
             }
         }
-        try {
-            con.setAutoCommit(true);
-        } catch (SQLException ex) {
-            Logger.getLogger(DAOUsuarios.class.getName()).log(Level.SEVERE, null, ex);
-        }
+
         return resultado;
     }
-    
-    
+
     public Usuario validarUsuario(String idUsuario, String clave) {
         Usuario resultado = null;
         Connection con;
         PreparedStatement stmUsuario = null;
         ResultSet rsUsuario;
-        
+
         con = this.getConexion();
-        
+
         if (idUsuario != null && clave != null) {
             try {
                 stmUsuario = con.prepareStatement("SELECT *\n"
@@ -121,9 +140,8 @@ public class DAOUsuarios extends AbstractDAO {
                             rsUsuario.getString("nombre"), rsUsuario.getString("correo"),
                             rsUsuario.getString("direccion"), rsUsuario.getString("telefono"), rsUsuario.getString("sexo"), rsUsuario.getString("tipo"));
 
-                 
                 }
-                
+
             } catch (SQLException e) {
                 System.out.println(e.getMessage());
                 this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
@@ -252,7 +270,7 @@ public class DAOUsuarios extends AbstractDAO {
         try {
             stmUsuario = con.prepareStatement("SELECT tipo\n"
                     + "FROM usuarios\n"
-                    + "WHERE usuario=? " );
+                    + "WHERE usuario=? ");
             stmUsuario.setString(1, id);
             rsUsuario = stmUsuario.executeQuery();
             if (rsUsuario.next()) {
@@ -338,7 +356,7 @@ public class DAOUsuarios extends AbstractDAO {
             }
         }
     }
-    
+
     public void eliminarUsuario(String id) {
         Connection con;
         PreparedStatement stmUsuario = null;
@@ -361,6 +379,5 @@ public class DAOUsuarios extends AbstractDAO {
             }
         }
     }
-    
 
 }
