@@ -48,13 +48,14 @@ public class DAOUsuarios extends AbstractDAO {
     
     
 
-    public Usuario validarUsuario(String idUsuario, String clave) {
+    public Usuario validarUsuario1(String idUsuario, String clave) throws SQLException {
         Usuario resultado = null;
         Connection con;
         PreparedStatement stmUsuario = null;
         ResultSet rsUsuario;
-
+        
         con = this.getConexion();
+        con.setAutoCommit(false);
         if (idUsuario != null && clave != null) {
             try {
                 stmUsuario = con.prepareStatement("SELECT *\n"
@@ -71,6 +72,48 @@ public class DAOUsuarios extends AbstractDAO {
 
                  
                 }
+                conexion(idUsuario, true);
+                con.commit();
+            } catch (SQLException e) {
+                System.out.println(e.getMessage());
+                this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
+            } finally {
+                try {
+                    stmUsuario.close();
+                } catch (SQLException e) {
+                    System.out.println("Imposible cerrar cursores");
+                }
+            }
+        }
+        con.setAutoCommit(true);
+        return resultado;
+    }
+    
+    
+    public Usuario validarUsuario(String idUsuario, String clave) {
+        Usuario resultado = null;
+        Connection con;
+        PreparedStatement stmUsuario = null;
+        ResultSet rsUsuario;
+        
+        con = this.getConexion();
+        
+        if (idUsuario != null && clave != null) {
+            try {
+                stmUsuario = con.prepareStatement("SELECT *\n"
+                        + "FROM usuarios\n"
+                        + "WHERE usuario=? AND password=(SELECT md5(?))");
+                stmUsuario.setString(1, idUsuario);
+                stmUsuario.setString(2, clave);
+                rsUsuario = stmUsuario.executeQuery();
+                if (rsUsuario.next()) {
+                    resultado = new Usuario(rsUsuario.getString("usuario"), rsUsuario.getString("password"), rsUsuario.getString("dni"),
+                            rsUsuario.getString("nombre"), rsUsuario.getString("correo"),
+                            rsUsuario.getString("direccion"), rsUsuario.getString("telefono"), rsUsuario.getString("sexo"), rsUsuario.getString("tipo"));
+
+                 
+                }
+                
             } catch (SQLException e) {
                 System.out.println(e.getMessage());
                 this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
