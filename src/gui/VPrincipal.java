@@ -324,9 +324,11 @@ public class VPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_JContrasenaKeyPressed
 
-    public void ventanaPedido() {
+    public void ventanaPedido(Usuario usuario) {
         panelActivo.setVisible(false);
-        VPedido panelPedido = new VPedido(fa, fa.consultarUsuario(JUsuario.getText(), JContrasena.getText()));
+        VPedido panelPedido;
+        if(usuario!=null) panelPedido = new VPedido(fa, usuario);
+        else panelPedido = new VPedido(fa, fa.consultarUsuario(JUsuario.getText(), JContrasena.getText()));
         panelBase.add(panelPedido, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 680, 580));
         panelActivo = panelPedido;
     }

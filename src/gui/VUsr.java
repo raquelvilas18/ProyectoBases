@@ -293,7 +293,7 @@ public class VUsr extends javax.swing.JPanel {
 
     private void jPanel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseClicked
         // TODO add your handling code here:
-        parent.ventanaPedido();
+        parent.ventanaPedido(this.usuario);
     }//GEN-LAST:event_jPanel5MouseClicked
 
     private void jPanel1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseEntered
