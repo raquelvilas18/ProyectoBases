@@ -15,6 +15,38 @@ public class DAOUsuarios extends AbstractDAO {
         super.setConexion(conexion);
         super.setFachadaAplicacion(fa);
     }
+    
+    public void conexion(String idUsuario,boolean accion)
+    {
+        Usuario resultado = null;
+        Connection con;
+        PreparedStatement stmUsuario = null;
+        ResultSet rsUsuario;
+        
+        con = this.getConexion();
+        if (idUsuario != null) {
+            try {
+                stmUsuario = con.prepareStatement("UPDATE usuarios\n"
+                        + "SET conectado=?\n"
+                        + "WHERE usuario=?");
+                 stmUsuario.setBoolean(1, accion);
+                stmUsuario.setString(2, idUsuario);
+                stmUsuario.executeUpdate();
+              
+            } catch (SQLException e) {
+                System.out.println(e.getMessage());
+                this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
+            } finally {
+                try {
+                    stmUsuario.close();
+                } catch (SQLException e) {
+                    System.out.println("Imposible cerrar cursores");
+                }
+            }
+        }
+    }
+    
+    
 
     public Usuario validarUsuario(String idUsuario, String clave) {
         Usuario resultado = null;
@@ -27,7 +59,8 @@ public class DAOUsuarios extends AbstractDAO {
             try {
                 stmUsuario = con.prepareStatement("SELECT *\n"
                         + "FROM usuarios\n"
-                        + "WHERE usuario=? AND password=(SELECT md5(?))");
+                        + "WHERE usuario=? AND password=(SELECT md5(?))"
+                        + "AND conectado=false");
                 stmUsuario.setString(1, idUsuario);
                 stmUsuario.setString(2, clave);
                 rsUsuario = stmUsuario.executeQuery();
@@ -36,6 +69,7 @@ public class DAOUsuarios extends AbstractDAO {
                             rsUsuario.getString("nombre"), rsUsuario.getString("correo"),
                             rsUsuario.getString("direccion"), rsUsuario.getString("telefono"), rsUsuario.getString("sexo"), rsUsuario.getString("tipo"));
 
+                 
                 }
             } catch (SQLException e) {
                 System.out.println(e.getMessage());

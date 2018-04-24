@@ -71,7 +71,7 @@ public class FachadaBaseDatos {
             daoUsuarios = new DAOUsuarios(conexion, this.fa);
             daoPedidos = new DAOPedidos(conexion, this.fa);
             daoEmpleados = new DAOEmpleados(conexion, this.fa);
-
+            
         } catch (FileNotFoundException f) {
             System.out.println(f.getMessage());
             fa.muestraExcepcion(f.getMessage());
@@ -81,7 +81,7 @@ public class FachadaBaseDatos {
         } catch (java.sql.SQLException e) {
             System.out.println(e.getMessage());
             fa.muestraExcepcion(e.getMessage());
-        }/* catch (ClassNotFoundException ex) {
+        }/*catch (ClassNotFoundException ex) {
             Logger.getLogger(FachadaBaseDatos.class.getName()).log(Level.SEVERE, null, ex);
         } catch (URISyntaxException ex) {
             Logger.getLogger(FachadaBaseDatos.class.getName()).log(Level.SEVERE, null, ex);
@@ -91,6 +91,11 @@ public class FachadaBaseDatos {
     public boolean consultarId(String idUsuario) {
         return daoUsuarios.consultarId(idUsuario);
     }
+    
+     public void conexion(String idUsuario,boolean accion)
+     {
+         daoUsuarios.conexion(idUsuario, accion);
+     }
 
     public void actualizar(Usuario usuario) {
         daoUsuarios.actualizar(usuario);

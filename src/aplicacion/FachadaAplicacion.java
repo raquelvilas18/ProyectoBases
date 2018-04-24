@@ -78,6 +78,11 @@ public class FachadaAplicacion {
     public void eliminarUsuario(String id){
         gUsuarios.eliminarUsuario(id);
     }
+    
+     public void conexion(String idUsuario,boolean accion)
+     {
+         gUsuarios.conexion(idUsuario,accion);
+     }
 
 
     public java.util.List<Pedido> obtenerHistorialPedidos(String usuario) {
