@@ -23,8 +23,8 @@ public class GestionPedidos {
         this.fbd = fbd;
     }
 
-    public void nuevoPedido(Pedido pd) {
-        fbd.nuevoPedido(pd);
+    public Pedido nuevoPedido(Pedido pd) {
+        return fbd.nuevoPedido(pd);
     }
 
     public java.util.List<Pedido> obtenerHistorialPedidos(String usuario) {
