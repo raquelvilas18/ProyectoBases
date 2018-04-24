@@ -430,6 +430,7 @@ public class VGestionUsuariosOficinista extends javax.swing.JPanel {
         tablaUsr.setGridColor(new java.awt.Color(255, 255, 255));
         tablaUsr.setOpaque(false);
         tablaUsr.setSelectionBackground(new java.awt.Color(89, 171, 36));
+        tablaUsr.setSelectionForeground(new java.awt.Color(255, 255, 255));
         tablaUsr.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         tablaUsr.setShowHorizontalLines(false);
         tablaUsr.setShowVerticalLines(false);

@@ -87,6 +87,10 @@ public class FachadaAplicacion {
     public java.util.List<Pedido> obtenerPedidosActivos(String usuario) {
         return gPedidos.obtenerPedidosActivos(usuario);
     }
+    
+    public ArrayList<Pedido> pedidosSinTramitar(String codigo){
+        return gPedidos.pedidosSinTramitar(codigo);
+    }
 
     public Empleado nuevoEmpleado(String usuario, String password, String dni, String nombre, String correo, String direccion, String telefono, String sexo, String tipo, int nomina, int anoIngreso){
         return gEmpleados.nuevoEmpleado(usuario, password, dni, nombre, correo, direccion, telefono, sexo, tipo, nomina, anoIngreso);

@@ -122,6 +122,10 @@ public class FachadaBaseDatos {
     public java.util.List<Paquete> comprobarLocalizacion(Integer codigo) {
         return daoPedidos.comprobarLocalizacion(codigo);
     }
+    
+    public ArrayList<Pedido> pedidosSinTramitar(String codigo){
+        return daoPedidos.pedidosSinTramitar(codigo);
+    }
 
     //------EMPLEADOS-------//
     public ArrayList<Empleado> obtenerEmpleados(String id ) {
