@@ -7,7 +7,9 @@ package gui;
 
 import aplicacion.Empleado;
 import java.awt.Color;
+import java.awt.Font;
 import java.util.ArrayList;
+import javax.swing.table.JTableHeader;
 
 /**
  *
@@ -51,7 +53,15 @@ public class VGestionEmpleados extends javax.swing.JPanel {
             this.TxDni.setText(m.getFila(tablaEmpleados.getSelectedRow()).getDni());
             this.TxSexo.setSelectedItem((m.getFila(tablaEmpleados.getSelectedRow())).getSexo());
             this.TxNomina.setText(Integer.toString(m.getFila(tablaEmpleados.getSelectedRow()).getNomina()));
+            this.TxTipo.setSelectedItem((m.getFila(tablaEmpleados.getSelectedRow())).getTipo());
         }
+        
+        JTableHeader th;
+        th = this.tablaEmpleados.getTableHeader();
+        Font fuente = new Font("SansSerif", Font.PLAIN, 16);
+        th.setFont(fuente);
+        th.setForeground(new Color(255,148,42));
+        th.setBackground(Color.WHITE);
         
     }
 
@@ -157,8 +167,13 @@ public class VGestionEmpleados extends javax.swing.JPanel {
         jLabel2.setText("Gestion Empleados");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 80, 260, -1));
 
+        jScrollPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+
         tablaEmpleados.setBackground(new java.awt.Color(255, 232, 185));
+        tablaEmpleados.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         tablaEmpleados.setModel(new ModeloTablaEmpleados());
+        tablaEmpleados.setSelectionBackground(new java.awt.Color(255, 189, 72));
+        tablaEmpleados.setSelectionForeground(new java.awt.Color(255, 255, 255));
         tablaEmpleados.setSurrendersFocusOnKeystroke(true);
         tablaEmpleados.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {

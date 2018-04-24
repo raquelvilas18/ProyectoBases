@@ -6,8 +6,11 @@
 package gui;
 
 import aplicacion.Usuario;
+import java.awt.Color;
+import java.awt.Font;
 import javax.swing.JLabel;
 import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.JTableHeader;
 
 /**
  *
@@ -20,6 +23,7 @@ public class VPedidosActivos extends javax.swing.JPanel {
      */
     private Usuario usuario;
     
+
     public VPedidosActivos(aplicacion.FachadaAplicacion fa,java.awt.Frame parent,Usuario usuario) {
         initComponents();
         ModeloTablaPedidos tp=new ModeloTablaPedidos();
@@ -34,7 +38,15 @@ public class VPedidosActivos extends javax.swing.JPanel {
         tablaPedidos.setDefaultRenderer(String.class, centerRenderer);
         tablaPedidos.setDefaultRenderer(Integer.class, centerRenderer);
         /////////////////////////////////
+        
+        JTableHeader th;
+        th = this.tablaPedidos.getTableHeader();
+        Font fuente = new Font("SansSerif", Font.PLAIN, 16);
+        th.setFont(fuente);
+        th.setForeground(new Color(65,105,225));
+        th.setBackground(Color.WHITE);
     }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -94,13 +106,17 @@ public class VPedidosActivos extends javax.swing.JPanel {
 
         add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 130, 600, 10));
 
+        jScrollPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+
         tablaPedidos.setBackground(new java.awt.Color(254, 254, 254));
         tablaPedidos.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         tablaPedidos.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         tablaPedidos.setForeground(new java.awt.Color(0, 0, 0));
         tablaPedidos.setModel(new ModeloTablaPedidos());
-        tablaPedidos.setSelectionBackground(new java.awt.Color(204, 204, 204));
-        tablaPedidos.setSelectionForeground(new java.awt.Color(0, 0, 0));
+        tablaPedidos.setGridColor(new java.awt.Color(255, 255, 255));
+        tablaPedidos.setSelectionBackground(new java.awt.Color(111, 133, 255));
+        tablaPedidos.setSelectionForeground(new java.awt.Color(255, 255, 255));
+        tablaPedidos.setShowHorizontalLines(false);
         tablaPedidos.setShowVerticalLines(false);
         jScrollPane1.setViewportView(tablaPedidos);
 

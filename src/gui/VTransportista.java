@@ -17,12 +17,14 @@ import java.net.URI;
  */
 public class VTransportista extends javax.swing.JPanel {
     private VPrincipal parent;
+    private Usuario usuario;
     /**
      * Creates new form VTransportista
      */
-    public VTransportista(VPrincipal parent ) {
+    public VTransportista(VPrincipal parent, Usuario usuario ) {
         initComponents();
         this.parent = parent;
+        this.usuario=usuario;
     }
 
     /**
@@ -173,6 +175,7 @@ public class VTransportista extends javax.swing.JPanel {
     private void jPanel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseClicked
         // TODO add your handling code here:
         
+        
     }//GEN-LAST:event_jPanel3MouseClicked
 
     private void jPanel3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseExited
@@ -187,7 +190,7 @@ public class VTransportista extends javax.swing.JPanel {
 
     private void jPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseClicked
         // TODO add your handling code here:
-        parent.ventanaPerfilTransportista();
+        parent.ventanaPerfilTransportista(this.usuario);
     }//GEN-LAST:event_jPanel1MouseClicked
 
     private void jPanel1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseExited
@@ -221,6 +224,8 @@ public class VTransportista extends javax.swing.JPanel {
 
     private void CerrarSesionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CerrarSesionMouseClicked
         // TODO add your handling code here:
+        if(usuario!=null) parent.fa.conexion(this.usuario.getUsuario(), false);
+        parent.usuario = null;
         this.setVisible(false);
         parent.ventanaInicial();
     }//GEN-LAST:event_CerrarSesionMouseClicked

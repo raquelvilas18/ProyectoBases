@@ -257,7 +257,7 @@ public class VUsr extends javax.swing.JPanel {
         add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 410, -1, -1));
 
         jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-lista-con-viñetas-50.png"))); // NOI18N
-        jLabel13.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jLabel13.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel13.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
         jLabel13.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -267,7 +267,7 @@ public class VUsr extends javax.swing.JPanel {
         add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
         Maps.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-mapas-de-google-32(1).png"))); // NOI18N
-        Maps.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        Maps.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Maps.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 MapsMouseClicked(evt);
@@ -276,7 +276,7 @@ public class VUsr extends javax.swing.JPanel {
         add(Maps, new org.netbeans.lib.awtextra.AbsoluteConstraints(-40, 150, 40, -1));
 
         CerrarSesion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-apagar-26.png"))); // NOI18N
-        CerrarSesion.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        CerrarSesion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         CerrarSesion.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 CerrarSesionMouseClicked(evt);
@@ -293,7 +293,7 @@ public class VUsr extends javax.swing.JPanel {
 
     private void jPanel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseClicked
         // TODO add your handling code here:
-        parent.ventanaPedido();
+        parent.ventanaPedido(this.usuario);
     }//GEN-LAST:event_jPanel5MouseClicked
 
     private void jPanel1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseEntered
@@ -367,6 +367,8 @@ public class VUsr extends javax.swing.JPanel {
 
     private void CerrarSesionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CerrarSesionMouseClicked
         // TODO add your handling code here:
+        if(usuario!=null) parent.fa.conexion(this.usuario.getUsuario(), false);
+        parent.usuario = null;
         this.setVisible(false);
         parent.ventanaInicial();
     }//GEN-LAST:event_CerrarSesionMouseClicked
