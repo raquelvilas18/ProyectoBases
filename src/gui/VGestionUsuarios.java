@@ -526,7 +526,6 @@ public class VGestionUsuarios extends javax.swing.JPanel {
             LabelActualizar.setVisible((false));
             actualizarCampos();
         }
-        // TODO add your handling code here:
     }//GEN-LAST:event_BtActualizarMouseClicked
 
     private void TxDniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxDniActionPerformed
