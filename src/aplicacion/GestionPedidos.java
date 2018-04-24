@@ -7,38 +7,43 @@ package aplicacion;
 
 import baseDatos.FachadaBaseDatos;
 import gui.FachadaGui;
+import java.util.ArrayList;
 
 /**
  *
  * @author alumnogreibd
  */
+public class GestionPedidos {
 
-public class GestionPedidos{
     FachadaGui fgui;
     FachadaBaseDatos fbd;
-    
-    public GestionPedidos(FachadaGui fgui, FachadaBaseDatos fbd){
-     this.fgui=fgui;
-     this.fbd=fbd;
+
+    public GestionPedidos(FachadaGui fgui, FachadaBaseDatos fbd) {
+        this.fgui = fgui;
+        this.fbd = fbd;
     }
-    
-    public void nuevoPedido(Pedido pd)
-    {
+
+    public void nuevoPedido(Pedido pd) {
         fbd.nuevoPedido(pd);
     }
-    
-    public java.util.List<Pedido> obtenerHistorialPedidos(String usuario)
-    {
-         return fbd.obtenerHistorialPedidos(usuario);
+
+    public java.util.List<Pedido> obtenerHistorialPedidos(String usuario) {
+        return fbd.obtenerHistorialPedidos(usuario);
+    }
+
+    public java.util.List<Pedido> obtenerPedidosActivos(String usuario) {
+        return fbd.obtenerPedidosActivos(usuario);
+    }
+
+    public ArrayList<Pedido> pedidosSinTramitar(int codigo) {
+        return fbd.pedidosSinTramitar(codigo);
     }
     
-    public java.util.List<Pedido> obtenerPedidosActivos(String usuario)
-    {
-         return fbd.obtenerPedidosActivos(usuario);
+    public ArrayList<Pedido> pedidosSinTramitar(){
+        return fbd.pedidosSinTramitar();
     }
-    
-    public java.util.List<Paquete> comprobarLocalizacion(Integer codigo)
-    {
-         return fbd.comprobarLocalizacion(codigo);
+
+    public java.util.List<Paquete> comprobarLocalizacion(Integer codigo) {
+        return fbd.comprobarLocalizacion(codigo);
     }
 }

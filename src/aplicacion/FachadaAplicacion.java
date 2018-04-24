@@ -94,6 +94,14 @@ public class FachadaAplicacion {
     public java.util.List<Pedido> obtenerPedidosActivos(String usuario) {
         return gPedidos.obtenerPedidosActivos(usuario);
     }
+    
+    public ArrayList<Pedido> pedidosSinTramitar(int codigo){
+        return gPedidos.pedidosSinTramitar(codigo);
+    }
+    
+    public ArrayList<Pedido> pedidosSinTramitar(){
+        return gPedidos.pedidosSinTramitar();
+    }
 
     public Empleado nuevoEmpleado(String usuario, String password, String dni, String nombre, String correo, String direccion, String telefono, String sexo, String tipo, int nomina,String local){
         return gEmpleados.nuevoEmpleado(usuario, password, dni, nombre, correo, direccion, telefono, sexo, tipo, nomina,local);
@@ -133,6 +141,10 @@ public class FachadaAplicacion {
 
     public ArrayList<Usuario> obtenerUsuarios(String id, String nombre) {
         return fbd.obtenerUsuarios(id, nombre);
+    }
+    
+    public void eliminarPedido(int codigo){
+        fbd.eliminarPedido(codigo);
     }
 
 }
