@@ -45,21 +45,7 @@ public class FachadaBaseDatos {
             arqConfiguracion.close();
 
             Properties usuario = new Properties();
-
-            /*Class.forName("org.postgresql.Driver");
-            String gestor = configuracion.getProperty("gestor");
-
-            usuario.setProperty("user", configuracion.getProperty("usuario"));
-            usuario.setProperty("password", configuracion.getProperty("clave"));
-            URI dbUri = new URI("postgresql://jlljsgmqotjqed:95739ed75a6f8c4f255732e7c530e0106943700f87d161dc98e9edb65217737e@ec2-54-75-227-92.eu-west-1.compute.amazonaws.com:5432/dej1fq8t5tg60l");
-
-            String username = dbUri.getUserInfo().split(":")[0];
-            String password = dbUri.getUserInfo().split(":")[1];
-            String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + dbUri.getPath() + "?sslmode=require";
             
-            this.conexion = java.sql.DriverManager.getConnection(dbUrl,username,password);*/
-            
-
             String gestor = configuracion.getProperty("gestor");
 
             usuario.setProperty("user", configuracion.getProperty("usuario"));
@@ -80,8 +66,8 @@ public class FachadaBaseDatos {
             String password = dbUri.getUserInfo().split(":")[1];
             String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + dbUri.getPath() + "?sslmode=require";
             
-            this.conexion = java.sql.DriverManager.getConnection(dbUrl,username,password);
-            */
+            this.conexion = java.sql.DriverManager.getConnection(dbUrl,username,password);*/
+            
             daoUsuarios = new DAOUsuarios(conexion, this.fa);
             daoPedidos = new DAOPedidos(conexion, this.fa);
             daoEmpleados = new DAOEmpleados(conexion, this.fa);
