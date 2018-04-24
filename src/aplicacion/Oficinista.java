@@ -11,7 +11,7 @@ package aplicacion;
  */
 public class Oficinista extends Empleado{
 
-    public Oficinista(String usuario, String password, String dni, String nombre, String correo, String direccion, String telefono, String sexo, String tipo, int nomina, int anoIngreso, boolean administrador) {
+    public Oficinista(String usuario, String password, String dni, String nombre, String correo, String direccion, String telefono, String sexo, String tipo, int nomina, String anoIngreso, boolean administrador) {
         super(usuario, password, dni, nombre, correo, direccion, telefono, sexo, tipo, nomina, anoIngreso);
     }
     
