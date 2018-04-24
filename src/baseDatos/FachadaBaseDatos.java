@@ -56,8 +56,8 @@ public class FachadaBaseDatos {
                     + configuracion.getProperty("puerto") + "/"
                     + configuracion.getProperty("baseDatos"),
                     usuario);
-            
-            /*Class.forName("org.postgresql.Driver");
+            /*
+            Class.forName("org.postgresql.Driver");
 
             usuario.setProperty("user", configuracion.getProperty("usuario"));
             usuario.setProperty("password", configuracion.getProperty("clave"));
@@ -69,7 +69,6 @@ public class FachadaBaseDatos {
             
             this.conexion = java.sql.DriverManager.getConnection(dbUrl,username,password);
             */
-            
             daoUsuarios = new DAOUsuarios(conexion, this.fa);
             daoPedidos = new DAOPedidos(conexion, this.fa);
             daoEmpleados = new DAOEmpleados(conexion, this.fa);
