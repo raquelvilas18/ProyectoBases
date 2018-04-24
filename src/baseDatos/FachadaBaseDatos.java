@@ -46,10 +46,10 @@ public class FachadaBaseDatos {
 
             Properties usuario = new Properties();
 
-            /**/
             
-
-           /* String gestor = configuracion.getProperty("gestor");
+            
+            /*
+            String gestor = configuracion.getProperty("gestor");
 
             usuario.setProperty("user", configuracion.getProperty("usuario"));
             usuario.setProperty("password", configuracion.getProperty("clave"));
@@ -59,9 +59,9 @@ public class FachadaBaseDatos {
             String password = dbUri.getUserInfo().split(":")[1];
             String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + dbUri.getPath() + "?sslmode=require";
             
-            this.conexion = java.sql.DriverManager.getConnection(dbUrl,username,password);*/
+            this.conexion = java.sql.DriverManager.getConnection(dbUrl,username,password);
             
-
+*/
             String gestor = configuracion.getProperty("gestor");
 
             usuario.setProperty("user", configuracion.getProperty("usuario"));
@@ -75,7 +75,7 @@ public class FachadaBaseDatos {
             daoUsuarios = new DAOUsuarios(conexion, this.fa);
             daoPedidos = new DAOPedidos(conexion, this.fa);
             daoEmpleados = new DAOEmpleados(conexion, this.fa);
-
+            
         } catch (FileNotFoundException f) {
             System.out.println(f.getMessage());
             fa.muestraExcepcion(f.getMessage());
