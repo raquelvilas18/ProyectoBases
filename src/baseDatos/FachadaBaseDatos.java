@@ -100,6 +100,9 @@ public class FachadaBaseDatos {
          daoUsuarios.conexion(idUsuario, accion);
      }
 
+    public String trabajaEn(String id) {  
+        return daoEmpleados.trabajaEn(id);
+    }  
     public void actualizar(Usuario usuario) {
         daoUsuarios.actualizar(usuario);
     }
@@ -183,8 +186,14 @@ public class FachadaBaseDatos {
         return daoEmpleados.datosEmpleado(id);
     }
     
-    public Empleado nuevoEmpleado(String usuario, int nomina, int anoIngreso){
-        return daoEmpleados.nuevoEmpleado(usuario, nomina, anoIngreso);
+    public Empleado nuevoEmpleado(String usuario, int nomina){
+        return daoEmpleados.nuevoEmpleado(usuario, nomina);
+    }
+    public void nuevoTransportista(String usuario){
+        daoEmpleados.nuevoTransportista(usuario);
+    }
+    public void nuevoOficinista(String usuario,String local){
+        daoEmpleados.nuevoOficinista(usuario,local);
     }
     
     public void actualizarEmpleado(Empleado emp){

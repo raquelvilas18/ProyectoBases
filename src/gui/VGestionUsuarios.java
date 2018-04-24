@@ -515,17 +515,17 @@ public class VGestionUsuarios extends javax.swing.JPanel {
     private void BtActualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtActualizarMouseClicked
        ModeloTablaUsuarios  m = (ModeloTablaUsuarios) tablaUsr.getModel();
         if((fa.consultarId(TxId.getText()) || (TxId.getText().equals(m.getFila(tablaUsr.getSelectedRow()).getUsuario()))) && !TxId.getText().isEmpty())
-       {
-        String id=m.getFila(tablaUsr.getSelectedRow()).getUsuario();
-        restablecerBoton();
-        actualizarUsuario(id);
-        actualizarCampos();
-       }
-        else{ErrorID.setVisible(true);
-        LabelActualizar.setVisible((false));
-        actualizarCampos();
+        {
+            String id=m.getFila(tablaUsr.getSelectedRow()).getUsuario();
+            restablecerBoton();
+            actualizarUsuario(id);
+            actualizarCampos();
         }
-        // TODO add your handling code here:
+        else{
+            ErrorID.setVisible(true);
+            LabelActualizar.setVisible((false));
+            actualizarCampos();
+        }
     }//GEN-LAST:event_BtActualizarMouseClicked
 
     private void TxDniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxDniActionPerformed
