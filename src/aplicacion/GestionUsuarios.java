@@ -55,6 +55,11 @@ public class GestionUsuarios {
     public void actualizar(Usuario usuario){
         fbd.actualizar(usuario);
     }
+    
+    public void conexion(String idUsuario,boolean accion)
+    {
+        fbd.conexion(idUsuario,accion);
+    }
     public void actualizarUsr(String id,Usuario usuario) {
         fbd.actualizarUsr(id, usuario);
     }
