@@ -49,6 +49,7 @@ public class VGestionEmpleados extends javax.swing.JPanel {
             this.TxDni.setText(m.getFila(tablaEmpleados.getSelectedRow()).getDni());
             this.TxSexo.setSelectedItem((m.getFila(tablaEmpleados.getSelectedRow())).getSexo());
             this.TxNomina.setText(Integer.toString(m.getFila(tablaEmpleados.getSelectedRow()).getNomina()));
+            this.TxTipo.setSelectedItem((m.getFila(tablaEmpleados.getSelectedRow())).getTipo());
         }
         
     }
