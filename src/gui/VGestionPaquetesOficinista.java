@@ -40,6 +40,7 @@ public class VGestionPaquetesOficinista extends javax.swing.JPanel {
 
         LabelTramitar.setVisible(false);
         LabelEliminar.setVisible(false);
+        errorLabel.setVisible(false);
 
     }
 
@@ -71,6 +72,7 @@ public class VGestionPaquetesOficinista extends javax.swing.JPanel {
         jLabel19 = new javax.swing.JLabel();
         LabelTramitar = new java.awt.Label();
         LabelEliminar = new java.awt.Label();
+        errorLabel = new java.awt.Label();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -219,7 +221,11 @@ public class VGestionPaquetesOficinista extends javax.swing.JPanel {
 
         LabelEliminar.setForeground(new java.awt.Color(0, 153, 0));
         LabelEliminar.setText("Pedido eliminado correctamente");
-        add(LabelEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 490, -1, -1));
+        add(LabelEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 490, -1, -1));
+
+        errorLabel.setForeground(new java.awt.Color(255, 0, 0));
+        errorLabel.setText("Ningun elemento seleccionado");
+        add(errorLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 490, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
@@ -235,9 +241,9 @@ public class VGestionPaquetesOficinista extends javax.swing.JPanel {
 
     private void tablaPedidosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaPedidosMouseClicked
         // TODO add your handling code here:
-        /*ErrorAlta.setVisible(false);
-         AltaCorrecta.setVisible(false);
-         LabelActualizar.setVisible(false);*/
+        LabelTramitar.setVisible(false);
+        LabelEliminar.setVisible(false);
+        errorLabel.setVisible(false);
     }//GEN-LAST:event_tablaPedidosMouseClicked
 
     private void CodigoTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CodigoTxtActionPerformed
@@ -252,16 +258,25 @@ public class VGestionPaquetesOficinista extends javax.swing.JPanel {
         // TODO add your handling code here:
         ModeloTablaPedidos tp = new ModeloTablaPedidos();
         tablaPedidos.setModel(tp);
-        fa.tramitarPedido(tp.getFila(tablaPedidos.getSelectedRow()).getCodigo());
-        LabelTramitar.setVisible(true);
+        if (tablaPedidos.getSelectedRow() >= 0) {
+            fa.tramitarPedido(tp.getFila(tablaPedidos.getSelectedRow()).getCodigo());
+            LabelTramitar.setVisible(true);
+        } else {
+            errorLabel.setVisible(true);
+        }
     }//GEN-LAST:event_BtTramitarMouseClicked
 
     private void BtEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtEliminarMouseClicked
         // TODO add your handling code here:
         ModeloTablaPedidos tp = new ModeloTablaPedidos();
         tablaPedidos.setModel(tp);
-        fa.eliminarPedido(tp.getFila(tablaPedidos.getSelectedRow()).getCodigo());
-        LabelEliminar.setVisible(true);
+        if (tablaPedidos.getSelectedRow() >= 0) {
+            fa.eliminarPedido(tp.getFila(tablaPedidos.getSelectedRow()).getCodigo());
+            LabelEliminar.setVisible(true);
+        } else {
+            errorLabel.setVisible(true);
+
+        }
     }//GEN-LAST:event_BtEliminarMouseClicked
 
 
@@ -272,6 +287,7 @@ public class VGestionPaquetesOficinista extends javax.swing.JPanel {
     private javax.swing.JTextField FiltroNombre;
     private java.awt.Label LabelEliminar;
     private java.awt.Label LabelTramitar;
+    private java.awt.Label errorLabel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
