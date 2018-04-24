@@ -13,8 +13,8 @@ public class Empleado extends Usuario{
     private int nomina;
     private int anoIngreso;
     
-    public Empleado(String usuario, String password, String dni, String nombre, String correo, String direccion, String telefono, String sexo, int nomina, int anoIngreso){
-        super(usuario, password, dni, nombre, correo, direccion, telefono, sexo);
+    public Empleado(String usuario, String password, String dni, String nombre, String correo, String direccion, String telefono, String sexo, String tipo, int nomina, int anoIngreso){
+        super(usuario, password, dni, nombre, correo, direccion, telefono, sexo, tipo);
         this.nomina = nomina;
         this.anoIngreso = anoIngreso;
     }

@@ -25,7 +25,7 @@ public class DAOEmpleados extends AbstractDAO {
         super.setFachadaAplicacion(fa);
     }
 
-    public Empleado nuevoEmpleado(String usuario, int nomina, int anoIngreso, boolean administrador){
+    public Empleado nuevoEmpleado(String usuario, int nomina, int anoIngreso){
         Empleado resultado = null;
         ResultSet rsEmpleado;
         PreparedStatement stmEmpleado = null;
@@ -34,12 +34,11 @@ public class DAOEmpleados extends AbstractDAO {
         con = super.getConexion();
         
         try{
-            stmEmpleado = con.prepareStatement("INSERT into empleados(usuario,nomina,anoingreso,administrador " +
-                                                "VALUES (?,?,?,?)");
+            stmEmpleado = con.prepareStatement("INSERT into empleados(usuario,nomina,anoingreso " +
+                                                "VALUES (?,?,?)");
             stmEmpleado.setString(1, usuario);
             stmEmpleado.setInt(2, nomina);
             stmEmpleado.setInt(3, anoIngreso);
-            stmEmpleado.setBoolean(4, administrador);
             
             stmEmpleado.executeQuery();
             
@@ -59,6 +58,7 @@ public class DAOEmpleados extends AbstractDAO {
                                             rsEmpleado.getString("direccion"),
                                             rsEmpleado.getString("telefono"),
                                             rsEmpleado.getString("sexo"),
+                                            rsEmpleado.getString("tipo"),
                                             rsEmpleado.getInt("nomina"),
                                             rsEmpleado.getInt("anoingreso"));
             }
@@ -95,7 +95,7 @@ public class DAOEmpleados extends AbstractDAO {
                 DAOUsuarios daoUs = new DAOUsuarios(this.getConexion(), this.getFachadaAplicacion());
                 Usuario u;
                 u = daoUs.obtenerUsuarios(rsEmpleados.getString("usuario"),"" ).get(0);
-                resultado.add(new Empleado(u.getUsuario(), u.getPassword(), u.getDni(), u.getNombre(), u.getCorreo(), u.getDireccion(), u.getTelefono(), u.getSexo(), rsEmpleados.getInt("nomina"), rsEmpleados.getInt("anoIngreso")));
+                resultado.add(new Empleado(u.getUsuario(), u.getPassword(), u.getDni(), u.getNombre(), u.getCorreo(), u.getDireccion(), u.getTelefono(), u.getSexo(), u.getTipo(), rsEmpleados.getInt("nomina"), rsEmpleados.getInt("anoIngreso")));
             }
         
         } catch (SQLException e) {

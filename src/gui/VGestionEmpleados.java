@@ -456,7 +456,7 @@ public class VGestionEmpleados extends javax.swing.JPanel {
             if (TxId.getText().isEmpty() || TxNombre.getText().isEmpty() || TxEmail.getText().isEmpty() || TxDireccion.getText().isEmpty() || TxTelefono.getText().isEmpty() || TxContrasena.getText().isEmpty()) {
                 ErrorAlta1.setVisible(true);
             } else {
-                fa.registrarUsuario(TxId.getText(), TxContrasena.getText(), TxDni.getText(), TxNombre.getText(), TxEmail.getText(), TxDireccion.getText(), TxTelefono.getText(), null);
+                fa.registrarUsuario(TxId.getText(), TxContrasena.getText(), TxDni.getText(), TxNombre.getText(), TxEmail.getText(), TxDireccion.getText(), TxTelefono.getText(), (String) TxSexo.getSelectedItem(), (String) TxTipo.getSelectedItem());
                 AltaCorrecta.setVisible(true);
                 restablecerBoton();
                 actualizarTabla();
@@ -573,7 +573,7 @@ public class VGestionEmpleados extends javax.swing.JPanel {
         m = (ModeloTablaEmpleados) tablaEmpleados.getModel();
         ArrayList<Integer> datos = new ArrayList<>();
         datos = fa.datosEmpleado(id);
-        fa.actualizarEmpleado(id, new Empleado(TxId.getText(), null, TxDni.getText(), TxNombre.getText(), TxEmail.getText(), TxDireccion.getText(), TxTelefono.getText(), (String) TxSexo.getSelectedItem(),Integer.parseInt(TxNomina.getText()),datos.get(0)));
+        fa.actualizarEmpleado(id, new Empleado(TxId.getText(), null, TxDni.getText(), TxNombre.getText(), TxEmail.getText(), TxDireccion.getText(), TxTelefono.getText(), (String) TxSexo.getSelectedItem(),(String) TxTipo.getSelectedItem() ,Integer.parseInt(TxNomina.getText()),datos.get(0)));
         LabelActualizar.setVisible(true);
         m.setFilas(fa.obtenerEmpleados(this.FiltroId.getText()));
         BtActualizar.setEnabled(false);
