@@ -27,16 +27,16 @@ public class ModeloTablaUsuarios extends AbstractTableModel {
 
         switch (col) {
             case 0:
-                nombre = "Id";
+                nombre = "id";
                 break;
             case 1:
-                nombre = "Nombre";
+                nombre = "nombre";
                 break;
             case 2:
-                nombre = "Direccion";
+                nombre = "direccion";
                 break;
             case 3:
-                nombre = "Sexo";
+                nombre = "sexo";
                 break;
             case 4:
                 nombre = "Tipo";

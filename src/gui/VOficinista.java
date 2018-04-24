@@ -6,6 +6,7 @@
 package gui;
 
 import AppPackage.AnimationClass;
+import aplicacion.Usuario;
 import java.awt.Color;
 import java.awt.Desktop;
 import java.net.URI;
@@ -15,14 +16,16 @@ import java.net.URI;
  * @author alumnogreibd
  */
 public class VOficinista extends javax.swing.JPanel {
-    VPrincipal parent;
+    private VPrincipal parent;
+    private Usuario usuario;
 
     /**
      * Creates new form VOficinista
      */
-    public VOficinista(VPrincipal parent) {
+    public VOficinista(VPrincipal parent, Usuario usuario) {
         initComponents();
         this.parent = parent;
+        this.usuario = usuario;
     }
 
     /**
@@ -239,7 +242,7 @@ public class VOficinista extends javax.swing.JPanel {
 
     private void jPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseClicked
         // TODO add your handling code here:
-       parent.ventanaPerfilOficinista();
+       parent.ventanaPerfilOficinista(this.usuario);
     }//GEN-LAST:event_jPanel1MouseClicked
 
     private void jPanel1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseExited

@@ -7,6 +7,8 @@ package gui;
 
 import aplicacion.Usuario;
 import java.awt.Color;
+import java.awt.Font;
+import javax.swing.table.JTableHeader;
 
 /**
  *
@@ -51,6 +53,13 @@ public class VGestionUsuarios extends javax.swing.JPanel {
             this.TxTipo.setSelectedItem((m.getFila(tablaUsr.getSelectedRow())).getTipo());
 
         }
+        
+        JTableHeader th;
+        th = this.tablaUsr.getTableHeader();
+        Font fuente = new Font("SansSerif", Font.PLAIN, 16);
+        th.setFont(fuente);
+        th.setForeground(new Color(255,148,42));
+        th.setBackground(Color.WHITE);
         
     }
 
@@ -377,6 +386,7 @@ public class VGestionUsuarios extends javax.swing.JPanel {
         LabelActualizar.setText("Datos actualizados");
         jPanel1.add(LabelActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, -1, -1));
 
+        TxContrasena.setEditable(false);
         TxContrasena.setBackground(new java.awt.Color(255, 232, 185));
         TxContrasena.setForeground(new java.awt.Color(102, 102, 102));
         TxContrasena.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 1));
@@ -401,6 +411,7 @@ public class VGestionUsuarios extends javax.swing.JPanel {
         ErrorAlta1.setText("Todos los campos son obligatorios");
         jPanel1.add(ErrorAlta1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 140, -1, -1));
 
+        TxTipo.setBackground(new java.awt.Color(255, 232, 185));
         TxTipo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "administrador", "oficinista", "transportista", "cliente" }));
         TxTipo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -413,12 +424,17 @@ public class VGestionUsuarios extends javax.swing.JPanel {
         jLabel24.setText("Telefono:");
         jPanel1.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, -1, -1));
 
-        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 381, 600, 210));
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 360, 600, 210));
 
+        jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
+        jScrollPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+
+        tablaUsr.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         tablaUsr.setModel(new ModeloTablaUsuarios());
         tablaUsr.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         tablaUsr.setGridColor(new java.awt.Color(255, 189, 72));
         tablaUsr.setSelectionBackground(new java.awt.Color(255, 189, 72));
+        tablaUsr.setSelectionForeground(new java.awt.Color(255, 255, 255));
         tablaUsr.setShowHorizontalLines(false);
         tablaUsr.setShowVerticalLines(false);
         tablaUsr.setSurrendersFocusOnKeystroke(true);
@@ -431,7 +447,7 @@ public class VGestionUsuarios extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tablaUsr);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(63, 190, 590, 170));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, 600, 180));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
