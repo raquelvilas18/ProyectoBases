@@ -20,6 +20,7 @@ public class VPedidosActivos extends javax.swing.JPanel {
      */
     private Usuario usuario;
     
+
     public VPedidosActivos(aplicacion.FachadaAplicacion fa,java.awt.Frame parent,Usuario usuario) {
         initComponents();
         ModeloTablaPedidos tp=new ModeloTablaPedidos();
@@ -35,6 +36,7 @@ public class VPedidosActivos extends javax.swing.JPanel {
         tablaPedidos.setDefaultRenderer(Integer.class, centerRenderer);
         /////////////////////////////////
     }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
