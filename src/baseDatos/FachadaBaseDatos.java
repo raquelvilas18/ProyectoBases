@@ -51,12 +51,13 @@ public class FachadaBaseDatos {
             
             usuario.setProperty("user", configuracion.getProperty("usuario"));
             usuario.setProperty("password", configuracion.getProperty("clave"));
+            /*
             this.conexion = java.sql.DriverManager.getConnection("jdbc:" + gestor + "://"
                     + configuracion.getProperty("servidor") + ":"
                     + configuracion.getProperty("puerto") + "/"
                     + configuracion.getProperty("baseDatos"),
                     usuario);
-            /*
+            */
             Class.forName("org.postgresql.Driver");
 
             usuario.setProperty("user", configuracion.getProperty("usuario"));
@@ -68,7 +69,7 @@ public class FachadaBaseDatos {
             String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + dbUri.getPath() + "?sslmode=require";
             
             this.conexion = java.sql.DriverManager.getConnection(dbUrl,username,password);
-            */
+            
             daoUsuarios = new DAOUsuarios(conexion, this.fa);
             daoPedidos = new DAOPedidos(conexion, this.fa);
             daoEmpleados = new DAOEmpleados(conexion, this.fa);
@@ -82,11 +83,11 @@ public class FachadaBaseDatos {
         } catch (java.sql.SQLException e) {
             System.out.println(e.getMessage());
             fa.muestraExcepcion(e.getMessage());
-        }/*catch (ClassNotFoundException ex) {
+        }catch (ClassNotFoundException ex) {
             Logger.getLogger(FachadaBaseDatos.class.getName()).log(Level.SEVERE, null, ex);
         } catch (URISyntaxException ex) {
             Logger.getLogger(FachadaBaseDatos.class.getName()).log(Level.SEVERE, null, ex);
-        }*/
+        }
     }
 
     public boolean consultarId(String idUsuario) {
