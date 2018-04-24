@@ -151,7 +151,7 @@ public class DAOPedidos extends AbstractDAO {
         return resultado;
     }
 
-    public java.util.List<Paquete> comprobarLocalizacion(Integer codigo) {
+    public java.util.List<Paquete> comprobarLocalizacion(int codigo) {
         java.util.List<Paquete> resultado = new java.util.ArrayList<Paquete>();
         Connection con;
         PreparedStatement stmPedidos = null;
@@ -192,7 +192,7 @@ public class DAOPedidos extends AbstractDAO {
         return resultado;
     }
 
-    public ArrayList<Pedido> pedidosSinTramitar(String codigo) {
+    public ArrayList<Pedido> pedidosSinTramitar(Integer codigo) {
         ArrayList<Pedido> resultado = new ArrayList<Pedido>();
         Connection con;
         PreparedStatement stmPedidos = null;
@@ -204,8 +204,8 @@ public class DAOPedidos extends AbstractDAO {
             stmPedidos = con.prepareStatement("SELECT * "
                     + "FROM pedidos "
                     + "WHERE fecha ISNULL "
-                    + "AND codigo LIKE ?");
-            stmPedidos.setString(1, "%"+codigo+"%");
+                    + "AND codigo = ?");
+            stmPedidos.setInt(1, codigo);
 
             rsPedidos = stmPedidos.executeQuery();
  
@@ -230,6 +230,67 @@ public class DAOPedidos extends AbstractDAO {
         }
 
         return resultado;
+    }
+    
+    public ArrayList<Pedido> pedidosSinTramitar() {
+        ArrayList<Pedido> resultado = new ArrayList<Pedido>();
+        Connection con;
+        PreparedStatement stmPedidos = null;
+        ResultSet rsPedidos = null;
+
+        con = super.getConexion();
+
+        try {
+            stmPedidos = con.prepareStatement("SELECT * "
+                    + "FROM pedidos "
+                    + "WHERE fecha ISNULL");
+
+            rsPedidos = stmPedidos.executeQuery();
+ 
+            while (rsPedidos.next()) {
+                resultado.add(new Pedido(null, 
+                        rsPedidos.getString("cliente"),
+                        rsPedidos.getInt("codigo"),
+                        rsPedidos.getBoolean("express"),
+                        rsPedidos.getString("direccion"),
+                        rsPedidos.getString("destinatario"),
+                        rsPedidos.getString("tramitador")));
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
+        } finally {
+            try {
+                stmPedidos.close();
+            } catch (SQLException e) {
+                System.out.println("Imposible cerrar cursores");
+            }
+        }
+
+        return resultado;
+    }
+    
+    public void eliminarPedido(int codigo){
+        Connection con;
+        PreparedStatement stm = null;
+        ResultSet rs;
+
+        con = this.getConexion();
+
+        try {
+            stm = con.prepareStatement("DELETE FROM pedidos WHERE codigo = ?");
+            stm.setInt(1, codigo);
+            stm.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
+        } finally {
+            try {
+                stm.close();
+            } catch (SQLException e) {
+                System.out.println("Imposible cerrar cursores");
+            }
+        }
     }
 
 }

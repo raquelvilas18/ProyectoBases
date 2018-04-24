@@ -35,8 +35,12 @@ public class GestionPedidos {
         return fbd.obtenerPedidosActivos(usuario);
     }
 
-    public ArrayList<Pedido> pedidosSinTramitar(String codigo) {
+    public ArrayList<Pedido> pedidosSinTramitar(int codigo) {
         return fbd.pedidosSinTramitar(codigo);
+    }
+    
+    public ArrayList<Pedido> pedidosSinTramitar(){
+        return fbd.pedidosSinTramitar();
     }
 
     public java.util.List<Paquete> comprobarLocalizacion(Integer codigo) {

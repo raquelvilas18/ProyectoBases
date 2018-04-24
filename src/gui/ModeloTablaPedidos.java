@@ -79,4 +79,8 @@ public class ModeloTablaPedidos extends AbstractTableModel {
         fireTableDataChanged();
     }
     
+    public Pedido getFila(int row){
+        return pedidos.get(row);
+    }
+    
 }

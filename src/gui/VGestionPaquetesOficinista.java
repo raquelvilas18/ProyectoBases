@@ -22,17 +22,25 @@ public class VGestionPaquetesOficinista extends javax.swing.JPanel {
      */
     public VGestionPaquetesOficinista(aplicacion.FachadaAplicacion fa) {
         initComponents();
-        this.fa=fa;
+        this.fa = fa;
         ModeloTablaPedidos tp = new ModeloTablaPedidos();
         tablaPedidos.setModel(tp);
-        tp.setFilas(fa.pedidosSinTramitar(this.CodigoTxt.getText()));
-        
+        if (CodigoTxt.getText().equals("")) {
+            tp.setFilas(fa.pedidosSinTramitar());
+        } else {
+            tp.setFilas(fa.pedidosSinTramitar(Integer.parseInt(this.CodigoTxt.getText())));
+        }
+
         JTableHeader th;
         th = this.tablaPedidos.getTableHeader();
         Font fuente = new Font("SansSerif", Font.PLAIN, 16);
         th.setFont(fuente);
-        th.setForeground(new Color(89,171,36));
+        th.setForeground(new Color(89, 171, 36));
         th.setBackground(Color.WHITE);
+
+        LabelTramitar.setVisible(false);
+        LabelEliminar.setVisible(false);
+
     }
 
     /**
@@ -55,12 +63,14 @@ public class VGestionPaquetesOficinista extends javax.swing.JPanel {
         jSeparator2 = new javax.swing.JSeparator();
         CodigoTxt = new javax.swing.JTextField();
         FiltroNombre = new javax.swing.JTextField();
-        BtActualizar = new javax.swing.JPanel();
+        BtTramitar = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
-        BtBaja = new javax.swing.JPanel();
+        BtEliminar = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
+        LabelTramitar = new java.awt.Label();
+        LabelEliminar = new java.awt.Label();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -162,50 +172,72 @@ public class VGestionPaquetesOficinista extends javax.swing.JPanel {
         });
         add(FiltroNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 130, 150, -1));
 
-        BtActualizar.setBackground(new java.awt.Color(89, 171, 36));
-        BtActualizar.setToolTipText("");
-        BtActualizar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        BtActualizar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        BtTramitar.setBackground(new java.awt.Color(89, 171, 36));
+        BtTramitar.setToolTipText("");
+        BtTramitar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        BtTramitar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BtTramitarMouseClicked(evt);
+            }
+        });
+        BtTramitar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel14.setFont(new java.awt.Font("Noto Sans", 0, 18)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(215, 215, 215));
-        jLabel14.setText("Actualizar");
-        BtActualizar.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, 110, -1));
+        jLabel14.setText("Tramitar");
+        BtTramitar.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 20, 110, -1));
 
         jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-actualizar-26.png"))); // NOI18N
         jLabel15.setText("jLabel1");
-        BtActualizar.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 33, 36));
+        BtTramitar.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 33, 36));
 
-        add(BtActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 516, 270, 50));
+        add(BtTramitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 516, 270, 50));
 
-        BtBaja.setBackground(new java.awt.Color(89, 171, 36));
-        BtBaja.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        BtBaja.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        BtEliminar.setBackground(new java.awt.Color(89, 171, 36));
+        BtEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        BtEliminar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BtEliminarMouseClicked(evt);
+            }
+        });
+        BtEliminar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel17.setFont(new java.awt.Font("Noto Sans", 0, 18)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(215, 215, 215));
         jLabel17.setText("Eliminar");
-        BtBaja.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, 110, -1));
+        BtEliminar.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, 110, -1));
 
         jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-eliminar-26.png"))); // NOI18N
         jLabel19.setText("jLabel1");
-        BtBaja.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 33, 36));
+        BtEliminar.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 33, 36));
 
-        add(BtBaja, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 516, 300, 50));
+        add(BtEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 516, 300, 50));
+
+        LabelTramitar.setForeground(new java.awt.Color(0, 153, 0));
+        LabelTramitar.setText("Pedido tramitado correctamente");
+        add(LabelTramitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 490, -1, -1));
+
+        LabelEliminar.setForeground(new java.awt.Color(0, 153, 0));
+        LabelEliminar.setText("Pedido eliminado correctamente");
+        add(LabelEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 490, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
 
-        ModeloTablaUsuarios tp = new ModeloTablaUsuarios();
+        ModeloTablaPedidos tp = new ModeloTablaPedidos();
         tablaPedidos.setModel(tp);
-        tp.setFilas(fa.obtenerUsuarios(this.CodigoTxt.getText(), this.FiltroNombre.getText()));
+        if (CodigoTxt.getText().equals("")) {
+            tp.setFilas(fa.pedidosSinTramitar());
+        } else {
+            tp.setFilas(fa.pedidosSinTramitar(Integer.parseInt(this.CodigoTxt.getText())));
+        }
     }//GEN-LAST:event_jLabel6MouseClicked
 
     private void tablaPedidosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaPedidosMouseClicked
         // TODO add your handling code here:
         /*ErrorAlta.setVisible(false);
-        AltaCorrecta.setVisible(false);
-        LabelActualizar.setVisible(false);*/
+         AltaCorrecta.setVisible(false);
+         LabelActualizar.setVisible(false);*/
     }//GEN-LAST:event_tablaPedidosMouseClicked
 
     private void CodigoTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CodigoTxtActionPerformed
@@ -216,12 +248,30 @@ public class VGestionPaquetesOficinista extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_FiltroNombreActionPerformed
 
+    private void BtTramitarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtTramitarMouseClicked
+        // TODO add your handling code here:
+        ModeloTablaPedidos tp = new ModeloTablaPedidos();
+        tablaPedidos.setModel(tp);
+        fa.tramitarPedido(tp.getFila(tablaPedidos.getSelectedRow()).getCodigo());
+        LabelTramitar.setVisible(true);
+    }//GEN-LAST:event_BtTramitarMouseClicked
+
+    private void BtEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtEliminarMouseClicked
+        // TODO add your handling code here:
+        ModeloTablaPedidos tp = new ModeloTablaPedidos();
+        tablaPedidos.setModel(tp);
+        fa.eliminarPedido(tp.getFila(tablaPedidos.getSelectedRow()).getCodigo());
+        LabelEliminar.setVisible(true);
+    }//GEN-LAST:event_BtEliminarMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel BtActualizar;
-    private javax.swing.JPanel BtBaja;
+    private javax.swing.JPanel BtEliminar;
+    private javax.swing.JPanel BtTramitar;
     private javax.swing.JTextField CodigoTxt;
     private javax.swing.JTextField FiltroNombre;
+    private java.awt.Label LabelEliminar;
+    private java.awt.Label LabelTramitar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;

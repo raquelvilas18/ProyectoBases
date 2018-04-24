@@ -123,8 +123,16 @@ public class FachadaBaseDatos {
         return daoPedidos.comprobarLocalizacion(codigo);
     }
     
-    public ArrayList<Pedido> pedidosSinTramitar(String codigo){
+    public ArrayList<Pedido> pedidosSinTramitar(int codigo){
         return daoPedidos.pedidosSinTramitar(codigo);
+    }
+    
+    public ArrayList<Pedido> pedidosSinTramitar(){
+        return daoPedidos.pedidosSinTramitar();
+    }
+    
+    public void eliminarPedido(int codigo){
+        daoPedidos.eliminarPedido(codigo);
     }
 
     //------EMPLEADOS-------//
