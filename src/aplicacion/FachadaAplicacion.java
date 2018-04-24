@@ -58,7 +58,9 @@ public class FachadaAplicacion {
     public boolean consultarId(String idUsuario) {
         return gUsuarios.consultarId(idUsuario);
     }
-
+    public String trabajaEn(String id) {  
+        return gEmpleados.trabajaEn(id);
+    }  
     public void actualizar(Usuario usuario) {
         gUsuarios.actualizar(usuario);
     }
@@ -92,9 +94,17 @@ public class FachadaAplicacion {
     public java.util.List<Pedido> obtenerPedidosActivos(String usuario) {
         return gPedidos.obtenerPedidosActivos(usuario);
     }
+    
+    public ArrayList<Pedido> pedidosSinTramitar(int codigo){
+        return gPedidos.pedidosSinTramitar(codigo);
+    }
+    
+    public ArrayList<Pedido> pedidosSinTramitar(){
+        return gPedidos.pedidosSinTramitar();
+    }
 
-    public Empleado nuevoEmpleado(String usuario, String password, String dni, String nombre, String correo, String direccion, String telefono, String sexo, String tipo, int nomina, int anoIngreso){
-        return gEmpleados.nuevoEmpleado(usuario, password, dni, nombre, correo, direccion, telefono, sexo, tipo, nomina, anoIngreso);
+    public Empleado nuevoEmpleado(String usuario, String password, String dni, String nombre, String correo, String direccion, String telefono, String sexo, String tipo, int nomina,String local){
+        return gEmpleados.nuevoEmpleado(usuario, password, dni, nombre, correo, direccion, telefono, sexo, tipo, nomina,local);
     }
     
     public void actualizar(Empleado emp){
@@ -131,6 +141,10 @@ public class FachadaAplicacion {
 
     public ArrayList<Usuario> obtenerUsuarios(String id, String nombre) {
         return fbd.obtenerUsuarios(id, nombre);
+    }
+    
+    public void eliminarPedido(int codigo){
+        fbd.eliminarPedido(codigo);
     }
 
 }

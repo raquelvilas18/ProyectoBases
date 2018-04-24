@@ -160,14 +160,18 @@ public class DAOUsuarios extends AbstractDAO {
         Usuario resultado = null;
         Connection con;
         PreparedStatement stmUsuario = null;
+        PreparedStatement stmCliente = null;
+        PreparedStatement stmOficinista = null;
+        PreparedStatement stmTransportista = null;
+        PreparedStatement Empleados = null;
         if (validarUsuario(id, clave) == null) {
 
             con = this.getConexion();
 
             try {
                 stmUsuario = con.prepareStatement("INSERT INTO usuarios(\n"
-                        + "usuario, password, dni, nombre, correo, direccion, telefono,sexo)\n"
-                        + "VALUES (?,(SELECT md5(?)),?,?,?,?,?,?);");
+                        + "usuario, password, dni, nombre, correo, direccion, telefono,sexo,tipo)\n"
+                        + "VALUES (?,(SELECT md5(?)),?,?,?,?,?,?,?);");
                 stmUsuario.setString(1, id);
                 stmUsuario.setString(2, clave);
                 stmUsuario.setString(3, dni);
@@ -176,6 +180,7 @@ public class DAOUsuarios extends AbstractDAO {
                 stmUsuario.setString(6, direccion);
                 stmUsuario.setString(7, telefono);
                 stmUsuario.setString(8, sexo);
+                stmUsuario.setString(9, tipo);
                 stmUsuario.executeUpdate();
 
             } catch (SQLException e) {

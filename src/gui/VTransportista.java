@@ -137,7 +137,7 @@ public class VTransportista extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, 310, 70));
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 230, 310, 70));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-colaborador-hombre-96.png"))); // NOI18N
         jLabel1.setText("jLabel1");

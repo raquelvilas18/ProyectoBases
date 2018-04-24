@@ -80,7 +80,7 @@ public class FachadaBaseDatos {
         } catch (IOException i) {
             System.out.println(i.getMessage());
             fa.muestraExcepcion(i.getMessage());
-        } catch (java.sql.SQLException e) {
+        }catch (java.sql.SQLException e) {
             System.out.println(e.getMessage());
             fa.muestraExcepcion(e.getMessage());
         }catch (ClassNotFoundException ex) {
@@ -99,6 +99,9 @@ public class FachadaBaseDatos {
          daoUsuarios.conexion(idUsuario, accion);
      }
 
+    public String trabajaEn(String id) {  
+        return daoEmpleados.trabajaEn(id);
+    }  
     public void actualizar(Usuario usuario) {
         daoUsuarios.actualizar(usuario);
     }
@@ -153,6 +156,18 @@ public class FachadaBaseDatos {
     public java.util.List<Paquete> comprobarLocalizacion(Integer codigo) {
         return daoPedidos.comprobarLocalizacion(codigo);
     }
+    
+    public ArrayList<Pedido> pedidosSinTramitar(int codigo){
+        return daoPedidos.pedidosSinTramitar(codigo);
+    }
+    
+    public ArrayList<Pedido> pedidosSinTramitar(){
+        return daoPedidos.pedidosSinTramitar();
+    }
+    
+    public void eliminarPedido(int codigo){
+        daoPedidos.eliminarPedido(codigo);
+    }
 
     //------EMPLEADOS-------//
     public ArrayList<Empleado> obtenerEmpleados(String id ) {
@@ -163,8 +178,14 @@ public class FachadaBaseDatos {
         return daoEmpleados.datosEmpleado(id);
     }
     
-    public Empleado nuevoEmpleado(String usuario, int nomina, int anoIngreso){
-        return daoEmpleados.nuevoEmpleado(usuario, nomina, anoIngreso);
+    public Empleado nuevoEmpleado(String usuario, int nomina){
+        return daoEmpleados.nuevoEmpleado(usuario, nomina);
+    }
+    public void nuevoTransportista(String usuario){
+        daoEmpleados.nuevoTransportista(usuario);
+    }
+    public void nuevoOficinista(String usuario,String local){
+        daoEmpleados.nuevoOficinista(usuario,local);
     }
     
     public void actualizarEmpleado(Empleado emp){
