@@ -6,6 +6,7 @@
 package gui;
 
 import AppPackage.AnimationClass;
+import aplicacion.Usuario;
 import java.awt.Color;
 import java.awt.Desktop;
 import java.net.URI;
@@ -16,13 +17,15 @@ import java.net.URI;
  */
 public class VAdmin extends javax.swing.JPanel {
     private VPrincipal parent;
+    private Usuario usuario;
 
     /**
      * Creates new form VAdmin
      */
-    public VAdmin(VPrincipal vp) {
+    public VAdmin(VPrincipal vp, Usuario usuario) {
         initComponents();
         parent = vp; 
+        this.usuario = usuario;
     }
 
     /**
@@ -395,7 +398,7 @@ public class VAdmin extends javax.swing.JPanel {
     }//GEN-LAST:event_CerrarSesionMouseClicked
 
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
-        parent.ventanaPerfilAdmin();
+        parent.ventanaPerfilAdmin(this.usuario);
     }//GEN-LAST:event_jLabel5MouseClicked
     
     public void openInternet(){

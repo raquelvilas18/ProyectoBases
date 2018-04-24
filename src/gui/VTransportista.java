@@ -17,12 +17,14 @@ import java.net.URI;
  */
 public class VTransportista extends javax.swing.JPanel {
     private VPrincipal parent;
+    private Usuario usuario;
     /**
      * Creates new form VTransportista
      */
-    public VTransportista(VPrincipal parent ) {
+    public VTransportista(VPrincipal parent, Usuario usuario ) {
         initComponents();
         this.parent = parent;
+        this.usuario=usuario;
     }
 
     /**
@@ -187,7 +189,7 @@ public class VTransportista extends javax.swing.JPanel {
 
     private void jPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseClicked
         // TODO add your handling code here:
-        parent.ventanaPerfilTransportista();
+        parent.ventanaPerfilTransportista(this.usuario);
     }//GEN-LAST:event_jPanel1MouseClicked
 
     private void jPanel1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseExited
