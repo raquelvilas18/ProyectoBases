@@ -50,6 +50,8 @@ public class VGestionUsuarios extends javax.swing.JPanel {
             this.TxTelefono.setText(m.getFila(tablaUsr.getSelectedRow()).getTelefono());
             this.TxDni.setText(m.getFila(tablaUsr.getSelectedRow()).getDni());
             this.TxSexo.setSelectedItem((m.getFila(tablaUsr.getSelectedRow())).getSexo());
+            this.TxTipo.setSelectedItem((m.getFila(tablaUsr.getSelectedRow())).getTipo());
+
         }
         
         JTableHeader th;
@@ -495,6 +497,7 @@ public class VGestionUsuarios extends javax.swing.JPanel {
         this.TxTelefono.setText(m.getFila(tablaUsr.getSelectedRow()).getTelefono());
         this.TxDni.setText(m.getFila(tablaUsr.getSelectedRow()).getDni());
         this.TxSexo.setSelectedItem((m.getFila(tablaUsr.getSelectedRow())).getSexo());
+        this.TxTipo.setSelectedItem((m.getFila(tablaUsr.getSelectedRow())).getTipo());
     }
     
     
@@ -631,6 +634,7 @@ public class VGestionUsuarios extends javax.swing.JPanel {
         this.TxTelefono.setText(m.getFila(tablaUsr.getSelectedRow()).getTelefono());
         this.TxDni.setText(m.getFila(tablaUsr.getSelectedRow()).getDni());
         this.TxSexo.setSelectedItem((m.getFila(tablaUsr.getSelectedRow())).getSexo());
+        this.TxTipo.setSelectedItem((m.getFila(tablaUsr.getSelectedRow())).getTipo());
     }
 
     //public Usuario(String usuario, String password, String dni, String nombre, String correo, String direccion, String telefono, String sexo) {

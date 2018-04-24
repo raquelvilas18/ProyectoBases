@@ -292,6 +292,8 @@ public class VOficinista extends javax.swing.JPanel {
 
     private void CerrarSesionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CerrarSesionMouseClicked
         // TODO add your handling code here:
+        if(usuario!=null) parent.fa.conexion(this.usuario.getUsuario(), false);
+        parent.usuario = null;
         this.setVisible(false);
         parent.ventanaInicial();
     }//GEN-LAST:event_CerrarSesionMouseClicked
