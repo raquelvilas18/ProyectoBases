@@ -4,6 +4,8 @@ import aplicacion.*;
 import gui.*;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -48,14 +50,18 @@ public class DAOUsuarios extends AbstractDAO {
     
     
 
-    public Usuario validarUsuario1(String idUsuario, String clave) throws SQLException {
+    public Usuario validarUsuario1(String idUsuario, String clave) {
         Usuario resultado = null;
         Connection con;
         PreparedStatement stmUsuario = null;
         ResultSet rsUsuario;
         
         con = this.getConexion();
-        con.setAutoCommit(false);
+        try {
+            con.setAutoCommit(false);
+        } catch (SQLException ex) {
+            Logger.getLogger(DAOUsuarios.class.getName()).log(Level.SEVERE, null, ex);
+        }
         if (idUsuario != null && clave != null) {
             try {
                 stmUsuario = con.prepareStatement("SELECT *\n"
@@ -85,7 +91,11 @@ public class DAOUsuarios extends AbstractDAO {
                 }
             }
         }
-        con.setAutoCommit(true);
+        try {
+            con.setAutoCommit(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(DAOUsuarios.class.getName()).log(Level.SEVERE, null, ex);
+        }
         return resultado;
     }
     
