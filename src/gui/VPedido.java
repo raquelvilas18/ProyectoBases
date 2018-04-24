@@ -26,6 +26,8 @@ public class VPedido extends javax.swing.JPanel {
         this.u=u;
         Error.setVisible(false);
         Correcto.setVisible(false);
+        
+        
     }
 
     /**
