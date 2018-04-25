@@ -3,31 +3,35 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gui;
+package gui.cliente;
 
 import aplicacion.Usuario;
+import gui.ModeloTablaPedidos;
 import java.awt.Color;
 import java.awt.Font;
-import javax.swing.JTable;
-import javax.swing.table.*;
 import javax.swing.JLabel;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.JTableHeader;
+
 /**
  *
  * @author raquel
  */
-public class VHistorialPedidos extends javax.swing.JPanel {
+public class VPedidosActivos extends javax.swing.JPanel {
 
     /**
-     * Creates new form VHistorialPedidos
+     * Creates new form VPedidosActivos
      */
-
     private Usuario usuario;
-    public VHistorialPedidos(aplicacion.FachadaAplicacion fa,java.awt.Frame parent,Usuario usuario) {
+    
+
+    public VPedidosActivos(aplicacion.FachadaAplicacion fa,java.awt.Frame parent,Usuario usuario) {
+        initComponents();
         ModeloTablaPedidos tp=new ModeloTablaPedidos();
         initComponents();
         tablaPedidos.setModel(tp);
         this.usuario=usuario;
-        tp.setFilas(fa.obtenerHistorialPedidos(usuario.getUsuario()));
+        tp.setFilas(fa.obtenerPedidosActivos(usuario.getUsuario()));
         //SELECCION Y CENTRADO DE TEXTO
         tablaPedidos.changeSelection(0,0,false,false);
         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
@@ -35,6 +39,7 @@ public class VHistorialPedidos extends javax.swing.JPanel {
         tablaPedidos.setDefaultRenderer(String.class, centerRenderer);
         tablaPedidos.setDefaultRenderer(Integer.class, centerRenderer);
         /////////////////////////////////
+        
         JTableHeader th;
         th = this.tablaPedidos.getTableHeader();
         Font fuente = new Font("SansSerif", Font.PLAIN, 16);
@@ -42,6 +47,7 @@ public class VHistorialPedidos extends javax.swing.JPanel {
         th.setForeground(new Color(65,105,225));
         th.setBackground(Color.WHITE);
     }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -52,15 +58,12 @@ public class VHistorialPedidos extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jToggleButton1 = new javax.swing.JToggleButton();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaPedidos = new javax.swing.JTable();
-
-        jToggleButton1.setText("jToggleButton1");
 
         setBackground(new java.awt.Color(254, 254, 254));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -86,7 +89,7 @@ public class VHistorialPedidos extends javax.swing.JPanel {
 
         jLabel2.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(221, 61, 1));
-        jLabel2.setText("Historial de pedidos");
+        jLabel2.setText("Pedidos Activos");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, 260, -1));
 
         jPanel4.setBackground(new java.awt.Color(225, 181, 158));
@@ -104,21 +107,21 @@ public class VHistorialPedidos extends javax.swing.JPanel {
 
         add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 130, 600, 10));
 
-        jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
         jScrollPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
-        jScrollPane1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         tablaPedidos.setBackground(new java.awt.Color(254, 254, 254));
-        tablaPedidos.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+        tablaPedidos.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         tablaPedidos.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         tablaPedidos.setForeground(new java.awt.Color(0, 0, 0));
         tablaPedidos.setModel(new ModeloTablaPedidos());
         tablaPedidos.setGridColor(new java.awt.Color(255, 255, 255));
         tablaPedidos.setSelectionBackground(new java.awt.Color(111, 133, 255));
         tablaPedidos.setSelectionForeground(new java.awt.Color(255, 255, 255));
+        tablaPedidos.setShowHorizontalLines(false);
+        tablaPedidos.setShowVerticalLines(false);
         jScrollPane1.setViewportView(tablaPedidos);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, 600, 360));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, 600, 370));
     }// </editor-fold>//GEN-END:initComponents
 
 
@@ -128,7 +131,6 @@ public class VHistorialPedidos extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JTable tablaPedidos;
     // End of variables declaration//GEN-END:variables
 }

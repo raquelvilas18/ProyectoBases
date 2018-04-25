@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gui;
+package gui.cliente;
 
 import aplicacion.FachadaAplicacion;
 import aplicacion.Usuario;
@@ -59,7 +59,7 @@ public class VPerfil extends javax.swing.JPanel {
         jPanel4 = new javax.swing.JPanel();
         JLabelMensaje = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
-        sexo = new javax.swing.JComboBox<>();
+        sexo = new javax.swing.JComboBox<String>();
         jLabel18 = new javax.swing.JLabel();
         JDNI = new javax.swing.JTextField();
 
@@ -236,7 +236,7 @@ public class VPerfil extends javax.swing.JPanel {
 
         sexo.setBackground(new java.awt.Color(165, 180, 253));
         sexo.setForeground(new java.awt.Color(0, 0, 0));
-        sexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "H", "M" }));
+        sexo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "H", "M" }));
         sexo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 sexoActionPerformed(evt);

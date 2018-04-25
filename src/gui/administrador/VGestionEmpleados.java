@@ -3,9 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gui;
+package gui.administrador;
 
 import aplicacion.Empleado;
+import gui.ModeloTablaEmpleados;
 import java.awt.Color;
 import java.awt.Font;
 import java.util.ArrayList;
@@ -355,7 +356,9 @@ public class VGestionEmpleados extends javax.swing.JPanel {
         });
         jPanel1.add(TxNomina, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 60, 220, -1));
 
-        TxSexo.setBackground(new java.awt.Color(204, 204, 204));
+        TxSexo.setBackground(new java.awt.Color(255, 232, 185));
+        TxSexo.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        TxSexo.setForeground(new java.awt.Color(0, 0, 0));
         TxSexo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "H", "M" }));
         TxSexo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         TxSexo.addActionListener(new java.awt.event.ActionListener() {
@@ -393,7 +396,9 @@ public class VGestionEmpleados extends javax.swing.JPanel {
         LabelActualizar.setText("Datos actualizados");
         jPanel1.add(LabelActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, -1, -1));
 
-        TxTipo.setBackground(new java.awt.Color(204, 204, 204));
+        TxTipo.setBackground(new java.awt.Color(255, 232, 185));
+        TxTipo.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        TxTipo.setForeground(new java.awt.Color(0, 0, 0));
         TxTipo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "oficinista", "transportista", "administrador" }));
         TxTipo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         TxTipo.addActionListener(new java.awt.event.ActionListener() {

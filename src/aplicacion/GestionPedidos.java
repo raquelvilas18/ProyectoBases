@@ -27,6 +27,9 @@ public class GestionPedidos {
         return fbd.nuevoPedido(pd);
     }
 
+     public Pedido getPedido(Pedido p) {
+        return fbd.getPedido(p);
+    }
     public java.util.List<Pedido> obtenerHistorialPedidos(String usuario) {
         return fbd.obtenerHistorialPedidos(usuario);
     }

@@ -75,6 +75,10 @@ public class FachadaAplicacion {
         return gPedidos.nuevoPedido(p);
     }
     
+    public Pedido getPedido(Pedido p) {
+        return gPedidos.getPedido(p);
+    }
+    
     public void nuevoPaquete(Paquete p){
         gPaquetes.nuevoPaquete(p);
     }

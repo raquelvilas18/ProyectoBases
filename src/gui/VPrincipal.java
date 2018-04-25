@@ -5,6 +5,25 @@
  */
 package gui;
 
+import gui.trasnportista.VGestionPaquetesTransportista;
+import gui.trasnportista.VPerfilTransportista;
+import gui.trasnportista.VTransportista;
+import gui.cliente.VPedido;
+import gui.cliente.VHistorialPedidos;
+import gui.cliente.VPedidosActivos;
+import gui.administrador.VAdmin;
+import gui.cliente.VPerfil;
+import gui.cliente.VUsr;
+import gui.oficinista.VPerfilOficinista;
+import gui.oficinista.VGestionPaquetesOficinista;
+import gui.oficinista.VGestionUsuariosOficinista;
+import aplicacion.FachadaAplicacion;
+import gui.oficinista.VOficinista;
+import gui.administrador.VGestionUsuarios;
+import gui.administrador.VGestionPaquetes;
+import gui.administrador.VGestionEmpleados;
+import gui.administrador.VGestionVehiculos;
+import gui.administrador.VPerfilAdmin;
 import aplicacion.Usuario;
 import java.awt.event.KeyEvent;
 import javax.swing.JPanel;
@@ -18,6 +37,22 @@ public class VPrincipal extends javax.swing.JFrame {
     aplicacion.FachadaAplicacion fa;
     private JPanel panelActivo;
    Usuario usuario;
+
+    public FachadaAplicacion getFa() {
+        return fa;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setFa(FachadaAplicacion fa) {
+        this.fa = fa;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
     
 
     /**
@@ -473,6 +508,14 @@ public class VPrincipal extends javax.swing.JFrame {
         panelBase.add(panelGU, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 680, 580));
         panelActivo = panelGU;
     }
+    
+    
+    public void ventanaGestionPedidosTransportista() {
+        panelActivo.setVisible(false);
+        VGestionPaquetesTransportista panelGU = new VGestionPaquetesTransportista(fa);
+        panelBase.add(panelGU, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 680, 580));
+        panelActivo = panelGU;
+    }   
     
     public void ventanagestionPaquetes() {
         panelActivo.setVisible(false);
