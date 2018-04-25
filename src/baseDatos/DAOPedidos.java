@@ -21,7 +21,7 @@ public class DAOPedidos extends AbstractDAO {
         PreparedStatement stmPedidos = null;
         PreparedStatement stm = null;
         
-        ResultSet rs;
+        
         Pedido pedido=null;
 
         con = super.getConexion();
@@ -44,7 +44,7 @@ public class DAOPedidos extends AbstractDAO {
             stmPedidos.setBoolean(2, pd.isExpress());
             stmPedidos.setString(3, pd.getDireccion());
             stmPedidos.setString(4, pd.getDestinatario());
-            
+            ResultSet rs;
             rs=stm.executeQuery();
             if(rs.next()){
                    // public Pedido(String fecha,String cliente,Integer codigo, boolean express, String direccion, String destinatario,String tramitador)   {
