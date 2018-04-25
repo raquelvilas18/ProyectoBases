@@ -542,6 +542,7 @@ public class VPedido extends javax.swing.JPanel {
 
     private void TxPesoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TxPesoMouseClicked
         // TODO add your handling code here:
+        LabelAñadirCorrecto.setVisible(false);
     }//GEN-LAST:event_TxPesoMouseClicked
 
     private void TxPesoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxPesoActionPerformed
