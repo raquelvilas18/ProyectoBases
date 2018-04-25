@@ -33,7 +33,7 @@ public class GestionUsuarios {
     public Boolean comprobarAutentificacion(String idUsuario, String clave){
         Usuario u = null;
         if(idUsuario!=null && clave!=null){
-            u=fbd.validarUsuario(idUsuario, clave);
+            u=fbd.validarUsuario1(idUsuario, clave);
         }
         if (u!=null){
             return true;
@@ -54,6 +54,11 @@ public class GestionUsuarios {
     }
     public void actualizar(Usuario usuario){
         fbd.actualizar(usuario);
+    }
+    
+    public void conexion(String idUsuario,boolean accion)
+    {
+        fbd.conexion(idUsuario,accion);
     }
     public void actualizarUsr(String id,Usuario usuario) {
         fbd.actualizarUsr(id, usuario);

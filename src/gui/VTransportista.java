@@ -137,7 +137,7 @@ public class VTransportista extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, 310, 70));
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 230, 310, 70));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-colaborador-hombre-96.png"))); // NOI18N
         jLabel1.setText("jLabel1");
@@ -174,6 +174,7 @@ public class VTransportista extends javax.swing.JPanel {
 
     private void jPanel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseClicked
         // TODO add your handling code here:
+        
         
     }//GEN-LAST:event_jPanel3MouseClicked
 
@@ -223,6 +224,8 @@ public class VTransportista extends javax.swing.JPanel {
 
     private void CerrarSesionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CerrarSesionMouseClicked
         // TODO add your handling code here:
+        if(usuario!=null) parent.fa.conexion(this.usuario.getUsuario(), false);
+        parent.usuario = null;
         this.setVisible(false);
         parent.ventanaInicial();
     }//GEN-LAST:event_CerrarSesionMouseClicked

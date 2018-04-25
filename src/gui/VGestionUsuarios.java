@@ -114,7 +114,9 @@ public class VGestionUsuarios extends javax.swing.JPanel {
         jLabel10 = new javax.swing.JLabel();
         AltaCorrecta = new javax.swing.JLabel();
         ErrorAlta1 = new javax.swing.JLabel();
+        TxTipo = new javax.swing.JComboBox();
         jLabel24 = new javax.swing.JLabel();
+        jLabel25 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaUsr = new javax.swing.JTable();
 
@@ -234,7 +236,7 @@ public class VGestionUsuarios extends javax.swing.JPanel {
         jLabel15.setText("jLabel1");
         BtActualizar.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 33, 36));
 
-        jPanel1.add(BtActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 170, 41));
+        jPanel1.add(BtActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 170, 41));
 
         BtBaja.setBackground(new java.awt.Color(255, 148, 42));
         BtBaja.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -254,7 +256,7 @@ public class VGestionUsuarios extends javax.swing.JPanel {
         jLabel19.setText("jLabel1");
         BtBaja.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 33, 36));
 
-        jPanel1.add(BtBaja, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 130, 200, 41));
+        jPanel1.add(BtBaja, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 150, 200, 41));
 
         jLabel7.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel7.setText("Nombre:");
@@ -372,12 +374,12 @@ public class VGestionUsuarios extends javax.swing.JPanel {
         LAlta.setText("Dar alta");
         BtAlta.add(LAlta, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, 110, -1));
 
-        jPanel1.add(BtAlta, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 130, 190, 41));
+        jPanel1.add(BtAlta, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 150, 190, 41));
 
         LabelActualizar.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         LabelActualizar.setForeground(new java.awt.Color(0, 153, 0));
         LabelActualizar.setText("Datos actualizados");
-        jPanel1.add(LabelActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, -1, -1));
+        jPanel1.add(LabelActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, -1, -1));
 
         TxContrasena.setEditable(false);
         TxContrasena.setBackground(new java.awt.Color(255, 232, 185));
@@ -397,18 +399,31 @@ public class VGestionUsuarios extends javax.swing.JPanel {
         AltaCorrecta.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         AltaCorrecta.setForeground(new java.awt.Color(0, 153, 0));
         AltaCorrecta.setText("Usuario registrado correctamente");
-        jPanel1.add(AltaCorrecta, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 100, -1, 40));
+        jPanel1.add(AltaCorrecta, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 110, -1, 40));
 
         ErrorAlta1.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         ErrorAlta1.setForeground(new java.awt.Color(255, 51, 51));
         ErrorAlta1.setText("Todos los campos son obligatorios");
-        jPanel1.add(ErrorAlta1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 110, -1, -1));
+        jPanel1.add(ErrorAlta1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 130, -1, -1));
+
+        TxTipo.setBackground(new java.awt.Color(255, 232, 185));
+        TxTipo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "administrador", "oficinista", "transportista", "cliente" }));
+        TxTipo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TxTipoActionPerformed(evt);
+            }
+        });
+        jPanel1.add(TxTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 100, -1, -1));
 
         jLabel24.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        jLabel24.setText("Telefono:");
-        jPanel1.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, -1, -1));
+        jLabel24.setText("Tipo:");
+        jPanel1.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, -1, -1));
 
-        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 360, 600, 180));
+        jLabel25.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        jLabel25.setText("Telefono:");
+        jPanel1.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, -1, -1));
+
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 360, 600, 200));
 
         jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
         jScrollPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
@@ -498,17 +513,17 @@ public class VGestionUsuarios extends javax.swing.JPanel {
     private void BtActualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtActualizarMouseClicked
        ModeloTablaUsuarios  m = (ModeloTablaUsuarios) tablaUsr.getModel();
         if((fa.consultarId(TxId.getText()) || (TxId.getText().equals(m.getFila(tablaUsr.getSelectedRow()).getUsuario()))) && !TxId.getText().isEmpty())
-       {
-        String id=m.getFila(tablaUsr.getSelectedRow()).getUsuario();
-        restablecerBoton();
-        actualizarUsuario(id);
-        actualizarCampos();
-       }
-        else{ErrorID.setVisible(true);
-        LabelActualizar.setVisible((false));
-        actualizarCampos();
+        {
+            String id=m.getFila(tablaUsr.getSelectedRow()).getUsuario();
+            restablecerBoton();
+            actualizarUsuario(id);
+            actualizarCampos();
         }
-        // TODO add your handling code here:
+        else{
+            ErrorID.setVisible(true);
+            LabelActualizar.setVisible((false));
+            actualizarCampos();
+        }
     }//GEN-LAST:event_BtActualizarMouseClicked
 
     private void TxDniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxDniActionPerformed
@@ -573,6 +588,7 @@ public class VGestionUsuarios extends javax.swing.JPanel {
     private javax.swing.JTextField TxNombre;
     private javax.swing.JComboBox TxSexo;
     private javax.swing.JTextField TxTelefono;
+    private javax.swing.JComboBox TxTipo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel14;
@@ -585,6 +601,7 @@ public class VGestionUsuarios extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;

@@ -11,9 +11,9 @@ package aplicacion;
  */
 public class Empleado extends Usuario{
     private int nomina;
-    private int anoIngreso;
+    private String anoIngreso;
     
-    public Empleado(String usuario, String password, String dni, String nombre, String correo, String direccion, String telefono, String sexo, String tipo, int nomina, int anoIngreso){
+    public Empleado(String usuario, String password, String dni, String nombre, String correo, String direccion, String telefono, String sexo, String tipo, int nomina, String anoIngreso){
         super(usuario, password, dni, nombre, correo, direccion, telefono, sexo, tipo);
         this.nomina = nomina;
         this.anoIngreso = anoIngreso;
@@ -23,7 +23,7 @@ public class Empleado extends Usuario{
         return nomina;
     }
     
-    public int getAnoIngreso(){
+    public String getAnoIngreso(){
         return anoIngreso;
     }
     
@@ -31,7 +31,7 @@ public class Empleado extends Usuario{
         this.nomina = nomina;
     }
     
-    public void setAnoIngreso(int anoIngreso){
+    public void setAnoIngreso(String anoIngreso){
         this.anoIngreso = anoIngreso;
     }    
 }

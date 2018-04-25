@@ -18,9 +18,17 @@ public class GestionEmpleados extends GestionUsuarios{
         super(fgui, fbd);
     }
     
-    public Empleado nuevoEmpleado(String usuario, String password, String dni, String nombre, String correo, String direccion, String telefono, String sexo, String tipo, int nomina, int anoIngreso){
+    public Empleado nuevoEmpleado(String usuario, String password, String dni, String nombre, String correo, String direccion, String telefono, String sexo, String tipo, int nomina,String local){
         Usuario usr = super.registrarUsuario(usuario, password, dni, nombre, correo, direccion, telefono, sexo, tipo);
-        return super.getFbd().nuevoEmpleado(usr.getUsuario(), nomina, anoIngreso);
+        Empleado empleado;
+        empleado=super.getFbd().nuevoEmpleado(usr.getUsuario(), nomina);
+        if("transportista".equals(tipo)){
+            super.getFbd().nuevoTransportista(usuario);
+        }
+        if("oficinista".equals(tipo)){
+            super.getFbd().nuevoOficinista(usuario, local);
+        }
+        return empleado;
     }
     
     public void actualizar(Empleado emp){
@@ -38,7 +46,9 @@ public class GestionEmpleados extends GestionUsuarios{
     public void tramitarPedido(Integer codigo){
         super.getFbd().tramitarPedido(codigo);
     }
-    
+    public String trabajaEn(String id) {  
+        return super.getFbd().trabajaEn(id);
+    }  
     public void actualizarDireccion(){
         
     }

@@ -26,7 +26,11 @@ public class FachadaGui {
     }
     
 
-   
+   public void muestraExcepcion(String e){
+       VAviso va;
+       va = new VAviso(vp,true,e);
+       va.setVisible(true);
+   }
 
     
    

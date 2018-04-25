@@ -16,7 +16,9 @@ import javax.swing.JPanel;
 public class VPrincipal extends javax.swing.JFrame {
 
     aplicacion.FachadaAplicacion fa;
-    JPanel panelActivo;
+    private JPanel panelActivo;
+   Usuario usuario;
+    
 
     /**
      * Creates new form vPrincipal
@@ -24,6 +26,7 @@ public class VPrincipal extends javax.swing.JFrame {
     public VPrincipal(aplicacion.FachadaAplicacion fa) {
         this.fa = fa;
         initComponents();
+        usuario=null;
         this.setLocationRelativeTo(null);
         autentificacionIncorrecta.setVisible(false);
     }
@@ -248,6 +251,7 @@ public class VPrincipal extends javax.swing.JFrame {
 
     private void botonCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCerrarActionPerformed
         // TODO add your handling code here:
+        if(usuario!=null) fa.conexion(this.usuario.getUsuario(), false);
         this.dispose();
     }//GEN-LAST:event_botonCerrarActionPerformed
 
@@ -277,6 +281,7 @@ public class VPrincipal extends javax.swing.JFrame {
 
     private void jPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseClicked
         if ((!JUsuario.getText().equals("")) && (!JContrasena.getText().equals("")) && fa.comprobarAutentificacion(JUsuario.getText(), JContrasena.getText())) {
+            //aquí ya está conectado, ahora decidimos que tipo de ventana requiere
             if (fa.getTipo(JUsuario.getText()).equals("oficinista")) {
                 autentificacionIncorrecta.setVisible(false);
                 ventanaOficinista(fa.consultarUsuario(JUsuario.getText(), JContrasena.getText()));
@@ -325,9 +330,11 @@ public class VPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_JContrasenaKeyPressed
 
-    public void ventanaPedido() {
+    public void ventanaPedido(Usuario usuario) {
         panelActivo.setVisible(false);
-        VPedido panelPedido = new VPedido(fa, fa.consultarUsuario(JUsuario.getText(), JContrasena.getText()));
+        VPedido panelPedido;
+        if(usuario!=null) panelPedido = new VPedido(fa, usuario);
+        else panelPedido = new VPedido(fa, fa.consultarUsuario(JUsuario.getText(), JContrasena.getText()));
         panelBase.add(panelPedido, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 680, 580));
         panelActivo = panelPedido;
     }
@@ -341,6 +348,7 @@ public class VPrincipal extends javax.swing.JFrame {
         if (panelActivo != null) {
             panelActivo.setVisible(false);
         }
+        this.usuario=usuario;
         panelLocPaquete.setVisible(false);
         panelLogin.setVisible(false);
         panelLogo.setVisible(false);
@@ -395,6 +403,7 @@ public class VPrincipal extends javax.swing.JFrame {
         if (panelActivo != null) {
             panelActivo.setVisible(false);
         }
+        this.usuario=usuario;
         panelLocPaquete.setVisible(false);
         panelLogin.setVisible(false);
         panelLogo.setVisible(false);
@@ -410,6 +419,7 @@ public class VPrincipal extends javax.swing.JFrame {
         if (panelActivo != null) {
             panelActivo.setVisible(false);
         }
+        this.usuario=usuario;
         panelLocPaquete.setVisible(false);
         panelLogin.setVisible(false);
         panelLogo.setVisible(false);
@@ -425,6 +435,7 @@ public class VPrincipal extends javax.swing.JFrame {
         if (panelActivo != null) {
             panelActivo.setVisible(false);
         }
+        this.usuario=usuario;
         panelLocPaquete.setVisible(false);
         panelLogin.setVisible(false);
         panelLogo.setVisible(false);
@@ -453,6 +464,13 @@ public class VPrincipal extends javax.swing.JFrame {
     public void ventanagestionUsuariosOficinista() {
         panelActivo.setVisible(false);
         VGestionUsuariosOficinista panelGU = new VGestionUsuariosOficinista(fa);
+        panelBase.add(panelGU, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 680, 580));
+        panelActivo = panelGU;
+    }
+    
+    public void ventanaGestionPedidosOficinista() {
+        panelActivo.setVisible(false);
+        VGestionPaquetesOficinista panelGU = new VGestionPaquetesOficinista(fa);
         panelBase.add(panelGU, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 680, 580));
         panelActivo = panelGU;
     }
@@ -491,6 +509,21 @@ public class VPrincipal extends javax.swing.JFrame {
         panelLocPaquete.setVisible(true);
         panelLogin.setVisible(true);
         panelLogo.setVisible(true);
+    }
+    
+    public void ventanaGestionVehiculos(Usuario usr){
+        
+        panelActivo.setVisible(false);
+        VGestionVehiculos panelGV = new VGestionVehiculos(fa,usr);
+        panelBase.add(panelGV, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 680, 580));
+        panelGV.setVisible(true);
+        panelActivo = panelGV;
+        /*
+        panelActivo.setVisible(false);
+        VGestionUsuarios panelGU = new VGestionUsuarios(fa);
+        panelBase.add(panelGU, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 680, 580));
+        panelActivo = panelGU;*/
+        
     }
 
 
