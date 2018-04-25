@@ -8,6 +8,7 @@ package baseDatos;
 import aplicacion.Empleado;
 import aplicacion.Paquete;
 import aplicacion.Pedido;
+import aplicacion.Transportista;
 import aplicacion.Usuario;
 import aplicacion.Vehiculo;
 import java.io.FileInputStream;
@@ -229,5 +230,14 @@ public class FachadaBaseDatos {
     public void registrarVehi(Vehiculo vehi){
         daoVehiculos.registrarVehi(vehi);
     }
+    
+    public ArrayList<Paquete> paquetesTransportista(String id) {
+         return daoPaquetes.paquetesTransportista(id);
+     }
+    
+     public ArrayList<Transportista> obtenerTransportistas(){
+         return daoEmpleados.obtenerTransportistas();
+     }
+
 
 }

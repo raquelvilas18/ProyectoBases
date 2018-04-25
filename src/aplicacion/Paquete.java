@@ -18,11 +18,11 @@ public class Paquete {
     private float largo;
     private float coste;
     private String fecha_entrega;
-    private String matrcula;
+    private String transportista;
     private String local;
     private String cliente;
 
-    public Paquete(Integer codigo, Integer pedido, float peso, float alto, float ancho, float largo, String fecha_entrega, String matrcula, String local, String cliente) {
+    public Paquete(Integer codigo, Integer pedido, float peso, float alto, float ancho, float largo, String fecha_entrega, String transportista, String local, String cliente) {
         this.codigo = codigo;
         this.pedido = pedido;
         this.peso = peso;
@@ -30,7 +30,7 @@ public class Paquete {
         this.ancho = ancho;
         this.largo = largo;
         this.fecha_entrega = fecha_entrega;
-        this.matrcula = matrcula;
+        this.transportista = transportista;
         this.local = local;
         this.cliente = cliente;
         
@@ -115,12 +115,12 @@ public class Paquete {
         this.fecha_entrega = fecha_entrega;
     }
 
-    public String getMatrcula() {
-        return matrcula;
+    public String getTransportista() {
+        return transportista;
     }
 
-    public void setMatrcula(String matrcula) {
-        this.matrcula = matrcula;
+    public void setTransportista(String matrcula) {
+        this.transportista = matrcula;
     }
 
     public String getLocal() {

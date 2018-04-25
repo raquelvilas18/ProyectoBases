@@ -510,9 +510,9 @@ public class VPrincipal extends javax.swing.JFrame {
     }
     
     
-    public void ventanaGestionPedidosTransportista() {
+    public void ventanaGestionPedidosTransportista(Usuario u) {
         panelActivo.setVisible(false);
-        VGestionPaquetesTransportista panelGU = new VGestionPaquetesTransportista(fa);
+        VGestionPaquetesTransportista panelGU = new VGestionPaquetesTransportista(fa, u);
         panelBase.add(panelGU, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 680, 580));
         panelActivo = panelGU;
     }   

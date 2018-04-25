@@ -11,8 +11,17 @@ package aplicacion;
  */
 public class Transportista extends Empleado{
 
+    int numPaquetes;
+    
     public Transportista(String usuario, String password, String dni, String nombre, String correo, String direccion, String telefono, String sexo, String tipo, int nomina, String anoIngreso, boolean administrador) {
         super(usuario, password, dni, nombre, correo, direccion, telefono, sexo, tipo, nomina, anoIngreso);
     }
+    
+   public Transportista(String usuario, String nombre, String dni, String correo, String telefono, String sexo, String direccion, int nomina, String anoIngreso, int numPaquetes){
+       super(usuario, null, dni, nombre, correo, direccion, telefono, sexo, "transportista", nomina, anoIngreso);
+       this.numPaquetes=numPaquetes;
+   }
+    
+   // SELECT empl.empleado,empl.nombre, empl.dni, empl.correo, empl.telefono, empl.sexo, empl.nomina, empl.anoingreso, paq.numPaquetes
     
 }

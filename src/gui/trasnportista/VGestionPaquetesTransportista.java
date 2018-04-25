@@ -5,10 +5,12 @@
  */
 package gui.trasnportista;
 
+import gui.ModeloTablaPaquetes;
 import gui.ModeloTablaPedidos;
 import java.awt.Color;
 import java.awt.Font;
 import javax.swing.table.JTableHeader;
+import aplicacion.*;
 
 /**
  *
@@ -17,11 +19,12 @@ import javax.swing.table.JTableHeader;
 public class VGestionPaquetesTransportista extends javax.swing.JPanel {
 
     aplicacion.FachadaAplicacion fa;
+    Usuario t;
 
     /**
      * Creates new form VGestionPaquetes
      */
-    public VGestionPaquetesTransportista(aplicacion.FachadaAplicacion fa) {
+    public VGestionPaquetesTransportista(aplicacion.FachadaAplicacion fa, Usuario t) {
         initComponents();
         this.fa=fa;
         LabelError.setVisible(false);
@@ -33,6 +36,10 @@ public class VGestionPaquetesTransportista extends javax.swing.JPanel {
         th.setFont(fuente);
         th.setForeground(new Color(183,112,255));
         th.setBackground(Color.WHITE);
+        
+        ModeloTablaPaquetes tp = new ModeloTablaPaquetes();
+        tablaPaquetes.setModel(tp);
+        tp.setFilas(fa.paquetesTransportista(t.getUsuario()));
     }
 
     /**
