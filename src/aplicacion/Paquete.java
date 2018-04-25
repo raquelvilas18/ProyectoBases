@@ -125,8 +125,6 @@ public class Paquete {
         this.local = local;
     }
 
-    
-
-    
+   
     
 }
