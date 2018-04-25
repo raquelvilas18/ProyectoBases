@@ -16,9 +16,13 @@ public class DAOPedidos extends AbstractDAO {
         super.setFachadaAplicacion(fa);
     }
 
-    public void nuevoPedido(Pedido pd) {
+    public Pedido nuevoPedido(Pedido pd) {
         Connection con;
         PreparedStatement stmPedidos = null;
+        PreparedStatement stm = null;
+        
+        ResultSet rs;
+        Pedido pedido=null;
 
         con = super.getConexion();
 
@@ -31,6 +35,22 @@ public class DAOPedidos extends AbstractDAO {
             stmPedidos.setString(4, pd.getDestinatario());
             stmPedidos.executeUpdate();
 
+            stm = con.prepareStatement("SELECT * from pedidos"
+                    + "WHERE cliente= ? "
+                    + "AND express = ? "
+                    + "AND direccion = ? "
+                    + "AND destinatario = ? ");
+            stmPedidos.setString(1, pd.getCliente());
+            stmPedidos.setBoolean(2, pd.isExpress());
+            stmPedidos.setString(3, pd.getDireccion());
+            stmPedidos.setString(4, pd.getDestinatario());
+            
+            rs=stm.executeQuery();
+            if(rs.next()){
+                   // public Pedido(String fecha,String cliente,Integer codigo, boolean express, String direccion, String destinatario,String tramitador)   {
+
+                pedido=new Pedido(null, rs.getString("cliente"), rs.getInt("codigo"), rs.getBoolean("express") , rs.getString("direccion"), rs.getString("destinatario"), rs.getString("tramitador"));
+            }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
             this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
@@ -40,9 +60,9 @@ public class DAOPedidos extends AbstractDAO {
             } catch (SQLException e) {
                 System.out.println("Imposible cerrar cursores");
             }
+            
         }
-
-        con = super.getConexion();
+        return pedido;
 
     }
 
@@ -176,7 +196,7 @@ public class DAOPedidos extends AbstractDAO {
                         rsPedidos.getInt("largo"),
                         rsPedidos.getString("fecha_entrega"),
                         rsPedidos.getString("vehiculo"),
-                        rsPedidos.getString("local")));
+                        rsPedidos.getString("local"), null));
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -208,9 +228,9 @@ public class DAOPedidos extends AbstractDAO {
             stmPedidos.setInt(1, codigo);
 
             rsPedidos = stmPedidos.executeQuery();
- 
+
             while (rsPedidos.next()) {
-                resultado.add(new Pedido(null, 
+                resultado.add(new Pedido(null,
                         rsPedidos.getString("cliente"),
                         rsPedidos.getInt("codigo"),
                         rsPedidos.getBoolean("express"),
@@ -231,7 +251,7 @@ public class DAOPedidos extends AbstractDAO {
 
         return resultado;
     }
-    
+
     public ArrayList<Pedido> pedidosSinTramitar() {
         ArrayList<Pedido> resultado = new ArrayList<Pedido>();
         Connection con;
@@ -246,9 +266,9 @@ public class DAOPedidos extends AbstractDAO {
                     + "WHERE fecha ISNULL");
 
             rsPedidos = stmPedidos.executeQuery();
- 
+
             while (rsPedidos.next()) {
-                resultado.add(new Pedido(null, 
+                resultado.add(new Pedido(null,
                         rsPedidos.getString("cliente"),
                         rsPedidos.getInt("codigo"),
                         rsPedidos.getBoolean("express"),
@@ -269,8 +289,8 @@ public class DAOPedidos extends AbstractDAO {
 
         return resultado;
     }
-    
-    public void eliminarPedido(int codigo){
+
+    public void eliminarPedido(int codigo) {
         Connection con;
         PreparedStatement stm = null;
         ResultSet rs;

@@ -32,6 +32,7 @@ public class FachadaBaseDatos {
     private DAOUsuarios daoUsuarios;
     private DAOPedidos daoPedidos;
     private DAOEmpleados daoEmpleados;
+    private DAOPaquetes daoPaquetes;
 
     public FachadaBaseDatos(aplicacion.FachadaAplicacion fa) {
 
@@ -73,6 +74,7 @@ public class FachadaBaseDatos {
             daoUsuarios = new DAOUsuarios(conexion, this.fa);
             daoPedidos = new DAOPedidos(conexion, this.fa);
             daoEmpleados = new DAOEmpleados(conexion, this.fa);
+            daoPaquetes = new DAOPaquetes(conexion, this.fa);
             
         } catch (FileNotFoundException f) {
             System.out.println(f.getMessage());
@@ -137,8 +139,8 @@ public class FachadaBaseDatos {
 
 
     /*----------  PEDIDOS ----------*/
-    public void nuevoPedido(Pedido pd) {
-        daoPedidos.nuevoPedido(pd);
+    public Pedido nuevoPedido(Pedido pd) {
+        return daoPedidos.nuevoPedido(pd);
     }
 
     public void tramitarPedido(Integer codigo) {
@@ -167,6 +169,13 @@ public class FachadaBaseDatos {
     
     public void eliminarPedido(int codigo){
         daoPedidos.eliminarPedido(codigo);
+    }
+    
+    
+    //------PAQUETES---------//
+    
+    public void nuevoPaquete(Paquete p){
+        daoPaquetes.nuevoPaquete(p);
     }
 
     //------EMPLEADOS-------//

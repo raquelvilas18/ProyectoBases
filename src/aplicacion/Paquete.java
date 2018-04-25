@@ -20,8 +20,9 @@ public class Paquete {
     private String fecha_entrega;
     private String matrcula;
     private String local;
+    private String cliente;
 
-    public Paquete(Integer codigo, Integer pedido, float peso, float alto, float ancho, float largo, String fecha_entrega, String matrcula, String local) {
+    public Paquete(Integer codigo, Integer pedido, float peso, float alto, float ancho, float largo, String fecha_entrega, String matrcula, String local, String cliente) {
         this.codigo = codigo;
         this.pedido = pedido;
         this.peso = peso;
@@ -31,6 +32,7 @@ public class Paquete {
         this.fecha_entrega = fecha_entrega;
         this.matrcula = matrcula;
         this.local = local;
+        this.cliente = cliente;
         
         float dimensiones = (alto*ancho*largo);
         
@@ -41,6 +43,10 @@ public class Paquete {
         }else{
             coste = peso + 10;
         }
+    }
+
+    public String getCliente() {
+        return cliente;
     }
 
 
