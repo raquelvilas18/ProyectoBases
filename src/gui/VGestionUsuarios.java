@@ -50,7 +50,6 @@ public class VGestionUsuarios extends javax.swing.JPanel {
             this.TxTelefono.setText(m.getFila(tablaUsr.getSelectedRow()).getTelefono());
             this.TxDni.setText(m.getFila(tablaUsr.getSelectedRow()).getDni());
             this.TxSexo.setSelectedItem((m.getFila(tablaUsr.getSelectedRow())).getSexo());
-            this.TxTipo.setSelectedItem((m.getFila(tablaUsr.getSelectedRow())).getTipo());
 
         }
         
@@ -96,7 +95,6 @@ public class VGestionUsuarios extends javax.swing.JPanel {
         ContrasenaL = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
-        jLabel21 = new javax.swing.JLabel();
         TxNombre = new javax.swing.JTextField();
         TxDireccion = new javax.swing.JTextField();
         TxId = new javax.swing.JTextField();
@@ -116,7 +114,6 @@ public class VGestionUsuarios extends javax.swing.JPanel {
         jLabel10 = new javax.swing.JLabel();
         AltaCorrecta = new javax.swing.JLabel();
         ErrorAlta1 = new javax.swing.JLabel();
-        TxTipo = new javax.swing.JComboBox();
         jLabel24 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaUsr = new javax.swing.JTable();
@@ -148,7 +145,7 @@ public class VGestionUsuarios extends javax.swing.JPanel {
 
         jLabel2.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(60, 60, 159));
-        jLabel2.setText("Gestion Usuarios");
+        jLabel2.setText("Gestion Clientes");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 80, 260, -1));
 
         jPanel6.setBackground(new java.awt.Color(116, 126, 173));
@@ -237,7 +234,7 @@ public class VGestionUsuarios extends javax.swing.JPanel {
         jLabel15.setText("jLabel1");
         BtActualizar.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 33, 36));
 
-        jPanel1.add(BtActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 170, 41));
+        jPanel1.add(BtActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 170, 41));
 
         BtBaja.setBackground(new java.awt.Color(255, 148, 42));
         BtBaja.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -257,7 +254,7 @@ public class VGestionUsuarios extends javax.swing.JPanel {
         jLabel19.setText("jLabel1");
         BtBaja.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 33, 36));
 
-        jPanel1.add(BtBaja, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 160, 200, 41));
+        jPanel1.add(BtBaja, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 130, 200, 41));
 
         jLabel7.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel7.setText("Nombre:");
@@ -274,10 +271,6 @@ public class VGestionUsuarios extends javax.swing.JPanel {
         jLabel20.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel20.setText("Email:");
         jPanel1.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, -1, -1));
-
-        jLabel21.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        jLabel21.setText("Tipo:");
-        jPanel1.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, -1, -1));
 
         TxNombre.setBackground(new java.awt.Color(255, 232, 185));
         TxNombre.setForeground(new java.awt.Color(102, 102, 102));
@@ -379,12 +372,12 @@ public class VGestionUsuarios extends javax.swing.JPanel {
         LAlta.setText("Dar alta");
         BtAlta.add(LAlta, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, 110, -1));
 
-        jPanel1.add(BtAlta, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 160, 190, 41));
+        jPanel1.add(BtAlta, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 130, 190, 41));
 
         LabelActualizar.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         LabelActualizar.setForeground(new java.awt.Color(0, 153, 0));
         LabelActualizar.setText("Datos actualizados");
-        jPanel1.add(LabelActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, -1, -1));
+        jPanel1.add(LabelActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, -1, -1));
 
         TxContrasena.setEditable(false);
         TxContrasena.setBackground(new java.awt.Color(255, 232, 185));
@@ -404,27 +397,18 @@ public class VGestionUsuarios extends javax.swing.JPanel {
         AltaCorrecta.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         AltaCorrecta.setForeground(new java.awt.Color(0, 153, 0));
         AltaCorrecta.setText("Usuario registrado correctamente");
-        jPanel1.add(AltaCorrecta, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 130, -1, 40));
+        jPanel1.add(AltaCorrecta, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 100, -1, 40));
 
         ErrorAlta1.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         ErrorAlta1.setForeground(new java.awt.Color(255, 51, 51));
         ErrorAlta1.setText("Todos los campos son obligatorios");
-        jPanel1.add(ErrorAlta1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 140, -1, -1));
-
-        TxTipo.setBackground(new java.awt.Color(255, 232, 185));
-        TxTipo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "administrador", "oficinista", "transportista", "cliente" }));
-        TxTipo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TxTipoActionPerformed(evt);
-            }
-        });
-        jPanel1.add(TxTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 100, -1, -1));
+        jPanel1.add(ErrorAlta1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 110, -1, -1));
 
         jLabel24.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel24.setText("Telefono:");
         jPanel1.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, -1, -1));
 
-        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 360, 600, 210));
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 360, 600, 180));
 
         jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
         jScrollPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
@@ -497,7 +481,6 @@ public class VGestionUsuarios extends javax.swing.JPanel {
         this.TxTelefono.setText(m.getFila(tablaUsr.getSelectedRow()).getTelefono());
         this.TxDni.setText(m.getFila(tablaUsr.getSelectedRow()).getDni());
         this.TxSexo.setSelectedItem((m.getFila(tablaUsr.getSelectedRow())).getSexo());
-        this.TxTipo.setSelectedItem((m.getFila(tablaUsr.getSelectedRow())).getTipo());
     }
     
     
@@ -555,7 +538,7 @@ public class VGestionUsuarios extends javax.swing.JPanel {
             if (TxId.getText().isEmpty() || TxNombre.getText().isEmpty() || TxCorreo.getText().isEmpty() || TxDireccion.getText().isEmpty() || TxTelefono.getText().isEmpty() || TxContrasena.getText().isEmpty()) {
                 ErrorAlta1.setVisible(true);
             } else {
-                fa.registrarUsuario(TxId.getText(), TxContrasena.getText(), TxDni.getText(), TxNombre.getText(), TxCorreo.getText(), TxDireccion.getText(), TxTelefono.getText(), (String) TxSexo.getSelectedItem(), (String) TxTipo.getSelectedItem());
+                fa.registrarUsuario(TxId.getText(), TxContrasena.getText(), TxDni.getText(), TxNombre.getText(), TxCorreo.getText(), TxDireccion.getText(), TxTelefono.getText(), (String) TxSexo.getSelectedItem(), "cliente");
                 AltaCorrecta.setVisible(true);
                 restablecerBoton();
                 actualizarTabla();
@@ -567,10 +550,6 @@ public class VGestionUsuarios extends javax.swing.JPanel {
     private void TxContrasenaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxContrasenaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_TxContrasenaActionPerformed
-
-    private void TxTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxTipoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TxTipoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -594,7 +573,6 @@ public class VGestionUsuarios extends javax.swing.JPanel {
     private javax.swing.JTextField TxNombre;
     private javax.swing.JComboBox TxSexo;
     private javax.swing.JTextField TxTelefono;
-    private javax.swing.JComboBox TxTipo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel14;
@@ -604,7 +582,6 @@ public class VGestionUsuarios extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
@@ -634,20 +611,18 @@ public class VGestionUsuarios extends javax.swing.JPanel {
         this.TxTelefono.setText(m.getFila(tablaUsr.getSelectedRow()).getTelefono());
         this.TxDni.setText(m.getFila(tablaUsr.getSelectedRow()).getDni());
         this.TxSexo.setSelectedItem((m.getFila(tablaUsr.getSelectedRow())).getSexo());
-        this.TxTipo.setSelectedItem((m.getFila(tablaUsr.getSelectedRow())).getTipo());
     }
 
-    //public Usuario(String usuario, String password, String dni, String nombre, String correo, String direccion, String telefono, String sexo) {
     public void actualizarUsuario(String id) {
         ModeloTablaUsuarios m;
 
         m = (ModeloTablaUsuarios) tablaUsr.getModel();
-        fa.actualizarUsr(id, new Usuario(TxId.getText(), null, TxDni.getText(), TxNombre.getText(), TxCorreo.getText(), TxDireccion.getText(), TxTelefono.getText(), (String) TxSexo.getSelectedItem(), null));
+        fa.actualizarUsr(id, new Usuario(TxId.getText(), null, TxDni.getText(), TxNombre.getText(), TxCorreo.getText(), TxDireccion.getText(), TxTelefono.getText(), (String) TxSexo.getSelectedItem(), "cliente"));
         LabelActualizar.setVisible(true);
         m.setFilas(fa.obtenerUsuarios(this.FiltroId.getText(), this.FiltroNombre.getText()));
         BtActualizar.setEnabled(false);
     }
-
+    
     public void eliminarUsuario() {
         ModeloTablaUsuarios m;
 

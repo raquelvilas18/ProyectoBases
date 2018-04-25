@@ -409,7 +409,7 @@ public class VGestionEmpleados extends javax.swing.JPanel {
         jLabel25.setText("Tipo:");
         jPanel1.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 100, -1, 20));
 
-        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 360, 600, 240));
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 360, 600, 210));
 
         FiltroId.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         FiltroId.setBorder(null);
