@@ -511,7 +511,8 @@ public class VPedido extends javax.swing.JPanel {
             Error.setVisible(true);
             Correcto.setVisible(false);
         } else {
-            pd = fa.nuevoPedido(new Pedido(u.getUsuario(), jRadioButton1.isSelected(), Txdestino.getText(), TxNombre.getText()));
+            pd =fa.nuevoPedido(new Pedido(u.getUsuario(), jRadioButton1.isSelected(), Txdestino.getText(), TxNombre.getText()));
+            //pd = fa.getPedido(new Pedido(u.getUsuario(), jRadioButton1.isSelected(), Txdestino.getText(), TxNombre.getText()));
             PanelPaquete.setVisible(true);
         }
     }//GEN-LAST:event_jPanel3MouseClicked
@@ -580,6 +581,16 @@ public class VPedido extends javax.swing.JPanel {
 
     private void BtFinalizarPedidoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtFinalizarPedidoMouseClicked
         // TODO add your handling code here:
+        if (TxPeso.getText().equals("") || TxAlto.getText().equals("") || TxAncho.getText().equals("") || TxPeso.getText().equals("")) {
+            this.LabelAnadirError.setVisible(true);
+            this.LabelAñadirCorrecto.setVisible(false);
+
+        } else {
+            fa.nuevoPaquete(new Paquete(null, pd.getCodigo(), Float.parseFloat(TxPeso.getText()), Float.parseFloat(TxAlto.getText()), Float.parseFloat(TxAncho.getText()), Float.parseFloat(TxLargo.getText()), null, null, null, u.getUsuario()));
+            vaciarTxtPaquetes();
+            this.LabelAnadirError.setVisible(false);
+            this.LabelAñadirCorrecto.setVisible(true);
+        }
         vaciarTxtPaquetes();
         PanelPaquete.setVisible(false);
         Correcto.setVisible(true);

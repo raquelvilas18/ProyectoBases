@@ -20,9 +20,9 @@ public class DAOPedidos extends AbstractDAO {
         Connection con;
         PreparedStatement stmPedidos = null;
         PreparedStatement stm = null;
-        
+
         ResultSet rs;
-        Pedido pedido=null;
+        Pedido pedido = null;
 
         con = super.getConexion();
 
@@ -35,21 +35,21 @@ public class DAOPedidos extends AbstractDAO {
             stmPedidos.setString(4, pd.getDestinatario());
             stmPedidos.executeUpdate();
 
-            stm = con.prepareStatement("SELECT * from pedidos"
+            stm = con.prepareStatement("SELECT * from pedidos "
                     + "WHERE cliente= ? "
                     + "AND express = ? "
                     + "AND direccion = ? "
                     + "AND destinatario = ? ");
-            stmPedidos.setString(1, pd.getCliente());
-            stmPedidos.setBoolean(2, pd.isExpress());
-            stmPedidos.setString(3, pd.getDireccion());
-            stmPedidos.setString(4, pd.getDestinatario());
-            
-            rs=stm.executeQuery();
-            if(rs.next()){
-                   // public Pedido(String fecha,String cliente,Integer codigo, boolean express, String direccion, String destinatario,String tramitador)   {
+            stm.setString(1, pd.getCliente());
+            stm.setBoolean(2, pd.isExpress());
+            stm.setString(3, pd.getDireccion());
+            stm.setString(4, pd.getDestinatario());
 
-                pedido=new Pedido(null, rs.getString("cliente"), rs.getInt("codigo"), rs.getBoolean("express") , rs.getString("direccion"), rs.getString("destinatario"), rs.getString("tramitador"));
+            rs = stm.executeQuery();
+            if (rs.next()) {
+                // public Pedido(String fecha,String cliente,Integer codigo, boolean express, String direccion, String destinatario,String tramitador)   {
+
+                pedido = new Pedido(null, rs.getString("cliente"), rs.getInt("codigo"), rs.getBoolean("express"), rs.getString("direccion"), rs.getString("destinatario"), rs.getString("tramitador"));
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -57,16 +57,59 @@ public class DAOPedidos extends AbstractDAO {
         } finally {
             try {
                 stmPedidos.close();
+                stm.close();
             } catch (SQLException e) {
                 System.out.println("Imposible cerrar cursores");
             }
-            
+
         }
         return pedido;
 
     }
 
-    public void tramitarPedido(Integer codigo) {
+    public Pedido getPedido(Pedido pd) {
+        Connection con;
+        PreparedStatement stmPedidos = null;
+        PreparedStatement stm = null;
+
+        ResultSet rs;
+        Pedido pedido = null;
+
+        con = super.getConexion();
+
+        try {
+
+            stm = con.prepareStatement("SELECT * from pedidos "
+                    + "WHERE cliente= ? "
+                    + "AND express = ? "
+                    + "AND direccion = ? "
+                    + "AND destinatario = ? ");
+            stm.setString(1, pd.getCliente());
+            stm.setBoolean(2, pd.isExpress());
+            stm.setString(3, pd.getDireccion());
+            stm.setString(4, pd.getDestinatario());
+
+            rs = stm.executeQuery();
+            if (rs.next()) {
+                pedido = new Pedido(null, rs.getString("cliente"), rs.getInt("codigo"), rs.getBoolean("express"), rs.getString("direccion"), rs.getString("destinatario"), rs.getString("tramitador"));
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
+        } finally {
+            try {
+                stm.close();
+            } catch (SQLException e) {
+                System.out.println("Imposible cerrar cursores");
+            }
+
+        }
+        return pedido;
+
+    }
+
+
+public void tramitarPedido(Integer codigo) {
         Connection con;
         PreparedStatement stmPedidos = null;
 

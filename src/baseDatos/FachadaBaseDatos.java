@@ -145,6 +145,10 @@ public class FachadaBaseDatos {
     public Pedido nuevoPedido(Pedido pd) {
         return daoPedidos.nuevoPedido(pd);
     }
+    
+     public Pedido getPedido(Pedido p) {
+        return daoPedidos.getPedido(p);
+    }
 
     public void tramitarPedido(Integer codigo) {
         daoPedidos.tramitarPedido(codigo);
