@@ -145,7 +145,7 @@ public class VTransportista extends javax.swing.JPanel {
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 60, 110, 110));
 
         jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-lista-con-viñetas-50.png"))); // NOI18N
-        jLabel13.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jLabel13.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel13.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
         jLabel13.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -155,7 +155,7 @@ public class VTransportista extends javax.swing.JPanel {
         add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
         Maps.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-mapas-de-google-32(1).png"))); // NOI18N
-        Maps.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        Maps.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Maps.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 MapsMouseClicked(evt);
@@ -164,7 +164,7 @@ public class VTransportista extends javax.swing.JPanel {
         add(Maps, new org.netbeans.lib.awtextra.AbsoluteConstraints(-40, 150, 40, -1));
 
         CerrarSesion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-apagar-26.png"))); // NOI18N
-        CerrarSesion.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        CerrarSesion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         CerrarSesion.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 CerrarSesionMouseClicked(evt);

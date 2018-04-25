@@ -164,7 +164,7 @@ public class VGestionPaquetesTransportista extends javax.swing.JPanel {
 
         LabelError.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         LabelError.setForeground(new java.awt.Color(204, 0, 0));
-        LabelError.setText("posicion incorrecta");
+        LabelError.setText("inserta una posicion");
         add(LabelError, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 440, 260, -1));
 
         LabelCorrecto.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
@@ -179,7 +179,13 @@ public class VGestionPaquetesTransportista extends javax.swing.JPanel {
     }//GEN-LAST:event_tablaPaquetesMouseClicked
 
     private void BtActualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtActualizarMouseClicked
-        
+        if(this.TxtPosicion.getText().isEmpty()){
+            LabelCorrecto.setVisible(false);
+            LabelError.setVisible(true);
+        }else{
+            LabelCorrecto.setVisible(true);
+            LabelError.setVisible(false);
+        }
         // TODO add your handling code here:
     }//GEN-LAST:event_BtActualizarMouseClicked
 
