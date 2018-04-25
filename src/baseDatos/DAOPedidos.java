@@ -252,6 +252,7 @@ public class DAOPedidos extends AbstractDAO {
         return resultado;
     }
 
+
     public ArrayList<Pedido> pedidosSinTramitar() {
         ArrayList<Pedido> resultado = new ArrayList<Pedido>();
         Connection con;

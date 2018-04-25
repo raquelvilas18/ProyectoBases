@@ -509,6 +509,21 @@ public class VPrincipal extends javax.swing.JFrame {
         panelLogin.setVisible(true);
         panelLogo.setVisible(true);
     }
+    
+    public void ventanaGestionVehiculos(Usuario usr){
+        
+        panelActivo.setVisible(false);
+        VGestionVehiculos panelGV = new VGestionVehiculos(fa,usr);
+        panelBase.add(panelGV, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 680, 580));
+        panelGV.setVisible(true);
+        panelActivo = panelGV;
+        /*
+        panelActivo.setVisible(false);
+        VGestionUsuarios panelGU = new VGestionUsuarios(fa);
+        panelBase.add(panelGU, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 680, 580));
+        panelActivo = panelGU;*/
+        
+    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

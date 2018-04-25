@@ -9,6 +9,7 @@ import aplicacion.Empleado;
 import aplicacion.Paquete;
 import aplicacion.Pedido;
 import aplicacion.Usuario;
+import aplicacion.Vehiculo;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -17,6 +18,7 @@ import java.net.URISyntaxException;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -32,6 +34,7 @@ public class FachadaBaseDatos {
     private DAOUsuarios daoUsuarios;
     private DAOPedidos daoPedidos;
     private DAOEmpleados daoEmpleados;
+    private DAOVehiculos daoVehiculos;
     private DAOPaquetes daoPaquetes;
 
     public FachadaBaseDatos(aplicacion.FachadaAplicacion fa) {
@@ -52,13 +55,12 @@ public class FachadaBaseDatos {
             
             usuario.setProperty("user", configuracion.getProperty("usuario"));
             usuario.setProperty("password", configuracion.getProperty("clave"));
-            /*
             this.conexion = java.sql.DriverManager.getConnection("jdbc:" + gestor + "://"
                     + configuracion.getProperty("servidor") + ":"
                     + configuracion.getProperty("puerto") + "/"
                     + configuracion.getProperty("baseDatos"),
                     usuario);
-            */
+            /*
             Class.forName("org.postgresql.Driver");
 
             usuario.setProperty("user", configuracion.getProperty("usuario"));
@@ -70,11 +72,12 @@ public class FachadaBaseDatos {
             String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + dbUri.getPath() + "?sslmode=require";
             
             this.conexion = java.sql.DriverManager.getConnection(dbUrl,username,password);
-            
+            */
             daoUsuarios = new DAOUsuarios(conexion, this.fa);
             daoPedidos = new DAOPedidos(conexion, this.fa);
             daoEmpleados = new DAOEmpleados(conexion, this.fa);
             daoPaquetes = new DAOPaquetes(conexion, this.fa);
+            daoVehiculos = new DAOVehiculos(conexion,this.fa);
             
         } catch (FileNotFoundException f) {
             System.out.println(f.getMessage());
@@ -85,11 +88,11 @@ public class FachadaBaseDatos {
         }catch (java.sql.SQLException e) {
             System.out.println(e.getMessage());
             fa.muestraExcepcion(e.getMessage());
-        }catch (ClassNotFoundException ex) {
+        }/*catch (ClassNotFoundException ex) {
             Logger.getLogger(FachadaBaseDatos.class.getName()).log(Level.SEVERE, null, ex);
         } catch (URISyntaxException ex) {
             Logger.getLogger(FachadaBaseDatos.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        }*/
     }
 
     public boolean consultarId(String idUsuario) {
@@ -203,6 +206,24 @@ public class FachadaBaseDatos {
     
     public void actualizarEmp(String id, Empleado emp){
         daoEmpleados.actualizarEmp(id,emp);
+    }
+    
+    //------VEHICULOS-----//
+    
+    public ArrayList<Vehiculo> obtenerVehiculos(){
+        return daoVehiculos.obtenerVehiculos();
+    }
+    
+    public void actualizarVehi(String matricula, Vehiculo vehi){
+        daoVehiculos.actualizarVehi(matricula,vehi);
+    }
+    
+    public boolean consultarMatricula(String matricula){
+        return daoVehiculos.consultarMatricula(matricula);
+    }
+    
+    public void registrarVehi(Vehiculo vehi){
+        daoVehiculos.registrarVehi(vehi);
     }
 
 }
