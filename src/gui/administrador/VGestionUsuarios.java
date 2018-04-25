@@ -335,6 +335,7 @@ public class VGestionUsuarios extends javax.swing.JPanel {
         jPanel1.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 80, -1, -1));
 
         TxSexo.setBackground(new java.awt.Color(255, 232, 185));
+        TxSexo.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         TxSexo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "M", "H" }));
         jPanel1.add(TxSexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 80, -1, -1));
 
@@ -413,6 +414,7 @@ public class VGestionUsuarios extends javax.swing.JPanel {
         jPanel1.add(ErrorAlta1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 130, -1, -1));
 
         TxTipo.setBackground(new java.awt.Color(255, 232, 185));
+        TxTipo.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         TxTipo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "administrador", "oficinista", "transportista", "cliente" }));
         TxTipo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

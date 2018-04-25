@@ -37,7 +37,6 @@ public class VGestionPaquetesOficinista extends javax.swing.JPanel {
         th.setBackground(Color.WHITE);
 
         JTableHeader th2;
-
         th2 = this.tablaTransp.getTableHeader();
         th2.setFont(fuente);
         th2.setForeground(new Color(89, 171, 36));
