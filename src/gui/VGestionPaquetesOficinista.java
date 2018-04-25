@@ -124,7 +124,7 @@ public class VGestionPaquetesOficinista extends javax.swing.JPanel {
                 jLabel6MouseClicked(evt);
             }
         });
-        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 120, -1, -1));
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 110, -1, -1));
 
         jScrollPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
 
@@ -146,7 +146,7 @@ public class VGestionPaquetesOficinista extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tablaPedidos);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(63, 190, 590, 290));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, 590, 140));
 
         jLabel4.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(89, 171, 36));
