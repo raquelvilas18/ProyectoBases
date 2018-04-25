@@ -7,6 +7,7 @@ package aplicacion;
 
 import baseDatos.FachadaBaseDatos;
 import gui.FachadaGui;
+import java.util.ArrayList;
 
 /**
  *
@@ -51,4 +52,9 @@ public class GestionEmpleados extends GestionUsuarios{
     public void actualizarDireccion(){
         
     }
+    
+     public ArrayList<Transportista> obtenerTransportistas(){
+         return super.getFbd().obtenerTransportistas();
+     }
+
 }

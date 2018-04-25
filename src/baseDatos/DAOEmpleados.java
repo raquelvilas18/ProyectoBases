@@ -7,6 +7,7 @@ package baseDatos;
 
 import aplicacion.Empleado;
 import aplicacion.Pedido;
+import aplicacion.Transportista;
 import aplicacion.Usuario;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -287,6 +288,41 @@ public class DAOEmpleados extends AbstractDAO {
 
             while (rsEmpleados.next()) {
                 resultado.add(rsEmpleados.getInt("nomina"));
+            }
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
+        } finally {
+            try {
+                stmEmpleados.close();
+            } catch (SQLException e) {
+                System.out.println("Imposible cerrar cursores");
+            }
+        }
+        return resultado;
+    }
+
+    public ArrayList<Transportista> obtenerTransportistas() {
+        java.util.ArrayList<Transportista> resultado = new java.util.ArrayList<Transportista>();
+        Connection con;
+        PreparedStatement stmEmpleados = null;
+        ResultSet rs;
+        int año = 0;
+        con = super.getConexion();
+
+        try {
+            stmEmpleados = con.prepareStatement("SELECT empl.empleado,empl.nombre, empl.dni, empl.correo, empl.telefono, empl.sexo,empl.direccion, empl.nomina, empl.anoingreso, paq.numPaquetes "
+                    + " FROM (	SELECT * "
+                    + "	FROM empleados e, transportistas t, usuarios u "
+                    + "	WHERE e.usuario = t.empleado "
+                    + "	AND u.usuario = e.usuario ) as empl LEFT JOIN (SELECT empleado, COUNT(*) as numPaquetes "
+                    + "							FROM transportistas as t LEFT JOIN paquetes as p  on (t.empleado = p.transportista) "
+                    + "							GROUP BY t.empleado) as paq on (empl.empleado = paq.empleado)");
+            rs = stmEmpleados.executeQuery();
+
+            while (rs.next()) {
+                resultado.add( new Transportista(rs.getString("empleado"), rs.getString("nombre"), rs.getString("dni"),rs.getString("correo"),  rs.getString("telefono"), rs.getString("sexo"), rs.getString("direccion"), rs.getInt("nomina"), rs.getString("anoingreso"), rs.getInt("numPaquetes")));
             }
 
         } catch (SQLException e) {

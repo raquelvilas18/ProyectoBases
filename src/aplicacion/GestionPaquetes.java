@@ -7,6 +7,7 @@ package aplicacion;
 
 import baseDatos.FachadaBaseDatos;
 import gui.FachadaGui;
+import java.util.ArrayList;
 
 /**
  *
@@ -24,4 +25,8 @@ public class GestionPaquetes {
     public void nuevoPaquete(Paquete p){
         fbd.nuevoPaquete(p);
     }
+    
+    public ArrayList<Paquete> paquetesTransportista(String id) {
+         return fbd.paquetesTransportista(id);
+     }
 }
