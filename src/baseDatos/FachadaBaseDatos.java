@@ -9,6 +9,7 @@ import aplicacion.Empleado;
 import aplicacion.Paquete;
 import aplicacion.Pedido;
 import aplicacion.Usuario;
+import aplicacion.Vehiculo;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -17,6 +18,7 @@ import java.net.URISyntaxException;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -32,6 +34,7 @@ public class FachadaBaseDatos {
     private DAOUsuarios daoUsuarios;
     private DAOPedidos daoPedidos;
     private DAOEmpleados daoEmpleados;
+    private DAOVehiculos daoVehiculos;
     private DAOPaquetes daoPaquetes;
 
     public FachadaBaseDatos(aplicacion.FachadaAplicacion fa) {
@@ -74,6 +77,7 @@ public class FachadaBaseDatos {
             daoPedidos = new DAOPedidos(conexion, this.fa);
             daoEmpleados = new DAOEmpleados(conexion, this.fa);
             daoPaquetes = new DAOPaquetes(conexion, this.fa);
+            daoVehiculos = new DAOVehiculos(conexion,this.fa);
             
         } catch (FileNotFoundException f) {
             System.out.println(f.getMessage());
@@ -202,6 +206,24 @@ public class FachadaBaseDatos {
     
     public void actualizarEmp(String id, Empleado emp){
         daoEmpleados.actualizarEmp(id,emp);
+    }
+    
+    //------VEHICULOS-----//
+    
+    public ArrayList<Vehiculo> obtenerVehiculos(){
+        return daoVehiculos.obtenerVehiculos();
+    }
+    
+    public void actualizarVehi(String matricula, Vehiculo vehi){
+        daoVehiculos.actualizarVehi(matricula,vehi);
+    }
+    
+    public boolean consultarMatricula(String matricula){
+        return daoVehiculos.consultarMatricula(matricula);
+    }
+    
+    public void registrarVehi(Vehiculo vehi){
+        daoVehiculos.registrarVehi(vehi);
     }
 
 }

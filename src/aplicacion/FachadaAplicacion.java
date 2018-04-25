@@ -46,7 +46,7 @@ public class FachadaAplicacion {
     }
 
     public void muestraExcepcion(String e) {
-        //fgui.muestraExcepcion(e);
+        fgui.muestraExcepcion(e);
     }
 
     public Boolean comprobarAutentificacion(String idUsuario, String clave) {
@@ -147,8 +147,26 @@ public class FachadaAplicacion {
         return fbd.obtenerUsuarios(id, nombre);
     }
 
+    public ArrayList<Vehiculo> obtenerVehiculos(){
+        return fbd.obtenerVehiculos();
+    }
+    
+    public void actualizarVehi(String matricula,Vehiculo vehi){
+        fbd.actualizarVehi(matricula,vehi);
+    }
+    
+    public boolean consultarMatricula(String matricula){
+        return fbd.consultarMatricula(matricula);
+    }
+
+
     public void eliminarPedido(int codigo) {
         fbd.eliminarPedido(codigo);
+
+    }
+    
+    public void registrarVehi(Vehiculo vehi){
+        fbd.registrarVehi(vehi);
     }
 
 }

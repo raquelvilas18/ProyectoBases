@@ -377,6 +377,7 @@ public class VAdmin extends javax.swing.JPanel {
 
     private void jPanel10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel10MouseClicked
         // TODO add your handling code here:
+        parent.ventanaGestionVehiculos(this.usuario);
     }//GEN-LAST:event_jPanel10MouseClicked
 
     private void jPanel10MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel10MouseExited
