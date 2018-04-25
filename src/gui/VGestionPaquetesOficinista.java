@@ -37,6 +37,7 @@ public class VGestionPaquetesOficinista extends javax.swing.JPanel {
         th.setFont(fuente);
         th.setForeground(new Color(89, 171, 36));
         th.setBackground(Color.WHITE);
+        tablaPedidos.changeSelection(0, 0, false, false);
 
         LabelTramitar.setVisible(false);
         LabelEliminar.setVisible(false);
@@ -258,25 +259,25 @@ public class VGestionPaquetesOficinista extends javax.swing.JPanel {
         // TODO add your handling code here:
         ModeloTablaPedidos tp = new ModeloTablaPedidos();
         tablaPedidos.setModel(tp);
-        if (tablaPedidos.getSelectedRow() >= 0) {
+        //if (tablaPedidos.getSelectedRow() >= 0) {
             fa.tramitarPedido(tp.getFila(tablaPedidos.getSelectedRow()).getCodigo());
             LabelTramitar.setVisible(true);
-        } else {
-            errorLabel.setVisible(true);
-        }
+        //} else {
+          //  errorLabel.setVisible(true);
+        //}
     }//GEN-LAST:event_BtTramitarMouseClicked
 
     private void BtEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtEliminarMouseClicked
         // TODO add your handling code here:
         ModeloTablaPedidos tp = new ModeloTablaPedidos();
         tablaPedidos.setModel(tp);
-        if (tablaPedidos.getSelectedRow() >= 0) {
+       // if (tablaPedidos.getSelectedRow() >= 0) {
             fa.eliminarPedido(tp.getFila(tablaPedidos.getSelectedRow()).getCodigo());
             LabelEliminar.setVisible(true);
-        } else {
-            errorLabel.setVisible(true);
-
-        }
+//        } else {
+//            errorLabel.setVisible(true);
+//
+//        }
     }//GEN-LAST:event_BtEliminarMouseClicked
 
 
