@@ -3,26 +3,34 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gui;
+package gui.cliente;
 
 import AppPackage.AnimationClass;
 import aplicacion.Usuario;
+import gui.VPrincipal;
 import java.awt.Color;
 import java.awt.Desktop;
 import java.net.URI;
+import javax.swing.JFrame;
 
 /**
  *
- * @author alumnogreibd
+ * @author raquel
  */
-public class VOficinista extends javax.swing.JPanel {
+public class VUsr extends javax.swing.JPanel {
+
     private VPrincipal parent;
     private Usuario usuario;
+    
 
     /**
-     * Creates new form VOficinista
+     * Creates new form VUsr
      */
-    public VOficinista(VPrincipal parent, Usuario usuario) {
+    public VUsr() {
+        initComponents();
+    }
+
+    public VUsr(VPrincipal parent, Usuario usuario) {
         initComponents();
         this.parent = parent;
         this.usuario = usuario;
@@ -38,7 +46,6 @@ public class VOficinista extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -48,28 +55,22 @@ public class VOficinista extends javax.swing.JPanel {
         jPanel4 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
+        jPanel5 = new javax.swing.JPanel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
         Maps = new javax.swing.JLabel();
         CerrarSesion = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(87, 179, 57));
+        setBackground(new java.awt.Color(65, 105, 225));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-colaborador-hombre-96.png"))); // NOI18N
         jLabel1.setText("jLabel1");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 60, 110, 110));
 
-        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-lista-con-viñetas-50.png"))); // NOI18N
-        jLabel13.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel13.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
-        jLabel13.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel13MouseClicked(evt);
-            }
-        });
-        add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
-
-        jPanel1.setBackground(new java.awt.Color(113, 189, 46));
-        jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel1.setBackground(new java.awt.Color(111, 133, 255));
+        jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jPanel1MouseClicked(evt);
@@ -98,22 +99,22 @@ public class VOficinista extends javax.swing.JPanel {
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(73, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(22, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
                 .addContainerGap())
         );
 
-        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 310, 70));
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 310, 60));
 
-        jPanel3.setBackground(new java.awt.Color(113, 189, 46));
-        jPanel3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel3.setBackground(new java.awt.Color(111, 133, 255));
+        jPanel3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jPanel3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jPanel3MouseClicked(evt);
@@ -128,7 +129,7 @@ public class VOficinista extends javax.swing.JPanel {
 
         jLabel7.setFont(new java.awt.Font("Noto Sans", 0, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(215, 215, 215));
-        jLabel7.setText("Gestión paquetes");
+        jLabel7.setText("Historial de pedidos");
 
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-caja-vacía-24.png"))); // NOI18N
         jLabel10.setText("jLabel1");
@@ -142,7 +143,7 @@ public class VOficinista extends javax.swing.JPanel {
                 .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(33, 33, 33)
                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(40, Short.MAX_VALUE))
+                .addContainerGap(60, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -151,13 +152,13 @@ public class VOficinista extends javax.swing.JPanel {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, 310, 70));
+        add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 270, 330, 60));
 
-        jPanel4.setBackground(new java.awt.Color(113, 189, 46));
-        jPanel4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel4.setBackground(new java.awt.Color(111, 133, 255));
+        jPanel4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jPanel4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jPanel4MouseClicked(evt);
@@ -170,12 +171,12 @@ public class VOficinista extends javax.swing.JPanel {
             }
         });
 
-        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-grupo-de-usuarios-hombre-hombre-24.png"))); // NOI18N
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-caja-vacía-24(1).png"))); // NOI18N
         jLabel8.setText("jLabel1");
 
         jLabel9.setFont(new java.awt.Font("Noto Sans", 0, 18)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(215, 215, 215));
-        jLabel9.setText("Gestión usuarios");
+        jLabel9.setText("Pedidos activos");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -184,7 +185,7 @@ public class VOficinista extends javax.swing.JPanel {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(271, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel4Layout.createSequentialGroup()
                     .addGap(72, 72, 72)
@@ -196,15 +197,75 @@ public class VOficinista extends javax.swing.JPanel {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel4Layout.createSequentialGroup()
                     .addGap(17, 17, 17)
                     .addComponent(jLabel9)
-                    .addContainerGap(31, Short.MAX_VALUE)))
+                    .addContainerGap(17, Short.MAX_VALUE)))
         );
 
-        add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 370, -1, 70));
+        add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 340, -1, -1));
+
+        jPanel5.setBackground(new java.awt.Color(111, 133, 255));
+        jPanel5.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jPanel5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel5MouseClicked(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jPanel5MouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jPanel5MouseEntered(evt);
+            }
+        });
+
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-camión-24.png"))); // NOI18N
+        jLabel11.setText("jLabel1");
+
+        jLabel12.setFont(new java.awt.Font("Noto Sans", 0, 18)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(215, 215, 215));
+        jLabel12.setText("Realizar pedido");
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel5Layout.createSequentialGroup()
+                    .addGap(72, 72, 72)
+                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(40, Short.MAX_VALUE)))
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel5Layout.createSequentialGroup()
+                    .addGap(17, 17, 17)
+                    .addComponent(jLabel12)
+                    .addContainerGap(17, Short.MAX_VALUE)))
+        );
+
+        add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 410, -1, -1));
+
+        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-lista-con-viñetas-50.png"))); // NOI18N
+        jLabel13.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel13.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
+        jLabel13.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel13MouseClicked(evt);
+            }
+        });
+        add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
         Maps.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-mapas-de-google-32(1).png"))); // NOI18N
         Maps.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -225,66 +286,81 @@ public class VOficinista extends javax.swing.JPanel {
         add(CerrarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(-40, 120, 40, -1));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jLabel13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel13MouseClicked
-        AnimationClass maps = new AnimationClass();
-        maps.jLabelXRight(-40, 10, 10, 5, Maps);
-
-        AnimationClass sesion = new AnimationClass();
-        maps.jLabelXRight(-40, 10, 10, 5, CerrarSesion);
-
-        AnimationClass mapsl= new AnimationClass();
-        maps.jLabelXLeft(10,-40, 10, 5, Maps);
-
-        AnimationClass sesionl = new AnimationClass();
-        maps.jLabelXLeft(10,-40, 10, 5, CerrarSesion);
-
-    }//GEN-LAST:event_jLabel13MouseClicked
-
     private void jPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseClicked
         // TODO add your handling code here:
-       parent.ventanaPerfilOficinista(this.usuario);
+        parent.ventanaPerfil(usuario);
+
     }//GEN-LAST:event_jPanel1MouseClicked
 
-    private void jPanel1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseExited
+    private void jPanel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseClicked
         // TODO add your handling code here:
-        jPanel1.setBackground(new Color(113,189,46));
-    }//GEN-LAST:event_jPanel1MouseExited
+        parent.ventanaPedido(this.usuario);
+    }//GEN-LAST:event_jPanel5MouseClicked
 
     private void jPanel1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseEntered
         // TODO add your handling code here:
-        jPanel1.setBackground(new Color(132,210,64));
+        jPanel1.setBackground(new Color(166, 179, 253));
     }//GEN-LAST:event_jPanel1MouseEntered
 
-    private void jPanel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseClicked
+    private void jPanel1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseExited
         // TODO add your handling code here:
-        parent.ventanaGestionPedidosOficinista();
-       
-    }//GEN-LAST:event_jPanel3MouseClicked
-
-    private void jPanel3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseExited
-        // TODO add your handling code here:
-        jPanel3.setBackground(new Color(113,189,46));
-    }//GEN-LAST:event_jPanel3MouseExited
+        jPanel1.setBackground(new Color(111, 133, 255));
+    }//GEN-LAST:event_jPanel1MouseExited
 
     private void jPanel3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseEntered
         // TODO add your handling code here:
-        jPanel3.setBackground(new Color(132,210,64));
+        jPanel3.setBackground(new Color(166, 179, 253));
     }//GEN-LAST:event_jPanel3MouseEntered
 
-    private void jPanel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseClicked
+    private void jPanel3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseExited
         // TODO add your handling code here:
-         parent.ventanagestionUsuariosOficinista();
-    }//GEN-LAST:event_jPanel4MouseClicked
-
-    private void jPanel4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseExited
-        // TODO add your handling code here:
-        jPanel4.setBackground(new Color(113,189,46));
-    }//GEN-LAST:event_jPanel4MouseExited
+        jPanel3.setBackground(new Color(111, 133, 255));
+    }//GEN-LAST:event_jPanel3MouseExited
 
     private void jPanel4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseEntered
         // TODO add your handling code here:
-        jPanel4.setBackground(new Color(132,210,64));
+        jPanel4.setBackground(new Color(166, 179, 253));
     }//GEN-LAST:event_jPanel4MouseEntered
+
+    private void jPanel4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseExited
+        // TODO add your handling code here:
+        jPanel4.setBackground(new Color(111, 133, 255));
+    }//GEN-LAST:event_jPanel4MouseExited
+
+    private void jPanel5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseEntered
+        // TODO add your handling code here:
+        jPanel5.setBackground(new Color(166, 179, 253));
+    }//GEN-LAST:event_jPanel5MouseEntered
+
+    private void jPanel5MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseExited
+        // TODO add your handling code here:
+        jPanel5.setBackground(new Color(111, 133, 255));
+    }//GEN-LAST:event_jPanel5MouseExited
+
+    private void jPanel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseClicked
+        // TODO add your handling code here:
+        parent.ventanaPedidosActivos(usuario);
+    }//GEN-LAST:event_jPanel4MouseClicked
+
+    private void jPanel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseClicked
+        // TODO add your handling code here:
+        parent.ventanaHistorial(usuario);
+    }//GEN-LAST:event_jPanel3MouseClicked
+
+    private void jLabel13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel13MouseClicked
+        AnimationClass maps = new AnimationClass();
+        maps.jLabelXRight(-40, 10, 10, 5, Maps);
+        
+        AnimationClass sesion = new AnimationClass();
+        maps.jLabelXRight(-40, 10, 10, 5, CerrarSesion);
+        
+        AnimationClass mapsl= new AnimationClass();
+        maps.jLabelXLeft(10,-40, 10, 5, Maps);
+        
+        AnimationClass sesionl = new AnimationClass();
+        maps.jLabelXLeft(10,-40, 10, 5, CerrarSesion);
+        
+    }//GEN-LAST:event_jLabel13MouseClicked
 
     private void MapsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MapsMouseClicked
         openInternet();
@@ -292,28 +368,11 @@ public class VOficinista extends javax.swing.JPanel {
 
     private void CerrarSesionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CerrarSesionMouseClicked
         // TODO add your handling code here:
-        if(usuario!=null) parent.fa.conexion(this.usuario.getUsuario(), false);
-        parent.usuario = null;
+        if(usuario!=null) parent.getFa().conexion(this.usuario.getUsuario(), false);
+        parent.setUsuario(null);
         this.setVisible(false);
         parent.ventanaInicial();
     }//GEN-LAST:event_CerrarSesionMouseClicked
-
-
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel CerrarSesion;
-    private javax.swing.JLabel Maps;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    // End of variables declaration//GEN-END:variables
 
     public void openInternet(){
         try{
@@ -323,4 +382,22 @@ public class VOficinista extends javax.swing.JPanel {
         }
     }
 
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel CerrarSesion;
+    private javax.swing.JLabel Maps;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    // End of variables declaration//GEN-END:variables
 }

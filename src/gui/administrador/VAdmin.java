@@ -3,10 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gui;
+package gui.administrador;
 
 import AppPackage.AnimationClass;
 import aplicacion.Usuario;
+import gui.VPrincipal;
 import java.awt.Color;
 import java.awt.Desktop;
 import java.net.URI;
@@ -394,8 +395,8 @@ public class VAdmin extends javax.swing.JPanel {
 
     private void CerrarSesionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CerrarSesionMouseClicked
         // TODO add your handling code here:
-        if(usuario!=null) parent.fa.conexion(this.usuario.getUsuario(), false);
-        parent.usuario = null;
+        if(usuario!=null) parent.getFa().conexion(this.usuario.getUsuario(), false);
+        parent.setUsuario(null);
         this.setVisible(false);
         parent.ventanaInicial();
     }//GEN-LAST:event_CerrarSesionMouseClicked
