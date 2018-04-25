@@ -6,6 +6,9 @@
 package gui.trasnportista;
 
 import gui.ModeloTablaPedidos;
+import java.awt.Color;
+import java.awt.Font;
+import javax.swing.table.JTableHeader;
 
 /**
  *
@@ -23,6 +26,13 @@ public class VGestionPaquetesTransportista extends javax.swing.JPanel {
         this.fa=fa;
         LabelError.setVisible(false);
         LabelCorrecto.setVisible(false);
+        
+        JTableHeader th;
+        th = this.tablaPaquetes.getTableHeader();
+        Font fuente = new Font("SansSerif", Font.PLAIN, 16);
+        th.setFont(fuente);
+        th.setForeground(new Color(183,112,255));
+        th.setBackground(Color.WHITE);
     }
 
     /**
@@ -39,7 +49,7 @@ public class VGestionPaquetesTransportista extends javax.swing.JPanel {
         jPanel6 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tablaPedidos = new javax.swing.JTable();
+        tablaPaquetes = new javax.swing.JTable();
         jLabel4 = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
         TxtPosicion = new javax.swing.JTextField();
@@ -91,21 +101,26 @@ public class VGestionPaquetesTransportista extends javax.swing.JPanel {
         jLabel1.setText("jLabel1");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 10, 300, 110));
 
-        tablaPedidos.setModel(new ModeloTablaPedidos());
-        tablaPedidos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        tablaPedidos.setGridColor(new java.awt.Color(255, 189, 72));
-        tablaPedidos.setSelectionBackground(new java.awt.Color(255, 189, 72));
-        tablaPedidos.setShowHorizontalLines(false);
-        tablaPedidos.setShowVerticalLines(false);
-        tablaPedidos.setSurrendersFocusOnKeystroke(true);
-        tablaPedidos.getTableHeader().setResizingAllowed(false);
-        tablaPedidos.getTableHeader().setReorderingAllowed(false);
-        tablaPedidos.addMouseListener(new java.awt.event.MouseAdapter() {
+        jScrollPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+
+        tablaPaquetes.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+        tablaPaquetes.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        tablaPaquetes.setModel(new ModeloTablaPedidos());
+        tablaPaquetes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        tablaPaquetes.setGridColor(new java.awt.Color(255, 255, 255));
+        tablaPaquetes.setSelectionBackground(new java.awt.Color(183, 112, 255));
+        tablaPaquetes.setSelectionForeground(new java.awt.Color(255, 255, 255));
+        tablaPaquetes.setShowHorizontalLines(false);
+        tablaPaquetes.setShowVerticalLines(false);
+        tablaPaquetes.setSurrendersFocusOnKeystroke(true);
+        tablaPaquetes.getTableHeader().setResizingAllowed(false);
+        tablaPaquetes.getTableHeader().setReorderingAllowed(false);
+        tablaPaquetes.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tablaPedidosMouseClicked(evt);
+                tablaPaquetesMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(tablaPedidos);
+        jScrollPane1.setViewportView(tablaPaquetes);
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 140, 590, 280));
 
@@ -158,10 +173,10 @@ public class VGestionPaquetesTransportista extends javax.swing.JPanel {
         add(LabelCorrecto, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 440, 260, -1));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void tablaPedidosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaPedidosMouseClicked
+    private void tablaPaquetesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaPaquetesMouseClicked
         // TODO add your handling code here:
         
-    }//GEN-LAST:event_tablaPedidosMouseClicked
+    }//GEN-LAST:event_tablaPaquetesMouseClicked
 
     private void BtActualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtActualizarMouseClicked
         
@@ -187,6 +202,6 @@ public class VGestionPaquetesTransportista extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JTable tablaPedidos;
+    private javax.swing.JTable tablaPaquetes;
     // End of variables declaration//GEN-END:variables
 }

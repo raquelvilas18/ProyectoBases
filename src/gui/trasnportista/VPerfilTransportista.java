@@ -66,7 +66,8 @@ public class VPerfilTransportista extends javax.swing.JPanel {
         jLabel1.setText("jLabel1");
 
         jId.setBackground(new java.awt.Color(194, 133, 248));
-        jId.setForeground(new java.awt.Color(0, 0, 0));
+        jId.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        jId.setForeground(new java.awt.Color(255, 255, 255));
         jId.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jId.setBorder(null);
 
@@ -155,22 +156,26 @@ public class VPerfilTransportista extends javax.swing.JPanel {
         jLabel16.setText("DIreccion");
 
         JNombre.setBackground(new java.awt.Color(194, 133, 248));
-        JNombre.setForeground(new java.awt.Color(0, 0, 0));
+        JNombre.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        JNombre.setForeground(new java.awt.Color(255, 255, 255));
         JNombre.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         JNombre.setBorder(null);
 
         JCorreo.setBackground(new java.awt.Color(194, 133, 248));
-        JCorreo.setForeground(new java.awt.Color(0, 0, 0));
+        JCorreo.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        JCorreo.setForeground(new java.awt.Color(255, 255, 255));
         JCorreo.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         JCorreo.setBorder(null);
 
         JTelefono.setBackground(new java.awt.Color(194, 133, 248));
-        JTelefono.setForeground(new java.awt.Color(0, 0, 0));
+        JTelefono.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        JTelefono.setForeground(new java.awt.Color(255, 255, 255));
         JTelefono.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         JTelefono.setBorder(null);
 
         JDireccion.setBackground(new java.awt.Color(194, 133, 248));
-        JDireccion.setForeground(new java.awt.Color(0, 0, 0));
+        JDireccion.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        JDireccion.setForeground(new java.awt.Color(255, 255, 255));
         JDireccion.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         JDireccion.setBorder(null);
 
@@ -216,7 +221,8 @@ public class VPerfilTransportista extends javax.swing.JPanel {
         jLabel18.setText("DNI");
 
         JDNI.setBackground(new java.awt.Color(194, 133, 248));
-        JDNI.setForeground(new java.awt.Color(0, 0, 0));
+        JDNI.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        JDNI.setForeground(new java.awt.Color(255, 255, 255));
         JDNI.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         JDNI.setBorder(null);
 
