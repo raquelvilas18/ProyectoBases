@@ -7,6 +7,7 @@ package aplicacion;
 
 import baseDatos.FachadaBaseDatos;
 import gui.FachadaGui;
+import java.util.ArrayList;
 
 /**
  *
@@ -32,15 +33,16 @@ public class GestionPaquetes {
         for(Paquete p : Paquetes){
             if(p.getFecha_entrega() != null && !p.getFecha_entrega().equals(""))
                 Posiciones.add("Entregado");
-            else if(p.getMatricula() != null && !p.getMatricula().equals("")){
-                Posiciones.add(fbd.localizarVehiculo(p.getMatricula()));
-                System.out.println(p.getMatricula());
-            }else if(p.getLocal() != null && !p.getLocal().equals("")){
-                //Posiciones.add(fbd.localizarLocal(p.getLocal()));
-                Posiciones.add("En un local de la mancha ...");
+            else if(p.getTransportista() != null && !p.getTransportista().equals("")){
+                Posiciones.add(fbd.localizarVehiculo(p.getTransportista()));
+            }else {
+                Posiciones.add("En tramitacion.");
             }
-            System.out.println(Posiciones.get(Posiciones.size()-1));
         }
         fgui.localizar(Paquetes, Posiciones);
     }
+    
+    public ArrayList<Paquete> paquetesTransportista(String id) {
+         return fbd.paquetesTransportista(id);
+     }
 }

@@ -5,7 +5,7 @@
  */
 package gui.trasnportista;
 
-import gui.ModeloTablaPaquetes;
+import gui.ModeloTablaLocalizador;
 import gui.ModeloTablaPedidos;
 import java.awt.Color;
 import java.awt.Font;
@@ -37,9 +37,9 @@ public class VGestionPaquetesTransportista extends javax.swing.JPanel {
         th.setForeground(new Color(183,112,255));
         th.setBackground(Color.WHITE);
         
-        ModeloTablaPaquetes tp = new ModeloTablaPaquetes();
+        ModeloTablaLocalizador tp = new ModeloTablaLocalizador();
         tablaPaquetes.setModel(tp);
-        tp.setFilas(fa.paquetesTransportista(t.getUsuario()));
+ //       tp.setFilas(fa.paquetesTransportista(t.getUsuario()));
     }
 
     /**

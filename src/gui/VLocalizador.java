@@ -24,8 +24,7 @@ public class VLocalizador extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         this.parent = (VPrincipal) parent;
-        ModeloTablaPaquetes Mtp = new ModeloTablaPaquetes();
-        System.out.println(Paquetes.get(0).getCliente() + '\t' + Posicion);
+        ModeloTablaLocalizador Mtp = new ModeloTablaLocalizador();
         Tabla.setModel(Mtp);
         Mtp.setFilas(Paquetes, Posicion);
         Salir.setEnabled(true);
@@ -46,7 +45,7 @@ public class VLocalizador extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        Tabla.setModel(new ModeloTablaPaquetes());
+        Tabla.setModel(new ModeloTablaLocalizador());
         jScrollPane1.setViewportView(Tabla);
 
         Salir.setText("Salir");

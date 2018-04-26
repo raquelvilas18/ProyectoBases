@@ -13,11 +13,11 @@ import javax.swing.table.AbstractTableModel;
  *
  * @author alumnogreibd
  */
-public class ModeloTablaPaquetes extends AbstractTableModel {
+public class ModeloTablaLocalizador extends AbstractTableModel {
     private java.util.List<Paquete> paquetes;
     private java.util.List<String> coches;
     
-    public ModeloTablaPaquetes()
+    public ModeloTablaLocalizador()
     {
         this.paquetes=new java.util.ArrayList<>();
         this.coches=new java.util.ArrayList<>();
@@ -80,4 +80,5 @@ public class ModeloTablaPaquetes extends AbstractTableModel {
         this.coches=coches;
         fireTableDataChanged();
     }
+
 }

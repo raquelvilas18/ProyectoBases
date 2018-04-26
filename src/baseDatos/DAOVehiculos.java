@@ -52,7 +52,7 @@ public class DAOVehiculos extends AbstractDAO {
         return resultado;
     }
     
-    public Vehiculo obtenerVehiculo(String matricula){
+    public Vehiculo obtenerVehiculo(String trasportista){
         Vehiculo resultado =null;
         Connection con;
         PreparedStatement stmVehiculos=null;
@@ -63,8 +63,8 @@ public class DAOVehiculos extends AbstractDAO {
         try{
             stmVehiculos=con.prepareStatement("SELECT * "+
                                             "FROM vehiculos "
-                                        + "WHERE matricula=?");
-            stmVehiculos.setString(1, matricula);
+                                        + "WHERE conductor=?");
+            stmVehiculos.setString(1, trasportista);
             rsVehiculos = stmVehiculos.executeQuery();
 
             while(rsVehiculos.next()){

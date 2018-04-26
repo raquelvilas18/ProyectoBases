@@ -573,7 +573,7 @@ public class VPedido extends javax.swing.JPanel {
             this.LabelAñadirCorrecto.setVisible(false);
 
         } else {
-            fa.nuevoPaquete(new Paquete(null, pd.getCodigo(), Float.parseFloat(TxPeso.getText()), Float.parseFloat(TxAlto.getText()), Float.parseFloat(TxAncho.getText()), Float.parseFloat(TxLargo.getText()), null, null, null, u.getUsuario()));
+            fa.nuevoPaquete(new Paquete(null, pd.getCodigo(), Float.parseFloat(TxPeso.getText()), Float.parseFloat(TxAlto.getText()), Float.parseFloat(TxAncho.getText()), Float.parseFloat(TxLargo.getText()), null, null, u.getUsuario()));
             vaciarTxtPaquetes();
             this.LabelAnadirError.setVisible(false);
             this.LabelAñadirCorrecto.setVisible(true);
@@ -587,7 +587,7 @@ public class VPedido extends javax.swing.JPanel {
             this.LabelAñadirCorrecto.setVisible(false);
 
         } else {
-            fa.nuevoPaquete(new Paquete(null, pd.getCodigo(), Float.parseFloat(TxPeso.getText()), Float.parseFloat(TxAlto.getText()), Float.parseFloat(TxAncho.getText()), Float.parseFloat(TxLargo.getText()), null, null, null, u.getUsuario()));
+            fa.nuevoPaquete(new Paquete(null, pd.getCodigo(), Float.parseFloat(TxPeso.getText()), Float.parseFloat(TxAlto.getText()), Float.parseFloat(TxAncho.getText()), Float.parseFloat(TxLargo.getText()), null, null, u.getUsuario()));
             vaciarTxtPaquetes();
             this.LabelAnadirError.setVisible(false);
             this.LabelAñadirCorrecto.setVisible(true);

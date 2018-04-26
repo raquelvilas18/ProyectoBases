@@ -248,9 +248,9 @@ public class FachadaBaseDatos {
      }
 
 
-    public String localizarVehiculo(String matricula){
+    public String localizarVehiculo(String Trasportista){
         Vehiculo vehiculo = null;
-        vehiculo = daoVehiculos.obtenerVehiculo(matricula);
+        vehiculo = daoVehiculos.obtenerVehiculo(Trasportista);
         if(vehiculo != null)
             return vehiculo.getDireccion();
         else 
