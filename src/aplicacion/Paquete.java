@@ -19,6 +19,7 @@ public class Paquete {
     private float coste;
     private String fecha_entrega;
     private String transportista;
+    private String vehiculo;
     private String local;
     private String cliente;
 

@@ -12,6 +12,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 /**
  *
@@ -66,8 +67,8 @@ public class DAOPaquetes extends AbstractDAO {
             stm = con.prepareStatement("SELECT * FROM paquetes"
                     + " WHERE transportista = ? ");
             stm.setString(1, id);
-            rs=stm.executeQuery();
-            while(rs.next()){
+            rs = stm.executeQuery();
+            while (rs.next()) {
                 paquetes.add(new Paquete(rs.getInt("codigo"), rs.getInt("pedido"), rs.getFloat("peso"), rs.getFloat("alto"), rs.getFloat("ancho"), rs.getFloat("largo"), rs.getString("fecha_entrega"), rs.getString("transportista"), rs.getString("local"), rs.getString("cliente")));
             }
 
@@ -82,6 +83,37 @@ public class DAOPaquetes extends AbstractDAO {
             }
         }
         return paquetes;
+    }
+
+    public void paqueteEntregado(String pedido, String codigo) {
+        Connection con;
+        PreparedStatement stm = null;
+        ArrayList<Paquete> paquetes = new ArrayList<>();
+
+        con = super.getConexion();
+
+        try {
+            stm = con.prepareStatement("UPDATE paquetes"
+                    + "SET fecha_entrega = ?"
+                    + "WHERE  pedido = ? "
+                    + "AND codigo = ? ");
+            Calendar cal = Calendar.getInstance();
+            stm.setString(1, Integer.toString(cal.get(Calendar.DATE)) + "-" + Integer.toString(cal.get(Calendar.MONTH) + 1) + "-" + Integer.toString(cal.get(Calendar.YEAR)));
+            stm.setString(2, pedido);
+            stm.setString(3, codigo);
+
+            stm.executeUpdate();
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
+        } finally {
+            try {
+                stm.close();
+            } catch (SQLException e) {
+                System.out.println("Imposible cerrar cursores");
+            }
+        }
     }
 
 }

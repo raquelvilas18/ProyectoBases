@@ -7,8 +7,11 @@ package gui.oficinista;
 
 import gui.ModeloTablaTransportistas;
 import gui.ModeloTablaPedidos;
+import aplicacion.*;
 import java.awt.Color;
 import java.awt.Font;
+import javax.swing.JLabel;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.JTableHeader;
 
 /**
@@ -50,6 +53,19 @@ public class VGestionPaquetesOficinista extends javax.swing.JPanel {
         LabelTramitar.setVisible(false);
         LabelEliminar.setVisible(false);
         errorLabel.setVisible(false);
+        
+        //SELECCION Y CENTRADO DE TEXTO
+        tablaPedidos.changeSelection(0,0,false,false);
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment( JLabel.CENTER );
+        tablaPedidos.setDefaultRenderer(String.class, centerRenderer);
+        tablaPedidos.setDefaultRenderer(Integer.class, centerRenderer);
+        /////////////////////////////////
+        tablaTransp.changeSelection(0,0,false,false);
+        centerRenderer.setHorizontalAlignment( JLabel.CENTER );
+        tablaTransp.setDefaultRenderer(String.class, centerRenderer);
+        tablaTransp.setDefaultRenderer(Integer.class, centerRenderer);
+        /////////////////////////////////
 
     }
 
@@ -135,7 +151,6 @@ public class VGestionPaquetesOficinista extends javax.swing.JPanel {
         tablaPedidos.setSelectionForeground(new java.awt.Color(255, 255, 255));
         tablaPedidos.setShowHorizontalLines(false);
         tablaPedidos.setShowVerticalLines(false);
-        tablaPedidos.setSurrendersFocusOnKeystroke(true);
         tablaPedidos.getTableHeader().setResizingAllowed(false);
         tablaPedidos.getTableHeader().setReorderingAllowed(false);
         tablaPedidos.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -145,7 +160,7 @@ public class VGestionPaquetesOficinista extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tablaPedidos);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 130, 580, 140));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 130, 590, 140));
 
         BtTramitar.setBackground(new java.awt.Color(89, 171, 36));
         BtTramitar.setToolTipText("");
@@ -205,6 +220,7 @@ public class VGestionPaquetesOficinista extends javax.swing.JPanel {
         tablaTransp.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         tablaTransp.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         tablaTransp.setModel(new ModeloTablaTransportistas());
+        tablaTransp.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         tablaTransp.setGridColor(new java.awt.Color(255, 255, 255));
         tablaTransp.setSelectionBackground(new java.awt.Color(89, 171, 36));
         tablaTransp.setSelectionForeground(new java.awt.Color(255, 255, 255));
@@ -244,7 +260,9 @@ public class VGestionPaquetesOficinista extends javax.swing.JPanel {
         // TODO add your handling code here:
         ModeloTablaPedidos tp = new ModeloTablaPedidos();
         tablaPedidos.setModel(tp);
-        fa.tramitarPedido(tp.getFila(tablaPedidos.getSelectedRow()).getCodigo());
+        ModeloTablaTransportistas t = new ModeloTablaTransportistas();
+        tablaTransp.setModel(t);
+        fa.tramitarPedido(tp.getFila(tablaPedidos.getSelectedRow()).getCodigo(), t.getFila(tablaTransp.getSelectedRow()).getUsuario());
         LabelTramitar.setVisible(true);
     }//GEN-LAST:event_BtTramitarMouseClicked
 

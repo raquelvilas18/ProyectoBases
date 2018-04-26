@@ -155,8 +155,8 @@ public class FachadaBaseDatos {
         return daoPedidos.getPedido(p);
     }
 
-    public void tramitarPedido(Integer codigo) {
-        daoPedidos.tramitarPedido(codigo);
+    public void tramitarPedido(Integer codigo, String transportista) {
+        daoPedidos.tramitarPedido(codigo, transportista);
     }
 
     public java.util.List<Pedido> obtenerHistorialPedidos(String usuario) {
@@ -241,6 +241,10 @@ public class FachadaBaseDatos {
     
      public ArrayList<Transportista> obtenerTransportistas(){
          return daoEmpleados.obtenerTransportistas();
+     }
+     
+     public void paqueteEntregado(String pedido, String codigo){
+         daoPaquetes.paqueteEntregado(pedido, codigo);
      }
 
 

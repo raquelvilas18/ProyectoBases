@@ -29,4 +29,8 @@ public class GestionPaquetes {
     public ArrayList<Paquete> paquetesTransportista(String id) {
          return fbd.paquetesTransportista(id);
      }
+    
+    public void paqueteEntregado(String pedido, String codigo){
+         fbd.paqueteEntregado(pedido, codigo);
+     }
 }

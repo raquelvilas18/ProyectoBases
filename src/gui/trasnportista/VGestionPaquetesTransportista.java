@@ -11,6 +11,9 @@ import java.awt.Color;
 import java.awt.Font;
 import javax.swing.table.JTableHeader;
 import aplicacion.*;
+import gui.ModeloTablaTransportistas;
+import javax.swing.JLabel;
+import javax.swing.table.DefaultTableCellRenderer;
 
 /**
  *
@@ -40,6 +43,12 @@ public class VGestionPaquetesTransportista extends javax.swing.JPanel {
         ModeloTablaPaquetes tp = new ModeloTablaPaquetes();
         tablaPaquetes.setModel(tp);
         tp.setFilas(fa.paquetesTransportista(t.getUsuario()));
+        
+        tablaPaquetes.changeSelection(0,0,false,false);
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment( JLabel.CENTER );
+        tablaPaquetes.setDefaultRenderer(String.class, centerRenderer);
+        tablaPaquetes.setDefaultRenderer(Integer.class, centerRenderer);
     }
 
     /**
@@ -65,7 +74,7 @@ public class VGestionPaquetesTransportista extends javax.swing.JPanel {
         jLabel15 = new javax.swing.JLabel();
         LabelError = new java.awt.Label();
         LabelCorrecto = new java.awt.Label();
-        BtActualizar1 = new javax.swing.JPanel();
+        BtnEntregado = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
 
@@ -182,26 +191,26 @@ public class VGestionPaquetesTransportista extends javax.swing.JPanel {
         LabelCorrecto.setText("posicion actualizada correctamente");
         add(LabelCorrecto, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 480, 260, -1));
 
-        BtActualizar1.setBackground(new java.awt.Color(194, 133, 248));
-        BtActualizar1.setToolTipText("");
-        BtActualizar1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        BtActualizar1.addMouseListener(new java.awt.event.MouseAdapter() {
+        BtnEntregado.setBackground(new java.awt.Color(194, 133, 248));
+        BtnEntregado.setToolTipText("");
+        BtnEntregado.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        BtnEntregado.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                BtActualizar1MouseClicked(evt);
+                BtnEntregadoMouseClicked(evt);
             }
         });
-        BtActualizar1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        BtnEntregado.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel16.setFont(new java.awt.Font("Noto Sans", 0, 18)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(215, 215, 215));
         jLabel16.setText("Paquete entregado");
-        BtActualizar1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, 180, -1));
+        BtnEntregado.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, 180, -1));
 
         jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-mover-por-carretilla-30_1.png"))); // NOI18N
         jLabel17.setText("jLabel1");
-        BtActualizar1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 33, 36));
+        BtnEntregado.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 33, 36));
 
-        add(BtActualizar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 500, 300, 60));
+        add(BtnEntregado, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 500, 300, 60));
     }// </editor-fold>//GEN-END:initComponents
 
     private void tablaPaquetesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaPaquetesMouseClicked
@@ -224,14 +233,17 @@ public class VGestionPaquetesTransportista extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_TxtPosicionActionPerformed
 
-    private void BtActualizar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtActualizar1MouseClicked
+    private void BtnEntregadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnEntregadoMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_BtActualizar1MouseClicked
+        ModeloTablaPaquetes tt = new ModeloTablaPaquetes();
+        tablaPaquetes.setModel(tt);
+        fa.paqueteEntregado(tt.getFila(tablaPaquetes.getSelectedRow()).getPedido().toString(), tt.getFila(tablaPaquetes.getSelectedRow()).getCodigo().toString());
+    }//GEN-LAST:event_BtnEntregadoMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel BtActualizar;
-    private javax.swing.JPanel BtActualizar1;
+    private javax.swing.JPanel BtnEntregado;
     private java.awt.Label LabelCorrecto;
     private java.awt.Label LabelError;
     private javax.swing.JTextField TxtPosicion;

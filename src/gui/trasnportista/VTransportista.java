@@ -68,7 +68,7 @@ public class VTransportista extends javax.swing.JPanel {
 
         jLabel7.setFont(new java.awt.Font("Noto Sans", 0, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(215, 215, 215));
-        jLabel7.setText("Gestión pedidos");
+        jLabel7.setText("Gestión paquetes");
 
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-caja-vacía-24.png"))); // NOI18N
         jLabel10.setText("jLabel1");

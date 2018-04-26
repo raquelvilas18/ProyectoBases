@@ -109,26 +109,36 @@ public class DAOPedidos extends AbstractDAO {
     }
 
 
-public void tramitarPedido(Integer codigo) {
+public void tramitarPedido(Integer codigo, String transportista) {
         Connection con;
-        PreparedStatement stmPedidos = null;
+        PreparedStatement stm = null, stm2 = null;
+        ResultSet rs;
 
         con = super.getConexion();
 
         try {
-            stmPedidos = con.prepareStatement("update pedidos "
-                    + "set fecha=current_date, "
-                    + "where codigo=?");
-            stmPedidos.setInt(1, codigo);
-
-            stmPedidos.executeUpdate();
+            stm = con.prepareStatement("SELECT * "
+                    + "FROM vehiculos "
+                    + "WHERE transportista = ?");
+            stm.setString(1, transportista);
+            
+            rs = stm.executeQuery();
+            if(rs.next()){
+                String matricula = rs.getString("matricula");
+                stm2 = con.prepareStatement("UPDATE paquetes "
+                        + "SET transportista = ? , vehiculo = ? "
+                        + "WHERE pedido =  ?");
+                stm2.setString(1, transportista);
+                stm2.setString(2, matricula);
+                stm2.setInt(3, codigo);
+            }
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
             this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
         } finally {
             try {
-                stmPedidos.close();
+                stm.close();
             } catch (SQLException e) {
                 System.out.println("Imposible cerrar cursores");
             }

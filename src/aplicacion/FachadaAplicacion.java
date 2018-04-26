@@ -127,8 +127,8 @@ public class FachadaAplicacion {
         gEmpleados.actualizarEmpleado(id, emp);
     }
 
-    public void tramitarPedido(Integer pd) {
-        gEmpleados.tramitarPedido(pd);
+    public void tramitarPedido(Integer codigo, String transportista) {
+        gPedidos.tramitarPedido(codigo, transportista);
     }
 
     public void actualizarDireccion() {
@@ -183,6 +183,10 @@ public class FachadaAplicacion {
      
      public ArrayList<Transportista> obtenerTransportistas(){
          return gEmpleados.obtenerTransportistas();
+     }
+     
+     public void paqueteEntregado(String pedido, String codigo){
+         gPaquetes.paqueteEntregado(pedido, codigo);
      }
 
 }
