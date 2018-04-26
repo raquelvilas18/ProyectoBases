@@ -77,6 +77,7 @@ public class FachadaBaseDatos {
             daoUsuarios = new DAOUsuarios(conexion, this.fa);
             daoPedidos = new DAOPedidos(conexion, this.fa);
             daoEmpleados = new DAOEmpleados(conexion, this.fa);
+            //hgfhgfhgdgd//
             daoPaquetes = new DAOPaquetes(conexion, this.fa);
             daoVehiculos = new DAOVehiculos(conexion,this.fa);
             
