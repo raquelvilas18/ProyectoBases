@@ -206,7 +206,6 @@ public class VGestionPaquetesOficinista extends javax.swing.JPanel {
         tablaTransp.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         tablaTransp.setModel(new ModeloTablaTransportistas());
         tablaTransp.setGridColor(new java.awt.Color(255, 255, 255));
-        tablaTransp.setRowSelectionAllowed(false);
         tablaTransp.setSelectionBackground(new java.awt.Color(89, 171, 36));
         tablaTransp.setSelectionForeground(new java.awt.Color(255, 255, 255));
         jScrollPane2.setViewportView(tablaTransp);
