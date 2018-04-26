@@ -6,6 +6,7 @@
 package baseDatos;
 
 import aplicacion.Empleado;
+import aplicacion.Local;
 import aplicacion.Paquete;
 import aplicacion.Pedido;
 import aplicacion.Transportista;
@@ -37,6 +38,7 @@ public class FachadaBaseDatos {
     private DAOEmpleados daoEmpleados;
     private DAOVehiculos daoVehiculos;
     private DAOPaquetes daoPaquetes;
+    private DAOLocales daoLocales;
 
     public FachadaBaseDatos(aplicacion.FachadaAplicacion fa) {
 
@@ -77,9 +79,9 @@ public class FachadaBaseDatos {
             daoUsuarios = new DAOUsuarios(conexion, this.fa);
             daoPedidos = new DAOPedidos(conexion, this.fa);
             daoEmpleados = new DAOEmpleados(conexion, this.fa);
-            //hgfhgfhgdgd//
             daoPaquetes = new DAOPaquetes(conexion, this.fa);
             daoVehiculos = new DAOVehiculos(conexion,this.fa);
+            daoLocales = new DAOLocales(conexion,this.fa);
             
         } catch (FileNotFoundException f) {
             System.out.println(f.getMessage());
@@ -190,10 +192,6 @@ public class FachadaBaseDatos {
     public void nuevoPaquete(Paquete p){
         daoPaquetes.nuevoPaquete(p);
     }
-    
-    public java.util.List<Paquete>  obtenerPaquetes(Integer codigo){
-        return daoPaquetes.obtenerPaquetes(codigo);
-    }
 
     //------EMPLEADOS-------//
     public ArrayList<Empleado> obtenerEmpleados(String id ) {
@@ -224,8 +222,8 @@ public class FachadaBaseDatos {
     
     //------VEHICULOS-----//
     
-    public ArrayList<Vehiculo> obtenerVehiculos(){
-        return daoVehiculos.obtenerVehiculos();
+    public ArrayList<Vehiculo> obtenerVehiculos(String matricula){
+        return daoVehiculos.obtenerVehiculos(matricula);
     }
     
     public void actualizarVehi(String matricula, Vehiculo vehi){
@@ -247,17 +245,28 @@ public class FachadaBaseDatos {
      public ArrayList<Transportista> obtenerTransportistas(){
          return daoEmpleados.obtenerTransportistas();
      }
-
-
-    public String localizarVehiculo(String Trasportista){
-        Vehiculo vehiculo = null;
-        vehiculo = daoVehiculos.obtenerVehiculo(Trasportista);
-        if(vehiculo != null)
-            return vehiculo.getDireccion();
-        else 
-            return null;
+     
+     //------LOCALES------//
+     
+    public ArrayList<Local> obtenerLocales(String codigo){
+         return daoLocales.obtenerLocales(codigo);
     }
-
     
+    public boolean consultarCodigo(String codigo){
+        return daoLocales.consultarCodigo(codigo);
+    }
+    
+    public void registrarLocal(Local local){
+        daoLocales.registrarLocal(local);
+    }
+    
+    public void actualizarLocal(String codigo,Local local){
+         daoLocales.actualizarLocal(codigo,local);
+     }
+    
+    public void eliminarLocal(String codigo){
+        daoLocales.eliminarLocal(codigo);
+    }
+     
 
 }

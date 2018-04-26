@@ -30,7 +30,7 @@ public class VGestionVehiculos extends javax.swing.JPanel {
         initComponents();
         ModeloTablaVehiculos tv = new ModeloTablaVehiculos();
         tablaVehi.setModel(tv);
-        tv.setFilas(fa.obtenerVehiculos());
+        tv.setFilas(fa.obtenerVehiculos(FiltroMatricula.getText()));
         tablaVehi.changeSelection(0,0,false,false);
         ErrorID.setVisible(false);
         LConfirmar.setVisible(false);
@@ -75,7 +75,7 @@ public class VGestionVehiculos extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaVehi = new javax.swing.JTable();
         jLabel4 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        FiltroMatricula = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         BtActualizar = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
@@ -147,12 +147,12 @@ public class VGestionVehiculos extends javax.swing.JPanel {
         jLabel4.setText("Matricula:");
         add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 145, -1, -1));
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        FiltroMatricula.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                FiltroMatriculaActionPerformed(evt);
             }
         });
-        add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(122, 145, 148, -1));
+        add(FiltroMatricula, new org.netbeans.lib.awtextra.AbsoluteConstraints(122, 145, 148, -1));
 
         jPanel1.setBackground(new java.awt.Color(255, 226, 154));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -330,9 +330,9 @@ public class VGestionVehiculos extends javax.swing.JPanel {
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(28, 410, 620, 170));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void FiltroMatriculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FiltroMatriculaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_FiltroMatriculaActionPerformed
 
     private void BtActualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtActualizarMouseClicked
         ModeloTablaVehiculos  m = (ModeloTablaVehiculos) tablaVehi.getModel();
@@ -351,8 +351,8 @@ public class VGestionVehiculos extends javax.swing.JPanel {
     }//GEN-LAST:event_BtActualizarMouseClicked
 
     private void BtBajaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtBajaMouseClicked
-        //restablecerBoton();
-        //eliminarUsuario();
+        restablecerBoton();
+        eliminarVehiculo();
         // TODO add your handling code here:
     }//GEN-LAST:event_BtBajaMouseClicked
 
@@ -411,6 +411,7 @@ public class VGestionVehiculos extends javax.swing.JPanel {
     private javax.swing.JLabel ContrasenaL;
     private javax.swing.JLabel ErrorAlta1;
     private javax.swing.JLabel ErrorID;
+    private javax.swing.JTextField FiltroMatricula;
     private javax.swing.JLabel LAlta;
     private javax.swing.JLabel LConfirmar;
     private javax.swing.JLabel LabelActualizar;
@@ -435,7 +436,6 @@ public class VGestionVehiculos extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel mt;
     private javax.swing.JTable tablaVehi;
     // End of variables declaration//GEN-END:variables
@@ -458,9 +458,17 @@ public void actualizarVehiculo(String matricula){
     mv = (ModeloTablaVehiculos) tablaVehi.getModel();
     fa.actualizarVehi(matricula, new Vehiculo(TxMatricula.getText(), TxItv.getText(), TxFechaCompra.getText(), Integer.parseInt(TxCapacidad.getText()), TxTransp.getText(), TxDireccion.getText()));
     LabelActualizar.setVisible(true);
-    mv.setFilas(fa.obtenerVehiculos());
+    mv.setFilas(fa.obtenerVehiculos(matricula));
     BtActualizar.setEnabled(false);
     
+}
+
+public void eliminarVehiculo(){
+    ModeloTablaVehiculos m;
+
+        m = (ModeloTablaVehiculos) tablaVehi.getModel();
+        fa.eliminarUsuario((m.getFila(tablaVehi.getSelectedRow()).getMatricula()));
+        m.setFilas(fa.obtenerVehiculos(this.FiltroMatricula.getText()));
 }
 
     public void actualizarDatos() {
@@ -503,7 +511,7 @@ public void actualizarVehiculo(String matricula){
         ModeloTablaVehiculos m;
 
         m = (ModeloTablaVehiculos) tablaVehi.getModel();
-        m.setFilas(fa.obtenerVehiculos());
+        m.setFilas(fa.obtenerVehiculos(FiltroMatricula.getText()));
     }
 
 }
