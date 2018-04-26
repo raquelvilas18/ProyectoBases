@@ -119,6 +119,10 @@ public class FachadaBaseDatos {
     public void eliminarUsuario(String id){
         daoUsuarios.eliminarUsuario(id);
     }
+    
+    public void eliminarEmpleado(String id){
+        daoEmpleados.eliminarEmpleado(id);
+    }
 
     public Usuario validarUsuario1(String idUsuario, String clave) {
         return daoUsuarios.validarUsuario1(idUsuario, clave);

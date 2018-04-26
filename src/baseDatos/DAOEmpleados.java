@@ -227,7 +227,7 @@ public class DAOEmpleados extends AbstractDAO {
 
         try {
             stmEmpleado = con.prepareStatement("UPDATE empleados\n"
-                    + " SET usuario=?, nomina=?,\n"
+                    + " SET usuario=?, nomina=?\n"
                     + " WHERE usuario=? ");
             stmEmpleado.setString(1, empleado.getUsuario());
             stmEmpleado.setInt(2, empleado.getNomina());
@@ -287,7 +287,7 @@ public class DAOEmpleados extends AbstractDAO {
             rsEmpleados = stmEmpleados.executeQuery();
 
             while (rsEmpleados.next()) {
-                resultado.add(rsEmpleados.getInt("anoIngreso"));
+                resultado.add(rsEmpleados.getInt("nomina"));
             }
 
         } catch (SQLException e) {
@@ -337,4 +337,38 @@ public class DAOEmpleados extends AbstractDAO {
         }
         return resultado;
     }
+    
+    public void eliminarEmpleado(String id){
+        Connection con;
+        PreparedStatement stmUsuario = null, stmUsuario1 = null, stmUsuario2 = null, stmUsuario3 = null;
+        ResultSet rsUsuario;
+
+        con = this.getConexion();
+
+        try {
+            stmUsuario1 = con.prepareStatement("UPDATE locales SET encargado=null WHERE encargado=?");
+            stmUsuario1.setString(1, id);
+            stmUsuario1.executeUpdate();
+            stmUsuario2 = con.prepareStatement("UPDATE vehiculos SET conductor=null WHERE conductor=?");
+            stmUsuario2.setString(1, id);
+            stmUsuario2.executeUpdate();
+            stmUsuario3 = con.prepareStatement("UPDATE pedidos SET tramitador=null WHERE tramitador=?");
+            stmUsuario3.setString(1, id);
+            stmUsuario3.executeUpdate();
+            stmUsuario = con.prepareStatement("DELETE FROM empleados WHERE usuario=?");
+            stmUsuario.setString(1, id);
+            stmUsuario.executeUpdate();
+            this.getFachadaAplicacion().eliminarUsuario(id);
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
+        } finally {
+            try {
+                stmUsuario.close();
+            } catch (SQLException e) {
+                System.out.println("Imposible cerrar cursores");
+            }
+        }
+    }
+    
 }
