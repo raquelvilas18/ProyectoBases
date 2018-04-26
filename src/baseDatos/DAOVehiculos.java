@@ -190,5 +190,38 @@ public class DAOVehiculos extends AbstractDAO {
                 try {stmVehiculo.close();} catch (SQLException e){System.out.println("Imposible cerrar cursores");}
             }
     }
+     
+     public Vehiculo obtenerVehiculo(String trasportista){
+        Vehiculo resultado =null;
+        Connection con;
+        PreparedStatement stmVehiculos=null;
+        ResultSet rsVehiculos=null;
+        
+        con = super.getConexion();
+        
+        try{
+            stmVehiculos=con.prepareStatement("SELECT * "+
+                                            "FROM vehiculos "
+                                        + "WHERE conductor=?");
+            stmVehiculos.setString(1, trasportista);
+            rsVehiculos = stmVehiculos.executeQuery();
+
+            while(rsVehiculos.next()){
+                resultado = new Vehiculo(rsVehiculos.getString("matricula"),
+                                                  rsVehiculos.getString("proximaITV"),
+                                                  rsVehiculos.getString("fechaCompra"),
+                                                  rsVehiculos.getInt("capacidad"),
+                                                  rsVehiculos.getString("conductor"),
+                                                  rsVehiculos.getString("direccion"));
+            }
+        }catch (SQLException e){
+                System.out.println(e.getMessage());
+                this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
+            }finally{
+                try {stmVehiculos.close();} catch (SQLException e){System.out.println("Imposible cerrar cursores");}
+            }
+        
+        return resultado;
+    }
     
 }
