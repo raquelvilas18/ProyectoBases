@@ -732,14 +732,14 @@ public class VGestionEmpleados extends javax.swing.JPanel {
         ErrorID.setVisible(false);
         LConfirmar.setVisible(false);
         LAlta.setVisible(true);
-        LocalLabel.setVisible(false);
-        TxLocal.setVisible(false);
+        //LocalLabel.setVisible(false);
+        //TxLocal.setVisible(false);
         TxPassword.setVisible(false);
         ContrasenaL1.setVisible(false);
         TxTipo.setVisible(false);
         labelTipo.setVisible(false);
         ErrorAlta2.setVisible(false);
-        tablaEmpleados.clearSelection();
+        //tablaEmpleados.clearSelection();
     }
     
     public void actualizarEmpleado(String id) {
