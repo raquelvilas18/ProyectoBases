@@ -69,6 +69,11 @@ public class VPerfilAdmin extends javax.swing.JPanel {
         LabelActualizar = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                formMouseClicked(evt);
+            }
+        });
 
         jPanel4.setBackground(new java.awt.Color(116, 126, 173));
 
@@ -361,6 +366,11 @@ public class VPerfilAdmin extends javax.swing.JPanel {
             JLabelMensaje.setVisible(true);
         }
     }//GEN-LAST:event_jActualizarMouseClicked
+
+    private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
+        // TODO add your handling code here:
+    LabelActualizar.setVisible(false);
+    }//GEN-LAST:event_formMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

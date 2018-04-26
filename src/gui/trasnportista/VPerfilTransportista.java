@@ -61,6 +61,11 @@ public class VPerfilTransportista extends javax.swing.JPanel {
         ActualizarLabel = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                formMouseClicked(evt);
+            }
+        });
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/logoPequeno.png"))); // NOI18N
@@ -282,6 +287,11 @@ public class VPerfilTransportista extends javax.swing.JPanel {
     private void sexoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sexoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_sexoActionPerformed
+
+    private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
+        // TODO add your handling code here:
+        ActualizarLabel.setVisible(false);
+    }//GEN-LAST:event_formMouseClicked
 
     public void actualizador(Usuario usuario) {
         JNombre.setText(usuario.getNombre());
