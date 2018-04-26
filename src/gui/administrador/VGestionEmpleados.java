@@ -202,6 +202,11 @@ public class VGestionEmpleados extends javax.swing.JPanel {
         add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 110, -1, -1));
 
         jPanel1.setBackground(new java.awt.Color(255, 226, 154));
+        jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                clearMouseClick(evt);
+            }
+        });
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         panelActualizar.setBackground(new java.awt.Color(255, 148, 42));
@@ -441,7 +446,6 @@ public class VGestionEmpleados extends javax.swing.JPanel {
         jPanel1.add(TxPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 100, 220, -1));
 
         TxLocal.setBackground(new java.awt.Color(255, 232, 185));
-        TxLocal.setForeground(new java.awt.Color(102, 102, 102));
         TxLocal.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 1));
         TxLocal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -647,6 +651,11 @@ public class VGestionEmpleados extends javax.swing.JPanel {
         tablaEmpleados.changeSelection(0,0,false,false);
         
     }//GEN-LAST:event_DarBajaMouseClicked
+
+    private void clearMouseClick(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_clearMouseClick
+        // TODO add your handling code here:
+        restablecerBoton();
+    }//GEN-LAST:event_clearMouseClick
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
