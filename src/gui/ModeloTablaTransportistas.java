@@ -92,7 +92,7 @@ public class ModeloTablaTransportistas  extends AbstractTableModel {
                 resultado = transportistas.get(row).getSexo();
                 break;
             case 4:
-                resultado = transportistas.get(row).getTipo();
+                resultado = transportistas.get(row).getNumPaquetes();
                 break;
         }
         return resultado;

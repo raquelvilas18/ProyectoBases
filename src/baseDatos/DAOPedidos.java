@@ -239,7 +239,7 @@ public void tramitarPedido(Integer codigo) {
                         rsPedidos.getInt("largo"),
                         rsPedidos.getString("fecha_entrega"),
                         rsPedidos.getString("vehiculo"),
-                        rsPedidos.getString("local"), null));
+                        rsPedidos.getString("cliente")));
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());

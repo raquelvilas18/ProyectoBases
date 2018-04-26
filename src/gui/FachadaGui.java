@@ -32,6 +32,10 @@ public class FachadaGui {
        va.setVisible(true);
    }
 
-    
+    public void localizar(java.util.List<Paquete>  Paquetes, java.util.List<String> Posiciones){
+        VLocalizador vl;
+        vl=new VLocalizador(vp,true,Paquetes,Posiciones);
+        vl.setVisible(true);
+    }
    
 }

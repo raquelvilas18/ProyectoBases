@@ -202,6 +202,11 @@ public class VGestionEmpleados extends javax.swing.JPanel {
         add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 110, -1, -1));
 
         jPanel1.setBackground(new java.awt.Color(255, 226, 154));
+        jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                clearMouseClick(evt);
+            }
+        });
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         panelActualizar.setBackground(new java.awt.Color(255, 148, 42));
@@ -441,7 +446,6 @@ public class VGestionEmpleados extends javax.swing.JPanel {
         jPanel1.add(TxPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 100, 220, -1));
 
         TxLocal.setBackground(new java.awt.Color(255, 232, 185));
-        TxLocal.setForeground(new java.awt.Color(102, 102, 102));
         TxLocal.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 1));
         TxLocal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -648,6 +652,11 @@ public class VGestionEmpleados extends javax.swing.JPanel {
         
     }//GEN-LAST:event_DarBajaMouseClicked
 
+    private void clearMouseClick(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_clearMouseClick
+        // TODO add your handling code here:
+        restablecerBoton();
+    }//GEN-LAST:event_clearMouseClick
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel AltaCorrecta;
@@ -723,14 +732,14 @@ public class VGestionEmpleados extends javax.swing.JPanel {
         ErrorID.setVisible(false);
         LConfirmar.setVisible(false);
         LAlta.setVisible(true);
-        LocalLabel.setVisible(false);
-        TxLocal.setVisible(false);
+        //LocalLabel.setVisible(false);
+        //TxLocal.setVisible(false);
         TxPassword.setVisible(false);
         ContrasenaL1.setVisible(false);
         TxTipo.setVisible(false);
         labelTipo.setVisible(false);
         ErrorAlta2.setVisible(false);
-        tablaEmpleados.clearSelection();
+        //tablaEmpleados.clearSelection();
     }
     
     public void actualizarEmpleado(String id) {

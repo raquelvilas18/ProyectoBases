@@ -68,7 +68,7 @@ public class DAOPaquetes extends AbstractDAO {
             stm.setString(1, id);
             rs=stm.executeQuery();
             while(rs.next()){
-                paquetes.add(new Paquete(rs.getInt("codigo"), rs.getInt("pedido"), rs.getFloat("peso"), rs.getFloat("alto"), rs.getFloat("ancho"), rs.getFloat("largo"), rs.getString("fecha_entrega"), rs.getString("transportista"), rs.getString("local"), rs.getString("cliente")));
+                paquetes.add(new Paquete(rs.getInt("codigo"), rs.getInt("pedido"), rs.getFloat("peso"), rs.getFloat("alto"), rs.getFloat("ancho"), rs.getFloat("largo"), rs.getString("fecha_entrega"), rs.getString("transportista"), rs.getString("cliente")));
             }
 
         } catch (SQLException e) {
@@ -84,4 +84,39 @@ public class DAOPaquetes extends AbstractDAO {
         return paquetes;
     }
 
+    public java.util.List<Paquete> obtenerPaquetes(Integer codigo){
+        java.util.List<Paquete> resultado = new java.util.ArrayList<Paquete>();
+        Connection con;
+        PreparedStatement stmPaquetes=null;
+        ResultSet rsPaquetes=null;
+        
+        con = super.getConexion();
+        
+        try{
+            stmPaquetes=con.prepareStatement("SELECT * "+
+                                            "FROM paquetes "
+                                        + "WHERE pedido=?");
+            stmPaquetes.setInt(1, codigo);
+            rsPaquetes = stmPaquetes.executeQuery();
+
+            while(rsPaquetes.next()){
+                resultado.add(new Paquete(rsPaquetes.getInt("codigo"),
+                                            rsPaquetes.getInt("pedido"),    
+                                            rsPaquetes.getFloat("peso"),
+                                            rsPaquetes.getFloat("alto"),
+                                            rsPaquetes.getFloat("ancho"),
+                                            rsPaquetes.getFloat("largo"),
+                                            rsPaquetes.getString("fecha_entrega"),
+                                            rsPaquetes.getString("transportista"),
+                                            rsPaquetes.getString("cliente")));
+            }
+        }catch (SQLException e){
+                System.out.println(e.getMessage());
+                this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
+            }finally{
+                try {stmPaquetes.close();} catch (SQLException e){System.out.println("Imposible cerrar cursores");}
+            }
+        
+        return resultado;
+    }
 }

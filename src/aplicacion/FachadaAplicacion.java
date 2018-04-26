@@ -185,4 +185,8 @@ public class FachadaAplicacion {
          return gEmpleados.obtenerTransportistas();
      }
 
+
+    public void localizar(Integer codigo){
+        gPaquetes.localizar(codigo);
+    }
 }
