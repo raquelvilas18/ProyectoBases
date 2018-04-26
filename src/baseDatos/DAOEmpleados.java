@@ -26,17 +26,17 @@ public class DAOEmpleados extends AbstractDAO {
         super.setFachadaAplicacion(fa);
     }
 
-    public Empleado nuevoEmpleado(String usuario, int nomina){
+    public Empleado nuevoEmpleado(String usuario, int nomina) {
         Empleado resultado = null;
         ResultSet rsEmpleado;
         PreparedStatement stmEmpleado = null;
         Connection con;
 
         con = super.getConexion();
-        
-        try{
-            stmEmpleado = con.prepareStatement("INSERT into empleados(usuario,nomina,anoingreso) " +
-                                                "VALUES (?,?,current_date)");
+
+        try {
+            stmEmpleado = con.prepareStatement("INSERT into empleados(usuario,nomina,anoingreso) "
+                    + "VALUES (?,?,current_date)");
             stmEmpleado.setString(1, usuario);
             stmEmpleado.setInt(2, nomina);
 
@@ -74,22 +74,22 @@ public class DAOEmpleados extends AbstractDAO {
         }
         return resultado;
     }
-    
-    public void nuevoTransportista(String usuario){
+
+    public void nuevoTransportista(String usuario) {
         PreparedStatement stmTransportista = null;
         Connection con;
-        
+
         con = super.getConexion();
-        
-        try{
-            stmTransportista = con.prepareStatement("INSERT into transportistas(empleado)" +
-                                                "VALUES (?)");
+
+        try {
+            stmTransportista = con.prepareStatement("INSERT into transportistas(empleado)"
+                    + "VALUES (?)");
             stmTransportista.setString(1, usuario);
             stmTransportista.execute();
-                        
-        }catch(SQLException e){
+
+        } catch (SQLException e) {
             System.out.println(e.getMessage());
-        this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
+            this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
         } finally {
             try {
                 stmTransportista.close();
@@ -98,23 +98,23 @@ public class DAOEmpleados extends AbstractDAO {
             }
         }
     }
-    
-    public void nuevoOficinista(String usuario,String local){
-        
+
+    public void nuevoOficinista(String usuario, String local) {
+
         PreparedStatement stmOficinista = null;
         Connection con;
-        
+
         con = super.getConexion();
-        
-        try{
+
+        try {
             stmOficinista = con.prepareStatement("insert into oficinistas(empleado,local) values(?,?)");
             stmOficinista.setString(1, usuario);
             stmOficinista.setString(2, local);
             stmOficinista.execute();
-                        
-        }catch(SQLException e){
+
+        } catch (SQLException e) {
             System.out.println(e.getMessage());
-        this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
+            this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
         } finally {
             try {
                 stmOficinista.close();
@@ -143,7 +143,7 @@ public class DAOEmpleados extends AbstractDAO {
             while (rsEmpleados.next()) {
                 DAOUsuarios daoUs = new DAOUsuarios(this.getConexion(), this.getFachadaAplicacion());
                 Usuario u;
-                u = daoUs.obtenerUsuarios(rsEmpleados.getString("usuario"),"" ).get(0);
+                u = daoUs.obtenerUsuarios(rsEmpleados.getString("usuario"), "").get(0);
                 resultado.add(new Empleado(u.getUsuario(), u.getPassword(), u.getDni(), u.getNombre(), u.getCorreo(), u.getDireccion(), u.getTelefono(), u.getSexo(), u.getTipo(), rsEmpleados.getInt("nomina"), rsEmpleados.getString("anoIngreso")));
             }
 
@@ -159,7 +159,7 @@ public class DAOEmpleados extends AbstractDAO {
         }
         return resultado;
     }
-    
+
     public String trabajaEn(String id) {
         String resultado = null;
         Connection con;
@@ -227,10 +227,12 @@ public class DAOEmpleados extends AbstractDAO {
 
         try {
             stmEmpleado = con.prepareStatement("UPDATE empleados\n"
+                    + " SET usuario=?, nomina=?\n"
                     + " WHERE usuario=? ");
             stmEmpleado.setString(1, empleado.getUsuario());
             stmEmpleado.setInt(2, empleado.getNomina());
             stmEmpleado.setString(3, id);
+
             stmEmpleado.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e.getMessage());

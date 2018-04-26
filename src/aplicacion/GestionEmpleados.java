@@ -52,6 +52,9 @@ public class GestionEmpleados extends GestionUsuarios{
     public void actualizarDireccion(){
         
     }
-
+    
+     public ArrayList<Transportista> obtenerTransportistas(){
+         return super.getFbd().obtenerTransportistas();
+     }
 
 }

@@ -176,6 +176,15 @@ public class FachadaAplicacion {
     public void registrarVehi(Vehiculo vehi){
         fbd.registrarVehi(vehi);
     }
+    
+     public ArrayList<Paquete> paquetesTransportista(String id) {
+         return gPaquetes.paquetesTransportista(id);
+     }
+     
+     public ArrayList<Transportista> obtenerTransportistas(){
+         return gEmpleados.obtenerTransportistas();
+     }
+
 
     public void localizar(Integer codigo){
         gPaquetes.localizar(codigo);

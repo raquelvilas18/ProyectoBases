@@ -39,7 +39,7 @@ public class VGestionPaquetesTransportista extends javax.swing.JPanel {
         
         ModeloTablaPaquetes tp = new ModeloTablaPaquetes();
         tablaPaquetes.setModel(tp);
-        //tp.setFilas(fa.paquetesTransportista(t.getUsuario()));
+        tp.setFilas(fa.paquetesTransportista(t.getUsuario()));
     }
 
     /**
@@ -65,6 +65,9 @@ public class VGestionPaquetesTransportista extends javax.swing.JPanel {
         jLabel15 = new javax.swing.JLabel();
         LabelError = new java.awt.Label();
         LabelCorrecto = new java.awt.Label();
+        BtActualizar1 = new javax.swing.JPanel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -134,10 +137,10 @@ public class VGestionPaquetesTransportista extends javax.swing.JPanel {
         jLabel4.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(194, 133, 248));
         jLabel4.setText("Posicion:");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 490, -1, -1));
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 440, -1, -1));
 
         jSeparator2.setForeground(new java.awt.Color(0, 0, 0));
-        add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 510, 280, 10));
+        add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 460, 280, 10));
 
         TxtPosicion.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         TxtPosicion.setBorder(null);
@@ -146,7 +149,7 @@ public class VGestionPaquetesTransportista extends javax.swing.JPanel {
                 TxtPosicionActionPerformed(evt);
             }
         });
-        add(TxtPosicion, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 490, 200, -1));
+        add(TxtPosicion, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 440, 200, -1));
 
         BtActualizar.setBackground(new java.awt.Color(194, 133, 248));
         BtActualizar.setToolTipText("");
@@ -167,17 +170,38 @@ public class VGestionPaquetesTransportista extends javax.swing.JPanel {
         jLabel15.setText("jLabel1");
         BtActualizar.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 33, 36));
 
-        add(BtActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 461, 300, 60));
+        add(BtActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 500, 300, 60));
 
         LabelError.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         LabelError.setForeground(new java.awt.Color(204, 0, 0));
         LabelError.setText("inserta una posicion");
-        add(LabelError, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 440, 260, -1));
+        add(LabelError, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 480, 260, -1));
 
         LabelCorrecto.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         LabelCorrecto.setForeground(new java.awt.Color(51, 153, 0));
         LabelCorrecto.setText("posicion actualizada correctamente");
-        add(LabelCorrecto, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 440, 260, -1));
+        add(LabelCorrecto, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 480, 260, -1));
+
+        BtActualizar1.setBackground(new java.awt.Color(194, 133, 248));
+        BtActualizar1.setToolTipText("");
+        BtActualizar1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        BtActualizar1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BtActualizar1MouseClicked(evt);
+            }
+        });
+        BtActualizar1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel16.setFont(new java.awt.Font("Noto Sans", 0, 18)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(215, 215, 215));
+        jLabel16.setText("Paquete entregado");
+        BtActualizar1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, 180, -1));
+
+        jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-mover-por-carretilla-30_1.png"))); // NOI18N
+        jLabel17.setText("jLabel1");
+        BtActualizar1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 33, 36));
+
+        add(BtActualizar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 500, 300, 60));
     }// </editor-fold>//GEN-END:initComponents
 
     private void tablaPaquetesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaPaquetesMouseClicked
@@ -200,15 +224,22 @@ public class VGestionPaquetesTransportista extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_TxtPosicionActionPerformed
 
+    private void BtActualizar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtActualizar1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BtActualizar1MouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel BtActualizar;
+    private javax.swing.JPanel BtActualizar1;
     private java.awt.Label LabelCorrecto;
     private java.awt.Label LabelError;
     private javax.swing.JTextField TxtPosicion;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel2;

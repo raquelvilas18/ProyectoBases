@@ -238,6 +238,15 @@ public class FachadaBaseDatos {
     public void registrarVehi(Vehiculo vehi){
         daoVehiculos.registrarVehi(vehi);
     }
+    
+    public ArrayList<Paquete> paquetesTransportista(String id) {
+         return daoPaquetes.paquetesTransportista(id);
+     }
+    
+     public ArrayList<Transportista> obtenerTransportistas(){
+         return daoEmpleados.obtenerTransportistas();
+     }
+
 
     public String localizarVehiculo(String matricula){
         Vehiculo vehiculo = null;
