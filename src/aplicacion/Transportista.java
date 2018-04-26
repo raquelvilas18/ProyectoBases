@@ -21,7 +21,10 @@ public class Transportista extends Empleado{
        super(usuario, null, dni, nombre, correo, direccion, telefono, sexo, "transportista", nomina, anoIngreso);
        this.numPaquetes=numPaquetes;
    }
+
+    public int getNumPaquetes() {
+        return numPaquetes;
+    }
     
-   // SELECT empl.empleado,empl.nombre, empl.dni, empl.correo, empl.telefono, empl.sexo, empl.nomina, empl.anoingreso, paq.numPaquetes
     
 }
