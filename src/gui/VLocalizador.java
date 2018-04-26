@@ -7,6 +7,8 @@ package gui;
 
 import aplicacion.Paquete;
 import aplicacion.Vehiculo;
+import java.awt.Color;
+import java.awt.Font;
 
 /**
  *
@@ -23,6 +25,8 @@ public class VLocalizador extends javax.swing.JDialog {
         initComponents();
         this.parent = (VPrincipal) parent;
         ModeloTablaPaquetes Mtp = new ModeloTablaPaquetes();
+        System.out.println(Paquetes.get(0).getCliente() + '\t' + Posicion);
+        Tabla.setModel(Mtp);
         Mtp.setFilas(Paquetes, Posicion);
         Salir.setEnabled(true);
     }

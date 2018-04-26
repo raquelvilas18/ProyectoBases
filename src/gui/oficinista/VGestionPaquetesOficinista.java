@@ -31,7 +31,7 @@ public class VGestionPaquetesOficinista extends javax.swing.JPanel {
         
         ModeloTablaTransportistas tt = new ModeloTablaTransportistas();
         tablaTransp.setModel(tt);
-        tt.setFilas(fa.obtenerTransportistas());
+        //tt.setFilas(fa.obtenerTransportistas());
 
         JTableHeader th;
         th = this.tablaPedidos.getTableHeader();

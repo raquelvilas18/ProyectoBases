@@ -39,7 +39,7 @@ public class VGestionPaquetesTransportista extends javax.swing.JPanel {
         
         ModeloTablaPaquetes tp = new ModeloTablaPaquetes();
         tablaPaquetes.setModel(tp);
-        tp.setFilas(fa.paquetesTransportista(t.getUsuario()));
+        //tp.setFilas(fa.paquetesTransportista(t.getUsuario()));
     }
 
     /**

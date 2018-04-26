@@ -39,6 +39,7 @@ public class GestionPaquetes {
                 //Posiciones.add(fbd.localizarLocal(p.getLocal()));
                 Posiciones.add("En un local de la mancha ...");
             }
+            System.out.println(Posiciones.get(Posiciones.size()-1));
         }
         fgui.localizar(Paquetes, Posiciones);
     }
