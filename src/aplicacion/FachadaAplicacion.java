@@ -90,6 +90,10 @@ public class FachadaAplicacion {
     public void eliminarUsuario(String id) {
         gUsuarios.eliminarUsuario(id);
     }
+    
+    public void eliminarEmpleado(String id) {
+        gUsuarios.eliminarEmpleado(id);
+    }
 
     public void conexion(String idUsuario, boolean accion) {
         gUsuarios.conexion(idUsuario, accion);

@@ -108,7 +108,8 @@ public class DAOPedidos extends AbstractDAO {
 
     }
 
-    public void tramitarPedido(Integer codigo) {
+
+public void tramitarPedido(Integer codigo) {
         Connection con;
         PreparedStatement stmPedidos = null;
 
@@ -293,6 +294,7 @@ public class DAOPedidos extends AbstractDAO {
 
         return resultado;
     }
+
 
     public ArrayList<Pedido> pedidosSinTramitar() {
         ArrayList<Pedido> resultado = new ArrayList<Pedido>();

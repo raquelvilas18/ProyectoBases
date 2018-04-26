@@ -8,6 +8,7 @@ package baseDatos;
 import aplicacion.Empleado;
 import aplicacion.Paquete;
 import aplicacion.Pedido;
+import aplicacion.Transportista;
 import aplicacion.Usuario;
 import aplicacion.Vehiculo;
 import java.io.FileInputStream;
@@ -117,6 +118,10 @@ public class FachadaBaseDatos {
     
     public void eliminarUsuario(String id){
         daoUsuarios.eliminarUsuario(id);
+    }
+    
+    public void eliminarEmpleado(String id){
+        daoEmpleados.eliminarEmpleado(id);
     }
 
     public Usuario validarUsuario1(String idUsuario, String clave) {
@@ -242,5 +247,7 @@ public class FachadaBaseDatos {
         else 
             return null;
     }
+
+    
 
 }

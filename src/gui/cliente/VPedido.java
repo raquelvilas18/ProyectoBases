@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gui;
+package gui.cliente;
 
 import AppPackage.AnimationClass;
 import aplicacion.Paquete;
@@ -513,6 +513,7 @@ public class VPedido extends javax.swing.JPanel {
         } else {
             pd =fa.nuevoPedido(new Pedido(u.getUsuario(), jRadioButton1.isSelected(), Txdestino.getText(), TxNombre.getText()));
             PanelPaquete.setVisible(true);
+            label2.setVisible(true);
         }
     }//GEN-LAST:event_jPanel3MouseClicked
 
@@ -542,6 +543,7 @@ public class VPedido extends javax.swing.JPanel {
 
     private void TxPesoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TxPesoMouseClicked
         // TODO add your handling code here:
+        LabelAñadirCorrecto.setVisible(false);
     }//GEN-LAST:event_TxPesoMouseClicked
 
     private void TxPesoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxPesoActionPerformed

@@ -5,20 +5,22 @@
  */
 package gui;
 
+import aplicacion.Transportista;
+import java.util.ArrayList;
 import javax.swing.table.AbstractTableModel;
-import aplicacion.Empleado;
-import aplicacion.Usuario;
 
 /**
  *
  * @author alumnogreibd
  */
-public class ModeloTablaEmpleados extends AbstractTableModel {
+public class ModeloTablaTransportistas  extends AbstractTableModel {
 
-    private java.util.List<Empleado> empleados;
+    private java.util.List<Transportista> transportistas;
+    private java.util.List<Integer> nPaquetes;
 
-    public ModeloTablaEmpleados() {
-        this.empleados = new java.util.ArrayList<>();
+    public ModeloTablaTransportistas() {
+        this.transportistas = new ArrayList<>();
+        this.nPaquetes = new ArrayList<>();
     }
 
     @Override
@@ -27,17 +29,20 @@ public class ModeloTablaEmpleados extends AbstractTableModel {
 
         switch (col) {
             case 0:
-                nombre = "Id";
+                nombre = "id";
                 break;
             case 1:
-                nombre = "Nombre";
+                nombre = "nombre";
                 break;
             case 2:
-                nombre = "Nomina";
+                nombre = "direccion";
                 break;
             case 3:
-                nombre = "Nomina";
+                nombre = "sexo";
                 break;
+            case 4:
+                nombre = "NºPaquetes";
+                break;    
         }
         return nombre;
     }
@@ -54,10 +59,13 @@ public class ModeloTablaEmpleados extends AbstractTableModel {
                 clase = java.lang.String.class;
                 break;
             case 2:
-                clase = java.lang.Integer.class;
+                clase = java.lang.String.class;
                 break;
             case 3:
                 clase = java.lang.String.class;
+                break;
+            case 4:
+                clase = java.lang.Integer.class;
                 break;
         }
         return clase;
@@ -72,16 +80,19 @@ public class ModeloTablaEmpleados extends AbstractTableModel {
         Object resultado = null;
         switch (col) {
             case 0:
-                resultado = empleados.get(row).getUsuario();
+                resultado = transportistas.get(row).getUsuario();
                 break;
             case 1:
-                resultado = empleados.get(row).getNombre();
+                resultado = transportistas.get(row).getNombre();
                 break;
             case 2:
-                resultado = empleados.get(row).getNomina();
+                resultado = transportistas.get(row).getDireccion();
                 break;
             case 3:
-                resultado = empleados.get(row).getTipo();
+                resultado = transportistas.get(row).getSexo();
+                break;
+            case 4:
+                resultado = transportistas.get(row).getTipo();
                 break;
         }
         return resultado;
@@ -89,24 +100,21 @@ public class ModeloTablaEmpleados extends AbstractTableModel {
 
     @Override
     public int getColumnCount() {
-        return 4;
+        return 5;
     }
 
     @Override
     public int getRowCount() {
-        return empleados.size();
+        return transportistas.size();
     }
 
-    public void setFilas(java.util.List<Empleado> empleados) {
-        this.empleados = empleados;
+    public void setFilas(java.util.List<Transportista> t) {
+        this.transportistas = t;
         fireTableDataChanged();
     }
-
-    public Empleado getFila(int fila) {
-        if (empleados.isEmpty()) {
-            return null;
-        }
-        return empleados.get(fila);
+    
+    public Transportista getFila(int fila){
+        return transportistas.get(fila);
     }
 
 }

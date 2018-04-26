@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gui;
+package gui.cliente;
 
 import aplicacion.FachadaAplicacion;
 import aplicacion.Usuario;
@@ -25,6 +25,7 @@ public class VPerfil extends javax.swing.JPanel {
         this.usuario = usuario;
         this.actualizador(usuario);
         this.fa=fa;
+        LabelActualizar.setVisible(false);
     }
 
     /**
@@ -59,9 +60,10 @@ public class VPerfil extends javax.swing.JPanel {
         jPanel4 = new javax.swing.JPanel();
         JLabelMensaje = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
-        sexo = new javax.swing.JComboBox<>();
+        sexo = new javax.swing.JComboBox<String>();
         jLabel18 = new javax.swing.JLabel();
         JDNI = new javax.swing.JTextField();
+        LabelActualizar = new javax.swing.JLabel();
 
         jLabel6.setBackground(new java.awt.Color(65, 105, 225));
         jLabel6.setFont(new java.awt.Font("Samanata", 0, 24)); // NOI18N
@@ -236,7 +238,7 @@ public class VPerfil extends javax.swing.JPanel {
 
         sexo.setBackground(new java.awt.Color(165, 180, 253));
         sexo.setForeground(new java.awt.Color(0, 0, 0));
-        sexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "H", "M" }));
+        sexo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "H", "M" }));
         sexo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 sexoActionPerformed(evt);
@@ -256,6 +258,11 @@ public class VPerfil extends javax.swing.JPanel {
         JDNI.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         JDNI.setBorder(null);
         add(JDNI, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 370, 470, 30));
+
+        LabelActualizar.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        LabelActualizar.setForeground(new java.awt.Color(0, 153, 0));
+        LabelActualizar.setText("Datos actualizados correctamente");
+        add(LabelActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 480, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jActualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jActualizarMouseClicked
@@ -270,6 +277,7 @@ public class VPerfil extends javax.swing.JPanel {
             usuario.setTelefono(JTelefono.getText());
             usuario.setUsuario(jId.getText());
             fa.actualizar(usuario);
+            LabelActualizar.setVisible(true);
         }
         else{
             JLabelMensaje.setVisible(true);
@@ -294,6 +302,7 @@ public class VPerfil extends javax.swing.JPanel {
     private javax.swing.JLabel JLabelMensaje;
     private javax.swing.JTextField JNombre;
     private javax.swing.JTextField JTelefono;
+    private javax.swing.JLabel LabelActualizar;
     private javax.swing.Box.Filler filler1;
     private javax.swing.JTextField jId;
     private javax.swing.JLabel jLabel1;

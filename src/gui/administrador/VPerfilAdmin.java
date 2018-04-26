@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gui;
+package gui.administrador;
 
 import aplicacion.FachadaAplicacion;
 import aplicacion.Usuario;
@@ -31,6 +31,7 @@ public class VPerfilAdmin extends javax.swing.JPanel {
         this.sexo.setSelectedItem(usuario.getSexo());
         this.TxDireccion.setText(usuario.getDireccion());
         JLabelMensaje.setVisible(false);
+        LabelActualizar.setVisible(false);
 
     }
 
@@ -61,10 +62,11 @@ public class VPerfilAdmin extends javax.swing.JPanel {
         jLabel13 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        sexo = new javax.swing.JComboBox<>();
+        sexo = new javax.swing.JComboBox<String>();
         jLabel17 = new javax.swing.JLabel();
         TxDireccion = new javax.swing.JTextField();
         JLabelMensaje = new javax.swing.JLabel();
+        LabelActualizar = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -205,7 +207,7 @@ public class VPerfilAdmin extends javax.swing.JPanel {
 
         sexo.setBackground(new java.awt.Color(255, 226, 154));
         sexo.setForeground(new java.awt.Color(0, 0, 0));
-        sexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "H", "M" }));
+        sexo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "H", "M" }));
         sexo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 sexoActionPerformed(evt);
@@ -226,6 +228,10 @@ public class VPerfilAdmin extends javax.swing.JPanel {
 
         JLabelMensaje.setForeground(new java.awt.Color(255, 0, 0));
         JLabelMensaje.setText("Id ya existente!");
+
+        LabelActualizar.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        LabelActualizar.setForeground(new java.awt.Color(0, 153, 0));
+        LabelActualizar.setText("Datos actualizados correctamente");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -249,10 +255,16 @@ public class VPerfilAdmin extends javax.swing.JPanel {
                         .addComponent(TxDireccion, javax.swing.GroupLayout.DEFAULT_SIZE, 470, Short.MAX_VALUE)
                         .addComponent(TxDni, javax.swing.GroupLayout.DEFAULT_SIZE, 470, Short.MAX_VALUE)
                         .addComponent(TxTelefono, javax.swing.GroupLayout.DEFAULT_SIZE, 470, Short.MAX_VALUE)
-                        .addComponent(sexo, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(sexo, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(111, 111, 111))
                         .addComponent(TxId, javax.swing.GroupLayout.DEFAULT_SIZE, 470, Short.MAX_VALUE)
                         .addComponent(TxCorreo)))
                 .addContainerGap(20, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(LabelActualizar)
+                .addGap(131, 131, 131))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -272,7 +284,7 @@ public class VPerfilAdmin extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(153, Short.MAX_VALUE)
+                .addContainerGap(147, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(TxId, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -302,7 +314,9 @@ public class VPerfilAdmin extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
                     .addComponent(sexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(102, 102, 102))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(LabelActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(86, 86, 86))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -341,6 +355,7 @@ public class VPerfilAdmin extends javax.swing.JPanel {
             usuario.setTelefono(TxTelefono.getText());
             usuario.setUsuario(TxId.getText());
             fa.actualizar(usuario);
+            LabelActualizar.setVisible(true);
         }
         else{
             JLabelMensaje.setVisible(true);
@@ -351,6 +366,7 @@ public class VPerfilAdmin extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Actualizar;
     private javax.swing.JLabel JLabelMensaje;
+    private javax.swing.JLabel LabelActualizar;
     private javax.swing.JTextField TxCorreo;
     private javax.swing.JTextField TxDireccion;
     private javax.swing.JTextField TxDni;

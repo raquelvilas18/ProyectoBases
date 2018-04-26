@@ -32,9 +32,9 @@ public class GestionPaquetes {
         for(Paquete p : Paquetes){
             if(p.getFecha_entrega() != null && !p.getFecha_entrega().equals(""))
                 Posiciones.add("Entregado");
-            else if(p.getMatrcula() != null && !p.getMatrcula().equals("")){
-                Posiciones.add(fbd.localizarVehiculo(p.getMatrcula()));
-                System.out.println(p.getMatrcula());
+            else if(p.getMatricula() != null && !p.getMatricula().equals("")){
+                Posiciones.add(fbd.localizarVehiculo(p.getMatricula()));
+                System.out.println(p.getMatricula());
             }else if(p.getLocal() != null && !p.getLocal().equals("")){
                 //Posiciones.add(fbd.localizarLocal(p.getLocal()));
                 Posiciones.add("En un local de la mancha ...");

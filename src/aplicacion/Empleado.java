@@ -10,16 +10,16 @@ package aplicacion;
  * @author alumnogreibd
  */
 public class Empleado extends Usuario{
-    private int nomina;
+    private Integer nomina;
     private String anoIngreso;
     
-    public Empleado(String usuario, String password, String dni, String nombre, String correo, String direccion, String telefono, String sexo, String tipo, int nomina, String anoIngreso){
+    public Empleado(String usuario, String password, String dni, String nombre, String correo, String direccion, String telefono, String sexo, String tipo, Integer nomina, String anoIngreso){
         super(usuario, password, dni, nombre, correo, direccion, telefono, sexo, tipo);
         this.nomina = nomina;
         this.anoIngreso = anoIngreso;
     }
     
-    public int getNomina(){
+    public Integer getNomina(){
         return nomina;
     }
     
@@ -27,7 +27,7 @@ public class Empleado extends Usuario{
         return anoIngreso;
     }
     
-    public void setNomina(int nomina){
+    public void setNomina(Integer nomina){
         this.nomina = nomina;
     }
     

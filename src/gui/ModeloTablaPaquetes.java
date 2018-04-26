@@ -80,5 +80,4 @@ public class ModeloTablaPaquetes extends AbstractTableModel {
         this.coches=coches;
         fireTableDataChanged();
     }
-    
 }

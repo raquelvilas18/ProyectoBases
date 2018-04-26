@@ -66,4 +66,8 @@ public class GestionUsuarios {
     public void eliminarUsuario(String id){
         fbd.eliminarUsuario(id);
     }
+    
+    public void eliminarEmpleado(String id){
+        fbd.eliminarEmpleado(id);
+    }
 }
