@@ -20,8 +20,7 @@ public class DAOVehiculos extends AbstractDAO {
         super.setFachadaAplicacion(fa);
     }
     
-    public ArrayList<Vehiculo> obtenerVehiculos()
-    {
+    public ArrayList<Vehiculo> obtenerVehiculos(){
         ArrayList<Vehiculo> resultado =new ArrayList<Vehiculo>();
         Connection con;
         PreparedStatement stmVehiculos=null;
@@ -53,8 +52,40 @@ public class DAOVehiculos extends AbstractDAO {
         return resultado;
     }
     
-    public void actualizarVehi(String matricula, Vehiculo vehi)
-    {
+    public Vehiculo obtenerVehiculo(String matricula){
+        Vehiculo resultado =null;
+        Connection con;
+        PreparedStatement stmVehiculos=null;
+        ResultSet rsVehiculos=null;
+        
+        con = super.getConexion();
+        
+        try{
+            stmVehiculos=con.prepareStatement("SELECT * "+
+                                            "FROM vehiculos "
+                                        + "WHERE matricula=?");
+            stmVehiculos.setString(1, matricula);
+            rsVehiculos = stmVehiculos.executeQuery();
+
+            while(rsVehiculos.next()){
+                resultado = new Vehiculo(rsVehiculos.getString("matricula"),
+                                                  rsVehiculos.getString("proximaITV"),
+                                                  rsVehiculos.getString("fechaCompra"),
+                                                  rsVehiculos.getInt("capacidad"),
+                                                  rsVehiculos.getString("conductor"),
+                                                  rsVehiculos.getString("direccion"));
+            }
+        }catch (SQLException e){
+                System.out.println(e.getMessage());
+                this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
+            }finally{
+                try {stmVehiculos.close();} catch (SQLException e){System.out.println("Imposible cerrar cursores");}
+            }
+        
+        return resultado;
+    }
+    
+    public void actualizarVehi(String matricula, Vehiculo vehi){
 
         Connection con;
         PreparedStatement stmVehiculo=null;

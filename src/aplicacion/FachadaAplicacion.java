@@ -173,4 +173,7 @@ public class FachadaAplicacion {
         fbd.registrarVehi(vehi);
     }
 
+    public void localizar(Integer codigo){
+        gPaquetes.localizar(codigo);
+    }
 }

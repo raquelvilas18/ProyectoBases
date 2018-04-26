@@ -445,6 +445,40 @@ public class VGestionEmpleados extends javax.swing.JPanel {
         });
         jPanel1.add(TxLocal, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 80, 220, -1));
 
+        ContrasenaL1.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        ContrasenaL1.setText("Password:");
+        jPanel1.add(ContrasenaL1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 100, -1, -1));
+
+        JContrasena.setBackground(new java.awt.Color(214, 225, 254));
+        JContrasena.setForeground(new java.awt.Color(0, 0, 0));
+        JContrasena.setBorder(null);
+        JContrasena.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JContrasenaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(JContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 340, 170, 30));
+
+        TxPassword.setBackground(new java.awt.Color(255, 232, 185));
+        TxPassword.setForeground(new java.awt.Color(102, 102, 102));
+        TxPassword.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        TxPassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TxPasswordActionPerformed(evt);
+            }
+        });
+        jPanel1.add(TxPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 100, 220, -1));
+
+        TxLocal.setBackground(new java.awt.Color(255, 232, 185));
+        TxLocal.setForeground(new java.awt.Color(102, 102, 102));
+        TxLocal.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 1));
+        TxLocal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TxLocalActionPerformed(evt);
+            }
+        });
+        jPanel1.add(TxLocal, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 80, 220, -1));
+
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 360, 600, 210));
 
         FiltroId.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N

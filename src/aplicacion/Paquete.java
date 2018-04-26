@@ -49,8 +49,6 @@ public class Paquete {
         return cliente;
     }
 
-
-
     public Integer getCodigo() {
         return codigo;
     }

@@ -5,18 +5,26 @@
  */
 package gui;
 
+import aplicacion.Paquete;
+import aplicacion.Vehiculo;
+
 /**
  *
  * @author alumnogreibd
  */
 public class VLocalizador extends javax.swing.JDialog {
 
+    private VPrincipal parent;
     /**
      * Creates new form VLocalizador
      */
-    public VLocalizador(java.awt.Frame parent, boolean modal) {
+    public VLocalizador(java.awt.Frame parent, boolean modal, java.util.List<Paquete>  Paquetes, java.util.List<String> Posicion) {
         super(parent, modal);
         initComponents();
+        this.parent = (VPrincipal) parent;
+        ModeloTablaPaquetes Mtp = new ModeloTablaPaquetes();
+        Mtp.setFilas(Paquetes, Posicion);
+        Salir.setEnabled(true);
     }
 
     /**
@@ -28,21 +36,52 @@ public class VLocalizador extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        Tabla = new javax.swing.JTable();
+        Salir = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+
+        Tabla.setModel(new ModeloTablaPaquetes());
+        jScrollPane1.setViewportView(Tabla);
+
+        Salir.setText("Salir");
+        Salir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SalirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(13, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Salir)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                .addComponent(Salir)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirActionPerformed
+        // TODO add your handling code here:        
+        this.dispose();
+    }//GEN-LAST:event_SalirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -50,5 +89,8 @@ public class VLocalizador extends javax.swing.JDialog {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Salir;
+    private javax.swing.JTable Tabla;
+    private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }

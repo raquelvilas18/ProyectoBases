@@ -45,7 +45,7 @@ public class VPrincipal extends javax.swing.JFrame {
         textoUsuario4 = new javax.swing.JLabel();
         textoUsuario5 = new javax.swing.JLabel();
         jSeparator4 = new javax.swing.JSeparator();
-        jTextField3 = new javax.swing.JTextField();
+        TxLocalizar = new javax.swing.JTextField();
         Buscar = new javax.swing.JButton();
         panelLogin = new javax.swing.JPanel();
         textoUsuario = new javax.swing.JLabel();
@@ -97,9 +97,14 @@ public class VPrincipal extends javax.swing.JFrame {
         jSeparator4.setForeground(new java.awt.Color(0, 0, 0));
         panelLocPaquete.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 100, 450, 10));
 
-        jTextField3.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField3.setBorder(null);
-        panelLocPaquete.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 70, 250, 30));
+        TxLocalizar.setForeground(new java.awt.Color(153, 153, 153));
+        TxLocalizar.setBorder(null);
+        TxLocalizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TxLocalizarActionPerformed(evt);
+            }
+        });
+        panelLocPaquete.add(TxLocalizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 70, 250, 30));
 
         Buscar.setBackground(new java.awt.Color(255, 255, 255));
         Buscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8_Search_30px.png"))); // NOI18N
@@ -267,7 +272,12 @@ public class VPrincipal extends javax.swing.JFrame {
 
     private void BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarActionPerformed
         // TODO add your handling code here:
-        
+        String codigo=TxLocalizar.getText();
+        if (codigo.equals("")){
+            VAviso vaviso = new VAviso(this, true, "No se ha indicado ningún código de búsqueda.");
+        }else{
+            fa.localizar(Integer.parseInt(codigo));
+        }
     }//GEN-LAST:event_BuscarActionPerformed
 
     private void JUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JUsuarioActionPerformed
@@ -329,6 +339,10 @@ public class VPrincipal extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_JContrasenaKeyPressed
+
+    private void TxLocalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxLocalizarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TxLocalizarActionPerformed
 
     public void ventanaPedido(Usuario usuario) {
         panelActivo.setVisible(false);
@@ -475,6 +489,14 @@ public class VPrincipal extends javax.swing.JFrame {
         panelActivo = panelGU;
     }
     
+    
+    public void ventanaGestionPedidosTransportista() {
+        panelActivo.setVisible(false);
+        VGestionPaquetesTransportista panelGU = new VGestionPaquetesTransportista(fa);
+        panelBase.add(panelGU, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 680, 580));
+        panelActivo = panelGU;
+    }   
+    
     public void ventanagestionPaquetes() {
         panelActivo.setVisible(false);
         VGestionPaquetes panelGU = new VGestionPaquetes(fa);
@@ -531,6 +553,7 @@ public class VPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton Buscar;
     private javax.swing.JPasswordField JContrasena;
     private javax.swing.JTextField JUsuario;
+    private javax.swing.JTextField TxLocalizar;
     private javax.swing.JLabel autentificacionIncorrecta;
     private javax.swing.JButton botonCerrar;
     private javax.swing.JButton botonRegistrarse;
@@ -545,7 +568,6 @@ public class VPrincipal extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
-    private javax.swing.JTextField jTextField3;
     private javax.swing.JPanel panelBase;
     private javax.swing.JPanel panelLocPaquete;
     private javax.swing.JPanel panelLogin;

@@ -73,6 +73,7 @@ public class DAOEmpleados extends AbstractDAO {
         }
         return resultado;
     }
+    
     public void nuevoTransportista(String usuario){
         PreparedStatement stmTransportista = null;
         Connection con;
@@ -96,6 +97,7 @@ public class DAOEmpleados extends AbstractDAO {
             }
         }
     }
+    
     public void nuevoOficinista(String usuario,String local){
         
         PreparedStatement stmOficinista = null;
@@ -156,7 +158,8 @@ public class DAOEmpleados extends AbstractDAO {
         }
         return resultado;
     }
-public String trabajaEn(String id) {
+    
+    public String trabajaEn(String id) {
         String resultado=null ;
         Connection con;
         PreparedStatement stmEmpleados = null;
@@ -186,8 +189,8 @@ public String trabajaEn(String id) {
         }
         return resultado;
     }
-    public void actualizarEmpleado(Empleado empleado)
-    {
+    
+    public void actualizarEmpleado(Empleado empleado){
         Connection con;
         PreparedStatement stmEmpleado = null;
 

@@ -512,7 +512,6 @@ public class VPedido extends javax.swing.JPanel {
             Correcto.setVisible(false);
         } else {
             pd =fa.nuevoPedido(new Pedido(u.getUsuario(), jRadioButton1.isSelected(), Txdestino.getText(), TxNombre.getText()));
-            //pd = fa.getPedido(new Pedido(u.getUsuario(), jRadioButton1.isSelected(), Txdestino.getText(), TxNombre.getText()));
             PanelPaquete.setVisible(true);
         }
     }//GEN-LAST:event_jPanel3MouseClicked

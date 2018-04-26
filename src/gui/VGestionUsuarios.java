@@ -408,11 +408,6 @@ public class VGestionUsuarios extends javax.swing.JPanel {
 
         TxTipo.setBackground(new java.awt.Color(255, 232, 185));
         TxTipo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "administrador", "oficinista", "transportista", "cliente" }));
-        TxTipo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TxTipoActionPerformed(evt);
-            }
-        });
         jPanel1.add(TxTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 100, -1, -1));
 
         jLabel24.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N

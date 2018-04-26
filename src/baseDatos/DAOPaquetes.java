@@ -52,4 +52,41 @@ public class DAOPaquetes extends AbstractDAO {
 
         }
     }
+    
+    public java.util.List<Paquete> obtenerPaquetes(Integer codigo){
+        java.util.List<Paquete> resultado = new java.util.ArrayList<Paquete>();
+        Connection con;
+        PreparedStatement stmPaquetes=null;
+        ResultSet rsPaquetes=null;
+        
+        con = super.getConexion();
+        
+        try{
+            stmPaquetes=con.prepareStatement("SELECT * "+
+                                            "FROM paquetes "
+                                        + "WHERE pedido=?");
+            stmPaquetes.setInt(1, codigo);
+            rsPaquetes = stmPaquetes.executeQuery();
+
+            while(rsPaquetes.next()){
+                resultado.add(new Paquete(rsPaquetes.getInt("codigo"),
+                                            rsPaquetes.getInt("pedido"),    
+                                            rsPaquetes.getFloat("peso"),
+                                            rsPaquetes.getFloat("alto"),
+                                            rsPaquetes.getFloat("ancho"),
+                                            rsPaquetes.getFloat("largo"),
+                                            rsPaquetes.getString("fecha_entrega"),
+                                            rsPaquetes.getString("vehiculo"),
+                                            rsPaquetes.getString("local"),
+                                            rsPaquetes.getString("cliente")));
+            }
+        }catch (SQLException e){
+                System.out.println(e.getMessage());
+                this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
+            }finally{
+                try {stmPaquetes.close();} catch (SQLException e){System.out.println("Imposible cerrar cursores");}
+            }
+        
+        return resultado;
+    }
 }
