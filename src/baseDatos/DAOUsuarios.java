@@ -84,6 +84,7 @@ public class DAOUsuarios extends AbstractDAO {
                 stmUsuario2.setString(2, idUsuario);
                 rsUsuario = stmUsuario.executeQuery();
                 stmUsuario2.executeUpdate();
+                con.commit();
 
                 try {
                     con.setAutoCommit(true);
