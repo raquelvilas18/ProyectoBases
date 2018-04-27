@@ -5,7 +5,7 @@
  */
 package gui.trasnportista;
 
-import gui.ModeloTablaPaquetes;
+import gui.ModeloTablaLocalizador;
 import gui.ModeloTablaPedidos;
 import java.awt.Color;
 import java.awt.Font;
@@ -124,7 +124,7 @@ public class VGestionPaquetesTransportista extends javax.swing.JPanel {
 
         tablaPaquetes.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         tablaPaquetes.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
-        tablaPaquetes.setModel(new ModeloTablaPedidos());
+        tablaPaquetes.setModel(new ModeloTablaPaquetes());
         tablaPaquetes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         tablaPaquetes.setGridColor(new java.awt.Color(255, 255, 255));
         tablaPaquetes.setSelectionBackground(new java.awt.Color(183, 112, 255));

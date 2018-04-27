@@ -189,4 +189,8 @@ public class FachadaAplicacion {
          gPaquetes.paqueteEntregado(pedido, codigo);
      }
 
+
+    public void localizar(Integer codigo){
+        gPaquetes.localizar(codigo);
+    }
 }

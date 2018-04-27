@@ -23,7 +23,7 @@ public class Paquete {
     private String local;
     private String cliente;
 
-    public Paquete(Integer codigo, Integer pedido, float peso, float alto, float ancho, float largo, String fecha_entrega, String transportista, String local, String cliente) {
+    public Paquete(Integer codigo, Integer pedido, float peso, float alto, float ancho, float largo, String fecha_entrega, String transportista, String cliente) {
         this.codigo = codigo;
         this.pedido = pedido;
         this.peso = peso;
@@ -32,7 +32,6 @@ public class Paquete {
         this.largo = largo;
         this.fecha_entrega = fecha_entrega;
         this.transportista = transportista;
-        this.local = local;
         this.cliente = cliente;
         
         float dimensiones = (alto*ancho*largo);
@@ -49,8 +48,6 @@ public class Paquete {
     public String getCliente() {
         return cliente;
     }
-
-
 
     public Integer getCodigo() {
         return codigo;
@@ -122,18 +119,6 @@ public class Paquete {
 
     public void setTransportista(String matrcula) {
         this.transportista = matrcula;
-    }
-
-    public String getLocal() {
-        return local;
-    }
-
-    public void setLocal(String local) {
-        this.local = local;
-    }
-
-    
-
-    
+    }   
     
 }

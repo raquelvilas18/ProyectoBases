@@ -189,6 +189,10 @@ public class FachadaBaseDatos {
     public void nuevoPaquete(Paquete p){
         daoPaquetes.nuevoPaquete(p);
     }
+    
+    public java.util.List<Paquete>  obtenerPaquetes(Integer codigo){
+        return daoPaquetes.obtenerPaquetes(codigo);
+    }
 
     //------EMPLEADOS-------//
     public ArrayList<Empleado> obtenerEmpleados(String id ) {
@@ -247,5 +251,16 @@ public class FachadaBaseDatos {
          daoPaquetes.paqueteEntregado(pedido, codigo);
      }
 
+
+    public String localizarVehiculo(String Trasportista){
+        Vehiculo vehiculo = null;
+        vehiculo = daoVehiculos.obtenerVehiculo(Trasportista);
+        if(vehiculo != null)
+            return vehiculo.getDireccion();
+        else 
+            return null;
+    }
+
+    
 
 }
