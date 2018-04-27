@@ -607,20 +607,13 @@ public class VPedido extends javax.swing.JPanel {
 
     private void BtFinalizarPedidoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtFinalizarPedidoMouseClicked
         // TODO add your handling code here:
-        if (TxPeso.getText().equals("") || TxAlto.getText().equals("") || TxAncho.getText().equals("") || TxPeso.getText().equals("")) {
-            this.LabelAnadirError.setVisible(true);
-            this.LabelAñadirCorrecto.setVisible(false);
-        } else {
-            if (numPaquetes > 0) {
-                fa.nuevoPaquete(new Paquete(null, pd.getCodigo(), Float.parseFloat(TxPeso.getText()), Float.parseFloat(TxAlto.getText()), Float.parseFloat(TxAncho.getText()), Float.parseFloat(TxLargo.getText()), null, null, u.getUsuario()));
-                vaciarTxtPaquetes();
-                this.LabelAnadirError.setVisible(false);
-                this.LabelAñadirCorrecto.setVisible(true);
-            } else {
-                this.SinPaquetesLabel.setVisible(true);
-                this.LabelAnadirError.setVisible(false);
-                this.LabelAñadirCorrecto.setVisible(false);
-            }
+        if (!TxPeso.getText().equals("") && !TxAlto.getText().equals("") && !TxAncho.getText().equals("") && !TxPeso.getText().equals("")) {
+            fa.nuevoPaquete(new Paquete(null, pd.getCodigo(), Float.parseFloat(TxPeso.getText()), Float.parseFloat(TxAlto.getText()), Float.parseFloat(TxAncho.getText()), Float.parseFloat(TxLargo.getText()), null, null, u.getUsuario()));
+            vaciarTxtPaquetes();
+            this.LabelAnadirError.setVisible(false);
+            this.LabelAñadirCorrecto.setVisible(true);
+        }
+        if (numPaquetes > 0) {
             vaciarTxtPaquetes();
             PanelPaquete.setVisible(false);
             Correcto.setVisible(true);
@@ -632,7 +625,12 @@ public class VPedido extends javax.swing.JPanel {
             TxDni.setText("");
             TxTlf.setText("");
             numPaquetes = 0;
+        } else {
+            this.SinPaquetesLabel.setVisible(true);
+            this.LabelAnadirError.setVisible(false);
+            this.LabelAñadirCorrecto.setVisible(false);
         }
+
 
     }//GEN-LAST:event_BtFinalizarPedidoMouseClicked
 

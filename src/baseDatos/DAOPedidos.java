@@ -128,7 +128,7 @@ public class DAOPedidos extends AbstractDAO {
                         + "SET transportista = ? "
                         + "WHERE pedido =  ?");
                 stm2.setString(1, transportista);
-               // stm2.setString(2, matricula);
+                // stm2.setString(2, matricula);
                 stm2.setInt(2, codigo);
 
                 stm2.executeUpdate();
@@ -138,7 +138,7 @@ public class DAOPedidos extends AbstractDAO {
                 stm3.setString(1, tramitador);
                 stm3.executeUpdate();
 
-            }else{
+            } else {
                 System.out.println("Chungo");
             }
 
@@ -327,23 +327,30 @@ public class DAOPedidos extends AbstractDAO {
         con = super.getConexion();
 
         try {
-            stmPedidos = con.prepareStatement("SELECT * "
-                    + "FROM pedidos "
-                    + "WHERE codigo IN (SELECT pedido "
-                    + "		FROM paquetes "
-                    + "		WHERE transportista ISNULL"
-                    + "         AND fecha ISNULL)");
+            stmPedidos = con.prepareStatement("SELECT *\n"
+                    + "FROM ( ( SELECT fecha,cliente, codigo, express, direccion, destinatario, tramitador\n"
+                    + "	FROM pedidos \n"
+                    + "	WHERE codigo IN (SELECT pedido \n"
+                    + "		FROM paquetes \n"
+                    + "		WHERE transportista ISNULL\n"
+                    + "		AND fecha ISNULL)) as p LEFT JOIN ( SELECT pe.codigo, COUNT(*) as numPaquetes\n"
+                    + "					FROM pedidos pe,  paquetes pa\n"
+                    + "					WHERE pe.codigo = pa.pedido\n"
+                    + "					GROUP BY pe.codigo ) as p2 on p.codigo = p2.codigo)");
 
             rsPedidos = stmPedidos.executeQuery();
 
             while (rsPedidos.next()) {
+                //Pedido(String fecha,String cliente,Integer codigo, boolean express, String direccion, String destinatario,String tramitador, int numPaquetes)   {
+
                 resultado.add(new Pedido(null,
                         rsPedidos.getString("cliente"),
                         rsPedidos.getInt("codigo"),
                         rsPedidos.getBoolean("express"),
                         rsPedidos.getString("direccion"),
                         rsPedidos.getString("destinatario"),
-                        rsPedidos.getString("tramitador")));
+                        rsPedidos.getString("tramitador"),
+                        rsPedidos.getInt("numPaquetes")));
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -373,7 +380,7 @@ public class DAOPedidos extends AbstractDAO {
                     + " WHERE pedido = ? ");
             stm2.setInt(1, codigo);
             rs = stm2.executeQuery();
-            while(rs.next()){ // Eliminamos todos los paquetes del pedido primero
+            while (rs.next()) { // Eliminamos todos los paquetes del pedido primero
                 paquete = rs.getInt("codigo");
                 stm3 = con.prepareStatement("DELETE FROM paquetes WHERE codigo = ? AND pedido = ? ");
                 stm3.setInt(2, codigo);

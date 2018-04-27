@@ -5,21 +5,19 @@
  */
 package gui;
 
-import aplicacion.Empleado;
-import aplicacion.Pedido;
-import aplicacion.Paquete;
 import javax.swing.table.AbstractTableModel;
+import aplicacion.Pedido;
 
 /**
  *
  * @author alumnogreibd
  */
-public class ModeloTablaPaquetes extends AbstractTableModel {
+public class ModeloTablaPedidos2 extends AbstractTableModel {
 
-    private java.util.List<Paquete> paquetes;
+    private java.util.List<Pedido> pedidos;
 
-    public ModeloTablaPaquetes() {
-        this.paquetes = new java.util.ArrayList<>();
+    public ModeloTablaPedidos2() {
+        this.pedidos = new java.util.ArrayList<>();
     }
 
     @Override
@@ -28,25 +26,22 @@ public class ModeloTablaPaquetes extends AbstractTableModel {
 
         switch (col) {
             case 0:
-                nombre = "pedido";
+                nombre = "Fecha";
                 break;
             case 1:
-                nombre = "codigo";
+                nombre = "Codigo";
                 break;
             case 2:
-                nombre = "alto";
+                nombre = "Express";
                 break;
             case 3:
-                nombre = "ancho";
+                nombre = "Direccion";
                 break;
             case 4:
-                nombre = "largo";
+                nombre = "Destinatario";
                 break;
             case 5:
-                nombre = "coste";
-                break;
-            case 6:
-                nombre = "posicion";
+                nombre = "NumeroPaquetes";
                 break;
         }
         return nombre;
@@ -58,25 +53,22 @@ public class ModeloTablaPaquetes extends AbstractTableModel {
 
         switch (col) {
             case 0:
-                clase = java.lang.Integer.class;
+                clase = java.lang.String.class;
                 break;
             case 1:
                 clase = java.lang.Integer.class;
                 break;
             case 2:
-                clase = java.lang.Float.class;
+                clase = java.lang.Boolean.class;
                 break;
             case 3:
-                clase = java.lang.Float.class;
+                clase = java.lang.String.class;
                 break;
             case 4:
-                clase = java.lang.Float.class;
+                clase = java.lang.String.class;
                 break;
             case 5:
-                clase = java.lang.Float.class;
-                break;
-            case 6:
-                clase = java.lang.String.class;
+                clase = java.lang.Integer.class;
                 break;
         }
         return clase;
@@ -92,47 +84,43 @@ public class ModeloTablaPaquetes extends AbstractTableModel {
 
         switch (col) {
             case 0:
-                resultado = paquetes.get(row).getPedido();
+                resultado = pedidos.get(row).getFecha();
                 break;
             case 1:
-                resultado = paquetes.get(row).getCodigo();
+                resultado = pedidos.get(row).getCodigo();
                 break;
             case 2:
-                resultado = paquetes.get(row).getAlto();
+                resultado = pedidos.get(row).isExpress();
                 break;
             case 3:
-                resultado = paquetes.get(row).getAncho();
+                resultado = pedidos.get(row).getDireccion();
                 break;
             case 4:
-                resultado = paquetes.get(row).getLargo();
+                resultado = pedidos.get(row).getDestinatario();
                 break;
             case 5:
-                resultado = paquetes.get(row).getCoste();
-                break;
-            case 6:
-                resultado = paquetes.get(row).getPosicion();
-                break;
+                resultado = pedidos.get(row).getNumPaquetes();
         }
         return resultado;
     }
 
     @Override
     public int getColumnCount() {
-        return 7;
+        return 6;
     }
 
     @Override
     public int getRowCount() {
-        return paquetes.size();
+        return pedidos.size();
     }
 
-    public void setFilas(java.util.List<Paquete> paquetes) {
-        this.paquetes = paquetes;
+    public void setFilas(java.util.List<Pedido> pedidos) {
+        this.pedidos = pedidos;
         fireTableDataChanged();
     }
 
-    public Paquete getFila(int row) {
-        return paquetes.get(row);
+    public Pedido getFila(int row) {
+        return pedidos.get(row);
     }
 
 }

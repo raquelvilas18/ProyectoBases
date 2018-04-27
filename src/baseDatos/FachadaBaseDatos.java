@@ -291,5 +291,8 @@ public class FachadaBaseDatos {
         daoLocales.eliminarLocal(local);
     }
      
+    public void actualizarPosicion(String posicion, String transportista) {
+        daoVehiculos.actualizarPosicion(posicion, transportista);
+    }
 
 }

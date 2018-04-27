@@ -22,6 +22,7 @@ public class Paquete {
     private String vehiculo;
     private String local;
     private String cliente;
+    private String posicion;
 
     public Paquete(Integer codigo, Integer pedido, float peso, float alto, float ancho, float largo, String fecha_entrega, String transportista, String cliente) {
         this.codigo = codigo;
@@ -33,6 +34,30 @@ public class Paquete {
         this.fecha_entrega = fecha_entrega;
         this.transportista = transportista;
         this.cliente = cliente;
+        
+        float dimensiones = (alto*ancho*largo);
+        
+        if(dimensiones < 1){
+            coste = peso + (float)0.5;
+        }else if (dimensiones < 5){
+            coste = peso + dimensiones;
+        }else{
+            coste = peso + 10;
+        }
+    }
+    
+    
+     public Paquete(Integer codigo, Integer pedido, float peso, float alto, float ancho, float largo, String fecha_entrega, String transportista, String cliente, String posicion) {
+        this.codigo = codigo;
+        this.pedido = pedido;
+        this.peso = peso;
+        this.alto = alto;
+        this.ancho = ancho;
+        this.largo = largo;
+        this.fecha_entrega = fecha_entrega;
+        this.transportista = transportista;
+        this.cliente = cliente;
+        this.posicion = posicion;
         
         float dimensiones = (alto*ancho*largo);
         
@@ -120,5 +145,15 @@ public class Paquete {
     public void setTransportista(String matrcula) {
         this.transportista = matrcula;
     }   
+
+    public String getLocal() {
+        return local;
+    }
+
+    public String getPosicion() {
+        return posicion;
+    }
+    
+    
     
 }

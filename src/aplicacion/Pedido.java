@@ -18,6 +18,7 @@ public class Pedido {
    private String destinatario;
    private String tramitador;
    private String transportista;
+   private int numPaquetes;
    
     public Pedido(String cliente, boolean express, String direccion, String destinatario)   {
        this.cliente=cliente;
@@ -34,6 +35,17 @@ public class Pedido {
        this.fecha=fecha;
        this.codigo=codigo;
        this.tramitador=tramitador;
+   }
+    
+    public Pedido(String fecha,String cliente,Integer codigo, boolean express, String direccion, String destinatario,String tramitador, int numPaquetes)   {
+       this.cliente=cliente;
+       this.express=express;
+       this.direccion=direccion;
+       this.destinatario=destinatario;
+       this.fecha=fecha;
+       this.codigo=codigo;
+       this.tramitador=tramitador;
+       this.numPaquetes = numPaquetes;
    }
 
     public String getFecha() {
@@ -90,6 +102,14 @@ public class Pedido {
 
     public void setTramitador(String tramitador) {
         this.tramitador = tramitador;
+    }
+
+    public int getNumPaquetes() {
+        return numPaquetes;
+    }
+
+    public void setNumPaquetes(int numPaquetes) {
+        this.numPaquetes = numPaquetes;
     }
    
    
