@@ -15,7 +15,7 @@ import javax.swing.table.JTableHeader;
  *
  * @author alumnogreibd
  */
-public class VGestionUsuarios extends javax.swing.JPanel {
+public class VGestionClientes extends javax.swing.JPanel {
 
     aplicacion.FachadaAplicacion fa;
     private boolean nuevo;
@@ -23,7 +23,7 @@ public class VGestionUsuarios extends javax.swing.JPanel {
     /**
      * Creates new form VGestionUsuarios
      */
-    public VGestionUsuarios(aplicacion.FachadaAplicacion fa) {
+    public VGestionClientes(aplicacion.FachadaAplicacion fa) {
         initComponents();
         this.fa = fa;
 
@@ -149,7 +149,7 @@ public class VGestionUsuarios extends javax.swing.JPanel {
 
         jLabel2.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(60, 60, 159));
-        jLabel2.setText("Gestion Usuarios");
+        jLabel2.setText("Gestion Clientes");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 80, 260, -1));
 
         jPanel6.setBackground(new java.awt.Color(116, 126, 173));

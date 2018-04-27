@@ -209,7 +209,7 @@ public class VAdmin extends javax.swing.JPanel {
 
         jLabel18.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(215, 215, 215));
-        jLabel18.setText("Gestion usuarios");
+        jLabel18.setText("Gestion clientes");
         jPanel8.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, 212, -1));
 
         add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 320, 310, 40));
