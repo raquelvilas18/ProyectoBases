@@ -120,5 +120,9 @@ public class Paquete {
     public void setTransportista(String matrcula) {
         this.transportista = matrcula;
     }   
+
+    public String getLocal() {
+        return local;
+    }
     
 }

@@ -6,7 +6,7 @@
 package gui.oficinista;
 
 import gui.ModeloTablaTransportistas;
-import gui.ModeloTablaPedidos;
+import gui.ModeloTablaPedidos2;
 import aplicacion.*;
 import java.awt.Color;
 import java.awt.Font;
@@ -30,7 +30,7 @@ public class VGestionPaquetesOficinista extends javax.swing.JPanel {
         initComponents();
         this.fa = fa;
         this.u = u;
-        ModeloTablaPedidos tp = new ModeloTablaPedidos();
+        ModeloTablaPedidos2 tp = new ModeloTablaPedidos2();
         tablaPedidos.setModel(tp);
         tp.setFilas(fa.pedidosSinTramitar());
 
@@ -40,7 +40,7 @@ public class VGestionPaquetesOficinista extends javax.swing.JPanel {
 
         JTableHeader th;
         th = this.tablaPedidos.getTableHeader();
-        Font fuente = new Font("SansSerif", Font.PLAIN, 16);
+        Font fuente = new Font("SansSerif", Font.PLAIN, 13);
         th.setFont(fuente);
         th.setForeground(new Color(89, 171, 36));
         th.setBackground(Color.WHITE);
@@ -146,7 +146,7 @@ public class VGestionPaquetesOficinista extends javax.swing.JPanel {
 
         tablaPedidos.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         tablaPedidos.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
-        tablaPedidos.setModel(new ModeloTablaPedidos());
+        tablaPedidos.setModel(new ModeloTablaPedidos2());
         tablaPedidos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         tablaPedidos.setGridColor(new java.awt.Color(255, 255, 255));
         tablaPedidos.setSelectionBackground(new java.awt.Color(89, 171, 36));
@@ -162,7 +162,7 @@ public class VGestionPaquetesOficinista extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tablaPedidos);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 130, 590, 140));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, 630, 140));
 
         BtTramitar.setBackground(new java.awt.Color(89, 171, 36));
         BtTramitar.setToolTipText("");
@@ -228,7 +228,7 @@ public class VGestionPaquetesOficinista extends javax.swing.JPanel {
         tablaTransp.setSelectionForeground(new java.awt.Color(255, 255, 255));
         jScrollPane2.setViewportView(tablaTransp);
 
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 330, 590, 150));
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 330, 630, 150));
 
         jLabel4.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 102, 153));
@@ -261,8 +261,8 @@ public class VGestionPaquetesOficinista extends javax.swing.JPanel {
     private void BtTramitarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtTramitarMouseClicked
         // TODO add your handling code here:
         if (tablaPedidos.getRowCount() > 0 && tablaTransp.getRowCount() > 0) {
-            ModeloTablaPedidos tp;
-            tp = (ModeloTablaPedidos) tablaPedidos.getModel();
+            ModeloTablaPedidos2 tp;
+            tp = (ModeloTablaPedidos2) tablaPedidos.getModel();
             ModeloTablaTransportistas t;
             t = (ModeloTablaTransportistas) tablaTransp.getModel();
             fa.tramitarPedido(tp.getFila(tablaPedidos.getSelectedRow()).getCodigo(), t.getFila(tablaTransp.getSelectedRow()).getUsuario(), u.getUsuario());
@@ -276,8 +276,8 @@ public class VGestionPaquetesOficinista extends javax.swing.JPanel {
     private void BtEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtEliminarMouseClicked
         // TODO add your handling code here:
         if (tablaPedidos.getRowCount() > 0) {
-            ModeloTablaPedidos tp;
-            tp = (ModeloTablaPedidos) tablaPedidos.getModel();
+            ModeloTablaPedidos2 tp;
+            tp = (ModeloTablaPedidos2) tablaPedidos.getModel();
             fa.eliminarPedido(tp.getFila(tablaPedidos.getSelectedRow()).getCodigo());
             LabelEliminar.setVisible(true);
             actualizarTablaPedidos();
@@ -310,8 +310,8 @@ public class VGestionPaquetesOficinista extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     public void actualizarTablaPedidos() {
-        ModeloTablaPedidos tp;
-        tp = (ModeloTablaPedidos) tablaPedidos.getModel();
+        ModeloTablaPedidos2 tp;
+        tp = (ModeloTablaPedidos2) tablaPedidos.getModel();
         tp.setFilas(fa.pedidosSinTramitar());
     }
 
