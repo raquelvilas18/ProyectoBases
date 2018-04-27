@@ -328,6 +328,40 @@ public class DAOUsuarios extends AbstractDAO {
         }
         return resultado;
     }
+    
+    public ArrayList<Usuario> obtenerClientes(String id, String nombre) {
+        java.util.ArrayList<Usuario> resultado = new java.util.ArrayList<Usuario>();
+        Connection con;
+        PreparedStatement stm = null;
+        ResultSet rs;
+
+        con = super.getConexion();
+
+        try {
+            stm = con.prepareStatement("SELECT * "
+                    + "FROM clientes c, usuarios u "
+                    + "WHERE c.usuario LIKE ? "
+                    + "AND c.usuario = u.usuario "
+                    + "AND u.nombre LIKE ? ");
+            stm.setString(1, "%" + id + "%");
+            stm.setString(2, "%" + nombre + "%");
+            rs = stm.executeQuery();
+            while (rs.next()) {
+                resultado.add(new Usuario(rs.getString("usuario"), rs.getString("password"), rs.getString("dni"), rs.getString("nombre"), rs.getString("correo"), rs.getString("direccion"), rs.getString("telefono"), rs.getString("sexo"), rs.getString("tipo")));
+            }
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
+        } finally {
+            try {
+                stm.close();
+            } catch (SQLException e) {
+                System.out.println("Imposible cerrar cursores");
+            }
+        }
+        return resultado;
+    }
 
     public void actualizarUsr(String id, Usuario usuario) {
         Connection con;

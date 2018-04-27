@@ -53,4 +53,13 @@ public class GestionPedidos {
     public void tramitarPedido(Integer codigo, String transportista, String tramitador) {
         fbd.tramitarPedido(codigo, transportista, tramitador);
     }
+    
+    public ArrayList<Pedido> pedidosPrecio(String u){
+        return fbd.pedidosPrecio(u);
+    }
+    
+    public ArrayList<Pedido> pedidosActivosPrecio(String u){
+        return fbd.pedidosActivosPrecio(u);
+    }
 }
+

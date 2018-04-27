@@ -147,6 +147,10 @@ public class FachadaBaseDatos {
         return daoUsuarios.obtenerUsuarios(id, nombre);
     }
     
+    public ArrayList<Usuario> obtenerClientes(String id, String nombre) {
+        return daoUsuarios.obtenerClientes(id, nombre);
+    }
+    
 
 
     /*----------  PEDIDOS ----------*/
@@ -186,7 +190,13 @@ public class FachadaBaseDatos {
         daoPedidos.eliminarPedido(codigo);
     }
     
+    public ArrayList<Pedido> pedidosPrecio(String u){
+        return daoPedidos.pedidosPrecio(u);
+    }
     
+    public ArrayList<Pedido> pedidosActivosPrecio(String u){
+        return daoPedidos.pedidosActivosPrecio(u);
+    }
     
     
     //------PAQUETES---------//

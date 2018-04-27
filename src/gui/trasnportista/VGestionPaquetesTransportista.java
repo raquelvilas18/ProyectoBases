@@ -14,6 +14,7 @@ import aplicacion.*;
 import gui.ModeloTablaTransportistas;
 import javax.swing.JLabel;
 import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.TableColumnModel;
 
 /**
  *
@@ -44,6 +45,9 @@ public class VGestionPaquetesTransportista extends javax.swing.JPanel {
         ModeloTablaPaquetes tp = new ModeloTablaPaquetes();
         tablaPaquetes.setModel(tp);
         tp.setFilas(fa.paquetesTransportista(t.getUsuario()));
+
+        TableColumnModel columnModel = tablaPaquetes.getColumnModel();
+        columnModel.getColumn(6).setPreferredWidth(250);
 
         tablaPaquetes.changeSelection(0, 0, false, false);
         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
@@ -224,7 +228,7 @@ public class VGestionPaquetesTransportista extends javax.swing.JPanel {
             LabelCorrecto.setVisible(false);
             LabelError.setVisible(true);
         } else {
-            fa. actualizarPosicion(TxtPosicion.getText(), t.getUsuario());
+            fa.actualizarPosicion(TxtPosicion.getText(), t.getUsuario());
             LabelCorrecto.setVisible(true);
             LabelError.setVisible(false);
             actualizarTabla();
@@ -269,6 +273,7 @@ public class VGestionPaquetesTransportista extends javax.swing.JPanel {
         ModeloTablaPaquetes tt;
         tt = (ModeloTablaPaquetes) tablaPaquetes.getModel();
         tt.setFilas(fa.paquetesTransportista(t.getUsuario()));
+        tablaPaquetes.changeSelection(0, 0, false, false);
     }
 
 }

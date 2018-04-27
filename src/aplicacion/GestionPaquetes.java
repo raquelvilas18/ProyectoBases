@@ -33,8 +33,8 @@ public class GestionPaquetes {
         for(Paquete p : Paquetes){
             if(p.getFecha_entrega() != null && !p.getFecha_entrega().equals("")){
                 Posiciones.add("Entregado");
-            //else if(p.getTransportista() != null && !p.getTransportista().equals("")){
-            //    Posiciones.add(fbd.localizarVehiculo(p.getTransportista()));
+            }else if(p.getTransportista() != null && !p.getTransportista().equals("")){
+                Posiciones.add(fbd.localizarVehiculo(p.getTransportista()));
             }else {
                 Posiciones.add("En tramitacion.");
             }

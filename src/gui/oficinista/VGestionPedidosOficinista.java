@@ -18,7 +18,7 @@ import javax.swing.table.JTableHeader;
  *
  * @author alumnogreibd
  */
-public class VGestionPaquetesOficinista extends javax.swing.JPanel {
+public class VGestionPedidosOficinista extends javax.swing.JPanel {
 
     aplicacion.FachadaAplicacion fa;
     Usuario u;
@@ -26,7 +26,7 @@ public class VGestionPaquetesOficinista extends javax.swing.JPanel {
     /**
      * Creates new form VGestionPaquetes
      */
-    public VGestionPaquetesOficinista(aplicacion.FachadaAplicacion fa, Usuario u) {
+    public VGestionPedidosOficinista(aplicacion.FachadaAplicacion fa, Usuario u) {
         initComponents();
         this.fa = fa;
         this.u = u;
