@@ -190,10 +190,9 @@ public class DAOUsuarios extends AbstractDAO {
                         stmCliente.executeUpdate();
                         break;
                     case "transportista":
-                        stmEmpleado = con.prepareStatement("INSERT INTO empleados( usuario, nomina, anoingreso ) VALUES (?,?,?);");
+                        stmEmpleado = con.prepareStatement("INSERT INTO empleados( usuario, nomina, anoingreso ) VALUES (?,?,current_date);");
                         stmEmpleado.setString(1, id);
                         stmEmpleado.setInt(2, 1500);
-                        stmEmpleado.setDate(3,null);
                         stmEmpleado.executeUpdate();
                         
                         stmTransportista= con.prepareStatement("INSERT INTO transportistas (empleado) VALUES (?);");
@@ -201,10 +200,9 @@ public class DAOUsuarios extends AbstractDAO {
                         stmTransportista.executeUpdate();
                         break;
                     case "oficinista":
-                        stmEmpleado = con.prepareStatement("INSERT INTO empleados( usuario, nomina, anoingreso ) VALUES (?,?,?);");
+                        stmEmpleado = con.prepareStatement("INSERT INTO empleados( usuario, nomina, anoingreso ) VALUES (?,?,current_date);");
                         stmEmpleado.setString(1, id);
                         stmEmpleado.setInt(2, 1200);
-                        stmEmpleado.setDate(3,null);
                         stmEmpleado.executeUpdate();
                         
                         stmOficinista = con.prepareStatement("INSERT INTO oficinistas (empleado) VALUES (?);");
