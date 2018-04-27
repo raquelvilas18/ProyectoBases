@@ -171,8 +171,8 @@ public class FachadaAplicacion {
         fbd.registrarVehi(vehi);
     }
     
-    public void eliminarvehiculo(String matricula){
-        
+    public void eliminarVehi(String matricula){
+        fbd.eliminarVehi(matricula);
     }
     
     public void eliminarPedido(int codigo) {

@@ -676,6 +676,7 @@ public class VGestionUsuarios extends javax.swing.JPanel {
         this.TxDireccion.setText(null);
         this.TxTelefono.setText(null);
         this.TxDni.setText(null);
+        this.TxContrasena.setText(null);
     }
 
     public void restablecerBoton() {
@@ -686,7 +687,7 @@ public class VGestionUsuarios extends javax.swing.JPanel {
         LConfirmar.setVisible(false);
         LAlta.setVisible(true);
         ContrasenaL.setVisible(false);
-        TxContrasena.setVisible(false);
+        //TxContrasena.setVisible(false);
         tablaUsr.changeSelection(0,0,false,false);
     }
 }

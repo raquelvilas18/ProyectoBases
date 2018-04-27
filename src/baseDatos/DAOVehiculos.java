@@ -62,7 +62,7 @@ public class DAOVehiculos extends AbstractDAO {
 
         Connection con;
         PreparedStatement stmVehiculo=null;
-        SimpleDateFormat formato = new SimpleDateFormat("dd-MM-yyyy");
+        SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
         
         java.util.Date fechaItv;
         java.util.Date fechaCompra;
@@ -136,7 +136,7 @@ public class DAOVehiculos extends AbstractDAO {
         
         con = super.getConexion();
         
-        SimpleDateFormat formato = new SimpleDateFormat("dd-MM-yyyy");
+        SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
         
         java.util.Date fechaItv;
         java.util.Date fechaCompra;

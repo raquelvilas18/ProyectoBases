@@ -242,6 +242,9 @@ public class FachadaBaseDatos {
     public void registrarVehi(Vehiculo vehi){
         daoVehiculos.registrarVehi(vehi);
     }
+    public void eliminarVehi(String matricula){
+        daoVehiculos.eliminarVehi(matricula);
+    }
     
     public ArrayList<Paquete> paquetesTransportista(String id) {
          return daoPaquetes.paquetesTransportista(id);

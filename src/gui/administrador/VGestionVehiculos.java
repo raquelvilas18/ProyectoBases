@@ -49,6 +49,7 @@ public class VGestionVehiculos extends javax.swing.JPanel {
             this.TxItv.setText(mv.getFila(tablaVehi.getSelectedRow()).getItv());
             this.TxDireccion.setText(mv.getFila(tablaVehi.getSelectedRow()).getDireccion());
             this.TxTransp.setText(mv.getFila(tablaVehi.getSelectedRow()).getTrans());
+            this.TxFechaCompra.setText(mv.getFila(tablaVehi.getSelectedRow()).getFechaCompra());
         }
         
         JTableHeader th;
@@ -84,12 +85,12 @@ public class VGestionVehiculos extends javax.swing.JPanel {
         jLabel17 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        ContrasenaL = new javax.swing.JLabel();
+        FechaCompra = new javax.swing.JLabel();
         mt = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
         TxCapacidad = new javax.swing.JTextField();
-        TxDireccion = new javax.swing.JTextField();
+        TxFechaCompra = new javax.swing.JTextField();
         TxMatricula = new javax.swing.JTextField();
         TxItv = new javax.swing.JTextField();
         TxTransp = new javax.swing.JTextField();
@@ -99,10 +100,11 @@ public class VGestionVehiculos extends javax.swing.JPanel {
         jLabel18 = new javax.swing.JLabel();
         LAlta = new javax.swing.JLabel();
         LabelActualizar = new javax.swing.JLabel();
-        TxFechaCompra = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         AltaCorrecta = new javax.swing.JLabel();
         ErrorAlta1 = new javax.swing.JLabel();
+        TxDireccion = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setAlignmentX(0.0F);
@@ -127,16 +129,21 @@ public class VGestionVehiculos extends javax.swing.JPanel {
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 610, Short.MAX_VALUE)
+            .addGap(0, 570, Short.MAX_VALUE)
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 10, Short.MAX_VALUE)
         );
 
-        add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 129, 610, -1));
+        add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 129, 570, 10));
 
         tablaVehi.setModel(new ModeloTablaVehiculos());
+        tablaVehi.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tablaVehiMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tablaVehi);
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(28, 175, 580, 202));
@@ -202,9 +209,9 @@ public class VGestionVehiculos extends javax.swing.JPanel {
         jLabel7.setText("Capacidad:");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 20, -1, -1));
 
-        ContrasenaL.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        ContrasenaL.setText("Fecha de Compra");
-        jPanel1.add(ContrasenaL, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 60, -1, -1));
+        FechaCompra.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        FechaCompra.setText("Fecha de Compra");
+        jPanel1.add(FechaCompra, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 60, -1, -1));
 
         mt.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         mt.setText("Matricula:");
@@ -228,15 +235,15 @@ public class VGestionVehiculos extends javax.swing.JPanel {
         });
         jPanel1.add(TxCapacidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 20, 210, -1));
 
-        TxDireccion.setBackground(new java.awt.Color(255, 232, 185));
-        TxDireccion.setForeground(new java.awt.Color(102, 102, 102));
-        TxDireccion.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 1));
-        TxDireccion.addActionListener(new java.awt.event.ActionListener() {
+        TxFechaCompra.setBackground(new java.awt.Color(255, 232, 185));
+        TxFechaCompra.setForeground(new java.awt.Color(102, 102, 102));
+        TxFechaCompra.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 1));
+        TxFechaCompra.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TxDireccionActionPerformed(evt);
+                TxFechaCompraActionPerformed(evt);
             }
         });
-        jPanel1.add(TxDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 40, 210, -1));
+        jPanel1.add(TxFechaCompra, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 60, 180, -1));
 
         TxMatricula.setBackground(new java.awt.Color(255, 232, 185));
         TxMatricula.setForeground(new java.awt.Color(102, 102, 102));
@@ -303,16 +310,6 @@ public class VGestionVehiculos extends javax.swing.JPanel {
         LabelActualizar.setText("Datos actualizados");
         jPanel1.add(LabelActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, -1, -1));
 
-        TxFechaCompra.setBackground(new java.awt.Color(255, 232, 185));
-        TxFechaCompra.setForeground(new java.awt.Color(102, 102, 102));
-        TxFechaCompra.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 1));
-        TxFechaCompra.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TxFechaCompraActionPerformed(evt);
-            }
-        });
-        jPanel1.add(TxFechaCompra, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 60, 180, -1));
-
         jLabel10.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel10.setText("Dirección:");
         jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 40, -1, -1));
@@ -327,7 +324,26 @@ public class VGestionVehiculos extends javax.swing.JPanel {
         ErrorAlta1.setText("Todos los campos son obligatorios");
         jPanel1.add(ErrorAlta1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 100, -1, -1));
 
+        TxDireccion.setBackground(new java.awt.Color(255, 232, 185));
+        TxDireccion.setForeground(new java.awt.Color(102, 102, 102));
+        TxDireccion.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 1));
+        TxDireccion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TxDireccionActionPerformed(evt);
+            }
+        });
+        jPanel1.add(TxDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 40, 210, -1));
+
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(28, 410, 620, 170));
+
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-google-web-search-filled-50.png"))); // NOI18N
+        jLabel6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel6MouseClicked(evt);
+            }
+        });
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 120, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void FiltroMatriculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FiltroMatriculaActionPerformed
@@ -360,9 +376,9 @@ public class VGestionVehiculos extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_TxCapacidadActionPerformed
 
-    private void TxDireccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxDireccionActionPerformed
+    private void TxFechaCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxFechaCompraActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TxDireccionActionPerformed
+    }//GEN-LAST:event_TxFechaCompraActionPerformed
 
     private void TxMatriculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxMatriculaActionPerformed
         // TODO add your handling code here:
@@ -383,10 +399,10 @@ public class VGestionVehiculos extends javax.swing.JPanel {
             LAlta.setVisible(false);
             vaciarTxt();
             nuevo = true;
-            ContrasenaL.setVisible(true);
+            FechaCompra.setVisible(true);
             TxFechaCompra.setVisible(true);
         } else {
-            if (TxMatricula.getText().isEmpty() || TxCapacidad.getText().isEmpty() || TxItv.getText().isEmpty() || TxDireccion.getText().isEmpty() || TxTransp.getText().isEmpty() || TxFechaCompra.getText().isEmpty()) {
+            if (TxMatricula.getText().isEmpty() || TxCapacidad.getText().isEmpty() || TxItv.getText().isEmpty() || TxFechaCompra.getText().isEmpty() || TxTransp.getText().isEmpty() || TxDireccion.getText().isEmpty()) {
                 ErrorAlta1.setVisible(true);
             } else {
                 fa.registrarVehi(new Vehiculo(TxMatricula.getText(),TxItv.getText(),TxFechaCompra.getText(),Integer.parseInt(TxCapacidad.getText()),TxTransp.getText(),TxDireccion.getText()));
@@ -398,9 +414,27 @@ public class VGestionVehiculos extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_BtAltaMouseClicked
 
-    private void TxFechaCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxFechaCompraActionPerformed
+    private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
+
+        ModeloTablaVehiculos tv = new ModeloTablaVehiculos();
+        tablaVehi.setModel(tv);
+        tv.setFilas(fa.obtenerVehiculos(this.FiltroMatricula.getText()));
+    }//GEN-LAST:event_jLabel6MouseClicked
+
+    private void TxDireccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxDireccionActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TxFechaCompraActionPerformed
+    }//GEN-LAST:event_TxDireccionActionPerformed
+
+    private void tablaVehiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaVehiMouseClicked
+        // TODO add your handling code here:
+        actualizarDatos();
+        ErrorID.setVisible(false);
+        BtActualizar.setEnabled(true);
+        ErrorAlta1.setVisible(false);
+        AltaCorrecta.setVisible(false);
+        LabelActualizar.setVisible(false);
+        
+    }//GEN-LAST:event_tablaVehiMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -408,9 +442,9 @@ public class VGestionVehiculos extends javax.swing.JPanel {
     private javax.swing.JPanel BtActualizar;
     private javax.swing.JPanel BtAlta;
     private javax.swing.JPanel BtBaja;
-    private javax.swing.JLabel ContrasenaL;
     private javax.swing.JLabel ErrorAlta1;
     private javax.swing.JLabel ErrorID;
+    private javax.swing.JLabel FechaCompra;
     private javax.swing.JTextField FiltroMatricula;
     private javax.swing.JLabel LAlta;
     private javax.swing.JLabel LConfirmar;
@@ -432,6 +466,7 @@ public class VGestionVehiculos extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel6;
@@ -447,7 +482,7 @@ public void restablecerBoton(){
         ErrorID.setVisible(false);
         LConfirmar.setVisible(false);
         LAlta.setVisible(true);
-        ContrasenaL.setVisible(false);
+        FechaCompra.setVisible(true);
         tablaVehi.changeSelection(0,0,false,false);
 }
 
@@ -458,7 +493,7 @@ public void actualizarVehiculo(String matricula){
     mv = (ModeloTablaVehiculos) tablaVehi.getModel();
     fa.actualizarVehi(matricula, new Vehiculo(TxMatricula.getText(), TxItv.getText(), TxFechaCompra.getText(), Integer.parseInt(TxCapacidad.getText()), TxTransp.getText(), TxDireccion.getText()));
     LabelActualizar.setVisible(true);
-    mv.setFilas(fa.obtenerVehiculos(matricula));
+    mv.setFilas(fa.obtenerVehiculos(FiltroMatricula.getText()));
     BtActualizar.setEnabled(false);
     
 }
@@ -467,7 +502,7 @@ public void eliminarVehiculo(){
     ModeloTablaVehiculos m;
 
         m = (ModeloTablaVehiculos) tablaVehi.getModel();
-        fa.eliminarUsuario((m.getFila(tablaVehi.getSelectedRow()).getMatricula()));
+        fa.eliminarVehi((m.getFila(tablaVehi.getSelectedRow()).getMatricula()));
         m.setFilas(fa.obtenerVehiculos(this.FiltroMatricula.getText()));
 }
 
