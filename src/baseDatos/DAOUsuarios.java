@@ -203,7 +203,7 @@ public class DAOUsuarios extends AbstractDAO {
                     case "oficinista":
                         stmEmpleado = con.prepareStatement("INSERT INTO empleados( usuario, nomina, anoingreso ) VALUES (?,?,?);");
                         stmEmpleado.setString(1, id);
-                        stmEmpleado.setInt(2, 1500);
+                        stmEmpleado.setInt(2, 1200);
                         stmEmpleado.setDate(3,null);
                         stmEmpleado.executeUpdate();
                         
