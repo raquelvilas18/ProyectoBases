@@ -361,12 +361,25 @@ public class DAOPedidos extends AbstractDAO {
 
     public void eliminarPedido(int codigo) {
         Connection con;
-        PreparedStatement stm = null;
+        PreparedStatement stm = null, stm2 = null, stm3 = null;
         ResultSet rs;
+        int paquete;
 
         con = this.getConexion();
 
         try {
+            stm2 = con.prepareStatement("SELECT codigo "
+                    + " FROM paquetes "
+                    + " WHERE pedido = ? ");
+            stm2.setInt(1, codigo);
+            rs = stm2.executeQuery();
+            while(rs.next()){ // Eliminamos todos los paquetes del pedido primero
+                paquete = rs.getInt("codigo");
+                stm3 = con.prepareStatement("DELETE FROM paquetes WHERE codigo = ? AND pedido = ? ");
+                stm3.setInt(2, codigo);
+                stm3.setInt(1, paquete);
+                stm3.executeUpdate();
+            }
             stm = con.prepareStatement("DELETE FROM pedidos WHERE codigo = ?");
             stm.setInt(1, codigo);
             stm.executeUpdate();

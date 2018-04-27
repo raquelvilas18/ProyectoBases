@@ -29,11 +29,11 @@ public class VGestionPaquetesOficinista extends javax.swing.JPanel {
     public VGestionPaquetesOficinista(aplicacion.FachadaAplicacion fa, Usuario u) {
         initComponents();
         this.fa = fa;
-        this.u=u;
+        this.u = u;
         ModeloTablaPedidos tp = new ModeloTablaPedidos();
         tablaPedidos.setModel(tp);
         tp.setFilas(fa.pedidosSinTramitar());
-        
+
         ModeloTablaTransportistas tt = new ModeloTablaTransportistas();
         tablaTransp.setModel(tt);
         tt.setFilas(fa.obtenerTransportistas());
@@ -55,16 +55,16 @@ public class VGestionPaquetesOficinista extends javax.swing.JPanel {
         LabelTramitar.setVisible(false);
         LabelEliminar.setVisible(false);
         errorLabel.setVisible(false);
-        
+
         //SELECCION Y CENTRADO DE TEXTO
-        tablaPedidos.changeSelection(0,0,false,false);
+        tablaPedidos.changeSelection(0, 0, false, false);
         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
-        centerRenderer.setHorizontalAlignment( JLabel.CENTER );
+        centerRenderer.setHorizontalAlignment(JLabel.CENTER);
         tablaPedidos.setDefaultRenderer(String.class, centerRenderer);
         tablaPedidos.setDefaultRenderer(Integer.class, centerRenderer);
         /////////////////////////////////
-        tablaTransp.changeSelection(0,0,false,false);
-        centerRenderer.setHorizontalAlignment( JLabel.CENTER );
+        tablaTransp.changeSelection(0, 0, false, false);
+        centerRenderer.setHorizontalAlignment(JLabel.CENTER);
         tablaTransp.setDefaultRenderer(String.class, centerRenderer);
         tablaTransp.setDefaultRenderer(Integer.class, centerRenderer);
         /////////////////////////////////
@@ -196,8 +196,8 @@ public class VGestionPaquetesOficinista extends javax.swing.JPanel {
 
         jLabel17.setFont(new java.awt.Font("Noto Sans", 0, 18)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(215, 215, 215));
-        jLabel17.setText("Eliminar");
-        BtEliminar.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 10, 110, -1));
+        jLabel17.setText("Eliminar pedido");
+        BtEliminar.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, 160, -1));
 
         jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-eliminar-26.png"))); // NOI18N
         jLabel19.setText("jLabel1");
@@ -266,14 +266,16 @@ public class VGestionPaquetesOficinista extends javax.swing.JPanel {
         t = (ModeloTablaTransportistas) tablaTransp.getModel();
         fa.tramitarPedido(tp.getFila(tablaPedidos.getSelectedRow()).getCodigo(), t.getFila(tablaTransp.getSelectedRow()).getUsuario(), u.getUsuario());
         LabelTramitar.setVisible(true);
+        actualizarTablaPedidos();
     }//GEN-LAST:event_BtTramitarMouseClicked
 
     private void BtEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtEliminarMouseClicked
         // TODO add your handling code here:
-        ModeloTablaPedidos tp = new ModeloTablaPedidos();
-        tablaPedidos.setModel(tp);
+        ModeloTablaPedidos tp;
+        tp = (ModeloTablaPedidos) tablaPedidos.getModel();
         fa.eliminarPedido(tp.getFila(tablaPedidos.getSelectedRow()).getCodigo());
         LabelEliminar.setVisible(true);
+        actualizarTablaPedidos();
     }//GEN-LAST:event_BtEliminarMouseClicked
 
 
@@ -298,4 +300,11 @@ public class VGestionPaquetesOficinista extends javax.swing.JPanel {
     private javax.swing.JTable tablaPedidos;
     private javax.swing.JTable tablaTransp;
     // End of variables declaration//GEN-END:variables
+
+    public void actualizarTablaPedidos(){
+        ModeloTablaPedidos tp;
+        tp = (ModeloTablaPedidos)tablaPedidos.getModel();
+        tp.setFilas(fa.pedidosSinTramitar());
+    }
+
 }

@@ -29,24 +29,24 @@ public class VGestionPaquetesTransportista extends javax.swing.JPanel {
      */
     public VGestionPaquetesTransportista(aplicacion.FachadaAplicacion fa, Usuario t) {
         initComponents();
-        this.fa=fa;
+        this.fa = fa;
         LabelError.setVisible(false);
         LabelCorrecto.setVisible(false);
-        
+
         JTableHeader th;
         th = this.tablaPaquetes.getTableHeader();
         Font fuente = new Font("SansSerif", Font.PLAIN, 16);
         th.setFont(fuente);
-        th.setForeground(new Color(183,112,255));
+        th.setForeground(new Color(183, 112, 255));
         th.setBackground(Color.WHITE);
-        
+
         ModeloTablaPaquetes tp = new ModeloTablaPaquetes();
         tablaPaquetes.setModel(tp);
         tp.setFilas(fa.paquetesTransportista(t.getUsuario()));
-        
-        tablaPaquetes.changeSelection(0,0,false,false);
+
+        tablaPaquetes.changeSelection(0, 0, false, false);
         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
-        centerRenderer.setHorizontalAlignment( JLabel.CENTER );
+        centerRenderer.setHorizontalAlignment(JLabel.CENTER);
         tablaPaquetes.setDefaultRenderer(String.class, centerRenderer);
         tablaPaquetes.setDefaultRenderer(Integer.class, centerRenderer);
     }
@@ -215,14 +215,14 @@ public class VGestionPaquetesTransportista extends javax.swing.JPanel {
 
     private void tablaPaquetesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaPaquetesMouseClicked
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_tablaPaquetesMouseClicked
 
     private void BtActualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtActualizarMouseClicked
-        if(this.TxtPosicion.getText().isEmpty()){
+        if (this.TxtPosicion.getText().isEmpty()) {
             LabelCorrecto.setVisible(false);
             LabelError.setVisible(true);
-        }else{
+        } else {
             LabelCorrecto.setVisible(true);
             LabelError.setVisible(false);
         }
@@ -238,6 +238,7 @@ public class VGestionPaquetesTransportista extends javax.swing.JPanel {
         ModeloTablaPaquetes tt;
         tt = (ModeloTablaPaquetes) tablaPaquetes.getModel();
         fa.paqueteEntregado(tt.getFila(tablaPaquetes.getSelectedRow()).getPedido().toString(), tt.getFila(tablaPaquetes.getSelectedRow()).getCodigo().toString());
+        actualizarTabla();
     }//GEN-LAST:event_BtnEntregadoMouseClicked
 
 
@@ -260,4 +261,11 @@ public class VGestionPaquetesTransportista extends javax.swing.JPanel {
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTable tablaPaquetes;
     // End of variables declaration//GEN-END:variables
+
+    public void actualizarTabla() {
+        ModeloTablaPaquetes tt;
+        tt = (ModeloTablaPaquetes) tablaPaquetes.getModel();
+        tt.setFilas(fa.paquetesTransportista(t.getUsuario()));
+    }
+
 }
