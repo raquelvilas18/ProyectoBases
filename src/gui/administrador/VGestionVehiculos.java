@@ -106,6 +106,7 @@ public class VGestionVehiculos extends javax.swing.JPanel {
         TxDireccion = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
+        jPanel2 = new javax.swing.JPanel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setAlignmentX(0.0F);
@@ -118,7 +119,7 @@ public class VGestionVehiculos extends javax.swing.JPanel {
         jLabel2.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(60, 60, 159));
         jLabel2.setText("Gestion Vehiculos");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 260, -1));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, 260, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/logoPequeno.png"))); // NOI18N
         jLabel1.setText("jLabel1");
@@ -137,7 +138,7 @@ public class VGestionVehiculos extends javax.swing.JPanel {
             .addGap(0, 10, Short.MAX_VALUE)
         );
 
-        add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 610, 10));
+        add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, 610, 10));
 
         jScrollPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         jScrollPane1.setToolTipText("");
@@ -152,13 +153,13 @@ public class VGestionVehiculos extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tablaVehi);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, 620, 200));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, 620, 200));
 
-        jLabel4.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 133, 74));
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-derechaNaranja.png"))); // NOI18N
-        jLabel4.setText("Matricula:");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 150, -1, -1));
+        jLabel4.setText("matricula:");
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 160, -1, -1));
 
         FiltroMatricula.setBorder(null);
         FiltroMatricula.addActionListener(new java.awt.event.ActionListener() {
@@ -341,7 +342,7 @@ public class VGestionVehiculos extends javax.swing.JPanel {
         });
         jPanel1.add(TxDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 40, 210, -1));
 
-        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(28, 410, 620, 160));
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 410, 620, 160));
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-google-web-search-filled-50.png"))); // NOI18N
         jLabel6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -352,6 +353,21 @@ public class VGestionVehiculos extends javax.swing.JPanel {
         });
         add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 140, -1, -1));
         add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 180, 390, 10));
+
+        jPanel2.setPreferredSize(new java.awt.Dimension(10, 550));
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 10, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 580, Short.MAX_VALUE)
+        );
+
+        add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 12, 10, 580));
     }// </editor-fold>//GEN-END:initComponents
 
     private void FiltroMatriculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FiltroMatriculaActionPerformed
@@ -477,6 +493,7 @@ public class VGestionVehiculos extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;

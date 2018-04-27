@@ -27,6 +27,7 @@ public class VAdmin extends javax.swing.JPanel {
         initComponents();
         parent = vp; 
         this.usuario = usuario;
+        PanelEliminar.setVisible(false);
     }
 
     /**
@@ -42,13 +43,20 @@ public class VAdmin extends javax.swing.JPanel {
         jLabel6 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
+        PanelEliminar = new javax.swing.JPanel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        no = new javax.swing.JPanel();
+        jLabel11 = new javax.swing.JLabel();
+        Si = new javax.swing.JPanel();
+        jLabel9 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
@@ -63,6 +71,7 @@ public class VAdmin extends javax.swing.JPanel {
         jLabel22 = new javax.swing.JLabel();
         Maps = new javax.swing.JLabel();
         CerrarSesion = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
 
         jPanel6.setBackground(new java.awt.Color(255, 157, 110));
         jPanel6.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -93,33 +102,7 @@ public class VAdmin extends javax.swing.JPanel {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-colaborador-hombre-96.png"))); // NOI18N
         jLabel1.setText("jLabel1");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 60, 110, 110));
-
-        jPanel1.setBackground(new java.awt.Color(250, 170, 49));
-        jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jPanel1MouseClicked(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jPanel1MouseExited(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jPanel1MouseEntered(evt);
-            }
-        });
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-casa-24.png"))); // NOI18N
-        jLabel2.setText("jLabel1");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 33, 36));
-
-        jLabel3.setFont(new java.awt.Font("Noto Sans", 0, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(215, 215, 215));
-        jLabel3.setText("Gestion sucursales");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, 212, -1));
-
-        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 470, 310, 40));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, 110, 110));
 
         jPanel2.setBackground(new java.awt.Color(250, 170, 49));
         jPanel2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -150,7 +133,7 @@ public class VAdmin extends javax.swing.JPanel {
         });
         jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, 212, -1));
 
-        add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, 310, 40));
+        add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 310, 40));
 
         jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-lista-con-viñetas-50.png"))); // NOI18N
         jLabel13.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -161,6 +144,72 @@ public class VAdmin extends javax.swing.JPanel {
             }
         });
         add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+
+        PanelEliminar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel12.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        jLabel12.setText("Estás seguro de que quieres ");
+        PanelEliminar.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, -10, -1, 40));
+
+        jLabel23.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        jLabel23.setText("eliminar tu cuenta de usuario ?");
+        PanelEliminar.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
+
+        no.setBackground(new java.awt.Color(204, 204, 204));
+        no.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        no.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                noMouseClicked(evt);
+            }
+        });
+        no.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel11.setText("no");
+        no.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, -5, -1, 30));
+
+        PanelEliminar.add(no, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 40, 90, 20));
+
+        Si.setBackground(new java.awt.Color(204, 204, 204));
+        Si.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Si.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                SiMouseClicked(evt);
+            }
+        });
+        Si.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel9.setText("si");
+        Si.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, -5, -1, 30));
+
+        PanelEliminar.add(Si, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 90, 20));
+
+        add(PanelEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 490, 220, 70));
+
+        jPanel1.setBackground(new java.awt.Color(250, 170, 49));
+        jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel1MouseClicked(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jPanel1MouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jPanel1MouseEntered(evt);
+            }
+        });
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-casa-24.png"))); // NOI18N
+        jLabel2.setText("jLabel1");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 33, 36));
+
+        jLabel3.setFont(new java.awt.Font("Noto Sans", 0, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(215, 215, 215));
+        jLabel3.setText("Gestion sucursales");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, 212, -1));
+
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 460, 310, 40));
 
         jPanel7.setBackground(new java.awt.Color(250, 170, 49));
         jPanel7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -186,7 +235,7 @@ public class VAdmin extends javax.swing.JPanel {
         jLabel16.setText("Gestion empleados");
         jPanel7.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, 212, -1));
 
-        add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 270, 310, 40));
+        add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 310, 40));
 
         jPanel8.setBackground(new java.awt.Color(250, 170, 49));
         jPanel8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -212,7 +261,7 @@ public class VAdmin extends javax.swing.JPanel {
         jLabel18.setText("Gestion clientes");
         jPanel8.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, 212, -1));
 
-        add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 320, 310, 40));
+        add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 310, 310, 40));
 
         jPanel9.setBackground(new java.awt.Color(250, 170, 49));
         jPanel9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -238,7 +287,7 @@ public class VAdmin extends javax.swing.JPanel {
         jLabel20.setText("Gestion paquetes");
         jPanel9.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, 212, -1));
 
-        add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 370, 310, 40));
+        add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 360, 310, 40));
 
         jPanel10.setBackground(new java.awt.Color(250, 170, 49));
         jPanel10.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -264,7 +313,7 @@ public class VAdmin extends javax.swing.JPanel {
         jLabel22.setText("Gestion vehículos");
         jPanel10.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, 212, -1));
 
-        add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 420, 310, 40));
+        add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 410, 310, 40));
 
         Maps.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-mapas-de-google-32(1).png"))); // NOI18N
         Maps.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -283,6 +332,15 @@ public class VAdmin extends javax.swing.JPanel {
             }
         });
         add(CerrarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(-40, 120, 40, -1));
+
+        jLabel24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-retire-hombre-usuario-26.png"))); // NOI18N
+        jLabel24.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel24.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel24MouseClicked(evt);
+            }
+        });
+        add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 550, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jLabel13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel13MouseClicked
@@ -404,6 +462,24 @@ public class VAdmin extends javax.swing.JPanel {
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
         parent.ventanaPerfilAdmin(this.usuario);
     }//GEN-LAST:event_jLabel5MouseClicked
+
+    private void noMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_noMouseClicked
+        // TODO add your handling code here:
+        this.PanelEliminar.setVisible(false);
+    }//GEN-LAST:event_noMouseClicked
+
+    private void SiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SiMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_SiMouseClicked
+
+    private void jLabel24MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel24MouseClicked
+        // TODO add your handling code here:
+        if (PanelEliminar.isVisible()) {
+            this.PanelEliminar.setVisible(false);
+        } else {
+            this.PanelEliminar.setVisible(true);
+        }
+    }//GEN-LAST:event_jLabel24MouseClicked
     
     public void openInternet(){
         try{
@@ -417,7 +493,11 @@ public class VAdmin extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel CerrarSesion;
     private javax.swing.JLabel Maps;
+    private javax.swing.JPanel PanelEliminar;
+    private javax.swing.JPanel Si;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
@@ -429,10 +509,13 @@ public class VAdmin extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel2;
@@ -440,5 +523,6 @@ public class VAdmin extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
+    private javax.swing.JPanel no;
     // End of variables declaration//GEN-END:variables
 }
