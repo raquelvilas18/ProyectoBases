@@ -51,8 +51,6 @@ public class VGestionClientes extends javax.swing.JPanel {
             this.TxTelefono.setText(m.getFila(tablaUsr.getSelectedRow()).getTelefono());
             this.TxDni.setText(m.getFila(tablaUsr.getSelectedRow()).getDni());
             this.TxSexo.setSelectedItem((m.getFila(tablaUsr.getSelectedRow())).getSexo());
-            this.TxTipo.setSelectedItem((m.getFila(tablaUsr.getSelectedRow())).getTipo());
-
         }
         
         JTableHeader th;
@@ -97,7 +95,6 @@ public class VGestionClientes extends javax.swing.JPanel {
         ContrasenaL = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
-        jLabel21 = new javax.swing.JLabel();
         TxNombre = new javax.swing.JTextField();
         TxDireccion = new javax.swing.JTextField();
         TxId = new javax.swing.JTextField();
@@ -117,7 +114,6 @@ public class VGestionClientes extends javax.swing.JPanel {
         jLabel10 = new javax.swing.JLabel();
         AltaCorrecta = new javax.swing.JLabel();
         ErrorAlta1 = new javax.swing.JLabel();
-        TxTipo = new javax.swing.JComboBox();
         jLabel24 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaUsr = new javax.swing.JTable();
@@ -276,10 +272,6 @@ public class VGestionClientes extends javax.swing.JPanel {
         jLabel20.setText("Email:");
         jPanel1.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, -1, -1));
 
-        jLabel21.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        jLabel21.setText("Tipo:");
-        jPanel1.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, -1, -1));
-
         TxNombre.setBackground(new java.awt.Color(255, 232, 185));
         TxNombre.setForeground(new java.awt.Color(102, 102, 102));
         TxNombre.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 1));
@@ -412,16 +404,6 @@ public class VGestionClientes extends javax.swing.JPanel {
         ErrorAlta1.setText("Todos los campos son obligatorios");
         jPanel1.add(ErrorAlta1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 130, -1, -1));
 
-        TxTipo.setBackground(new java.awt.Color(255, 232, 185));
-        TxTipo.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
-        TxTipo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "administrador", "oficinista", "transportista", "cliente" }));
-        TxTipo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TxTipoActionPerformed(evt);
-            }
-        });
-        jPanel1.add(TxTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 100, -1, -1));
-
         jLabel24.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel24.setText("Telefono:");
         jPanel1.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, -1, -1));
@@ -499,7 +481,6 @@ public class VGestionClientes extends javax.swing.JPanel {
         this.TxTelefono.setText(m.getFila(tablaUsr.getSelectedRow()).getTelefono());
         this.TxDni.setText(m.getFila(tablaUsr.getSelectedRow()).getDni());
         this.TxSexo.setSelectedItem((m.getFila(tablaUsr.getSelectedRow())).getSexo());
-        this.TxTipo.setSelectedItem((m.getFila(tablaUsr.getSelectedRow())).getTipo());
     }
     
     
@@ -557,7 +538,7 @@ public class VGestionClientes extends javax.swing.JPanel {
             if (TxId.getText().isEmpty() || TxNombre.getText().isEmpty() || TxCorreo.getText().isEmpty() || TxDireccion.getText().isEmpty() || TxTelefono.getText().isEmpty() || TxContrasena.getText().isEmpty()) {
                 ErrorAlta1.setVisible(true);
             } else {
-                fa.registrarUsuario(TxId.getText(), TxContrasena.getText(), TxDni.getText(), TxNombre.getText(), TxCorreo.getText(), TxDireccion.getText(), TxTelefono.getText(), (String) TxSexo.getSelectedItem(), (String) TxTipo.getSelectedItem());
+                fa.registrarUsuario(TxId.getText(), TxContrasena.getText(), TxDni.getText(), TxNombre.getText(), TxCorreo.getText(), TxDireccion.getText(), TxTelefono.getText(), (String) TxSexo.getSelectedItem(), "cliente");
                 AltaCorrecta.setVisible(true);
                 restablecerBoton();
                 actualizarTabla();
@@ -569,10 +550,6 @@ public class VGestionClientes extends javax.swing.JPanel {
     private void TxContrasenaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxContrasenaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_TxContrasenaActionPerformed
-
-    private void TxTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxTipoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TxTipoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -596,7 +573,6 @@ public class VGestionClientes extends javax.swing.JPanel {
     private javax.swing.JTextField TxNombre;
     private javax.swing.JComboBox TxSexo;
     private javax.swing.JTextField TxTelefono;
-    private javax.swing.JComboBox TxTipo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel14;
@@ -606,7 +582,6 @@ public class VGestionClientes extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
@@ -636,7 +611,6 @@ public class VGestionClientes extends javax.swing.JPanel {
         this.TxTelefono.setText(m.getFila(tablaUsr.getSelectedRow()).getTelefono());
         this.TxDni.setText(m.getFila(tablaUsr.getSelectedRow()).getDni());
         this.TxSexo.setSelectedItem((m.getFila(tablaUsr.getSelectedRow())).getSexo());
-        this.TxTipo.setSelectedItem((m.getFila(tablaUsr.getSelectedRow())).getTipo());
     }
 
     //public Usuario(String usuario, String password, String dni, String nombre, String correo, String direccion, String telefono, String sexo) {

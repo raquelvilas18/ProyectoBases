@@ -321,7 +321,7 @@ public class VGestionLocales extends javax.swing.JPanel {
         AltaCorrecta.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         AltaCorrecta.setForeground(new java.awt.Color(0, 153, 0));
         AltaCorrecta.setText("Usuario registrado correctamente");
-        jPanel1.add(AltaCorrecta, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 110, -1, 40));
+        jPanel1.add(AltaCorrecta, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 120, -1, 40));
 
         ErrorAlta1.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         ErrorAlta1.setForeground(new java.awt.Color(255, 51, 51));
