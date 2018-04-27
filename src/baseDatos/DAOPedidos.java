@@ -108,10 +108,9 @@ public class DAOPedidos extends AbstractDAO {
 
     }
 
-
-public void tramitarPedido(Integer codigo, String transportista) {
+    public void tramitarPedido(Integer codigo, String transportista, String tramitador) {
         Connection con;
-        PreparedStatement stm = null, stm2 = null;
+        PreparedStatement stm = null, stm2 = null, stm3 = null;
         ResultSet rs;
 
         con = super.getConexion();
@@ -119,18 +118,28 @@ public void tramitarPedido(Integer codigo, String transportista) {
         try {
             stm = con.prepareStatement("SELECT * "
                     + "FROM vehiculos "
-                    + "WHERE transportista = ?");
+                    + "WHERE conductor = ?");
             stm.setString(1, transportista);
-            
+
             rs = stm.executeQuery();
-            if(rs.next()){
+            if (rs.next()) {
                 String matricula = rs.getString("matricula");
                 stm2 = con.prepareStatement("UPDATE paquetes "
-                        + "SET transportista = ? , vehiculo = ? "
+                        + "SET transportista = ? "
                         + "WHERE pedido =  ?");
                 stm2.setString(1, transportista);
-                stm2.setString(2, matricula);
-                stm2.setInt(3, codigo);
+               // stm2.setString(2, matricula);
+                stm2.setInt(2, codigo);
+
+                stm2.executeUpdate();
+
+                stm3 = con.prepareStatement("UPDATE pedidos "
+                        + "SET tramitador = ? ");
+                stm3.setString(1, tramitador);
+                stm3.executeUpdate();
+
+            }else{
+                System.out.println("Chungo");
             }
 
         } catch (SQLException e) {
@@ -139,6 +148,8 @@ public void tramitarPedido(Integer codigo, String transportista) {
         } finally {
             try {
                 stm.close();
+                stm2.close();
+                stm3.close();
             } catch (SQLException e) {
                 System.out.println("Imposible cerrar cursores");
             }
@@ -276,8 +287,10 @@ public void tramitarPedido(Integer codigo, String transportista) {
         try {
             stmPedidos = con.prepareStatement("SELECT * "
                     + "FROM pedidos "
-                    + "WHERE fecha ISNULL "
-                    + "AND codigo = ?");
+                    + "WHERE codigo IN (SELECT pedido "
+                    + "		FROM paquetes "
+                    + "		WHERE transportista ISNULL"
+                    + "         AND fecha ISNULL)");
             stmPedidos.setInt(1, codigo);
 
             rsPedidos = stmPedidos.executeQuery();
@@ -305,7 +318,6 @@ public void tramitarPedido(Integer codigo, String transportista) {
         return resultado;
     }
 
-
     public ArrayList<Pedido> pedidosSinTramitar() {
         ArrayList<Pedido> resultado = new ArrayList<Pedido>();
         Connection con;
@@ -317,7 +329,10 @@ public void tramitarPedido(Integer codigo, String transportista) {
         try {
             stmPedidos = con.prepareStatement("SELECT * "
                     + "FROM pedidos "
-                    + "WHERE fecha ISNULL");
+                    + "WHERE codigo IN (SELECT pedido "
+                    + "		FROM paquetes "
+                    + "		WHERE transportista ISNULL"
+                    + "         AND fecha ISNULL)");
 
             rsPedidos = stmPedidos.executeQuery();
 

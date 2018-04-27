@@ -17,6 +17,7 @@ public class Pedido {
    private String direccion;
    private String destinatario;
    private String tramitador;
+   private String transportista;
    
     public Pedido(String cliente, boolean express, String direccion, String destinatario)   {
        this.cliente=cliente;

@@ -6,7 +6,7 @@
 package gui.trasnportista;
 
 import gui.ModeloTablaLocalizador;
-import gui.ModeloTablaPedidos;
+import gui.ModeloTablaPaquetes;
 import java.awt.Color;
 import java.awt.Font;
 import javax.swing.table.JTableHeader;
@@ -235,8 +235,8 @@ public class VGestionPaquetesTransportista extends javax.swing.JPanel {
 
     private void BtnEntregadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnEntregadoMouseClicked
         // TODO add your handling code here:
-        ModeloTablaPaquetes tt = new ModeloTablaPaquetes();
-        tablaPaquetes.setModel(tt);
+        ModeloTablaPaquetes tt;
+        tt = (ModeloTablaPaquetes) tablaPaquetes.getModel();
         fa.paqueteEntregado(tt.getFila(tablaPaquetes.getSelectedRow()).getPedido().toString(), tt.getFila(tablaPaquetes.getSelectedRow()).getCodigo().toString());
     }//GEN-LAST:event_BtnEntregadoMouseClicked
 

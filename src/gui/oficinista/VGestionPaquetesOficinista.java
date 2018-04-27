@@ -21,13 +21,15 @@ import javax.swing.table.JTableHeader;
 public class VGestionPaquetesOficinista extends javax.swing.JPanel {
 
     aplicacion.FachadaAplicacion fa;
+    Usuario u;
 
     /**
      * Creates new form VGestionPaquetes
      */
-    public VGestionPaquetesOficinista(aplicacion.FachadaAplicacion fa) {
+    public VGestionPaquetesOficinista(aplicacion.FachadaAplicacion fa, Usuario u) {
         initComponents();
         this.fa = fa;
+        this.u=u;
         ModeloTablaPedidos tp = new ModeloTablaPedidos();
         tablaPedidos.setModel(tp);
         tp.setFilas(fa.pedidosSinTramitar());
@@ -258,11 +260,11 @@ public class VGestionPaquetesOficinista extends javax.swing.JPanel {
 
     private void BtTramitarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtTramitarMouseClicked
         // TODO add your handling code here:
-        ModeloTablaPedidos tp = new ModeloTablaPedidos();
-        tablaPedidos.setModel(tp);
-        ModeloTablaTransportistas t = new ModeloTablaTransportistas();
-        tablaTransp.setModel(t);
-        fa.tramitarPedido(tp.getFila(tablaPedidos.getSelectedRow()).getCodigo(), t.getFila(tablaTransp.getSelectedRow()).getUsuario());
+        ModeloTablaPedidos tp;
+        tp = (ModeloTablaPedidos) tablaPedidos.getModel();
+        ModeloTablaTransportistas t;
+        t = (ModeloTablaTransportistas) tablaTransp.getModel();
+        fa.tramitarPedido(tp.getFila(tablaPedidos.getSelectedRow()).getCodigo(), t.getFila(tablaTransp.getSelectedRow()).getUsuario(), u.getUsuario());
         LabelTramitar.setVisible(true);
     }//GEN-LAST:event_BtTramitarMouseClicked
 

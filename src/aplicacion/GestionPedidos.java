@@ -50,7 +50,7 @@ public class GestionPedidos {
         return fbd.comprobarLocalizacion(codigo);
     }
     
-    public void tramitarPedido(Integer codigo, String transportista) {
-        fbd.tramitarPedido(codigo, transportista);
+    public void tramitarPedido(Integer codigo, String transportista, String tramitador) {
+        fbd.tramitarPedido(codigo, transportista, tramitador);
     }
 }

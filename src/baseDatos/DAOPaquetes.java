@@ -65,11 +65,13 @@ public class DAOPaquetes extends AbstractDAO {
 
         try {
             stm = con.prepareStatement("SELECT * FROM paquetes"
-                    + " WHERE transportista = ? ");
+                    + " WHERE transportista = ? "
+                    + " AND fecha_entrega ISNULL ");
             stm.setString(1, id);
             rs = stm.executeQuery();
             while (rs.next()) {
-                paquetes.add(new Paquete(rs.getInt("codigo"), rs.getInt("pedido"), rs.getFloat("peso"), rs.getFloat("alto"), rs.getFloat("ancho"), rs.getFloat("largo"), rs.getString("fecha_entrega"), rs.getString("transportista"), rs.getString("local"), rs.getString("cliente")));
+
+                paquetes.add(new Paquete(rs.getInt("codigo"), rs.getInt("pedido"), rs.getFloat("peso"), rs.getFloat("alto"), rs.getFloat("ancho"), rs.getFloat("largo"), rs.getString("fecha_entrega"), rs.getString("transportista"), rs.getString("cliente")));
             }
 
         } catch (SQLException e) {
@@ -93,14 +95,14 @@ public class DAOPaquetes extends AbstractDAO {
         con = super.getConexion();
 
         try {
-            stm = con.prepareStatement("UPDATE paquetes"
-                    + "SET fecha_entrega = ?"
+            stm = con.prepareStatement("UPDATE paquetes "
+                    + "SET fecha_entrega = TO_DATE(?, 'DD-MM-YYYY') "
                     + "WHERE  pedido = ? "
                     + "AND codigo = ? ");
             Calendar cal = Calendar.getInstance();
             stm.setString(1, Integer.toString(cal.get(Calendar.DATE)) + "-" + Integer.toString(cal.get(Calendar.MONTH) + 1) + "-" + Integer.toString(cal.get(Calendar.YEAR)));
-            stm.setString(2, pedido);
-            stm.setString(3, codigo);
+            stm.setInt(2, Integer.parseInt(pedido));
+            stm.setInt(3, Integer.parseInt(codigo));
 
             stm.executeUpdate();
 
@@ -116,39 +118,43 @@ public class DAOPaquetes extends AbstractDAO {
         }
     }
 
-    public java.util.List<Paquete> obtenerPaquetes(Integer codigo){
+    public java.util.List<Paquete> obtenerPaquetes(Integer codigo) {
         java.util.List<Paquete> resultado = new java.util.ArrayList<Paquete>();
         Connection con;
-        PreparedStatement stmPaquetes=null;
-        ResultSet rsPaquetes=null;
-        
+        PreparedStatement stmPaquetes = null;
+        ResultSet rsPaquetes = null;
+
         con = super.getConexion();
-        
-        try{
-            stmPaquetes=con.prepareStatement("SELECT * "+
-                                            "FROM paquetes "
-                                        + "WHERE pedido=?");
+
+        try {
+            stmPaquetes = con.prepareStatement("SELECT * "
+                    + "FROM paquetes "
+                    + "WHERE pedido=?");
             stmPaquetes.setInt(1, codigo);
             rsPaquetes = stmPaquetes.executeQuery();
 
-            while(rsPaquetes.next()){
+            while (rsPaquetes.next()) {
                 resultado.add(new Paquete(rsPaquetes.getInt("codigo"),
-                                            rsPaquetes.getInt("pedido"),    
-                                            rsPaquetes.getFloat("peso"),
-                                            rsPaquetes.getFloat("alto"),
-                                            rsPaquetes.getFloat("ancho"),
-                                            rsPaquetes.getFloat("largo"),
-                                            rsPaquetes.getString("fecha_entrega"),
-                                            rsPaquetes.getString("transportista"),
-                                            rsPaquetes.getString("cliente")));
+                        rsPaquetes.getInt("pedido"),
+                        rsPaquetes.getFloat("peso"),
+                        rsPaquetes.getFloat("alto"),
+                        rsPaquetes.getFloat("ancho"),
+                        rsPaquetes.getFloat("largo"),
+                        rsPaquetes.getString("fecha_entrega"),
+                        rsPaquetes.getString("transportista"),
+                        rsPaquetes.getString("cliente")));
             }
-        }catch (SQLException e){
-                System.out.println(e.getMessage());
-                this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
-            }finally{
-                try {stmPaquetes.close();} catch (SQLException e){System.out.println("Imposible cerrar cursores");}
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
+        } finally {
+            try {
+                stmPaquetes.close();
+            } catch (SQLException e) {
+                System.out.println("Imposible cerrar cursores");
             }
-        
+        }
+
         return resultado;
     }
 }

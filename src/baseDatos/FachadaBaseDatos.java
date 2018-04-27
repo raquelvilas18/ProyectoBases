@@ -158,8 +158,8 @@ public class FachadaBaseDatos {
         return daoPedidos.getPedido(p);
     }
 
-    public void tramitarPedido(Integer codigo, String transportista) {
-        daoPedidos.tramitarPedido(codigo, transportista);
+    public void tramitarPedido(Integer codigo, String transportista, String tramitador) {
+        daoPedidos.tramitarPedido(codigo, transportista, tramitador);
     }
 
     public java.util.List<Pedido> obtenerHistorialPedidos(String usuario) {
@@ -187,6 +187,8 @@ public class FachadaBaseDatos {
     }
     
     
+    
+    
     //------PAQUETES---------//
     
     public void nuevoPaquete(Paquete p){
@@ -196,6 +198,10 @@ public class FachadaBaseDatos {
     public List<Paquete> obtenerPaquetes(Integer codigo){
         return daoPaquetes.obtenerPaquetes(codigo);
     }
+    
+    public void paqueteEntregado(String pedido, String codigo){
+         daoPaquetes.paqueteEntregado(pedido, codigo);
+     }
     
 
     //------EMPLEADOS-------//

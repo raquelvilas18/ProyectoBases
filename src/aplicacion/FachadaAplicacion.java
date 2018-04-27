@@ -60,9 +60,11 @@ public class FachadaAplicacion {
     public boolean consultarId(String idUsuario) {
         return gUsuarios.consultarId(idUsuario);
     }
-    public String trabajaEn(String id) {  
+
+    public String trabajaEn(String id) {
         return gEmpleados.trabajaEn(id);
-    }  
+    }
+
     public void actualizar(Usuario usuario) {
         gUsuarios.actualizar(usuario);
     }
@@ -74,12 +76,12 @@ public class FachadaAplicacion {
     public Pedido nuevoPedido(Pedido p) {
         return gPedidos.nuevoPedido(p);
     }
-    
+
     public Pedido getPedido(Pedido p) {
         return gPedidos.getPedido(p);
     }
-    
-    public void nuevoPaquete(Paquete p){
+
+    public void nuevoPaquete(Paquete p) {
         gPaquetes.nuevoPaquete(p);
     }
 
@@ -90,7 +92,7 @@ public class FachadaAplicacion {
     public void eliminarUsuario(String id) {
         gUsuarios.eliminarUsuario(id);
     }
-    
+
     public void eliminarEmpleado(String id) {
         gUsuarios.eliminarEmpleado(id);
     }
@@ -115,8 +117,8 @@ public class FachadaAplicacion {
         return gPedidos.pedidosSinTramitar();
     }
 
-    public Empleado nuevoEmpleado(String usuario, String password, String dni, String nombre, String correo, String direccion, String telefono, String sexo, String tipo, int nomina,String local){
-        return gEmpleados.nuevoEmpleado(usuario, password, dni, nombre, correo, direccion, telefono, sexo, tipo, nomina,local);
+    public Empleado nuevoEmpleado(String usuario, String password, String dni, String nombre, String correo, String direccion, String telefono, String sexo, String tipo, int nomina, String local) {
+        return gEmpleados.nuevoEmpleado(usuario, password, dni, nombre, correo, direccion, telefono, sexo, tipo, nomina, local);
     }
 
     public void actualizar(Empleado emp) {
@@ -127,8 +129,8 @@ public class FachadaAplicacion {
         gEmpleados.actualizarEmpleado(id, emp);
     }
 
-    public void tramitarPedido(Integer codigo, String transportista) {
-        gPedidos.tramitarPedido(codigo, transportista);
+    public void tramitarPedido(Integer codigo, String transportista, String tramitador) {
+        gPedidos.tramitarPedido(codigo, transportista, tramitador);
     }
 
     public void actualizarDireccion() {
@@ -155,59 +157,61 @@ public class FachadaAplicacion {
         return fbd.obtenerUsuarios(id, nombre);
     }
 
-    public ArrayList<Vehiculo> obtenerVehiculos(String matricula){
+    public ArrayList<Vehiculo> obtenerVehiculos(String matricula) {
         return fbd.obtenerVehiculos(matricula);
     }
-    
-    public void actualizarVehi(String matricula,Vehiculo vehi){
-        fbd.actualizarVehi(matricula,vehi);
+
+    public void actualizarVehi(String matricula, Vehiculo vehi) {
+        fbd.actualizarVehi(matricula, vehi);
     }
-    
-    public boolean consultarMatricula(String matricula){
+
+    public boolean consultarMatricula(String matricula) {
         return fbd.consultarMatricula(matricula);
     }
-    
-    public void registrarVehi(Vehiculo vehi){
+
+    public void registrarVehi(Vehiculo vehi) {
         fbd.registrarVehi(vehi);
     }
-    
-    public void eliminarVehi(String matricula){
+
+    public void eliminarVehi(String matricula) {
         fbd.eliminarVehi(matricula);
     }
-    
+
     public void eliminarPedido(int codigo) {
         fbd.eliminarPedido(codigo);
 
     }
-    
-     public ArrayList<Paquete> paquetesTransportista(String id) {
-         return gPaquetes.paquetesTransportista(id);
-     }
-     
-     public ArrayList<Transportista> obtenerTransportistas(){
-         return gEmpleados.obtenerTransportistas();
-     }
-     
-     public void paqueteEntregado(String pedido, String codigo){
-         gPaquetes.paqueteEntregado(pedido, codigo);
-     public ArrayList<Local> obtenerLocales(String codigo){
-         return fbd.obtenerLocales(codigo);
-     }
-     
-     public boolean consultarCodigo(String codigo){
-         return fbd.consultarCodigo(codigo);
-     }
-     
-     public void registrarLocal(Local local){
-         fbd.registrarLocal(local);
-     }
-     
-     public void actualizarLocal(String codigo,Local local){
-         fbd.actualizarLocal(codigo,local);
-     }
-     
-     public void eliminarLocal(Local local){
-         fbd.eliminarLocal(local);
-     }
+
+    public ArrayList<Paquete> paquetesTransportista(String id) {
+        return gPaquetes.paquetesTransportista(id);
+    }
+
+    public ArrayList<Transportista> obtenerTransportistas() {
+        return gEmpleados.obtenerTransportistas();
+    }
+
+    public void paqueteEntregado(String pedido, String codigo) {
+        gPaquetes.paqueteEntregado(pedido, codigo);
+    }
+
+    public ArrayList<Local> obtenerLocales(String codigo) {
+        return fbd.obtenerLocales(codigo);
+    }
+
+    public boolean consultarCodigo(String codigo) {
+        return fbd.consultarCodigo(codigo);
+    }
+
+    public void registrarLocal(Local local) {
+        fbd.registrarLocal(local);
+    }
+
+    public void actualizarLocal(String codigo, Local local) {
+        fbd.actualizarLocal(codigo, local);
+    }
+
+    public void eliminarLocal(Local local) {
+        fbd.eliminarLocal(local);
+    }
 
 }

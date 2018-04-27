@@ -31,10 +31,10 @@ public class GestionPaquetes {
         java.util.List<String> Posiciones = new java.util.ArrayList<String>();
         Paquetes = fbd.obtenerPaquetes(codigo);
         for(Paquete p : Paquetes){
-            if(p.getFecha_entrega() != null && !p.getFecha_entrega().equals(""))
+            if(p.getFecha_entrega() != null && !p.getFecha_entrega().equals("")){
                 Posiciones.add("Entregado");
-            else if(p.getTransportista() != null && !p.getTransportista().equals("")){
-                Posiciones.add(fbd.localizarVehiculo(p.getTransportista()));
+            //else if(p.getTransportista() != null && !p.getTransportista().equals("")){
+            //    Posiciones.add(fbd.localizarVehiculo(p.getTransportista()));
             }else {
                 Posiciones.add("En tramitacion.");
             }
