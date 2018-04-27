@@ -25,6 +25,7 @@ import gui.administrador.VGestionEmpleados;
 import gui.administrador.VGestionVehiculos;
 import gui.administrador.VPerfilAdmin;
 import aplicacion.Usuario;
+import gui.administrador.VGestionLocales;
 import java.awt.event.KeyEvent;
 import javax.swing.JPanel;
 
@@ -80,8 +81,8 @@ public class VPrincipal extends javax.swing.JFrame {
         textoUsuario4 = new javax.swing.JLabel();
         textoUsuario5 = new javax.swing.JLabel();
         jSeparator4 = new javax.swing.JSeparator();
-        TxLocalizar = new javax.swing.JTextField();
-        Buscar = new javax.swing.JButton();
+        jTextField3 = new javax.swing.JTextField();
+        jButton4 = new javax.swing.JButton();
         panelLogin = new javax.swing.JPanel();
         textoUsuario = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -132,27 +133,22 @@ public class VPrincipal extends javax.swing.JFrame {
         jSeparator4.setForeground(new java.awt.Color(0, 0, 0));
         panelLocPaquete.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 100, 450, 10));
 
-        TxLocalizar.setForeground(new java.awt.Color(153, 153, 153));
-        TxLocalizar.setBorder(null);
-        TxLocalizar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TxLocalizarActionPerformed(evt);
-            }
-        });
-        panelLocPaquete.add(TxLocalizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 70, 250, 30));
+        jTextField3.setForeground(new java.awt.Color(153, 153, 153));
+        jTextField3.setBorder(null);
+        panelLocPaquete.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 70, 250, 30));
 
-        Buscar.setBackground(new java.awt.Color(255, 255, 255));
-        Buscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8_Search_30px.png"))); // NOI18N
-        Buscar.setActionCommand("botonBuscar");
-        Buscar.setBorderPainted(false);
-        Buscar.setContentAreaFilled(false);
-        Buscar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        Buscar.addActionListener(new java.awt.event.ActionListener() {
+        jButton4.setBackground(new java.awt.Color(255, 255, 255));
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8_Search_30px.png"))); // NOI18N
+        jButton4.setActionCommand("botonBuscar");
+        jButton4.setBorderPainted(false);
+        jButton4.setContentAreaFilled(false);
+        jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BuscarActionPerformed(evt);
+                jButton4ActionPerformed(evt);
             }
         });
-        panelLocPaquete.add(Buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 60, -1, -1));
+        panelLocPaquete.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 60, -1, -1));
 
         panelBase.add(panelLocPaquete, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 290, 740, 290));
 
@@ -305,15 +301,9 @@ public class VPrincipal extends javax.swing.JFrame {
 
     }//GEN-LAST:event_botonRegistrarseActionPerformed
 
-    private void BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarActionPerformed
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        String codigo=TxLocalizar.getText();
-        if (codigo.equals("")){
-            VAviso vaviso = new VAviso(this, true, "No se ha indicado ningún código de búsqueda.");
-        }else{
-            fa.localizar(Integer.parseInt(codigo));
-        }
-    }//GEN-LAST:event_BuscarActionPerformed
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     private void JUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JUsuarioActionPerformed
         // TODO add your handling code here:
@@ -374,10 +364,6 @@ public class VPrincipal extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_JContrasenaKeyPressed
-
-    private void TxLocalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxLocalizarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TxLocalizarActionPerformed
 
     public void ventanaPedido(Usuario usuario) {
         panelActivo.setVisible(false);
@@ -575,23 +561,27 @@ public class VPrincipal extends javax.swing.JFrame {
         panelBase.add(panelGV, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 680, 580));
         panelGV.setVisible(true);
         panelActivo = panelGV;
-        /*
+        
+    }
+    
+    public void ventanaGestionLocales(){
+        
         panelActivo.setVisible(false);
-        VGestionUsuarios panelGU = new VGestionUsuarios(fa);
-        panelBase.add(panelGU, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 680, 580));
-        panelActivo = panelGU;*/
+        VGestionLocales panelGL = new VGestionLocales(fa);
+        panelBase.add(panelGL, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 680, 580));
+        panelGL.setVisible(true);
+        panelActivo = panelGL;
         
     }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Buscar;
     private javax.swing.JPasswordField JContrasena;
     private javax.swing.JTextField JUsuario;
-    private javax.swing.JTextField TxLocalizar;
     private javax.swing.JLabel autentificacionIncorrecta;
     private javax.swing.JButton botonCerrar;
     private javax.swing.JButton botonRegistrarse;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -603,6 +593,7 @@ public class VPrincipal extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
+    private javax.swing.JTextField jTextField3;
     private javax.swing.JPanel panelBase;
     private javax.swing.JPanel panelLocPaquete;
     private javax.swing.JPanel panelLogin;
