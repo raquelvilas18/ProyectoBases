@@ -28,16 +28,16 @@ public class ModeloTablaVehiculos extends AbstractTableModel {
 
         switch (col) {
             case 0:
-                nombre = "Matricula";
+                nombre = "matricula";
                 break;
             case 1:
                 nombre = "ITV";
                 break;
             case 2:
-                nombre = "Direccion";
+                nombre = "direccion";
                 break;
             case 3:
-                nombre = "Capacidad";
+                nombre = "capacidad";
                 break;
         }
         return nombre;
