@@ -302,7 +302,7 @@ public class VAdmin extends javax.swing.JPanel {
 
     private void jPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseClicked
         // TODO add your handling code here:
-        //parent.ventanaPerfil(usuario);
+        parent.ventanaGestionLocales();
     }//GEN-LAST:event_jPanel1MouseClicked
 
     private void jPanel1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseExited

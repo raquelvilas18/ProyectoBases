@@ -6,6 +6,7 @@
 package baseDatos;
 
 import aplicacion.Empleado;
+import aplicacion.Local;
 import aplicacion.Paquete;
 import aplicacion.Pedido;
 import aplicacion.Transportista;
@@ -37,6 +38,7 @@ public class FachadaBaseDatos {
     private DAOEmpleados daoEmpleados;
     private DAOVehiculos daoVehiculos;
     private DAOPaquetes daoPaquetes;
+    private DAOLocales daoLocales;
 
     public FachadaBaseDatos(aplicacion.FachadaAplicacion fa) {
 
@@ -79,6 +81,7 @@ public class FachadaBaseDatos {
             daoEmpleados = new DAOEmpleados(conexion, this.fa);
             daoPaquetes = new DAOPaquetes(conexion, this.fa);
             daoVehiculos = new DAOVehiculos(conexion,this.fa);
+            daoLocales = new DAOLocales(conexion,this.fa);
             
         } catch (FileNotFoundException f) {
             System.out.println(f.getMessage());
@@ -190,9 +193,10 @@ public class FachadaBaseDatos {
         daoPaquetes.nuevoPaquete(p);
     }
     
-    public java.util.List<Paquete>  obtenerPaquetes(Integer codigo){
+    public List<Paquete> obtenerPaquetes(Integer codigo){
         return daoPaquetes.obtenerPaquetes(codigo);
     }
+    
 
     //------EMPLEADOS-------//
     public ArrayList<Empleado> obtenerEmpleados(String id ) {
@@ -223,8 +227,8 @@ public class FachadaBaseDatos {
     
     //------VEHICULOS-----//
     
-    public ArrayList<Vehiculo> obtenerVehiculos(){
-        return daoVehiculos.obtenerVehiculos();
+    public ArrayList<Vehiculo> obtenerVehiculos(String matricula){
+        return daoVehiculos.obtenerVehiculos(matricula);
     }
     
     public void actualizarVehi(String matricula, Vehiculo vehi){
@@ -238,6 +242,9 @@ public class FachadaBaseDatos {
     public void registrarVehi(Vehiculo vehi){
         daoVehiculos.registrarVehi(vehi);
     }
+    public void eliminarVehi(String matricula){
+        daoVehiculos.eliminarVehi(matricula);
+    }
     
     public ArrayList<Paquete> paquetesTransportista(String id) {
          return daoPaquetes.paquetesTransportista(id);
@@ -247,12 +254,7 @@ public class FachadaBaseDatos {
          return daoEmpleados.obtenerTransportistas();
      }
      
-     public void paqueteEntregado(String pedido, String codigo){
-         daoPaquetes.paqueteEntregado(pedido, codigo);
-     }
-
-
-    public String localizarVehiculo(String Trasportista){
+     public String localizarVehiculo(String Trasportista){
         Vehiculo vehiculo = null;
         vehiculo = daoVehiculos.obtenerVehiculo(Trasportista);
         if(vehiculo != null)
@@ -260,7 +262,28 @@ public class FachadaBaseDatos {
         else 
             return null;
     }
-
+     
+     //------LOCALES------//
+     
+    public ArrayList<Local> obtenerLocales(String codigo){
+         return daoLocales.obtenerLocales(codigo);
+    }
     
+    public boolean consultarCodigo(String codigo){
+        return daoLocales.consultarCodigo(codigo);
+    }
+    
+    public void registrarLocal(Local local){
+        daoLocales.registrarLocal(local);
+    }
+    
+    public void actualizarLocal(String codigo,Local local){
+         daoLocales.actualizarLocal(codigo,local);
+     }
+    
+    public void eliminarLocal(Local local){
+        daoLocales.eliminarLocal(local);
+    }
+     
 
 }

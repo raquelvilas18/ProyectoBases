@@ -163,7 +163,7 @@ public class DAOUsuarios extends AbstractDAO {
         PreparedStatement stmCliente = null;
         PreparedStatement stmOficinista = null;
         PreparedStatement stmTransportista = null;
-        PreparedStatement Empleados = null;
+        PreparedStatement stmEmpleado = null;
         if (validarUsuario(id, clave) == null) {
 
             con = this.getConexion();
@@ -182,6 +182,35 @@ public class DAOUsuarios extends AbstractDAO {
                 stmUsuario.setString(8, sexo);
                 stmUsuario.setString(9, tipo);
                 stmUsuario.executeUpdate();
+                
+                switch(tipo){
+                    case "cliente":
+                        stmCliente = con.prepareStatement("INSERT INTO clientes( usuario ) VALUES (?);");
+                        stmCliente.setString(1, id);
+                        stmCliente.executeUpdate();
+                        break;
+                    case "transportista":
+                        stmEmpleado = con.prepareStatement("INSERT INTO empleados( usuario, nomina, anoingreso ) VALUES (?,?,current_date);");
+                        stmEmpleado.setString(1, id);
+                        stmEmpleado.setInt(2, 1500);
+                        stmEmpleado.executeUpdate();
+                        
+                        stmTransportista= con.prepareStatement("INSERT INTO transportistas (empleado) VALUES (?);");
+                        stmTransportista.setString(1, id);
+                        stmTransportista.executeUpdate();
+                        break;
+                    case "oficinista":
+                        stmEmpleado = con.prepareStatement("INSERT INTO empleados( usuario, nomina, anoingreso ) VALUES (?,?,current_date);");
+                        stmEmpleado.setString(1, id);
+                        stmEmpleado.setInt(2, 1200);
+                        stmEmpleado.executeUpdate();
+                        
+                        stmOficinista = con.prepareStatement("INSERT INTO oficinistas (empleado) VALUES (?);");
+                        stmOficinista.setString(1, id);
+                        stmOficinista.executeUpdate();
+                        
+                        break;                                              
+                }
 
             } catch (SQLException e) {
                 System.out.println(e.getMessage());

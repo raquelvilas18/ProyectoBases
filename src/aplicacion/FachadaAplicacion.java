@@ -155,8 +155,8 @@ public class FachadaAplicacion {
         return fbd.obtenerUsuarios(id, nombre);
     }
 
-    public ArrayList<Vehiculo> obtenerVehiculos(){
-        return fbd.obtenerVehiculos();
+    public ArrayList<Vehiculo> obtenerVehiculos(String matricula){
+        return fbd.obtenerVehiculos(matricula);
     }
     
     public void actualizarVehi(String matricula,Vehiculo vehi){
@@ -166,15 +166,18 @@ public class FachadaAplicacion {
     public boolean consultarMatricula(String matricula){
         return fbd.consultarMatricula(matricula);
     }
-
-
-    public void eliminarPedido(int codigo) {
-        fbd.eliminarPedido(codigo);
-
-    }
     
     public void registrarVehi(Vehiculo vehi){
         fbd.registrarVehi(vehi);
+    }
+    
+    public void eliminarVehi(String matricula){
+        fbd.eliminarVehi(matricula);
+    }
+    
+    public void eliminarPedido(int codigo) {
+        fbd.eliminarPedido(codigo);
+
     }
     
      public ArrayList<Paquete> paquetesTransportista(String id) {
@@ -187,10 +190,24 @@ public class FachadaAplicacion {
      
      public void paqueteEntregado(String pedido, String codigo){
          gPaquetes.paqueteEntregado(pedido, codigo);
+     public ArrayList<Local> obtenerLocales(String codigo){
+         return fbd.obtenerLocales(codigo);
+     }
+     
+     public boolean consultarCodigo(String codigo){
+         return fbd.consultarCodigo(codigo);
+     }
+     
+     public void registrarLocal(Local local){
+         fbd.registrarLocal(local);
+     }
+     
+     public void actualizarLocal(String codigo,Local local){
+         fbd.actualizarLocal(codigo,local);
+     }
+     
+     public void eliminarLocal(Local local){
+         fbd.eliminarLocal(local);
      }
 
-
-    public void localizar(Integer codigo){
-        gPaquetes.localizar(codigo);
-    }
 }
