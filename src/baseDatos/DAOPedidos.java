@@ -178,6 +178,7 @@ public class DAOPedidos extends AbstractDAO {
                 }
                 try {
                     con.setAutoCommit(true);
+                    con.commit();
                 } catch (SQLException ex) {
                     
                     Logger.getLogger(DAOUsuarios.class.getName()).log(Level.SEVERE, null, ex);
