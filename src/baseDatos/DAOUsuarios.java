@@ -207,7 +207,7 @@ public class DAOUsuarios extends AbstractDAO {
                         
                         stmOficinista = con.prepareStatement("INSERT INTO oficinistas (empleado) VALUES (?);");
                         stmOficinista.setString(1, id);
-                        stmOficinista.executeQuery();
+                        stmOficinista.executeUpdate();
                         
                         break;                                              
                 }
