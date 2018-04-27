@@ -6,6 +6,7 @@
 package gui.administrador;
 
 import aplicacion.Empleado;
+import aplicacion.Local;
 import gui.ModeloTablaEmpleados;
 import java.awt.Color;
 import java.awt.Font;
@@ -48,17 +49,21 @@ public class VGestionEmpleados extends javax.swing.JPanel {
         labelEliminado.setVisible(false);
         ErrorID.setVisible(false);
         AltaCorrecta.setVisible(false);
-        LocalLabel.setVisible(true);
-        TxLocal.setVisible(true);
         LabelActualizar.setVisible(false);
         LocalLabel.setVisible(false);
         TxPassword.setVisible(false);
         ContrasenaL1.setVisible(false);
-        TxLocal.setVisible(false);
+        ComboLocal.setVisible(false);
         TxTipo.setVisible(false);
         labelTipo.setVisible(false);
         labelEliminado.setVisible(false);
         ErrorAlta2.setVisible(false);
+        
+        ArrayList<Local> locales = fa.obtenerLocales("");
+        for(int i= 0; i<locales.size();i++){
+            ComboLocal.insertItemAt(locales.get(i).getCodigo(), i+1);
+        }
+        
 
         tablaEmpleados.clearSelection();
         JTableHeader th;
@@ -126,8 +131,8 @@ public class VGestionEmpleados extends javax.swing.JPanel {
         ContrasenaL1 = new javax.swing.JLabel();
         JContrasena = new javax.swing.JPasswordField();
         TxPassword = new javax.swing.JPasswordField();
-        TxLocal = new javax.swing.JTextField();
         ErrorAlta2 = new javax.swing.JLabel();
+        ComboLocal = new javax.swing.JComboBox();
         FiltroId = new javax.swing.JTextField();
 
         jLabel3.setText("jLabel3");
@@ -454,19 +459,15 @@ public class VGestionEmpleados extends javax.swing.JPanel {
         });
         jPanel1.add(TxPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 100, 220, -1));
 
-        TxLocal.setBackground(new java.awt.Color(255, 232, 185));
-        TxLocal.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 1));
-        TxLocal.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TxLocalActionPerformed(evt);
-            }
-        });
-        jPanel1.add(TxLocal, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 80, 220, -1));
-
         ErrorAlta2.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         ErrorAlta2.setForeground(new java.awt.Color(255, 51, 51));
         ErrorAlta2.setText("Todos los campos son obligatorios");
         jPanel1.add(ErrorAlta2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 140, -1, -1));
+
+        ComboLocal.setBackground(new java.awt.Color(255, 232, 185));
+        ComboLocal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "" }));
+        ComboLocal.setToolTipText("");
+        jPanel1.add(ComboLocal, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 80, 210, 20));
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 360, 600, 240));
 
@@ -522,10 +523,6 @@ public class VGestionEmpleados extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_TxSexoActionPerformed
 
-    private void TxLocalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxLocalActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TxLocalActionPerformed
-
     private void panelActualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelActualizarMouseClicked
         // TODO add your handling code here:
         ModeloTablaEmpleados m;
@@ -565,12 +562,12 @@ public class VGestionEmpleados extends javax.swing.JPanel {
             nuevo = true;
             if(TxTipo.getSelectedItem().equals("oficinista")){
                 LocalLabel.setVisible(true);
-                TxLocal.setVisible(true);
+                ComboLocal.setVisible(true);
             }
             TxPassword.setVisible(true);
             ContrasenaL1.setVisible(true);
         } else {
-            if (TxId.getText().isEmpty() || TxNombre.getText().isEmpty() || TxEmail.getText().isEmpty() || TxDireccion.getText().isEmpty() || TxTelefono.getText().isEmpty() || (TxLocal.getText().isEmpty() && TxTipo.getSelectedItem().equals("oficinista"))) {
+            if (TxId.getText().isEmpty() || TxNombre.getText().isEmpty() || TxEmail.getText().isEmpty() || TxDireccion.getText().isEmpty() || TxTelefono.getText().isEmpty()) {
                 ErrorAlta2.setVisible(true);
                 
             } 
@@ -581,7 +578,11 @@ public class VGestionEmpleados extends javax.swing.JPanel {
                 
             }
             else {
-                fa.nuevoEmpleado(TxId.getText(), TxPassword.getText(), TxDni.getText(), TxNombre.getText(), TxEmail.getText(), TxDireccion.getText(), TxTelefono.getText(), (String) TxSexo.getSelectedItem(), (String) TxTipo.getSelectedItem(),Integer.parseInt(TxNomina.getText()),null);
+                if(ComboLocal.getSelectedIndex()==0){
+                    fa.nuevoEmpleado(TxId.getText(), TxPassword.getText(), TxDni.getText(), TxNombre.getText(), TxEmail.getText(), TxDireccion.getText(), TxTelefono.getText(), (String) TxSexo.getSelectedItem(), (String) TxTipo.getSelectedItem(),Integer.parseInt(TxNomina.getText()),null);
+
+                }
+                else fa.nuevoEmpleado(TxId.getText(), TxPassword.getText(), TxDni.getText(), TxNombre.getText(), TxEmail.getText(), TxDireccion.getText(), TxTelefono.getText(), (String) TxSexo.getSelectedItem(), (String) TxTipo.getSelectedItem(),Integer.parseInt(TxNomina.getText()),(String)ComboLocal.getSelectedItem());
                 AltaCorrecta.setVisible(true);
                 ErrorID.setVisible(false);
                 labelEliminado.setVisible(false);
@@ -606,12 +607,13 @@ public class VGestionEmpleados extends javax.swing.JPanel {
             String tipo=m.getFila(tablaEmpleados.getSelectedRow()).getTipo();
             if(tipo.equals("oficinista")){
                 LocalLabel.setVisible(true);
-                TxLocal.setVisible(true);
+                ComboLocal.setVisible(true);
+                ComboLocal.setSelectedItem(fa.trabajaEn(m.getFila(tablaEmpleados.getSelectedRow()).getUsuario()));
                 
             }
             else{
                 LocalLabel.setVisible(false);
-                TxLocal.setVisible(false);
+                ComboLocal.setVisible(false);
             }
         }
         this.TxId.setText(m.getFila(tablaEmpleados.getSelectedRow()).getUsuario());
@@ -624,7 +626,7 @@ public class VGestionEmpleados extends javax.swing.JPanel {
         this.TxNomina.setText(m.getFila(tablaEmpleados.getSelectedRow()).getNomina().toString());
         this.TxTipo.setSelectedItem(fa.getTipo(m.getFila(tablaEmpleados.getSelectedRow()).getUsuario()));
         if("oficinista".equals(m.getFila(tablaEmpleados.getSelectedRow()).getTipo())){
-            this.TxLocal.setText(fa.trabajaEn(m.getFila(tablaEmpleados.getSelectedRow()).getUsuario()));
+            ComboLocal.setSelectedItem(fa.trabajaEn(m.getFila(tablaEmpleados.getSelectedRow()).getUsuario()));
         }
     }//GEN-LAST:event_clickTabla
 
@@ -640,11 +642,11 @@ public class VGestionEmpleados extends javax.swing.JPanel {
         // TODO add your handling code here:
         if(((String)TxTipo.getSelectedItem()).equals("oficinista")){
             LocalLabel.setVisible(true);
-            TxLocal.setVisible(true);
+            ComboLocal.setVisible(true);
         }
         else{
             LocalLabel.setVisible(false);
-            TxLocal.setVisible(false);
+            ComboLocal.setVisible(false);
         }
     }//GEN-LAST:event_TxTipoActionPerformed
 
@@ -664,6 +666,7 @@ public class VGestionEmpleados extends javax.swing.JPanel {
     private void clearMouseClick(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_clearMouseClick
         // TODO add your handling code here:
         restablecerBoton();
+        labelEliminado.setVisible(false);
     }//GEN-LAST:event_clearMouseClick
 
 
@@ -671,6 +674,7 @@ public class VGestionEmpleados extends javax.swing.JPanel {
     private javax.swing.JLabel AltaCorrecta;
     private javax.swing.JLabel BtActualizar;
     private javax.swing.JPanel BtAlta;
+    private javax.swing.JComboBox ComboLocal;
     private javax.swing.JLabel ContrasenaL1;
     private javax.swing.JPanel DarBaja;
     private javax.swing.JLabel ErrorAlta2;
@@ -685,7 +689,6 @@ public class VGestionEmpleados extends javax.swing.JPanel {
     private javax.swing.JTextField TxDni;
     private javax.swing.JTextField TxEmail;
     private javax.swing.JTextField TxId;
-    private javax.swing.JTextField TxLocal;
     private javax.swing.JTextField TxNombre;
     private javax.swing.JTextField TxNomina;
     private javax.swing.JPasswordField TxPassword;
@@ -730,7 +733,7 @@ public class VGestionEmpleados extends javax.swing.JPanel {
         this.TxTelefono.setText(null);
         this.TxNombre.setText(null);
         this.TxNomina.setText(null);
-        this.TxLocal.setText(null);
+        this.ComboLocal.setSelectedIndex(0);
         this.TxPassword.setText(null);
         
     }
@@ -771,11 +774,11 @@ public class VGestionEmpleados extends javax.swing.JPanel {
             String tipo=m.getFila(tablaEmpleados.getSelectedRow()).getTipo();
             if(tipo.equals("oficinista")){
                 LocalLabel.setVisible(true);
-                TxLocal.setVisible(true);
+                ComboLocal.setVisible(true);
             }
             else{
                 LocalLabel.setVisible(false);
-                TxLocal.setVisible(false);
+                ComboLocal.setVisible(false);
             }
         }
     }
@@ -794,7 +797,7 @@ public class VGestionEmpleados extends javax.swing.JPanel {
         this.TxTipo.setSelectedItem(fa.getTipo(m.getFila(tablaEmpleados.getSelectedRow()).getUsuario()));
         this.TxNomina.setText(m.getFila(tablaEmpleados.getSelectedRow()).getNomina().toString());
         if("oficinista".equals(m.getFila(tablaEmpleados.getSelectedRow()).getTipo())){
-            this.TxLocal.setText(fa.trabajaEn(m.getFila(tablaEmpleados.getSelectedRow()).getUsuario()));
+            ComboLocal.setSelectedItem(fa.trabajaEn(m.getFila(tablaEmpleados.getSelectedRow()).getUsuario()));
         }
     }
 
