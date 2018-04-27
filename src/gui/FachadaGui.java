@@ -19,7 +19,6 @@ public class FachadaGui {
    } 
     
     
-    
     public void iniciaVista(){
 
       vp.setVisible(true);

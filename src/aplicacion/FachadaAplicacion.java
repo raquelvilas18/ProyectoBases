@@ -130,7 +130,7 @@ public class FachadaAplicacion {
     }
 
     public void tramitarPedido(Integer codigo, String transportista, String tramitador) {
-        gPedidos.tramitarPedido(codigo, transportista, tramitador);
+        gPedidos.tramitarPedido(this, codigo, transportista, tramitador);
     }
 
     public void actualizarDireccion() {
