@@ -31,7 +31,7 @@ public class VPedidosActivos extends javax.swing.JPanel {
         initComponents();
         tablaPedidos.setModel(tp);
         this.usuario=usuario;
-        tp.setFilas(fa.obtenerPedidosActivos(usuario.getUsuario()));
+        tp.setFilas(fa.pedidosActivosPrecio(usuario.getUsuario()));
         //SELECCION Y CENTRADO DE TEXTO
         tablaPedidos.changeSelection(0,0,false,false);
         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();

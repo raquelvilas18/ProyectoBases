@@ -143,7 +143,7 @@ public class VGestionVehiculos extends javax.swing.JPanel {
         jScrollPane1.setToolTipText("");
 
         tablaVehi.setModel(new ModeloTablaVehiculos());
-        tablaVehi.setSelectionBackground(new java.awt.Color(255, 148, 42));
+        tablaVehi.setSelectionBackground(new java.awt.Color(255, 189, 72));
         tablaVehi.setSelectionForeground(new java.awt.Color(255, 255, 255));
         tablaVehi.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {

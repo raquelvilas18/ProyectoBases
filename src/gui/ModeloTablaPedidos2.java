@@ -41,7 +41,7 @@ public class ModeloTablaPedidos2 extends AbstractTableModel {
                 nombre = "Destinatario";
                 break;
             case 5:
-                nombre = "NumeroPaquetes";
+                nombre = "NºPaquetes";
                 break;
         }
         return nombre;

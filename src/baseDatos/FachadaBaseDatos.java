@@ -186,7 +186,13 @@ public class FachadaBaseDatos {
         daoPedidos.eliminarPedido(codigo);
     }
     
+    public ArrayList<Pedido> pedidosPrecio(String u){
+        return daoPedidos.pedidosPrecio(u);
+    }
     
+    public ArrayList<Pedido> pedidosActivosPrecio(String u){
+        return daoPedidos.pedidosActivosPrecio(u);
+    }
     
     
     //------PAQUETES---------//

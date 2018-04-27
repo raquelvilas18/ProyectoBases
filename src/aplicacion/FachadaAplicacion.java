@@ -217,5 +217,13 @@ public class FachadaAplicacion {
     public void actualizarPosicion(String posicion, String transportista) {
         fbd.actualizarPosicion(posicion, transportista);
     }
+    
+    public ArrayList<Pedido> pedidosPrecio(String u){
+        return gPedidos.pedidosPrecio(u);
+    }
+    
+    public ArrayList<Pedido> pedidosActivosPrecio(String u){
+        return gPedidos.pedidosActivosPrecio(u);
+    }
 
 }

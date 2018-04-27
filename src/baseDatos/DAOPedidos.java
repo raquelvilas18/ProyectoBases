@@ -402,4 +402,91 @@ public class DAOPedidos extends AbstractDAO {
         }
     }
 
+    public ArrayList<Pedido> pedidosPrecio(String usuario) {
+        ArrayList<Pedido> resultado = new ArrayList<Pedido>();
+        Connection con;
+        PreparedStatement stmPedidos = null;
+        ResultSet rsPedidos = null;
+
+        con = super.getConexion();
+
+        try {
+            stmPedidos = con.prepareStatement("SELECT *\n"
+                    + "FROM (SELECT *\n"
+                    + "	FROM pedidos) as pe LEFT JOIN (SELECT p.codigo, sum(coste) as precio\n"
+                    + "					FROM pedidos p, paquetes pa\n"
+                    + "					WHERE p.codigo = pa.pedido\n"
+                    + "					GROUP BY p.codigo) as c on (pe.codigo = c.codigo)"
+                    + "WHERE cliente = ? ");
+            stmPedidos.setString(1, usuario);
+            rsPedidos = stmPedidos.executeQuery();
+
+            while (rsPedidos.next()) {
+                resultado.add(new Pedido(null,
+                        rsPedidos.getString("cliente"),
+                        rsPedidos.getInt("codigo"),
+                        rsPedidos.getBoolean("express"),
+                        rsPedidos.getString("direccion"),
+                        rsPedidos.getString("destinatario"),
+                        rsPedidos.getString("tramitador"), 
+                        rsPedidos.getFloat("precio")));
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
+        } finally {
+            try {
+                stmPedidos.close();
+            } catch (SQLException e) {
+                System.out.println("Imposible cerrar cursores");
+            }
+        }
+
+        return resultado;
+    }
+    
+    public ArrayList<Pedido> pedidosActivosPrecio(String usuario) {
+        ArrayList<Pedido> resultado = new ArrayList<Pedido>();
+        Connection con;
+        PreparedStatement stmPedidos = null;
+        ResultSet rsPedidos = null;
+
+        con = super.getConexion();
+
+        try {
+            stmPedidos = con.prepareStatement("SELECT *\n"
+                    + "FROM (SELECT *\n"
+                    + "	FROM pedidos) as pe LEFT JOIN (SELECT p.codigo, sum(coste) as precio\n"
+                    + "					FROM pedidos p, paquetes pa\n"
+                    + "					WHERE p.codigo = pa.pedido\n"
+                    + "					GROUP BY p.codigo) as c on (pe.codigo = c.codigo)"
+                    + "WHERE cliente = ? "
+                    + "AND fecha ISNULL");
+            stmPedidos.setString(1, usuario);
+            rsPedidos = stmPedidos.executeQuery();
+
+            while (rsPedidos.next()) {
+                resultado.add(new Pedido(null,
+                        rsPedidos.getString("cliente"),
+                        rsPedidos.getInt("codigo"),
+                        rsPedidos.getBoolean("express"),
+                        rsPedidos.getString("direccion"),
+                        rsPedidos.getString("destinatario"),
+                        rsPedidos.getString("tramitador"), 
+                        rsPedidos.getFloat("precio")));
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
+        } finally {
+            try {
+                stmPedidos.close();
+            } catch (SQLException e) {
+                System.out.println("Imposible cerrar cursores");
+            }
+        }
+
+        return resultado;
+    }
+
 }
