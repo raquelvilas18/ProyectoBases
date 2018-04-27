@@ -10,6 +10,8 @@ import gui.ModeloTablaEmpleados;
 import java.awt.Color;
 import java.awt.Font;
 import java.util.ArrayList;
+import javax.swing.JLabel;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.JTableHeader;
 
 /**
@@ -30,6 +32,13 @@ public class VGestionEmpleados extends javax.swing.JPanel {
         ModeloTablaEmpleados tp = new ModeloTablaEmpleados();
         initComponents();
         tablaEmpleados.setModel(tp);
+        //SELECCION Y CENTRADO DE TEXTO
+        tablaEmpleados.changeSelection(0,0,false,false);
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment( JLabel.CENTER );
+        tablaEmpleados.setDefaultRenderer(String.class, centerRenderer);
+        tablaEmpleados.setDefaultRenderer(Integer.class, centerRenderer);
+        /////////////////////////////////
         tp.setFilas(fa.obtenerEmpleados(this.FiltroId.getText()));
         tablaEmpleados.changeSelection(0,0,false,false);
         ErrorID.setVisible(false);
