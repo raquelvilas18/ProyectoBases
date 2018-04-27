@@ -64,14 +64,15 @@ public class DAOPaquetes extends AbstractDAO {
         con = super.getConexion();
 
         try {
-            stm = con.prepareStatement("SELECT * FROM paquetes"
-                    + " WHERE transportista = ? "
-                    + " AND fecha_entrega ISNULL ");
+            stm = con.prepareStatement("SELECT codigo, cliente, peso, pedido, ancho, alto, largo, coste, transportista, fecha_entrega, direccion\n"
+                    + "FROM paquetes as p, vehiculos as v\n"
+                    + "WHERE p.transportista = v.conductor\n"
+                    + "AND transportista = ? "
+                    + "AND fecha_entrega ISNULL ");
             stm.setString(1, id);
             rs = stm.executeQuery();
             while (rs.next()) {
-
-                paquetes.add(new Paquete(rs.getInt("codigo"), rs.getInt("pedido"), rs.getFloat("peso"), rs.getFloat("alto"), rs.getFloat("ancho"), rs.getFloat("largo"), rs.getString("fecha_entrega"), rs.getString("transportista"), rs.getString("cliente")));
+                paquetes.add(new Paquete(rs.getInt("codigo"), rs.getInt("pedido"), rs.getFloat("peso"), rs.getFloat("alto"), rs.getFloat("ancho"), rs.getFloat("largo"), rs.getString("fecha_entrega"), rs.getString("transportista"), rs.getString("cliente"), rs.getString("direccion")));
             }
 
         } catch (SQLException e) {

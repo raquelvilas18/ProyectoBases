@@ -214,4 +214,8 @@ public class FachadaAplicacion {
         fbd.eliminarLocal(local);
     }
 
+    public void actualizarPosicion(String posicion, String transportista) {
+        fbd.actualizarPosicion(posicion, transportista);
+    }
+
 }

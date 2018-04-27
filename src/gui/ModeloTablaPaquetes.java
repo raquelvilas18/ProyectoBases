@@ -45,6 +45,9 @@ public class ModeloTablaPaquetes extends AbstractTableModel {
             case 5:
                 nombre = "coste";
                 break;
+            case 6:
+                nombre = "posicion";
+                break;
         }
         return nombre;
     }
@@ -71,6 +74,9 @@ public class ModeloTablaPaquetes extends AbstractTableModel {
                 break;
             case 5:
                 clase = java.lang.Float.class;
+                break;
+            case 6:
+                clase = java.lang.String.class;
                 break;
         }
         return clase;
@@ -103,13 +109,16 @@ public class ModeloTablaPaquetes extends AbstractTableModel {
             case 5:
                 resultado = paquetes.get(row).getCoste();
                 break;
+            case 6:
+                resultado = paquetes.get(row).getPosicion();
+                break;
         }
         return resultado;
     }
 
     @Override
     public int getColumnCount() {
-        return 5;
+        return 7;
     }
 
     @Override

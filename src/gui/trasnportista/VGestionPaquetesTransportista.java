@@ -32,6 +32,7 @@ public class VGestionPaquetesTransportista extends javax.swing.JPanel {
         this.fa = fa;
         LabelError.setVisible(false);
         LabelCorrecto.setVisible(false);
+        this.t = t;
 
         JTableHeader th;
         th = this.tablaPaquetes.getTableHeader();
@@ -141,7 +142,7 @@ public class VGestionPaquetesTransportista extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tablaPaquetes);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 140, 590, 280));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, 630, 280));
 
         jLabel4.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(194, 133, 248));
@@ -223,8 +224,10 @@ public class VGestionPaquetesTransportista extends javax.swing.JPanel {
             LabelCorrecto.setVisible(false);
             LabelError.setVisible(true);
         } else {
+            fa. actualizarPosicion(TxtPosicion.getText(), t.getUsuario());
             LabelCorrecto.setVisible(true);
             LabelError.setVisible(false);
+            actualizarTabla();
         }
         // TODO add your handling code here:
     }//GEN-LAST:event_BtActualizarMouseClicked
