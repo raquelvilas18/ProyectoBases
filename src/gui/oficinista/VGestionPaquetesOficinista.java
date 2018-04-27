@@ -260,22 +260,30 @@ public class VGestionPaquetesOficinista extends javax.swing.JPanel {
 
     private void BtTramitarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtTramitarMouseClicked
         // TODO add your handling code here:
-        ModeloTablaPedidos tp;
-        tp = (ModeloTablaPedidos) tablaPedidos.getModel();
-        ModeloTablaTransportistas t;
-        t = (ModeloTablaTransportistas) tablaTransp.getModel();
-        fa.tramitarPedido(tp.getFila(tablaPedidos.getSelectedRow()).getCodigo(), t.getFila(tablaTransp.getSelectedRow()).getUsuario(), u.getUsuario());
-        LabelTramitar.setVisible(true);
-        actualizarTablaPedidos();
+        if (tablaPedidos.getRowCount() > 0 && tablaTransp.getRowCount() > 0) {
+            ModeloTablaPedidos tp;
+            tp = (ModeloTablaPedidos) tablaPedidos.getModel();
+            ModeloTablaTransportistas t;
+            t = (ModeloTablaTransportistas) tablaTransp.getModel();
+            fa.tramitarPedido(tp.getFila(tablaPedidos.getSelectedRow()).getCodigo(), t.getFila(tablaTransp.getSelectedRow()).getUsuario(), u.getUsuario());
+            LabelTramitar.setVisible(true);
+            actualizarTablaPedidos();
+        } else {
+            errorLabel.setVisible(true);
+        }
     }//GEN-LAST:event_BtTramitarMouseClicked
 
     private void BtEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtEliminarMouseClicked
         // TODO add your handling code here:
-        ModeloTablaPedidos tp;
-        tp = (ModeloTablaPedidos) tablaPedidos.getModel();
-        fa.eliminarPedido(tp.getFila(tablaPedidos.getSelectedRow()).getCodigo());
-        LabelEliminar.setVisible(true);
-        actualizarTablaPedidos();
+        if (tablaPedidos.getRowCount() > 0) {
+            ModeloTablaPedidos tp;
+            tp = (ModeloTablaPedidos) tablaPedidos.getModel();
+            fa.eliminarPedido(tp.getFila(tablaPedidos.getSelectedRow()).getCodigo());
+            LabelEliminar.setVisible(true);
+            actualizarTablaPedidos();
+        } else {
+            errorLabel.setVisible(true);
+        }
     }//GEN-LAST:event_BtEliminarMouseClicked
 
 
@@ -301,9 +309,9 @@ public class VGestionPaquetesOficinista extends javax.swing.JPanel {
     private javax.swing.JTable tablaTransp;
     // End of variables declaration//GEN-END:variables
 
-    public void actualizarTablaPedidos(){
+    public void actualizarTablaPedidos() {
         ModeloTablaPedidos tp;
-        tp = (ModeloTablaPedidos)tablaPedidos.getModel();
+        tp = (ModeloTablaPedidos) tablaPedidos.getModel();
         tp.setFilas(fa.pedidosSinTramitar());
     }
 

@@ -19,6 +19,7 @@ public class VPedido extends javax.swing.JPanel {
     private aplicacion.FachadaAplicacion fa;
     private Usuario u;
     private Pedido pd;
+    private int numPaquetes;
 
     /**
      * Creates new form VPedido
@@ -34,7 +35,8 @@ public class VPedido extends javax.swing.JPanel {
         PanelPaquete.setVisible(false);
         this.LabelAnadirError.setVisible(false);
         this.LabelAñadirCorrecto.setVisible(false);
-
+        this.SinPaquetesLabel.setVisible(false);
+        numPaquetes = 0;
     }
 
     /**
@@ -65,6 +67,9 @@ public class VPedido extends javax.swing.JPanel {
         jLabel5 = new javax.swing.JLabel();
         LabelAñadirCorrecto = new java.awt.Label();
         LabelAnadirError = new java.awt.Label();
+        SinPaquetesLabel = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
@@ -300,6 +305,25 @@ public class VPedido extends javax.swing.JPanel {
         LabelAnadirError.setText("Rellena todos los campos");
         PanelPaquete.add(LabelAnadirError, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 300, -1, -1));
 
+        SinPaquetesLabel.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        SinPaquetesLabel.setForeground(new java.awt.Color(204, 51, 0));
+        SinPaquetesLabel.setText("No puedes finalizar el pedido sin paquetes");
+        PanelPaquete.add(SinPaquetesLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 300, -1, -1));
+
+        jLabel20.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        jLabel20.setForeground(new java.awt.Color(204, 102, 0));
+        jLabel20.setText("Cancelar pedido");
+        jLabel20.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel20.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel20MouseClicked(evt);
+            }
+        });
+        PanelPaquete.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 400, 120, 40));
+
+        jSeparator1.setForeground(new java.awt.Color(204, 102, 0));
+        PanelPaquete.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 430, 120, 10));
+
         add(PanelPaquete, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, 620, 450));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/logoPequeno.png"))); // NOI18N
@@ -511,7 +535,7 @@ public class VPedido extends javax.swing.JPanel {
             Error.setVisible(true);
             Correcto.setVisible(false);
         } else {
-            pd =fa.nuevoPedido(new Pedido(u.getUsuario(), jRadioButton1.isSelected(), Txdestino.getText(), TxNombre.getText()));
+            pd = fa.nuevoPedido(new Pedido(u.getUsuario(), jRadioButton1.isSelected(), Txdestino.getText(), TxNombre.getText()));
             PanelPaquete.setVisible(true);
             label2.setVisible(true);
         }
@@ -573,10 +597,11 @@ public class VPedido extends javax.swing.JPanel {
             this.LabelAñadirCorrecto.setVisible(false);
 
         } else {
-            fa.nuevoPaquete(new Paquete(null, pd.getCodigo(), Float.parseFloat(TxPeso.getText()), Float.parseFloat(TxAlto.getText()), Float.parseFloat(TxAncho.getText()), Float.parseFloat(TxLargo.getText()),null,  null, u.getUsuario()));
+            fa.nuevoPaquete(new Paquete(null, pd.getCodigo(), Float.parseFloat(TxPeso.getText()), Float.parseFloat(TxAlto.getText()), Float.parseFloat(TxAncho.getText()), Float.parseFloat(TxLargo.getText()), null, null, u.getUsuario()));
             vaciarTxtPaquetes();
             this.LabelAnadirError.setVisible(false);
             this.LabelAñadirCorrecto.setVisible(true);
+            numPaquetes++;
         }
     }//GEN-LAST:event_BtAñadirMouseClicked
 
@@ -585,16 +610,37 @@ public class VPedido extends javax.swing.JPanel {
         if (TxPeso.getText().equals("") || TxAlto.getText().equals("") || TxAncho.getText().equals("") || TxPeso.getText().equals("")) {
             this.LabelAnadirError.setVisible(true);
             this.LabelAñadirCorrecto.setVisible(false);
-
         } else {
-            fa.nuevoPaquete(new Paquete(null, pd.getCodigo(), Float.parseFloat(TxPeso.getText()), Float.parseFloat(TxAlto.getText()), Float.parseFloat(TxAncho.getText()), Float.parseFloat(TxLargo.getText()), null,null,  u.getUsuario()));
+            if (numPaquetes > 0) {
+                fa.nuevoPaquete(new Paquete(null, pd.getCodigo(), Float.parseFloat(TxPeso.getText()), Float.parseFloat(TxAlto.getText()), Float.parseFloat(TxAncho.getText()), Float.parseFloat(TxLargo.getText()), null, null, u.getUsuario()));
+                vaciarTxtPaquetes();
+                this.LabelAnadirError.setVisible(false);
+                this.LabelAñadirCorrecto.setVisible(true);
+            } else {
+                this.SinPaquetesLabel.setVisible(true);
+                this.LabelAnadirError.setVisible(false);
+                this.LabelAñadirCorrecto.setVisible(false);
+            }
             vaciarTxtPaquetes();
-            this.LabelAnadirError.setVisible(false);
-            this.LabelAñadirCorrecto.setVisible(true);
+            PanelPaquete.setVisible(false);
+            Correcto.setVisible(true);
+            Error.setVisible(false);
+            TxApellidos.setText("");
+            TxNombre.setText("");
+            TxOrigen.setText("");
+            Txdestino.setText("");
+            TxDni.setText("");
+            TxTlf.setText("");
+            numPaquetes = 0;
         }
+
+    }//GEN-LAST:event_BtFinalizarPedidoMouseClicked
+
+    private void jLabel20MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel20MouseClicked
+        fa.eliminarPedido(pd.getCodigo());
         vaciarTxtPaquetes();
         PanelPaquete.setVisible(false);
-        Correcto.setVisible(true);
+        Correcto.setVisible(false);
         Error.setVisible(false);
         TxApellidos.setText("");
         TxNombre.setText("");
@@ -602,7 +648,9 @@ public class VPedido extends javax.swing.JPanel {
         Txdestino.setText("");
         TxDni.setText("");
         TxTlf.setText("");
-    }//GEN-LAST:event_BtFinalizarPedidoMouseClicked
+        numPaquetes = 0;
+// TODO add your handling code here:
+    }//GEN-LAST:event_jLabel20MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -614,6 +662,7 @@ public class VPedido extends javax.swing.JPanel {
     private java.awt.Label LabelAnadirError;
     private java.awt.Label LabelAñadirCorrecto;
     public javax.swing.JPanel PanelPaquete;
+    private javax.swing.JLabel SinPaquetesLabel;
     private javax.swing.JTextField TxAlto;
     private javax.swing.JTextField TxAncho;
     private javax.swing.JTextField TxApellidos;
@@ -635,6 +684,7 @@ public class VPedido extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -648,6 +698,7 @@ public class VPedido extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JRadioButton jRadioButton1;
+    private javax.swing.JSeparator jSeparator1;
     private java.awt.Label label1;
     private java.awt.Label label2;
     // End of variables declaration//GEN-END:variables
