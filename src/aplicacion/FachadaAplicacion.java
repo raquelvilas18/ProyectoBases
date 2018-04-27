@@ -156,6 +156,10 @@ public class FachadaAplicacion {
     public ArrayList<Usuario> obtenerUsuarios(String id, String nombre) {
         return fbd.obtenerUsuarios(id, nombre);
     }
+    
+    public ArrayList<Usuario> obtenerClientes(String id, String nombre) {
+        return fbd.obtenerClientes(id, nombre);
+    }
 
     public ArrayList<Vehiculo> obtenerVehiculos(String matricula) {
         return fbd.obtenerVehiculos(matricula);
@@ -216,6 +220,14 @@ public class FachadaAplicacion {
 
     public void actualizarPosicion(String posicion, String transportista) {
         fbd.actualizarPosicion(posicion, transportista);
+    }
+    
+    public ArrayList<Pedido> pedidosPrecio(String u){
+        return gPedidos.pedidosPrecio(u);
+    }
+    
+    public ArrayList<Pedido> pedidosActivosPrecio(String u){
+        return gPedidos.pedidosActivosPrecio(u);
     }
 
     public void localizar(Integer codigo){

@@ -32,14 +32,15 @@ public class DAOPaquetes extends AbstractDAO {
         con = super.getConexion();
 
         try {
-            stm = con.prepareStatement("Insert into paquetes(cliente, peso, pedido, ancho, alto, largo) "
-                    + "values (?,?,?,?, ?, ?)");
+            stm = con.prepareStatement("Insert into paquetes(cliente, peso, pedido, ancho, alto, largo, coste) "
+                    + "values (?,?,?,?, ?, ?, ?)");
             stm.setString(1, p.getCliente());
             stm.setFloat(2, p.getPeso());
             stm.setInt(3, p.getPedido());
             stm.setFloat(4, p.getAncho());
             stm.setFloat(5, p.getAlto());
             stm.setFloat(6, p.getLargo());
+            stm.setFloat(7, p.getCoste());
             stm.executeUpdate();
 
         } catch (SQLException e) {
