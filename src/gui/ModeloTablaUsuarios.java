@@ -27,20 +27,17 @@ public class ModeloTablaUsuarios extends AbstractTableModel {
 
         switch (col) {
             case 0:
-                nombre = "id";
+                nombre = "ID";
                 break;
             case 1:
-                nombre = "nombre";
+                nombre = "Nombre";
                 break;
             case 2:
-                nombre = "direccion";
+                nombre = "Email";
                 break;
             case 3:
-                nombre = "sexo";
-                break;
-            case 4:
-                nombre = "Tipo";
-                break;    
+                nombre = "Sexo";
+                break;  
         }
         return nombre;
     }
@@ -62,9 +59,6 @@ public class ModeloTablaUsuarios extends AbstractTableModel {
             case 3:
                 clase = java.lang.String.class;
                 break;
-            case 4:
-                clase = java.lang.String.class;
-                break;
         }
         return clase;
     }
@@ -84,21 +78,19 @@ public class ModeloTablaUsuarios extends AbstractTableModel {
                 resultado = usuarios.get(row).getNombre();
                 break;
             case 2:
-                resultado = usuarios.get(row).getDireccion();
+                resultado = usuarios.get(row).getCorreo();
                 break;
             case 3:
                 resultado = usuarios.get(row).getSexo();
                 break;
-            case 4:
-                resultado = usuarios.get(row).getTipo();
-                break;
+
         }
         return resultado;
     }
 
     @Override
     public int getColumnCount() {
-        return 5;
+        return 4;
     }
 
     @Override
