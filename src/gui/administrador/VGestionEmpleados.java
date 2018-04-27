@@ -176,10 +176,10 @@ public class VGestionEmpleados extends javax.swing.JPanel {
 
         jScrollPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
 
-        tablaEmpleados.setBackground(new java.awt.Color(255, 232, 185));
         tablaEmpleados.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         tablaEmpleados.setModel(new ModeloTablaEmpleados());
         tablaEmpleados.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        tablaEmpleados.setGridColor(new java.awt.Color(255, 255, 255));
         tablaEmpleados.setSelectionBackground(new java.awt.Color(255, 189, 72));
         tablaEmpleados.setSelectionForeground(new java.awt.Color(255, 255, 255));
         tablaEmpleados.setSurrendersFocusOnKeystroke(true);

@@ -388,7 +388,6 @@ public class VGestionUsuarios extends javax.swing.JPanel {
         LabelActualizar.setText("Datos actualizados");
         jPanel1.add(LabelActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, -1, -1));
 
-        TxContrasena.setEditable(false);
         TxContrasena.setBackground(new java.awt.Color(255, 232, 185));
         TxContrasena.setForeground(new java.awt.Color(102, 102, 102));
         TxContrasena.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 1));
@@ -687,7 +686,7 @@ public class VGestionUsuarios extends javax.swing.JPanel {
         LConfirmar.setVisible(false);
         LAlta.setVisible(true);
         ContrasenaL.setVisible(false);
-        //TxContrasena.setVisible(false);
-        tablaUsr.changeSelection(0,0,false,false);
+        TxContrasena.setVisible(false);
+        //tablaUsr.changeSelection(0,0,false,false);
     }
 }

@@ -108,27 +108,48 @@ public class DAOPedidos extends AbstractDAO {
 
     }
 
-
-public void tramitarPedido(Integer codigo) {
+    public void tramitarPedido(Integer codigo, String transportista, String tramitador) {
         Connection con;
-        PreparedStatement stmPedidos = null;
+        PreparedStatement stm = null, stm2 = null, stm3 = null;
+        ResultSet rs;
 
         con = super.getConexion();
 
         try {
-            stmPedidos = con.prepareStatement("update pedidos "
-                    + "set fecha=current_date, "
-                    + "where codigo=?");
-            stmPedidos.setInt(1, codigo);
+            stm = con.prepareStatement("SELECT * "
+                    + "FROM vehiculos "
+                    + "WHERE conductor = ?");
+            stm.setString(1, transportista);
 
-            stmPedidos.executeUpdate();
+            rs = stm.executeQuery();
+            if (rs.next()) {
+                String matricula = rs.getString("matricula");
+                stm2 = con.prepareStatement("UPDATE paquetes "
+                        + "SET transportista = ? "
+                        + "WHERE pedido =  ?");
+                stm2.setString(1, transportista);
+               // stm2.setString(2, matricula);
+                stm2.setInt(2, codigo);
+
+                stm2.executeUpdate();
+
+                stm3 = con.prepareStatement("UPDATE pedidos "
+                        + "SET tramitador = ? ");
+                stm3.setString(1, tramitador);
+                stm3.executeUpdate();
+
+            }else{
+                System.out.println("Chungo");
+            }
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
             this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
         } finally {
             try {
-                stmPedidos.close();
+                stm.close();
+                stm2.close();
+                stm3.close();
             } catch (SQLException e) {
                 System.out.println("Imposible cerrar cursores");
             }
@@ -266,8 +287,10 @@ public void tramitarPedido(Integer codigo) {
         try {
             stmPedidos = con.prepareStatement("SELECT * "
                     + "FROM pedidos "
-                    + "WHERE fecha ISNULL "
-                    + "AND codigo = ?");
+                    + "WHERE codigo IN (SELECT pedido "
+                    + "		FROM paquetes "
+                    + "		WHERE transportista ISNULL"
+                    + "         AND fecha ISNULL)");
             stmPedidos.setInt(1, codigo);
 
             rsPedidos = stmPedidos.executeQuery();
@@ -295,7 +318,6 @@ public void tramitarPedido(Integer codigo) {
         return resultado;
     }
 
-
     public ArrayList<Pedido> pedidosSinTramitar() {
         ArrayList<Pedido> resultado = new ArrayList<Pedido>();
         Connection con;
@@ -307,7 +329,10 @@ public void tramitarPedido(Integer codigo) {
         try {
             stmPedidos = con.prepareStatement("SELECT * "
                     + "FROM pedidos "
-                    + "WHERE fecha ISNULL");
+                    + "WHERE codigo IN (SELECT pedido "
+                    + "		FROM paquetes "
+                    + "		WHERE transportista ISNULL"
+                    + "         AND fecha ISNULL)");
 
             rsPedidos = stmPedidos.executeQuery();
 
@@ -336,12 +361,25 @@ public void tramitarPedido(Integer codigo) {
 
     public void eliminarPedido(int codigo) {
         Connection con;
-        PreparedStatement stm = null;
+        PreparedStatement stm = null, stm2 = null, stm3 = null;
         ResultSet rs;
+        int paquete;
 
         con = this.getConexion();
 
         try {
+            stm2 = con.prepareStatement("SELECT codigo "
+                    + " FROM paquetes "
+                    + " WHERE pedido = ? ");
+            stm2.setInt(1, codigo);
+            rs = stm2.executeQuery();
+            while(rs.next()){ // Eliminamos todos los paquetes del pedido primero
+                paquete = rs.getInt("codigo");
+                stm3 = con.prepareStatement("DELETE FROM paquetes WHERE codigo = ? AND pedido = ? ");
+                stm3.setInt(2, codigo);
+                stm3.setInt(1, paquete);
+                stm3.executeUpdate();
+            }
             stm = con.prepareStatement("DELETE FROM pedidos WHERE codigo = ?");
             stm.setInt(1, codigo);
             stm.executeUpdate();

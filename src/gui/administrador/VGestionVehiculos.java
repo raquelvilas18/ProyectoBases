@@ -117,7 +117,7 @@ public class VGestionVehiculos extends javax.swing.JPanel {
         jLabel2.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(60, 60, 159));
         jLabel2.setText("Gestion Vehiuculos");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 100, 260, -1));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 260, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/logoPequeno.png"))); // NOI18N
         jLabel1.setText("jLabel1");
@@ -129,14 +129,14 @@ public class VGestionVehiculos extends javax.swing.JPanel {
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 570, Short.MAX_VALUE)
+            .addGap(0, 610, Short.MAX_VALUE)
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 10, Short.MAX_VALUE)
         );
 
-        add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 129, 570, 10));
+        add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 610, 10));
 
         tablaVehi.setModel(new ModeloTablaVehiculos());
         tablaVehi.addMouseListener(new java.awt.event.MouseAdapter() {

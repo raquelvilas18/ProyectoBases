@@ -49,4 +49,8 @@ public class GestionPedidos {
     public java.util.List<Paquete> comprobarLocalizacion(Integer codigo) {
         return fbd.comprobarLocalizacion(codigo);
     }
+    
+    public void tramitarPedido(Integer codigo, String transportista, String tramitador) {
+        fbd.tramitarPedido(codigo, transportista, tramitador);
+    }
 }

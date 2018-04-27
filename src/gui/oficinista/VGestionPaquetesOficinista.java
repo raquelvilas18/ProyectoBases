@@ -7,8 +7,11 @@ package gui.oficinista;
 
 import gui.ModeloTablaTransportistas;
 import gui.ModeloTablaPedidos;
+import aplicacion.*;
 import java.awt.Color;
 import java.awt.Font;
+import javax.swing.JLabel;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.JTableHeader;
 
 /**
@@ -18,17 +21,19 @@ import javax.swing.table.JTableHeader;
 public class VGestionPaquetesOficinista extends javax.swing.JPanel {
 
     aplicacion.FachadaAplicacion fa;
+    Usuario u;
 
     /**
      * Creates new form VGestionPaquetes
      */
-    public VGestionPaquetesOficinista(aplicacion.FachadaAplicacion fa) {
+    public VGestionPaquetesOficinista(aplicacion.FachadaAplicacion fa, Usuario u) {
         initComponents();
         this.fa = fa;
+        this.u = u;
         ModeloTablaPedidos tp = new ModeloTablaPedidos();
         tablaPedidos.setModel(tp);
         tp.setFilas(fa.pedidosSinTramitar());
-        
+
         ModeloTablaTransportistas tt = new ModeloTablaTransportistas();
         tablaTransp.setModel(tt);
         tt.setFilas(fa.obtenerTransportistas());
@@ -50,6 +55,19 @@ public class VGestionPaquetesOficinista extends javax.swing.JPanel {
         LabelTramitar.setVisible(false);
         LabelEliminar.setVisible(false);
         errorLabel.setVisible(false);
+
+        //SELECCION Y CENTRADO DE TEXTO
+        tablaPedidos.changeSelection(0, 0, false, false);
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment(JLabel.CENTER);
+        tablaPedidos.setDefaultRenderer(String.class, centerRenderer);
+        tablaPedidos.setDefaultRenderer(Integer.class, centerRenderer);
+        /////////////////////////////////
+        tablaTransp.changeSelection(0, 0, false, false);
+        centerRenderer.setHorizontalAlignment(JLabel.CENTER);
+        tablaTransp.setDefaultRenderer(String.class, centerRenderer);
+        tablaTransp.setDefaultRenderer(Integer.class, centerRenderer);
+        /////////////////////////////////
 
     }
 
@@ -135,7 +153,6 @@ public class VGestionPaquetesOficinista extends javax.swing.JPanel {
         tablaPedidos.setSelectionForeground(new java.awt.Color(255, 255, 255));
         tablaPedidos.setShowHorizontalLines(false);
         tablaPedidos.setShowVerticalLines(false);
-        tablaPedidos.setSurrendersFocusOnKeystroke(true);
         tablaPedidos.getTableHeader().setResizingAllowed(false);
         tablaPedidos.getTableHeader().setReorderingAllowed(false);
         tablaPedidos.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -145,7 +162,7 @@ public class VGestionPaquetesOficinista extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tablaPedidos);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 130, 580, 140));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 130, 590, 140));
 
         BtTramitar.setBackground(new java.awt.Color(89, 171, 36));
         BtTramitar.setToolTipText("");
@@ -179,8 +196,8 @@ public class VGestionPaquetesOficinista extends javax.swing.JPanel {
 
         jLabel17.setFont(new java.awt.Font("Noto Sans", 0, 18)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(215, 215, 215));
-        jLabel17.setText("Eliminar");
-        BtEliminar.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 10, 110, -1));
+        jLabel17.setText("Eliminar pedido");
+        BtEliminar.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, 160, -1));
 
         jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-eliminar-26.png"))); // NOI18N
         jLabel19.setText("jLabel1");
@@ -205,6 +222,7 @@ public class VGestionPaquetesOficinista extends javax.swing.JPanel {
         tablaTransp.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         tablaTransp.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         tablaTransp.setModel(new ModeloTablaTransportistas());
+        tablaTransp.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         tablaTransp.setGridColor(new java.awt.Color(255, 255, 255));
         tablaTransp.setSelectionBackground(new java.awt.Color(89, 171, 36));
         tablaTransp.setSelectionForeground(new java.awt.Color(255, 255, 255));
@@ -242,18 +260,30 @@ public class VGestionPaquetesOficinista extends javax.swing.JPanel {
 
     private void BtTramitarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtTramitarMouseClicked
         // TODO add your handling code here:
-        ModeloTablaPedidos tp = new ModeloTablaPedidos();
-        tablaPedidos.setModel(tp);
-        fa.tramitarPedido(tp.getFila(tablaPedidos.getSelectedRow()).getCodigo());
-        LabelTramitar.setVisible(true);
+        if (tablaPedidos.getRowCount() > 0 && tablaTransp.getRowCount() > 0) {
+            ModeloTablaPedidos tp;
+            tp = (ModeloTablaPedidos) tablaPedidos.getModel();
+            ModeloTablaTransportistas t;
+            t = (ModeloTablaTransportistas) tablaTransp.getModel();
+            fa.tramitarPedido(tp.getFila(tablaPedidos.getSelectedRow()).getCodigo(), t.getFila(tablaTransp.getSelectedRow()).getUsuario(), u.getUsuario());
+            LabelTramitar.setVisible(true);
+            actualizarTablaPedidos();
+        } else {
+            errorLabel.setVisible(true);
+        }
     }//GEN-LAST:event_BtTramitarMouseClicked
 
     private void BtEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtEliminarMouseClicked
         // TODO add your handling code here:
-        ModeloTablaPedidos tp = new ModeloTablaPedidos();
-        tablaPedidos.setModel(tp);
-        fa.eliminarPedido(tp.getFila(tablaPedidos.getSelectedRow()).getCodigo());
-        LabelEliminar.setVisible(true);
+        if (tablaPedidos.getRowCount() > 0) {
+            ModeloTablaPedidos tp;
+            tp = (ModeloTablaPedidos) tablaPedidos.getModel();
+            fa.eliminarPedido(tp.getFila(tablaPedidos.getSelectedRow()).getCodigo());
+            LabelEliminar.setVisible(true);
+            actualizarTablaPedidos();
+        } else {
+            errorLabel.setVisible(true);
+        }
     }//GEN-LAST:event_BtEliminarMouseClicked
 
 
@@ -278,4 +308,11 @@ public class VGestionPaquetesOficinista extends javax.swing.JPanel {
     private javax.swing.JTable tablaPedidos;
     private javax.swing.JTable tablaTransp;
     // End of variables declaration//GEN-END:variables
+
+    public void actualizarTablaPedidos() {
+        ModeloTablaPedidos tp;
+        tp = (ModeloTablaPedidos) tablaPedidos.getModel();
+        tp.setFilas(fa.pedidosSinTramitar());
+    }
+
 }

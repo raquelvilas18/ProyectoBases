@@ -121,6 +121,7 @@ public class DAOLocales extends AbstractDAO {
     public void registrarLocal(Local local){
         Connection con;
         PreparedStatement stmLocal = null;
+        PreparedStatement stmOficinista=null;
 
 
             con = this.getConexion();
@@ -135,6 +136,12 @@ public class DAOLocales extends AbstractDAO {
                 stmLocal.setInt(4, local.getCapacidad());
 
                 stmLocal.executeUpdate();
+                
+                stmOficinista = con.prepareStatement("UPDATE oficinistas SET local=? WHERE empleado=?;");
+                stmOficinista.setString(1, local.getCodigo());
+                stmOficinista.setString(2, local.getEncargado());
+                
+                stmOficinista.executeUpdate();
 
             } catch (SQLException e) {
                 System.out.println(e.getMessage());
@@ -149,15 +156,22 @@ public class DAOLocales extends AbstractDAO {
   
     }
     
-    public void eliminarLocal(String codigo){
+    public void eliminarLocal(Local local){
         Connection con;
         PreparedStatement stmLocal = null;
+        PreparedStatement stmOficinista = null;
 
         con = this.getConexion();
 
         try {
+            
+            stmOficinista= con.prepareStatement("UPDATE oficinistas SET local=? WHERE empleado=?;");
+            stmOficinista.setString(1, null);
+            stmOficinista.setString(2,local.getEncargado());
+            stmOficinista.executeUpdate();
+            
             stmLocal = con.prepareStatement("DELETE FROM locales WHERE codigo = ?");
-            stmLocal.setString(1, codigo);
+            stmLocal.setString(1, local.getCodigo());
             stmLocal.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e.getMessage());

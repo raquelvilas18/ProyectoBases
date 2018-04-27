@@ -36,7 +36,7 @@ public class ModeloTablaEmpleados extends AbstractTableModel {
                 nombre = "Nomina";
                 break;
             case 3:
-                nombre = "Nomina";
+                nombre = "Tipo";
                 break;
         }
         return nombre;

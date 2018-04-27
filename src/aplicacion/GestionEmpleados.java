@@ -43,9 +43,7 @@ public class GestionEmpleados extends GestionUsuarios{
         super.getFbd().actualizarEmp(id,emp);
     }
     
-    public void tramitarPedido(Integer codigo){
-        super.getFbd().tramitarPedido(codigo);
-    }
+    
     public String trabajaEn(String id) {  
         return super.getFbd().trabajaEn(id);
     }  
