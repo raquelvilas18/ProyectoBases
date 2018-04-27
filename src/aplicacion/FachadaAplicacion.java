@@ -189,7 +189,7 @@ public class FachadaAplicacion {
     public ArrayList<Transportista> obtenerTransportistas() {
         return gEmpleados.obtenerTransportistas();
     }
-
+            
     public void paqueteEntregado(String pedido, String codigo) {
         gPaquetes.paqueteEntregado(pedido, codigo);
     }
@@ -218,4 +218,8 @@ public class FachadaAplicacion {
         fbd.actualizarPosicion(posicion, transportista);
     }
 
+    public void localizar(Integer codigo){
+        gPaquetes.localizar(codigo);
+    }
+    
 }

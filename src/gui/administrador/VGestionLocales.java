@@ -42,6 +42,7 @@ public class VGestionLocales extends javax.swing.JPanel {
         ErrorID.setVisible(false);
         AltaCorrecta.setVisible(false);
         LabelActualizar.setVisible(false);
+        ErrorEncargado.setVisible(false);
         ModeloTablaLocales m = (ModeloTablaLocales) tablaLoc.getModel();
         if(m.getRowCount()>0){
             this.TxCodigo.setText(m.getFila(tablaLoc.getSelectedRow()).getCodigo());
@@ -102,6 +103,7 @@ public class VGestionLocales extends javax.swing.JPanel {
         jLabel10 = new javax.swing.JLabel();
         AltaCorrecta = new javax.swing.JLabel();
         ErrorAlta1 = new javax.swing.JLabel();
+        ErrorEncargado = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaLoc = new javax.swing.JTable();
 
@@ -280,7 +282,7 @@ public class VGestionLocales extends javax.swing.JPanel {
         ErrorID.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         ErrorID.setForeground(new java.awt.Color(255, 51, 51));
         ErrorID.setText("Código ya existente o vacío");
-        jPanel1.add(ErrorID, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, -1, -1));
+        jPanel1.add(ErrorID, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, -1));
 
         BtAlta.setBackground(new java.awt.Color(255, 148, 42));
         BtAlta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -325,6 +327,11 @@ public class VGestionLocales extends javax.swing.JPanel {
         ErrorAlta1.setForeground(new java.awt.Color(255, 51, 51));
         ErrorAlta1.setText("Todos los campos son obligatorios");
         jPanel1.add(ErrorAlta1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 130, -1, -1));
+
+        ErrorEncargado.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        ErrorEncargado.setForeground(new java.awt.Color(255, 51, 51));
+        ErrorEncargado.setText("Encargado no válido");
+        jPanel1.add(ErrorEncargado, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, -1, -1));
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 360, 600, 200));
 
@@ -455,6 +462,7 @@ public class VGestionLocales extends javax.swing.JPanel {
     private javax.swing.JPanel BtAlta;
     private javax.swing.JPanel BtBaja;
     private javax.swing.JLabel ErrorAlta1;
+    private javax.swing.JLabel ErrorEncargado;
     private javax.swing.JLabel ErrorID;
     private javax.swing.JTextField FiltroCodigo;
     private javax.swing.JLabel LAlta;
@@ -499,12 +507,18 @@ public class VGestionLocales extends javax.swing.JPanel {
     //public Usuario(String usuario, String password, String dni, String nombre, String correo, String direccion, String telefono, String sexo) {
     public void actualizarLocal(String codigo) {
         ModeloTablaLocales m;
-
+        String local;
         m = (ModeloTablaLocales) tablaLoc.getModel();
+        local=fa.trabajaEn(TxEncargado.getText());
+        if(local.equals(codigo) || local.equals(TxEncargado.getText())){
         fa.actualizarLocal(codigo, new Local(TxCodigo.getText(),TxDireccion.getText(), TxEncargado.getText(), Integer.parseInt(TxCapacidad.getText())));
+        ErrorEncargado.setVisible(false);
         LabelActualizar.setVisible(true);
         m.setFilas(fa.obtenerLocales(this.FiltroCodigo.getText()));
         BtActualizar.setEnabled(false);
+        }else{
+            ErrorEncargado.setVisible(true);
+        }
     }
 
     public void eliminarLocal() {
