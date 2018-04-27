@@ -26,20 +26,19 @@ public class GestionPaquetes {
         fbd.nuevoPaquete(p);
     }
     
-    public void localizar(Integer codigo){
+    public java.util.List<Paquete> localizar(Integer codigo){
         java.util.List<Paquete> Paquetes;
-        java.util.List<String> Posiciones = new java.util.ArrayList<String>();
         Paquetes = fbd.obtenerPaquetes(codigo);
         for(Paquete p : Paquetes){
             if(p.getFecha_entrega() != null && !p.getFecha_entrega().equals("")){
-                Posiciones.add("Entregado");
+                p.setPosicion("Entregado");
             }else if(p.getTransportista() != null && !p.getTransportista().equals("")){
-                Posiciones.add(fbd.localizarVehiculo(p.getTransportista()));
+                p.setPosicion(fbd.localizarVehiculo(p.getTransportista()));
             }else {
-                Posiciones.add("En tramitacion.");
+                p.setPosicion("En tramitacion.");
             }
         }
-        fgui.localizar(Paquetes, Posiciones);
+        return Paquetes;
     }
     
     public ArrayList<Paquete> paquetesTransportista(String id) {

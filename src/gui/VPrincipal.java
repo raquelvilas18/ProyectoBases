@@ -29,7 +29,9 @@ import gui.administrador.VGestionLocales;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.KeyEvent;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.JTableHeader;
 
 /**
@@ -68,14 +70,22 @@ public class VPrincipal extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         autentificacionIncorrecta.setVisible(false);
         this.PanelTabla.setVisible(false);
-        
+
         JTableHeader th;
         th = this.tablaLoc.getTableHeader();
         Font fuente = new Font("SansSerif", Font.PLAIN, 13);
         th.setFont(fuente);
-        th.setForeground(new Color(65,105,225));
+        th.setForeground(new Color(65, 105, 225));
         th.setBackground(Color.WHITE);
-        
+
+        tablaLoc.changeSelection(0, 0, false, false);
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment(JLabel.CENTER);
+        tablaLoc.setDefaultRenderer(String.class, centerRenderer);
+        tablaLoc.setDefaultRenderer(Integer.class, centerRenderer);
+
+        idError.setVisible(false);
+
     }
 
     /**
@@ -97,6 +107,7 @@ public class VPrincipal extends javax.swing.JFrame {
         PanelTabla = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaLoc = new javax.swing.JTable();
+        idError = new javax.swing.JLabel();
         panelLogin = new javax.swing.JPanel();
         textoUsuario = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -181,6 +192,7 @@ public class VPrincipal extends javax.swing.JFrame {
 
         tablaLoc.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         tablaLoc.setModel(new ModeloTablaLocalizador());
+        tablaLoc.setGridColor(new java.awt.Color(255, 255, 255));
         tablaLoc.setSelectionBackground(new java.awt.Color(89, 136, 235));
         tablaLoc.setSelectionForeground(new java.awt.Color(255, 255, 255));
         jScrollPane1.setViewportView(tablaLoc);
@@ -188,6 +200,11 @@ public class VPrincipal extends javax.swing.JFrame {
         PanelTabla.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 680, 140));
 
         panelLocPaquete.add(PanelTabla, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, 680, 160));
+
+        idError.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        idError.setForeground(new java.awt.Color(204, 0, 0));
+        idError.setText("Introduce un id");
+        panelLocPaquete.add(idError, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 80, -1, -1));
 
         panelBase.add(panelLocPaquete, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 290, 740, 290));
 
@@ -344,12 +361,12 @@ public class VPrincipal extends javax.swing.JFrame {
 
     private void LocalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LocalizarActionPerformed
         // TODO add your handling code here:
-        String codigo = TxLocalizar.getText();
-        if (codigo.equals("")) {
-            VAviso vaviso = new VAviso(this, true, "No se ha indicado ningún código de búsqueda.");
-        } else {
-            fa.localizar(Integer.parseInt(codigo));
-        }
+//        String codigo = TxLocalizar.getText();
+//        if (codigo.equals("")) {
+//            VAviso vaviso = new VAviso(this, true, "No se ha indicado ningún código de búsqueda.");
+//        } else {
+//            fa.localizar(Integer.parseInt(codigo));
+//        }
     }//GEN-LAST:event_LocalizarActionPerformed
 
     private void JUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JUsuarioActionPerformed
@@ -414,17 +431,23 @@ public class VPrincipal extends javax.swing.JFrame {
 
     private void LocalizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LocalizarMouseClicked
         // TODO add your handling code here:
-        PanelTabla.setVisible(true);
-//        tablaLocalizador.setVisible(true);
-//        ModeloTablaLocalizador Mtp = new ModeloTablaLocalizador();
-//        tablaLocalizador.setModel(Mtp);
-//        Mtp.setFilas(Paquetes, Posicion);
+        if (!TxLocalizar.getText().isEmpty()) {
+            PanelTabla.setVisible(true);
+            ModeloTablaLocalizador t;
+            t = (ModeloTablaLocalizador) this.tablaLoc.getModel();
+            tablaLoc.setModel(t);
+            t.setFilas(fa.localizar(Integer.parseInt(TxLocalizar.getText())));
+        } else {
+            idError.setVisible(true);
+        }
 
     }//GEN-LAST:event_LocalizarMouseClicked
 
     private void panelLocPaqueteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelLocPaqueteMouseClicked
         // TODO add your handling code here:
         PanelTabla.setVisible(false);
+        idError.setVisible(false);
+
     }//GEN-LAST:event_panelLocPaqueteMouseClicked
 
     public void ventanaPedido(Usuario usuario) {
@@ -645,6 +668,7 @@ public class VPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel autentificacionIncorrecta;
     private javax.swing.JButton botonCerrar;
     private javax.swing.JButton botonRegistrarse;
+    private javax.swing.JLabel idError;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

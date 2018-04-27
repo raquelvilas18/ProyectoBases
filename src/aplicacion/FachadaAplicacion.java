@@ -230,8 +230,8 @@ public class FachadaAplicacion {
         return gPedidos.pedidosActivosPrecio(u);
     }
 
-    public void localizar(Integer codigo){
-        gPaquetes.localizar(codigo);
+    public java.util.List<Paquete> localizar(Integer codigo){
+        return gPaquetes.localizar(codigo);
     }
     
 }
