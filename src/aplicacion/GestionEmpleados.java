@@ -41,6 +41,7 @@ public class GestionEmpleados extends GestionUsuarios{
     public void actualizarEmpleado(String id, Empleado emp){
         super.getFbd().actualizarUsr(id, emp);
         super.getFbd().actualizarEmp(id,emp);
+        
     }
     
     
