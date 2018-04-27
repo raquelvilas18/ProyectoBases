@@ -156,6 +156,10 @@ public class FachadaAplicacion {
     public ArrayList<Usuario> obtenerUsuarios(String id, String nombre) {
         return fbd.obtenerUsuarios(id, nombre);
     }
+    
+    public ArrayList<Usuario> obtenerClientes(String id, String nombre) {
+        return fbd.obtenerClientes(id, nombre);
+    }
 
     public ArrayList<Vehiculo> obtenerVehiculos(String matricula) {
         return fbd.obtenerVehiculos(matricula);

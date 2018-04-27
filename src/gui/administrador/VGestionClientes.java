@@ -30,7 +30,7 @@ public class VGestionClientes extends javax.swing.JPanel {
         ModeloTablaUsuarios tp = new ModeloTablaUsuarios();
         initComponents();
         tablaUsr.setModel(tp);
-        tp.setFilas(fa.obtenerUsuarios(this.FiltroId.getText(), this.FiltroNombre.getText()));
+        tp.setFilas(fa.obtenerClientes(this.FiltroId.getText(), this.FiltroNombre.getText()));
         tablaUsr.changeSelection(0,0,false,false);
         ErrorID.setVisible(false);
         LConfirmar.setVisible(false);
@@ -456,7 +456,7 @@ public class VGestionClientes extends javax.swing.JPanel {
 
         ModeloTablaUsuarios tp = new ModeloTablaUsuarios();
         tablaUsr.setModel(tp);
-        tp.setFilas(fa.obtenerUsuarios(this.FiltroId.getText(), this.FiltroNombre.getText()));
+        tp.setFilas(fa.obtenerClientes(this.FiltroId.getText(), this.FiltroNombre.getText()));
 
     }//GEN-LAST:event_jLabel6MouseClicked
 
@@ -646,7 +646,7 @@ public class VGestionClientes extends javax.swing.JPanel {
         m = (ModeloTablaUsuarios) tablaUsr.getModel();
         fa.actualizarUsr(id, new Usuario(TxId.getText(), null, TxDni.getText(), TxNombre.getText(), TxCorreo.getText(), TxDireccion.getText(), TxTelefono.getText(), (String) TxSexo.getSelectedItem(), null));
         LabelActualizar.setVisible(true);
-        m.setFilas(fa.obtenerUsuarios(this.FiltroId.getText(), this.FiltroNombre.getText()));
+        m.setFilas(fa.obtenerClientes(this.FiltroId.getText(), this.FiltroNombre.getText()));
         BtActualizar.setEnabled(false);
     }
 
@@ -662,7 +662,7 @@ public class VGestionClientes extends javax.swing.JPanel {
         ModeloTablaUsuarios m;
 
         m = (ModeloTablaUsuarios) tablaUsr.getModel();
-        m.setFilas(fa.obtenerUsuarios(this.FiltroId.getText(), this.FiltroNombre.getText()));
+        m.setFilas(fa.obtenerClientes(this.FiltroId.getText(), this.FiltroNombre.getText()));
     }
 
     public void vaciarTxt() {

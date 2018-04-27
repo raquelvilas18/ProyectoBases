@@ -147,6 +147,10 @@ public class FachadaBaseDatos {
         return daoUsuarios.obtenerUsuarios(id, nombre);
     }
     
+    public ArrayList<Usuario> obtenerClientes(String id, String nombre) {
+        return daoUsuarios.obtenerClientes(id, nombre);
+    }
+    
 
 
     /*----------  PEDIDOS ----------*/
