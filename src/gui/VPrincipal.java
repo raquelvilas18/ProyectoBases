@@ -15,7 +15,7 @@ import gui.administrador.VAdmin;
 import gui.cliente.VPerfil;
 import gui.cliente.VUsr;
 import gui.oficinista.VPerfilOficinista;
-import gui.oficinista.VGestionPaquetesOficinista;
+import gui.oficinista.VGestionPedidosOficinista;
 import gui.oficinista.VGestionUsuariosOficinista;
 import aplicacion.FachadaAplicacion;
 import gui.oficinista.VOficinista;
@@ -505,7 +505,7 @@ public class VPrincipal extends javax.swing.JFrame {
     
     public void ventanaGestionPedidosOficinista(Usuario u) {
         panelActivo.setVisible(false);
-        VGestionPaquetesOficinista panelGU = new VGestionPaquetesOficinista(fa, u);
+        VGestionPedidosOficinista panelGU = new VGestionPedidosOficinista(fa, u);
         panelBase.add(panelGU, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 680, 580));
         panelActivo = panelGU;
     }
