@@ -162,8 +162,8 @@ public class FachadaBaseDatos {
         return daoPedidos.getPedido(p);
     }
 
-    public void tramitarPedido(Integer codigo, String transportista, String tramitador) {
-        daoPedidos.tramitarPedido(codigo, transportista, tramitador);
+    public int tramitarPedido(Integer codigo, String transportista, String tramitador) {
+        return daoPedidos.tramitarPedido(codigo, transportista, tramitador);
     }
 
     public java.util.List<Pedido> obtenerHistorialPedidos(String usuario) {

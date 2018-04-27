@@ -3,7 +3,10 @@ package baseDatos;
 import aplicacion.*;
 import gui.*;
 import java.sql.*;
+import static java.sql.Connection.TRANSACTION_SERIALIZABLE;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -108,41 +111,89 @@ public class DAOPedidos extends AbstractDAO {
 
     }
 
-    public void tramitarPedido(Integer codigo, String transportista, String tramitador) {
+    public int tramitarPedido(Integer codigo, String transportista, String tramitador) {
         Connection con;
         PreparedStatement stm = null, stm2 = null, stm3 = null;
         ResultSet rs;
-
+        int count = 0, NPaq = 0, resultado = 0;
         con = super.getConexion();
-
         try {
-            stm = con.prepareStatement("SELECT * "
+            con.setAutoCommit(false);
+        } catch (SQLException ex) {
+            Logger.getLogger(DAOUsuarios.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            con.setTransactionIsolation(TRANSACTION_SERIALIZABLE);
+        } catch (SQLException ex) {
+            Logger.getLogger(DAOUsuarios.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            stm = con.prepareStatement("SELECT (SELECT capacidad "
                     + "FROM vehiculos "
-                    + "WHERE conductor = ?");
+                    + "WHERE conductor = ?)-count(*), count(*)"
+                    + "FROM paquetes"
+                    + "WHERE pedido = 4 AND fecha_entrega IS NULL ");
             stm.setString(1, transportista);
-
             rs = stm.executeQuery();
             if (rs.next()) {
-                String matricula = rs.getString("matricula");
+                count = rs.getInt(1);
+                NPaq = rs.getInt(2);
+                if(count >= 0){
                 stm2 = con.prepareStatement("UPDATE paquetes "
                         + "SET transportista = ? "
-                        + "WHERE pedido =  ?");
+                        + "WHERE pedido =  ? AND fecha_entrega IS NULL ");
                 stm2.setString(1, transportista);
-                // stm2.setString(2, matricula);
                 stm2.setInt(2, codigo);
 
                 stm2.executeUpdate();
-
+                
                 stm3 = con.prepareStatement("UPDATE pedidos "
                         + "SET tramitador = ? ");
                 stm3.setString(1, tramitador);
                 stm3.executeUpdate();
 
+                
+                }else if ((count+NPaq) > 0){
+                    stm2 = con.prepareStatement("UPDATE paquetes\n" +
+                        "SET transportista=?\n" +
+                        "WHERE pedido = ? AND fecha_entrega IS NULL AND codigo<="
+                            + "(SELECT ? + count(*) FROM paquetes\n" +
+                        "WHERE pedido = ? AND fecha_entrega IS NOT NULL AND codigo<=?)");
+                stm2.setString(1, transportista);
+                stm2.setInt(2, codigo);
+                stm2.setInt(3, count+NPaq);
+                stm2.setInt(4, codigo);
+                stm2.setInt(5, count+NPaq);
+
+                stm2.executeUpdate();
+                resultado=count+NPaq;
+                
+                stm3 = con.prepareStatement("UPDATE pedidos "
+                        + "SET tramitador = ? ");
+                stm3.setString(1, tramitador);
+                stm3.executeUpdate();
+                
+                }else{
+                    resultado = count;
+                }
+                try {
+                    con.setAutoCommit(true);
+                    con.commit();
+                } catch (SQLException ex) {
+                    
+                    Logger.getLogger(DAOUsuarios.class.getName()).log(Level.SEVERE, null, ex);
+                }
             } else {
                 System.out.println("Chungo");
             }
 
         } catch (SQLException e) {
+            try {
+                    System.out.println("Rollback");
+                    con.rollback();
+                } catch (SQLException ex) {
+                    Logger.getLogger(DAOUsuarios.class.getName()).log(Level.SEVERE, null, ex);
+                }
             System.out.println(e.getMessage());
             this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
         } finally {
@@ -154,6 +205,7 @@ public class DAOPedidos extends AbstractDAO {
                 System.out.println("Imposible cerrar cursores");
             }
         }
+        return resultado;
     }
 
     public java.util.List<Pedido> obtenerHistorialPedidos(String usuario) {
