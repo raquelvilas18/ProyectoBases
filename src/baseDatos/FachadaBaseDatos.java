@@ -281,8 +281,8 @@ public class FachadaBaseDatos {
          daoLocales.actualizarLocal(codigo,local);
      }
     
-    public void eliminarLocal(String codigo){
-        daoLocales.eliminarLocal(codigo);
+    public void eliminarLocal(Local local){
+        daoLocales.eliminarLocal(local);
     }
      
 

@@ -204,8 +204,8 @@ public class FachadaAplicacion {
          fbd.actualizarLocal(codigo,local);
      }
      
-     public void eliminarLocal(String codigo){
-         fbd.eliminarLocal(codigo);
+     public void eliminarLocal(Local local){
+         fbd.eliminarLocal(local);
      }
 
 }

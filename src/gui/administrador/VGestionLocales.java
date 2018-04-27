@@ -511,7 +511,7 @@ public class VGestionLocales extends javax.swing.JPanel {
         ModeloTablaLocales m;
 
         m = (ModeloTablaLocales) tablaLoc.getModel();
-        fa.eliminarLocal((m.getFila(tablaLoc.getSelectedRow()).getCodigo()));
+        fa.eliminarLocal(new Local(m.getFila(tablaLoc.getSelectedRow()).getCodigo(),m.getFila(tablaLoc.getSelectedRow()).getDireccion(),m.getFila(tablaLoc.getSelectedRow()).getEncargado(),m.getFila(tablaLoc.getSelectedRow()).getCapacidad()));
         m.setFilas(fa.obtenerLocales(this.FiltroCodigo.getText()));
     }
     
@@ -539,6 +539,6 @@ public class VGestionLocales extends javax.swing.JPanel {
         ErrorID.setVisible(false);
         LConfirmar.setVisible(false);
         LAlta.setVisible(true);
-        tablaLoc.changeSelection(0,0,false,false);
+        //tablaLoc.changeSelection(0,0,false,false);
     }
 }
