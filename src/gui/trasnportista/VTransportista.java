@@ -184,7 +184,7 @@ public class VTransportista extends javax.swing.JPanel {
                 CerrarSesionMouseClicked(evt);
             }
         });
-        add(CerrarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(-40, 130, 40, -1));
+        add(CerrarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(-40, 120, 40, -1));
 
         PanelEliminar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 

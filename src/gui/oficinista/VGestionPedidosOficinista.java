@@ -13,6 +13,7 @@ import java.awt.Font;
 import javax.swing.JLabel;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.JTableHeader;
+import javax.swing.table.TableColumnModel;
 
 /**
  *
@@ -52,7 +53,14 @@ public class VGestionPedidosOficinista extends javax.swing.JPanel {
         th2.setForeground(new Color(89, 171, 36));
         th2.setBackground(Color.WHITE);
         tablaPedidos.changeSelection(0, 0, false, false);
+        
+        TableColumnModel columnModel = tablaTransp.getColumnModel();
+        columnModel.getColumn(5).setPreferredWidth(150);
 
+        
+        TableColumnModel columnModel2 = tablaPedidos.getColumnModel();
+        columnModel2.getColumn(2).setPreferredWidth(30);
+        
         LabelTramitar.setVisible(false);
         LabelEliminar.setVisible(false);
         errorLabel.setVisible(false);
@@ -151,6 +159,7 @@ public class VGestionPedidosOficinista extends javax.swing.JPanel {
         tablaPedidos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         tablaPedidos.setGridColor(new java.awt.Color(255, 255, 255));
         tablaPedidos.setSelectionBackground(new java.awt.Color(89, 171, 36));
+        tablaPedidos.setSelectionForeground(new java.awt.Color(255, 255, 255));
         tablaPedidos.setShowHorizontalLines(false);
         tablaPedidos.setShowVerticalLines(false);
         tablaPedidos.getTableHeader().setResizingAllowed(false);
@@ -225,6 +234,7 @@ public class VGestionPedidosOficinista extends javax.swing.JPanel {
         tablaTransp.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         tablaTransp.setGridColor(new java.awt.Color(255, 255, 255));
         tablaTransp.setSelectionBackground(new java.awt.Color(89, 171, 36));
+        tablaTransp.setSelectionForeground(new java.awt.Color(255, 255, 255));
         tablaTransp.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tablaTranspMouseClicked(evt);

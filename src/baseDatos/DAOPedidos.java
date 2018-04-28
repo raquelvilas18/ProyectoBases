@@ -128,48 +128,48 @@ public class DAOPedidos extends AbstractDAO {
             Logger.getLogger(DAOUsuarios.class.getName()).log(Level.SEVERE, null, ex);
         }
         try {
-            stm = con.prepareStatement("SELECT (SELECT empl.capacidad - COALESCE(paq.numPaquetes,0) as capacidadrestante\n" +
-"FROM (SELECT *\n" +
-"FROM empleados e, transportistas t, usuarios u , vehiculos v\n" +
-"WHERE e.usuario = t.empleado\n" +
-"AND u.usuario = e.usuario\n" +
-"AND  t.empleado = v.conductor\n" +
-"AND v.conductor=?) as empl\n" +
-"LEFT JOIN (SELECT empleado, COUNT(*) as numPaquetes\n" +
-"FROM transportistas as t RIGHT JOIN paquetes as p  on (t.empleado = p.transportista)\n" +
-"GROUP BY t.empleado) as paq on (empl.empleado = paq.empleado))-count(*) as capacidadrestante, count(*) as paquetespedido\n" +
-"FROM paquetes\n" +
-"WHERE pedido = ? AND fecha_entrega IS NULL");
+            stm = con.prepareStatement("SELECT (SELECT empl.capacidad - COALESCE(paq.numPaquetes,0) as capacidadrestante\n"
+                    + "FROM (SELECT *\n"
+                    + "FROM empleados e, transportistas t, usuarios u , vehiculos v\n"
+                    + "WHERE e.usuario = t.empleado\n"
+                    + "AND u.usuario = e.usuario\n"
+                    + "AND  t.empleado = v.conductor\n"
+                    + "AND v.conductor=?) as empl\n"
+                    + "LEFT JOIN (SELECT empleado, COUNT(*) as numPaquetes\n"
+                    + "FROM transportistas as t RIGHT JOIN paquetes as p  on (t.empleado = p.transportista)\n"
+                    + "GROUP BY t.empleado) as paq on (empl.empleado = paq.empleado))-count(*) as capacidadrestante, count(*) as paquetespedido\n"
+                    + "FROM paquetes\n"
+                    + "WHERE pedido = ? AND fecha_entrega IS NULL");
             stm.setString(1, transportista);
-            stm.setInt(2,codigo);
+            stm.setInt(2, codigo);
             rs = stm.executeQuery();
             if (rs.next()) {
                 count = rs.getInt(1);
                 NPaq = rs.getInt(2);
-                if(count >= 0){
-                stm2 = con.prepareStatement("UPDATE paquetes "
-                        + "SET transportista = ? "
-                        + "WHERE pedido =  ? AND fecha_entrega IS NULL ");
-                stm2.setString(1, transportista);
-                stm2.setInt(2, codigo);
+                if (count >= 0) {
+                    stm2 = con.prepareStatement("UPDATE paquetes "
+                            + "SET transportista = ? "
+                            + "WHERE pedido =  ? AND fecha_entrega IS NULL ");
+                    stm2.setString(1, transportista);
+                    stm2.setInt(2, codigo);
 
-                stm2.executeUpdate();
-                
-                stm3 = con.prepareStatement("UPDATE pedidos "
-                        + "SET tramitador = ?"
-                        + "WHERE codigo = ? ");
-                stm3.setString(1, tramitador);
-                stm3.setInt(2, codigo);
-                stm3.executeUpdate();
-                
-                }else{
+                    stm2.executeUpdate();
+
+                    stm3 = con.prepareStatement("UPDATE pedidos "
+                            + "SET tramitador = ?"
+                            + "WHERE codigo = ? ");
+                    stm3.setString(1, tramitador);
+                    stm3.setInt(2, codigo);
+                    stm3.executeUpdate();
+
+                } else {
                     resultado = count;
                 }
                 try {
                     con.commit();
                     con.setAutoCommit(true);
                 } catch (SQLException ex) {
-                    
+
                     Logger.getLogger(DAOUsuarios.class.getName()).log(Level.SEVERE, null, ex);
                 }
             } else {
@@ -178,11 +178,11 @@ public class DAOPedidos extends AbstractDAO {
 
         } catch (SQLException e) {
             try {
-                    System.out.println("Rollback");
-                    con.rollback();
-                } catch (SQLException ex) {
-                    Logger.getLogger(DAOUsuarios.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                System.out.println("Rollback");
+                con.rollback();
+            } catch (SQLException ex) {
+                Logger.getLogger(DAOUsuarios.class.getName()).log(Level.SEVERE, null, ex);
+            }
             System.out.println(e.getMessage());
             this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
         } finally {
@@ -469,7 +469,7 @@ public class DAOPedidos extends AbstractDAO {
                         rsPedidos.getBoolean("express"),
                         rsPedidos.getString("direccion"),
                         rsPedidos.getString("destinatario"),
-                        rsPedidos.getString("tramitador"), 
+                        rsPedidos.getString("tramitador"),
                         rsPedidos.getFloat("precio")));
             }
         } catch (SQLException e) {
@@ -485,7 +485,7 @@ public class DAOPedidos extends AbstractDAO {
 
         return resultado;
     }
-    
+
     public ArrayList<Pedido> pedidosActivosPrecio(String usuario) {
         ArrayList<Pedido> resultado = new ArrayList<Pedido>();
         Connection con;
@@ -513,7 +513,7 @@ public class DAOPedidos extends AbstractDAO {
                         rsPedidos.getBoolean("express"),
                         rsPedidos.getString("direccion"),
                         rsPedidos.getString("destinatario"),
-                        rsPedidos.getString("tramitador"), 
+                        rsPedidos.getString("tramitador"),
                         rsPedidos.getFloat("precio")));
             }
         } catch (SQLException e) {
