@@ -303,7 +303,7 @@ public class VRegistro extends javax.swing.JPanel {
     }//GEN-LAST:event_textSexoActionPerformed
 
     private void jPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseClicked
-         String nombre = textNombre.getText();
+        String nombre = textNombre.getText();
         String dni = textDni.getText();
         String email = textEmail.getText();
         String direccion = textDireccion.getText();
