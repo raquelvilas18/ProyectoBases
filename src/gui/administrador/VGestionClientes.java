@@ -6,9 +6,11 @@
 package gui.administrador;
 
 import aplicacion.Usuario;
-import gui.ModeloTablaUsuarios;
+import gui.ModeloTablaClientes;
 import java.awt.Color;
 import java.awt.Font;
+import javax.swing.JLabel;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.JTableHeader;
 
 /**
@@ -27,11 +29,11 @@ public class VGestionClientes extends javax.swing.JPanel {
         initComponents();
         this.fa = fa;
 
-        ModeloTablaUsuarios tp = new ModeloTablaUsuarios();
+        ModeloTablaClientes tp = new ModeloTablaClientes();
         initComponents();
         tablaUsr.setModel(tp);
         tp.setFilas(fa.obtenerClientes(this.FiltroId.getText(), this.FiltroNombre.getText()));
-        tablaUsr.changeSelection(0,0,false,false);
+        tablaUsr.changeSelection(0, 0, false, false);
         ErrorID.setVisible(false);
         LConfirmar.setVisible(false);
         LAlta.setVisible(true);
@@ -42,8 +44,9 @@ public class VGestionClientes extends javax.swing.JPanel {
         LabelActualizar.setVisible(false);
         ContrasenaL.setVisible(false);
         TxContrasena.setVisible(false);
-        ModeloTablaUsuarios m = (ModeloTablaUsuarios) tablaUsr.getModel();
-        if(m.getRowCount()>0){
+        EliminarError.setVisible(false);
+        ModeloTablaClientes m = (ModeloTablaClientes) tablaUsr.getModel();
+        if (m.getRowCount() > 0) {
             this.TxId.setText(m.getFila(tablaUsr.getSelectedRow()).getUsuario());
             this.TxNombre.setText(m.getFila(tablaUsr.getSelectedRow()).getNombre());
             this.TxCorreo.setText(m.getFila(tablaUsr.getSelectedRow()).getCorreo());
@@ -54,14 +57,19 @@ public class VGestionClientes extends javax.swing.JPanel {
             this.TxTipo.setSelectedItem((m.getFila(tablaUsr.getSelectedRow())).getTipo());
 
         }
-        
+
         JTableHeader th;
         th = this.tablaUsr.getTableHeader();
         Font fuente = new Font("SansSerif", Font.PLAIN, 16);
         th.setFont(fuente);
-        th.setForeground(new Color(255,148,42));
+        th.setForeground(new Color(255, 148, 42));
         th.setBackground(Color.WHITE);
         
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment( JLabel.CENTER );
+        tablaUsr.setDefaultRenderer(String.class, centerRenderer);
+        tablaUsr.setDefaultRenderer(Integer.class, centerRenderer);
+
     }
 
     /**
@@ -119,6 +127,7 @@ public class VGestionClientes extends javax.swing.JPanel {
         ErrorAlta1 = new javax.swing.JLabel();
         TxTipo = new javax.swing.JComboBox();
         jLabel24 = new javax.swing.JLabel();
+        EliminarError = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaUsr = new javax.swing.JTable();
 
@@ -426,13 +435,18 @@ public class VGestionClientes extends javax.swing.JPanel {
         jLabel24.setText("Telefono:");
         jPanel1.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, -1, -1));
 
+        EliminarError.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        EliminarError.setForeground(new java.awt.Color(153, 0, 0));
+        EliminarError.setText("No puedes eliminar clientes con pedidos activos");
+        jPanel1.add(EliminarError, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 130, -1, -1));
+
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 360, 600, 200));
 
         jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
         jScrollPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
 
         tablaUsr.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
-        tablaUsr.setModel(new ModeloTablaUsuarios());
+        tablaUsr.setModel(new gui.ModeloTablaClientes());
         tablaUsr.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         tablaUsr.setGridColor(new java.awt.Color(255, 189, 72));
         tablaUsr.setSelectionBackground(new java.awt.Color(255, 189, 72));
@@ -454,7 +468,7 @@ public class VGestionClientes extends javax.swing.JPanel {
 
     private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
 
-        ModeloTablaUsuarios tp = new ModeloTablaUsuarios();
+        ModeloTablaClientes tp = new ModeloTablaClientes();
         tablaUsr.setModel(tp);
         tp.setFilas(fa.obtenerClientes(this.FiltroId.getText(), this.FiltroNombre.getText()));
 
@@ -488,10 +502,9 @@ public class VGestionClientes extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_TxTelefonoActionPerformed
 
-    private void actualizarCampos()
-    {
-        tablaUsr.changeSelection(0,0,false,false);
-        ModeloTablaUsuarios m = (ModeloTablaUsuarios) tablaUsr.getModel();
+    private void actualizarCampos() {
+        tablaUsr.changeSelection(0, 0, false, false);
+        ModeloTablaClientes m = (ModeloTablaClientes) tablaUsr.getModel();
         this.TxId.setText(m.getFila(tablaUsr.getSelectedRow()).getUsuario());
         this.TxNombre.setText(m.getFila(tablaUsr.getSelectedRow()).getNombre());
         this.TxCorreo.setText(m.getFila(tablaUsr.getSelectedRow()).getCorreo());
@@ -501,8 +514,8 @@ public class VGestionClientes extends javax.swing.JPanel {
         this.TxSexo.setSelectedItem((m.getFila(tablaUsr.getSelectedRow())).getSexo());
         this.TxTipo.setSelectedItem((m.getFila(tablaUsr.getSelectedRow())).getTipo());
     }
-    
-    
+
+
     private void tablaUsrMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaUsrMouseClicked
         // TODO add your handling code here:
         actualizarDatos();
@@ -511,19 +524,17 @@ public class VGestionClientes extends javax.swing.JPanel {
         ErrorAlta1.setVisible(false);
         AltaCorrecta.setVisible(false);
         LabelActualizar.setVisible(false);
-
+        EliminarError.setVisible(false);
     }//GEN-LAST:event_tablaUsrMouseClicked
 
     private void BtActualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtActualizarMouseClicked
-       ModeloTablaUsuarios  m = (ModeloTablaUsuarios) tablaUsr.getModel();
-        if((fa.consultarId(TxId.getText()) || (TxId.getText().equals(m.getFila(tablaUsr.getSelectedRow()).getUsuario()))) && !TxId.getText().isEmpty())
-        {
-            String id=m.getFila(tablaUsr.getSelectedRow()).getUsuario();
+        ModeloTablaClientes m = (ModeloTablaClientes) tablaUsr.getModel();
+        if ((fa.consultarId(TxId.getText()) || (TxId.getText().equals(m.getFila(tablaUsr.getSelectedRow()).getUsuario()))) && !TxId.getText().isEmpty()) {
+            String id = m.getFila(tablaUsr.getSelectedRow()).getUsuario();
             restablecerBoton();
             actualizarUsuario(id);
             actualizarCampos();
-        }
-        else{
+        } else {
             ErrorID.setVisible(true);
             LabelActualizar.setVisible((false));
             actualizarCampos();
@@ -539,8 +550,14 @@ public class VGestionClientes extends javax.swing.JPanel {
     }//GEN-LAST:event_formMouseClicked
 
     private void BtBajaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtBajaMouseClicked
-        restablecerBoton();
-        eliminarUsuario();
+        ModeloTablaClientes m = (ModeloTablaClientes) tablaUsr.getModel();
+        if ((int) m.getFila(tablaUsr.getSelectedRow()).getPedidosActivos() > 0) {
+            EliminarError.setVisible(true);
+        } else {
+            restablecerBoton();
+            eliminarUsuario();
+            tablaUsr.changeSelection(0, 0, false, false);
+        }
         // TODO add your handling code here:
     }//GEN-LAST:event_BtBajaMouseClicked
 
@@ -581,6 +598,7 @@ public class VGestionClientes extends javax.swing.JPanel {
     private javax.swing.JPanel BtAlta;
     private javax.swing.JPanel BtBaja;
     private javax.swing.JLabel ContrasenaL;
+    private javax.swing.JLabel EliminarError;
     private javax.swing.JLabel ErrorAlta1;
     private javax.swing.JLabel ErrorID;
     private javax.swing.JTextField FiltroId;
@@ -625,10 +643,11 @@ public class VGestionClientes extends javax.swing.JPanel {
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JTable tablaUsr;
     // End of variables declaration//GEN-END:variables
-    public void actualizarDatos() {
-        ModeloTablaUsuarios m;
 
-        m = (ModeloTablaUsuarios) tablaUsr.getModel();
+    public void actualizarDatos() {
+        ModeloTablaClientes m;
+
+        m = (ModeloTablaClientes) tablaUsr.getModel();
         this.TxId.setText(m.getFila(tablaUsr.getSelectedRow()).getUsuario());
         this.TxNombre.setText(m.getFila(tablaUsr.getSelectedRow()).getNombre());
         this.TxCorreo.setText(m.getFila(tablaUsr.getSelectedRow()).getCorreo());
@@ -641,9 +660,9 @@ public class VGestionClientes extends javax.swing.JPanel {
 
     //public Usuario(String usuario, String password, String dni, String nombre, String correo, String direccion, String telefono, String sexo) {
     public void actualizarUsuario(String id) {
-        ModeloTablaUsuarios m;
+        ModeloTablaClientes m;
 
-        m = (ModeloTablaUsuarios) tablaUsr.getModel();
+        m = (ModeloTablaClientes) tablaUsr.getModel();
         fa.actualizarUsr(id, new Usuario(TxId.getText(), null, TxDni.getText(), TxNombre.getText(), TxCorreo.getText(), TxDireccion.getText(), TxTelefono.getText(), (String) TxSexo.getSelectedItem(), null));
         LabelActualizar.setVisible(true);
         m.setFilas(fa.obtenerClientes(this.FiltroId.getText(), this.FiltroNombre.getText()));
@@ -651,24 +670,24 @@ public class VGestionClientes extends javax.swing.JPanel {
     }
 
     public void eliminarUsuario() {
-        ModeloTablaUsuarios m;
+        ModeloTablaClientes m;
 
-        m = (ModeloTablaUsuarios) tablaUsr.getModel();
+        m = (ModeloTablaClientes) tablaUsr.getModel();
         fa.eliminarUsuario((m.getFila(tablaUsr.getSelectedRow()).getUsuario()));
-        m.setFilas(fa.obtenerUsuarios(this.FiltroId.getText(), this.FiltroNombre.getText()));
+        m.setFilas(fa.obtenerClientes(this.FiltroId.getText(), this.FiltroNombre.getText()));
     }
-    
-    public void actualizarTabla(){
-        ModeloTablaUsuarios m;
 
-        m = (ModeloTablaUsuarios) tablaUsr.getModel();
+    public void actualizarTabla() {
+        ModeloTablaClientes m;
+
+        m = (ModeloTablaClientes) tablaUsr.getModel();
         m.setFilas(fa.obtenerClientes(this.FiltroId.getText(), this.FiltroNombre.getText()));
     }
 
     public void vaciarTxt() {
-        ModeloTablaUsuarios m;
+        ModeloTablaClientes m;
 
-        m = (ModeloTablaUsuarios) tablaUsr.getModel();
+        m = (ModeloTablaClientes) tablaUsr.getModel();
         this.TxId.setText(null);
         this.TxNombre.setText(null);
         this.TxCorreo.setText(null);
