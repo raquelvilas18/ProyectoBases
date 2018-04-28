@@ -9,6 +9,8 @@ import aplicacion.Usuario;
 import gui.ModeloTablaClientes;
 import java.awt.Color;
 import java.awt.Font;
+import javax.swing.JLabel;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.JTableHeader;
 
 /**
@@ -62,6 +64,11 @@ public class VGestionClientes extends javax.swing.JPanel {
         th.setFont(fuente);
         th.setForeground(new Color(255, 148, 42));
         th.setBackground(Color.WHITE);
+        
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment( JLabel.CENTER );
+        tablaUsr.setDefaultRenderer(String.class, centerRenderer);
+        tablaUsr.setDefaultRenderer(Integer.class, centerRenderer);
 
     }
 

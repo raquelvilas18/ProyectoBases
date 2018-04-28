@@ -167,6 +167,11 @@ public class VPrincipal extends javax.swing.JFrame {
 
         TxLocalizar.setForeground(new java.awt.Color(153, 153, 153));
         TxLocalizar.setBorder(null);
+        TxLocalizar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                TxLocalizarKeyPressed(evt);
+            }
+        });
         panelLocPaquete.add(TxLocalizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 70, 280, 30));
 
         Localizar.setBackground(new java.awt.Color(255, 255, 255));
@@ -458,6 +463,29 @@ public class VPrincipal extends javax.swing.JFrame {
         idError.setVisible(false);
         this.SinResultado.setVisible(false);
     }//GEN-LAST:event_panelLocPaqueteMouseClicked
+
+    private void TxLocalizarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TxLocalizarKeyPressed
+        // TODO add your handling code here:
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            if (!TxLocalizar.getText().isEmpty()) {
+            if (fa.localizar(Integer.parseInt(TxLocalizar.getText())).size() > 0) {
+                this.SinResultado.setVisible(false);
+                idError.setVisible(false);
+                PanelTabla.setVisible(true);
+                ModeloTablaLocalizador t;
+                t = (ModeloTablaLocalizador) this.tablaLoc.getModel();
+                tablaLoc.setModel(t);
+                t.setFilas(fa.localizar(Integer.parseInt(TxLocalizar.getText())));
+            } else {
+                this.SinResultado.setVisible(true);
+                PanelTabla.setVisible(false);
+            }
+        } else {
+            idError.setVisible(true);
+            this.SinResultado.setVisible(false);
+        }
+        }
+    }//GEN-LAST:event_TxLocalizarKeyPressed
 
     public void ventanaPedido(Usuario usuario) {
         panelActivo.setVisible(false);

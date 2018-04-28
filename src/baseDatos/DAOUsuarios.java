@@ -1,10 +1,7 @@
 package baseDatos;
 
 import aplicacion.*;
-import gui.*;
-import static java.lang.Thread.sleep;
 import java.sql.*;
-import static java.sql.Connection.TRANSACTION_NONE;
 import static java.sql.Connection.TRANSACTION_SERIALIZABLE;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -350,7 +347,7 @@ public class DAOUsuarios extends AbstractDAO {
                     + "		FROM pedidos p, paquetes pa\n"
                     + "		WHERE p.codigo = pa.pedido\n"
                     + "		AND fecha_entrega ISNULL)\n"
-                    + "GROUP BY cliente ) as pedidosActivos on pedidosActivos.cliente = clientes.usuario\n"
+                    + "         GROUP BY cliente ) as pedidosActivos on pedidosActivos.cliente = clientes.usuario\n"
                     + "WHERE nombre LIKE ? \n"
                     + "AND usuario LIKE ? ");
             stm.setString(1, "%" + id + "%");
