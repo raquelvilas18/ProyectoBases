@@ -32,15 +32,14 @@ public class DAOPaquetes extends AbstractDAO {
         con = super.getConexion();
 
         try {
-            stm = con.prepareStatement("Insert into paquetes(cliente, peso, pedido, ancho, alto, largo, coste) "
-                    + "values (?,?,?,?, ?, ?, ?)");
-            stm.setString(1, p.getCliente());
-            stm.setFloat(2, p.getPeso());
-            stm.setInt(3, p.getPedido());
-            stm.setFloat(4, p.getAncho());
-            stm.setFloat(5, p.getAlto());
-            stm.setFloat(6, p.getLargo());
-            stm.setFloat(7, p.getCoste());
+            stm = con.prepareStatement("Insert into paquetes(peso, pedido, ancho, alto, largo, coste) "
+                    + "values (?,?,?, ?, ?, ?)");
+            stm.setFloat(1, p.getPeso());
+            stm.setInt(2, p.getPedido());
+            stm.setFloat(3, p.getAncho());
+            stm.setFloat(4, p.getAlto());
+            stm.setFloat(5, p.getLargo());
+            stm.setFloat(6, p.getCoste());
             stm.executeUpdate();
 
         } catch (SQLException e) {
@@ -65,7 +64,7 @@ public class DAOPaquetes extends AbstractDAO {
         con = super.getConexion();
 
         try {
-            stm = con.prepareStatement("SELECT codigo, cliente, peso, pedido, ancho, alto, largo, coste, transportista, fecha_entrega, direccion\n"
+            stm = con.prepareStatement("SELECT codigo, peso, pedido, ancho, alto, largo, coste, transportista, fecha_entrega, direccion\n"
                     + "FROM paquetes as p, vehiculos as v\n"
                     + "WHERE p.transportista = v.conductor\n"
                     + "AND transportista = ? "
@@ -73,7 +72,7 @@ public class DAOPaquetes extends AbstractDAO {
             stm.setString(1, id);
             rs = stm.executeQuery();
             while (rs.next()) {
-                paquetes.add(new Paquete(rs.getInt("codigo"), rs.getInt("pedido"), rs.getFloat("peso"), rs.getFloat("alto"), rs.getFloat("ancho"), rs.getFloat("largo"), rs.getString("fecha_entrega"), rs.getString("transportista"), rs.getString("cliente"), rs.getString("direccion")));
+                paquetes.add(new Paquete(rs.getInt("codigo"), rs.getInt("pedido"), rs.getFloat("peso"), rs.getFloat("alto"), rs.getFloat("ancho"), rs.getFloat("largo"), rs.getString("fecha_entrega"), rs.getString("transportista"), rs.getString("direccion")));
             }
 
         } catch (SQLException e) {
@@ -129,18 +128,18 @@ public class DAOPaquetes extends AbstractDAO {
         con = super.getConexion();
 
         try {
-            stmPaquetes = con.prepareStatement("SELECT cliente, pedido, codigo, peso, ancho, alto, largo, coste, transportista, fecha_entrega, direccion as posicion\n"
+            stmPaquetes = con.prepareStatement("SELECT pedido, codigo, peso, ancho, alto, largo, coste, transportista, fecha_entrega, direccion as posicion\n"
                     + "FROM paquetes p, vehiculos v\n"
                     + "WHERE p.transportista = v.conductor "
                     + "AND pedido = ? "
                     + "UNION\n"
-                    + "SELECT cliente, pedido, codigo, peso, ancho, alto,  largo, coste, transportista, fecha_entrega, 'entregado' as posicion\n"
+                    + "SELECT pedido, codigo, peso, ancho, alto,  largo, coste, transportista, fecha_entrega, 'entregado' as posicion\n"
                     + "FROM paquetes \n"
                     + "WHERE fecha_entrega IS NOT NULL \n"
                     + "AND transportista ISNULL \n"
                     + "AND pedido = ? "
                     + "UNION\n"
-                    + "SELECT cliente, pedido, codigo, peso, ancho, alto,  largo, coste, transportista, fecha_entrega, 'En tramitacion' as posicion\n"
+                    + "SELECT pedido, codigo, peso, ancho, alto,  largo, coste, transportista, fecha_entrega, 'En tramitacion' as posicion\n"
                     + "FROM paquetes \n"
                     + "WHERE fecha_entrega ISNULL \n"
                     + "AND transportista ISNULL "
@@ -161,7 +160,6 @@ public class DAOPaquetes extends AbstractDAO {
                         rsPaquetes.getFloat("largo"),
                         rsPaquetes.getString("fecha_entrega"),
                         rsPaquetes.getString("transportista"),
-                        rsPaquetes.getString("cliente"),
                         rsPaquetes.getString("posicion")));
             }
         } catch (SQLException e) {

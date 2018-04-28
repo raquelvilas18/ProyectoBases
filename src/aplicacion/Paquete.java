@@ -21,10 +21,9 @@ public class Paquete {
     private String transportista;
     private String vehiculo;
     private String local;
-    private String cliente;
     private String posicion;
 
-    public Paquete(Integer codigo, Integer pedido, float peso, float alto, float ancho, float largo, String fecha_entrega, String transportista, String cliente) {
+    public Paquete(Integer codigo, Integer pedido, float peso, float alto, float ancho, float largo, String fecha_entrega, String transportista) {
         this.codigo = codigo;
         this.pedido = pedido;
         this.peso = peso;
@@ -33,7 +32,6 @@ public class Paquete {
         this.largo = largo;
         this.fecha_entrega = fecha_entrega;
         this.transportista = transportista;
-        this.cliente = cliente;
         
         float dimensiones = (alto*ancho*largo);
         
@@ -47,7 +45,7 @@ public class Paquete {
     }
     
     
-     public Paquete(Integer codigo, Integer pedido, float peso, float alto, float ancho, float largo, String fecha_entrega, String transportista, String cliente, String posicion) {
+     public Paquete(Integer codigo, Integer pedido, float peso, float alto, float ancho, float largo, String fecha_entrega, String transportista, String posicion) {
         this.codigo = codigo;
         this.pedido = pedido;
         this.peso = peso;
@@ -56,7 +54,6 @@ public class Paquete {
         this.largo = largo;
         this.fecha_entrega = fecha_entrega;
         this.transportista = transportista;
-        this.cliente = cliente;
         this.posicion = posicion;
         
         float dimensiones = (alto*ancho*largo);
@@ -68,10 +65,6 @@ public class Paquete {
         }else{
             coste = peso + 10;
         }
-    }
-
-    public String getCliente() {
-        return cliente;
     }
 
     public Integer getCodigo() {
