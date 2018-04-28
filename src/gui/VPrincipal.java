@@ -401,6 +401,7 @@ public class VPrincipal extends javax.swing.JFrame {
             }
         } else {
             autentificacionIncorrecta.setVisible(true);
+            JContrasena.setText("");
         }    }//GEN-LAST:event_jPanel1MouseClicked
 
     private void JContrasenaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JContrasenaKeyPressed
