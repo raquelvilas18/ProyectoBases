@@ -44,8 +44,6 @@ public class VPerfilAdmin extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel4 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         TxId = new javax.swing.JTextField();
         TxNombre = new javax.swing.JTextField();
@@ -67,6 +65,8 @@ public class VPerfilAdmin extends javax.swing.JPanel {
         TxDireccion = new javax.swing.JTextField();
         JLabelMensaje = new javax.swing.JLabel();
         LabelActualizar = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jPanel6 = new javax.swing.JPanel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         addMouseListener(new java.awt.event.MouseAdapter() {
@@ -74,56 +74,46 @@ public class VPerfilAdmin extends javax.swing.JPanel {
                 formMouseClicked(evt);
             }
         });
-
-        jPanel4.setBackground(new java.awt.Color(116, 126, 173));
-
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 600, Short.MAX_VALUE)
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 10, Short.MAX_VALUE)
-        );
-
-        jLabel2.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(60, 60, 159));
-        jLabel2.setText("Datos personales");
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/logoPequeno.png"))); // NOI18N
         jLabel1.setText("jLabel1");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(359, 14, 300, 110));
 
         TxId.setBackground(new java.awt.Color(255, 226, 154));
         TxId.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         TxId.setForeground(new java.awt.Color(0, 0, 0));
         TxId.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         TxId.setBorder(null);
+        add(TxId, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 160, 470, 30));
 
         TxNombre.setBackground(new java.awt.Color(255, 226, 154));
         TxNombre.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         TxNombre.setForeground(new java.awt.Color(0, 0, 0));
         TxNombre.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         TxNombre.setBorder(null);
+        add(TxNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 208, 470, 30));
 
         TxCorreo.setBackground(new java.awt.Color(255, 226, 154));
         TxCorreo.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         TxCorreo.setForeground(new java.awt.Color(0, 0, 0));
         TxCorreo.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         TxCorreo.setBorder(null);
+        add(TxCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 256, 470, 30));
 
         TxTelefono.setBackground(new java.awt.Color(255, 226, 154));
         TxTelefono.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         TxTelefono.setForeground(new java.awt.Color(0, 0, 0));
         TxTelefono.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         TxTelefono.setBorder(null);
+        add(TxTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 304, 470, 30));
 
         TxDni.setBackground(new java.awt.Color(255, 226, 154));
         TxDni.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         TxDni.setForeground(new java.awt.Color(0, 0, 0));
         TxDni.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         TxDni.setBorder(null);
+        add(TxDni, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 352, 470, 30));
 
         Actualizar.setBackground(new java.awt.Color(255, 133, 74));
         Actualizar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -161,17 +151,21 @@ public class VPerfilAdmin extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
+        add(Actualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(339, 504, -1, -1));
+
         jLabel16.setBackground(new java.awt.Color(65, 105, 225));
         jLabel16.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(255, 133, 74));
         jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-derechaNaranja.png"))); // NOI18N
         jLabel16.setText("DNI");
+        add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(58, 354, -1, -1));
 
         jLabel15.setBackground(new java.awt.Color(65, 105, 225));
         jLabel15.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(255, 133, 74));
         jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-derechaNaranja.png"))); // NOI18N
         jLabel15.setText("Telefono");
+        add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(58, 306, -1, -1));
 
         jPanel2.setPreferredSize(new java.awt.Dimension(10, 550));
 
@@ -186,29 +180,35 @@ public class VPerfilAdmin extends javax.swing.JPanel {
             .addGap(0, 550, Short.MAX_VALUE)
         );
 
+        add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(11, 16, -1, -1));
+
         jLabel14.setBackground(new java.awt.Color(65, 105, 225));
         jLabel14.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(255, 133, 74));
         jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-derechaNaranja.png"))); // NOI18N
         jLabel14.setText("Correo");
+        add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(58, 256, -1, -1));
 
         jLabel13.setBackground(new java.awt.Color(65, 105, 225));
         jLabel13.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(255, 133, 74));
         jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-derechaNaranja.png"))); // NOI18N
         jLabel13.setText("Sexo");
+        add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(58, 448, -1, -1));
 
         jLabel12.setBackground(new java.awt.Color(65, 105, 225));
         jLabel12.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 133, 74));
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-derechaNaranja.png"))); // NOI18N
         jLabel12.setText("Nombre:");
+        add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(58, 210, -1, -1));
 
         jLabel3.setBackground(new java.awt.Color(65, 105, 225));
         jLabel3.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 133, 74));
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-derechaNaranja.png"))); // NOI18N
         jLabel3.setText("Id:");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, -1, -1));
 
         sexo.setBackground(new java.awt.Color(255, 226, 154));
         sexo.setForeground(new java.awt.Color(0, 0, 0));
@@ -218,130 +218,50 @@ public class VPerfilAdmin extends javax.swing.JPanel {
                 sexoActionPerformed(evt);
             }
         });
+        add(sexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 448, 50, -1));
 
         jLabel17.setBackground(new java.awt.Color(65, 105, 225));
         jLabel17.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(255, 133, 74));
         jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-derechaNaranja.png"))); // NOI18N
         jLabel17.setText("Direccion");
+        add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(58, 402, -1, -1));
 
         TxDireccion.setBackground(new java.awt.Color(255, 226, 154));
         TxDireccion.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         TxDireccion.setForeground(new java.awt.Color(0, 0, 0));
         TxDireccion.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         TxDireccion.setBorder(null);
+        add(TxDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 400, 470, 30));
 
         JLabelMensaje.setForeground(new java.awt.Color(255, 0, 0));
         JLabelMensaje.setText("Id ya existente!");
+        add(JLabelMensaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 190, -1, 20));
 
         LabelActualizar.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         LabelActualizar.setForeground(new java.awt.Color(0, 153, 0));
         LabelActualizar.setText("Datos actualizados correctamente");
+        add(LabelActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(333, 478, -1, 16));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(58, 58, 58)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel13)
-                    .addComponent(jLabel14)
-                    .addComponent(jLabel15)
-                    .addComponent(jLabel16)
-                    .addComponent(jLabel17)
-                    .addComponent(jLabel12)
-                    .addComponent(jLabel3))
-                .addGap(39, 39, 39)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(JLabelMensaje)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(TxNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 470, Short.MAX_VALUE)
-                        .addComponent(TxDireccion, javax.swing.GroupLayout.DEFAULT_SIZE, 470, Short.MAX_VALUE)
-                        .addComponent(TxDni, javax.swing.GroupLayout.DEFAULT_SIZE, 470, Short.MAX_VALUE)
-                        .addComponent(TxTelefono, javax.swing.GroupLayout.DEFAULT_SIZE, 470, Short.MAX_VALUE)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(sexo, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(111, 111, 111))
-                        .addComponent(TxId, javax.swing.GroupLayout.DEFAULT_SIZE, 470, Short.MAX_VALUE)
-                        .addComponent(TxCorreo)))
-                .addContainerGap(20, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(LabelActualizar)
-                .addGap(131, 131, 131))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(38, 38, 38)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(300, 300, 300)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(280, 280, 280)
-                            .addComponent(Actualizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGap(0, 0, Short.MAX_VALUE)))
+        jLabel2.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(60, 60, 159));
+        jLabel2.setText("datos personales");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 80, 260, -1));
+
+        jPanel6.setBackground(new java.awt.Color(116, 126, 173));
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 600, Short.MAX_VALUE)
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(147, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(TxId, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(5, 5, 5)
-                .addComponent(JLabelMensaje, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(TxNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel12))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(TxCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel14))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(TxTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel15))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(TxDni, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel16))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(TxDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel17))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel13)
-                    .addComponent(sexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(LabelActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(86, 86, 86))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(2, 2, 2)
-                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(100, 100, 100)
-                                    .addComponent(jLabel2))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(120, 120, 120)
-                                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGap(360, 360, 360)
-                            .addComponent(Actualizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGap(0, 0, Short.MAX_VALUE)))
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 10, Short.MAX_VALUE)
         );
+
+        add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, 600, 10));
     }// </editor-fold>//GEN-END:initComponents
 
     private void sexoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sexoActionPerformed
@@ -395,7 +315,7 @@ public class VPerfilAdmin extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel6;
     private javax.swing.JComboBox<String> sexo;
     // End of variables declaration//GEN-END:variables
 }
