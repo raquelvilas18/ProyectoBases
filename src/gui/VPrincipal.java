@@ -449,6 +449,7 @@ public class VPrincipal extends javax.swing.JFrame {
                 t.setFilas(fa.localizar(Integer.parseInt(TxLocalizar.getText())));
             } else {
                 this.SinResultado.setVisible(true);
+                idError.setVisible(false);
                 PanelTabla.setVisible(false);
             }
         } else {

@@ -149,7 +149,7 @@ public class DAOPedidos extends AbstractDAO {
 
                     stm2.executeUpdate();
                     stm3 = con.prepareStatement("UPDATE pedidos "
-                            + "SET tramitador = ?"
+                            + "SET tramitador = ?, fecha = current_date"
                             + "WHERE codigo = ? ");
                     stm3.setString(1, tramitador);
                     stm3.setInt(2, codigo);
