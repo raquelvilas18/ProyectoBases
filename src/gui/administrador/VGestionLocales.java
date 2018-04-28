@@ -8,7 +8,7 @@ package gui.administrador;
 import aplicacion.Local;
 import aplicacion.Usuario;
 import gui.ModeloTablaLocales;
-import gui.ModeloTablaUsuarios;
+import gui.ModeloTablaClientes;
 import java.awt.Color;
 import java.awt.Font;
 import javax.swing.table.JTableHeader;

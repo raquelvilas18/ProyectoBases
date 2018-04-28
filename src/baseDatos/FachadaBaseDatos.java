@@ -5,6 +5,7 @@
  */
 package baseDatos;
 
+import aplicacion.Cliente;
 import aplicacion.Empleado;
 import aplicacion.Local;
 import aplicacion.Paquete;
@@ -147,7 +148,7 @@ public class FachadaBaseDatos {
         return daoUsuarios.obtenerUsuarios(id, nombre);
     }
 
-    public ArrayList<Usuario> obtenerClientes(String id, String nombre) {
+    public ArrayList<Cliente> obtenerClientes(String id, String nombre) {
         return daoUsuarios.obtenerClientes(id, nombre);
     }
 
