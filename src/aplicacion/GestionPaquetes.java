@@ -27,18 +27,7 @@ public class GestionPaquetes {
     }
     
     public java.util.List<Paquete> localizar(Integer codigo){
-        java.util.List<Paquete> Paquetes;
-        Paquetes = fbd.obtenerPaquetes(codigo);
-        for(Paquete p : Paquetes){
-            if(p.getFecha_entrega() != null && !p.getFecha_entrega().equals("")){
-                p.setPosicion("Entregado");
-            }else if(p.getTransportista() != null && !p.getTransportista().equals("")){
-                p.setPosicion(fbd.localizarVehiculo(p.getTransportista()));
-            }else {
-                p.setPosicion("En tramitacion.");
-            }
-        }
-        return Paquetes;
+        return fbd.obtenerPaquetes(codigo);
     }
     
     public ArrayList<Paquete> paquetesTransportista(String id) {
