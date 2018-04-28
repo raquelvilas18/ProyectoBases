@@ -70,9 +70,6 @@ public class VGestionVehiculos extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel2 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jPanel6 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaVehi = new javax.swing.JTable();
         jLabel4 = new javax.swing.JLabel();
@@ -107,6 +104,9 @@ public class VGestionVehiculos extends javax.swing.JPanel {
         jLabel6 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jPanel2 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jPanel6 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setAlignmentX(0.0F);
@@ -115,30 +115,6 @@ public class VGestionVehiculos extends javax.swing.JPanel {
         setMinimumSize(new java.awt.Dimension(660, 592));
         setPreferredSize(new java.awt.Dimension(660, 592));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel2.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(60, 60, 159));
-        jLabel2.setText("Gestion Vehiculos");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, 260, -1));
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/logoPequeno.png"))); // NOI18N
-        jLabel1.setText("jLabel1");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(336, 7, 300, 110));
-
-        jPanel6.setBackground(new java.awt.Color(116, 126, 173));
-
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 610, Short.MAX_VALUE)
-        );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 10, Short.MAX_VALUE)
-        );
-
-        add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, 610, 10));
 
         jScrollPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         jScrollPane1.setToolTipText("");
@@ -154,13 +130,13 @@ public class VGestionVehiculos extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tablaVehi);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, 620, 200));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, 600, 180));
 
         jLabel4.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 133, 74));
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-derechaNaranja.png"))); // NOI18N
         jLabel4.setText("matricula:");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 160, -1, -1));
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 130, -1, -1));
 
         FiltroMatricula.setBorder(null);
         FiltroMatricula.addActionListener(new java.awt.event.ActionListener() {
@@ -168,7 +144,7 @@ public class VGestionVehiculos extends javax.swing.JPanel {
                 FiltroMatriculaActionPerformed(evt);
             }
         });
-        add(FiltroMatricula, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 150, 280, 20));
+        add(FiltroMatricula, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 130, 280, 20));
 
         jPanel1.setBackground(new java.awt.Color(255, 226, 154));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -192,7 +168,7 @@ public class VGestionVehiculos extends javax.swing.JPanel {
         jLabel15.setText("jLabel1");
         BtActualizar.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 33, 36));
 
-        jPanel1.add(BtActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 170, 41));
+        jPanel1.add(BtActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 170, 41));
 
         BtBaja.setBackground(new java.awt.Color(255, 148, 42));
         BtBaja.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -212,7 +188,7 @@ public class VGestionVehiculos extends javax.swing.JPanel {
         jLabel19.setText("jLabel1");
         BtBaja.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 33, 36));
 
-        jPanel1.add(BtBaja, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 110, 200, 41));
+        jPanel1.add(BtBaja, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 130, 180, 41));
 
         jLabel7.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel7.setText("Capacidad:");
@@ -220,7 +196,7 @@ public class VGestionVehiculos extends javax.swing.JPanel {
 
         FechaCompra.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         FechaCompra.setText("Fecha de Compra");
-        jPanel1.add(FechaCompra, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 60, -1, -1));
+        jPanel1.add(FechaCompra, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 80, -1, -1));
 
         mt.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         mt.setText("Matricula:");
@@ -228,11 +204,11 @@ public class VGestionVehiculos extends javax.swing.JPanel {
 
         jLabel20.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel20.setText("ITV:");
-        jPanel1.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 30, -1));
+        jPanel1.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 30, -1));
 
         jLabel21.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel21.setText("Transportista:");
-        jPanel1.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, -1, -1));
+        jPanel1.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, -1, -1));
 
         TxCapacidad.setBackground(new java.awt.Color(255, 232, 185));
         TxCapacidad.setForeground(new java.awt.Color(102, 102, 102));
@@ -242,7 +218,7 @@ public class VGestionVehiculos extends javax.swing.JPanel {
                 TxCapacidadActionPerformed(evt);
             }
         });
-        jPanel1.add(TxCapacidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 20, 210, -1));
+        jPanel1.add(TxCapacidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 20, 180, -1));
 
         TxFechaCompra.setBackground(new java.awt.Color(255, 232, 185));
         TxFechaCompra.setForeground(new java.awt.Color(102, 102, 102));
@@ -252,7 +228,7 @@ public class VGestionVehiculos extends javax.swing.JPanel {
                 TxFechaCompraActionPerformed(evt);
             }
         });
-        jPanel1.add(TxFechaCompra, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 60, 180, -1));
+        jPanel1.add(TxFechaCompra, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 80, 160, -1));
 
         TxMatricula.setBackground(new java.awt.Color(255, 232, 185));
         TxMatricula.setForeground(new java.awt.Color(102, 102, 102));
@@ -272,7 +248,7 @@ public class VGestionVehiculos extends javax.swing.JPanel {
                 TxItvActionPerformed(evt);
             }
         });
-        jPanel1.add(TxItv, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 40, 180, -1));
+        jPanel1.add(TxItv, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 50, 180, -1));
 
         TxTransp.setBackground(new java.awt.Color(255, 232, 185));
         TxTransp.setForeground(new java.awt.Color(102, 102, 102));
@@ -282,7 +258,7 @@ public class VGestionVehiculos extends javax.swing.JPanel {
                 TxTranspActionPerformed(evt);
             }
         });
-        jPanel1.add(TxTransp, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 60, 180, -1));
+        jPanel1.add(TxTransp, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 80, 180, -1));
 
         ErrorID.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         ErrorID.setForeground(new java.awt.Color(255, 51, 51));
@@ -312,26 +288,26 @@ public class VGestionVehiculos extends javax.swing.JPanel {
         LAlta.setText("Dar alta");
         BtAlta.add(LAlta, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, 110, -1));
 
-        jPanel1.add(BtAlta, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 110, 190, 41));
+        jPanel1.add(BtAlta, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 130, 190, 41));
 
         LabelActualizar.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         LabelActualizar.setForeground(new java.awt.Color(0, 153, 0));
         LabelActualizar.setText("Datos actualizados");
-        jPanel1.add(LabelActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, -1, -1));
+        jPanel1.add(LabelActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, -1, -1));
 
         jLabel10.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel10.setText("Dirección:");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 40, -1, -1));
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 50, -1, -1));
 
         AltaCorrecta.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         AltaCorrecta.setForeground(new java.awt.Color(0, 153, 0));
         AltaCorrecta.setText("Vehículo registrado correctamente");
-        jPanel1.add(AltaCorrecta, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 80, -1, 40));
+        jPanel1.add(AltaCorrecta, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 100, -1, 40));
 
         ErrorAlta1.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         ErrorAlta1.setForeground(new java.awt.Color(255, 51, 51));
         ErrorAlta1.setText("Todos los campos son obligatorios");
-        jPanel1.add(ErrorAlta1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 90, -1, -1));
+        jPanel1.add(ErrorAlta1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 110, -1, -1));
 
         TxDireccion.setBackground(new java.awt.Color(255, 232, 185));
         TxDireccion.setForeground(new java.awt.Color(102, 102, 102));
@@ -341,9 +317,9 @@ public class VGestionVehiculos extends javax.swing.JPanel {
                 TxDireccionActionPerformed(evt);
             }
         });
-        jPanel1.add(TxDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 40, 210, -1));
+        jPanel1.add(TxDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 50, 180, -1));
 
-        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 410, 620, 160));
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 370, 600, 190));
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-google-web-search-filled-50.png"))); // NOI18N
         jLabel6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -352,8 +328,8 @@ public class VGestionVehiculos extends javax.swing.JPanel {
                 jLabel6MouseClicked(evt);
             }
         });
-        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 140, -1, -1));
-        add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 180, 390, 10));
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 110, -1, -1));
+        add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 150, 390, 10));
 
         jPanel2.setPreferredSize(new java.awt.Dimension(10, 550));
 
@@ -369,6 +345,30 @@ public class VGestionVehiculos extends javax.swing.JPanel {
         );
 
         add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 12, 10, 580));
+
+        jLabel2.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(60, 60, 159));
+        jLabel2.setText("Gestion Vehiculos");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 80, 260, -1));
+
+        jPanel6.setBackground(new java.awt.Color(116, 126, 173));
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 600, Short.MAX_VALUE)
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 10, Short.MAX_VALUE)
+        );
+
+        add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, 600, 10));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/logoPequeno.png"))); // NOI18N
+        jLabel1.setText("jLabel1");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 10, 300, 110));
     }// </editor-fold>//GEN-END:initComponents
 
     private void FiltroMatriculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FiltroMatriculaActionPerformed

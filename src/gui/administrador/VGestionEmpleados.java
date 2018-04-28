@@ -195,7 +195,7 @@ public class VGestionEmpleados extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tablaEmpleados);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, 600, 180));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, 600, 170));
 
         jSeparator2.setForeground(new java.awt.Color(0, 0, 0));
         add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 150, 230, 10));
@@ -469,7 +469,7 @@ public class VGestionEmpleados extends javax.swing.JPanel {
         ComboLocal.setToolTipText("");
         jPanel1.add(ComboLocal, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 80, 210, 20));
 
-        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 360, 600, 240));
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 350, 600, 210));
 
         FiltroId.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         FiltroId.setBorder(null);

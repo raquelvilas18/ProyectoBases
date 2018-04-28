@@ -167,7 +167,7 @@ public class VPrincipal extends javax.swing.JFrame {
 
         TxLocalizar.setForeground(new java.awt.Color(153, 153, 153));
         TxLocalizar.setBorder(null);
-        panelLocPaquete.add(TxLocalizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 70, 250, 30));
+        panelLocPaquete.add(TxLocalizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 70, 280, 30));
 
         Localizar.setBackground(new java.awt.Color(255, 255, 255));
         Localizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8_Search_30px.png"))); // NOI18N
@@ -190,7 +190,7 @@ public class VPrincipal extends javax.swing.JFrame {
         SinResultado.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         SinResultado.setForeground(new java.awt.Color(204, 0, 0));
         SinResultado.setText("No hay datos de ese pedido");
-        panelLocPaquete.add(SinResultado, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 100, -1, -1));
+        panelLocPaquete.add(SinResultado, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 100, -1, -1));
 
         PanelTabla.setBackground(new java.awt.Color(255, 255, 255));
         PanelTabla.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -211,7 +211,7 @@ public class VPrincipal extends javax.swing.JFrame {
         idError.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         idError.setForeground(new java.awt.Color(204, 0, 0));
         idError.setText("Introduce un id");
-        panelLocPaquete.add(idError, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 90, -1, -1));
+        panelLocPaquete.add(idError, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 100, -1, -1));
 
         panelBase.add(panelLocPaquete, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 290, 740, 290));
 
@@ -367,13 +367,7 @@ public class VPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_botonRegistrarseActionPerformed
 
     private void LocalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LocalizarActionPerformed
-        // TODO add your handling code here:
-//        String codigo = TxLocalizar.getText();
-//        if (codigo.equals("")) {
-//            VAviso vaviso = new VAviso(this, true, "No se ha indicado ningún código de búsqueda.");
-//        } else {
-//            fa.localizar(Integer.parseInt(codigo));
-//        }
+
     }//GEN-LAST:event_LocalizarActionPerformed
 
     private void JUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JUsuarioActionPerformed
@@ -441,6 +435,7 @@ public class VPrincipal extends javax.swing.JFrame {
         if (!TxLocalizar.getText().isEmpty()) {
             if (fa.localizar(Integer.parseInt(TxLocalizar.getText())).size() > 0) {
                 this.SinResultado.setVisible(false);
+                idError.setVisible(false);
                 PanelTabla.setVisible(true);
                 ModeloTablaLocalizador t;
                 t = (ModeloTablaLocalizador) this.tablaLoc.getModel();
