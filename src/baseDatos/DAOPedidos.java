@@ -128,33 +128,46 @@ public class DAOPedidos extends AbstractDAO {
             Logger.getLogger(DAOUsuarios.class.getName()).log(Level.SEVERE, null, ex);
         }
         try {
-            stm = con.prepareStatement("SELECT (SELECT empl.capacidad - COALESCE(paq.numPaquetes,0) as capacidadrestante\n"
-                    + "FROM (SELECT *\n"
-                    + "FROM empleados e, transportistas t, usuarios u , vehiculos v\n"
-                    + "WHERE e.usuario = t.empleado\n"
-                    + "AND u.usuario = e.usuario\n"
-                    + "AND  t.empleado = v.conductor\n"
-                    + "AND v.conductor=?) as empl\n"
-                    + "LEFT JOIN (SELECT empleado, COUNT(*) as numPaquetes\n"
-                    + "FROM transportistas as t RIGHT JOIN paquetes as p  on (t.empleado = p.transportista)\n"
-                    + "GROUP BY t.empleado) as paq on (empl.empleado = paq.empleado))-count(*) as capacidadrestante, count(*) as paquetespedido\n"
-                    + "FROM paquetes\n"
-                    + "WHERE pedido = ? AND fecha_entrega IS NULL");
+            stm = con.prepareStatement("SELECT (SELECT capacidad - (SELECT count(*) from paquetes where transportista = ?)\n" +
+"                    FROM vehiculos\n" +
+"                    WHERE conductor=?)-count(*),count(*)\n" +
+"			FROM paquetes NATURAL LEFT JOIN pedidos\n" +
+"	WHERE pedido = ? AND fecha_entrega IS NULL AND tramitador is null");
             stm.setString(1, transportista);
-            stm.setInt(2, codigo);
+            stm.setString(2, transportista);
+            stm.setInt(3, codigo);
             rs = stm.executeQuery();
             if (rs.next()) {
                 count = rs.getInt(1);
                 NPaq = rs.getInt(2);
-                if (count >= 0) {
+                if(count >= 0){
                     stm2 = con.prepareStatement("UPDATE paquetes "
-                            + "SET transportista = ? "
-                            + "WHERE pedido =  ? AND fecha_entrega IS NULL ");
+                            + "SET transportista = ? \n"
+                            + "WHERE pedido =  ? AND fecha_entrega IS NULL AND transportista IS NULL");
                     stm2.setString(1, transportista);
                     stm2.setInt(2, codigo);
 
                     stm2.executeUpdate();
+                    stm3 = con.prepareStatement("UPDATE pedidos "
+                            + "SET tramitador = ?"
+                            + "WHERE codigo = ? ");
+                    stm3.setString(1, tramitador);
+                    stm3.setInt(2, codigo);
+                    stm3.executeUpdate();
+                }else if ((count+NPaq) > 0) {
+                     resultado = count + NPaq;
+                    stm2 = con.prepareStatement("UPDATE paquetes "
+                            + "SET transportista = ? \n"
+                            + "WHERE pedido =  ? AND fecha_entrega IS NULL AND transportista IS NULL AND codigo<="
+                            + " (SELECT ? + count(*) FROM paquetes\n"
+                            + "WHERE pedido = ? AND fecha_entrega IS NOT NULL AND codigo<=? AND transportista IS NOT NULL)");
+                    stm2.setString(1, transportista);
+                    stm2.setInt(2, codigo);
+                    stm2.setInt(3, resultado);
+                    stm2.setInt(4, codigo);
+                    stm2.setInt(5, resultado);
 
+                    stm2.executeUpdate();
                     stm3 = con.prepareStatement("UPDATE pedidos "
                             + "SET tramitador = ?"
                             + "WHERE codigo = ? ");

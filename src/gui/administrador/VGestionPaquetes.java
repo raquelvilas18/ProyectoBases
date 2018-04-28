@@ -6,7 +6,7 @@
 package gui.administrador;
 
 import gui.ModeloTablaPedidos;
-import gui.ModeloTablaUsuarios;
+import gui.ModeloTablaClientes;
 
 /**
  *
@@ -350,9 +350,9 @@ public class VGestionPaquetes extends javax.swing.JPanel {
 
     private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
 
-        ModeloTablaUsuarios tp = new ModeloTablaUsuarios();
+        ModeloTablaClientes tp = new ModeloTablaClientes();
         tablaPedidos.setModel(tp);
-        tp.setFilas(fa.obtenerUsuarios(this.FiltroId.getText(), this.FiltroNombre.getText()));
+        //tp.setFilas(fa.obtenerUsuarios(this.FiltroId.getText(), this.FiltroNombre.getText()));
     }//GEN-LAST:event_jLabel6MouseClicked
 
     private void tablaPedidosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaPedidosMouseClicked
