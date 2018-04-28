@@ -26,8 +26,13 @@ import gui.administrador.VGestionVehiculos;
 import gui.administrador.VPerfilAdmin;
 import aplicacion.Usuario;
 import gui.administrador.VGestionLocales;
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.KeyEvent;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.JTableHeader;
 
 /**
  *
@@ -37,7 +42,7 @@ public class VPrincipal extends javax.swing.JFrame {
 
     aplicacion.FachadaAplicacion fa;
     private JPanel panelActivo;
-   Usuario usuario;
+    Usuario usuario;
 
     public FachadaAplicacion getFa() {
         return fa;
@@ -54,7 +59,6 @@ public class VPrincipal extends javax.swing.JFrame {
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
-    
 
     /**
      * Creates new form vPrincipal
@@ -62,9 +66,27 @@ public class VPrincipal extends javax.swing.JFrame {
     public VPrincipal(aplicacion.FachadaAplicacion fa) {
         this.fa = fa;
         initComponents();
-        usuario=null;
+        usuario = null;
         this.setLocationRelativeTo(null);
         autentificacionIncorrecta.setVisible(false);
+        this.PanelTabla.setVisible(false);
+
+        JTableHeader th;
+        th = this.tablaLoc.getTableHeader();
+        Font fuente = new Font("SansSerif", Font.PLAIN, 13);
+        th.setFont(fuente);
+        th.setForeground(new Color(65, 105, 225));
+        th.setBackground(Color.WHITE);
+
+        tablaLoc.changeSelection(0, 0, false, false);
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment(JLabel.CENTER);
+        tablaLoc.setDefaultRenderer(String.class, centerRenderer);
+        tablaLoc.setDefaultRenderer(Integer.class, centerRenderer);
+
+        idError.setVisible(false);
+        this.SinResultado.setVisible(false);
+
     }
 
     /**
@@ -83,6 +105,11 @@ public class VPrincipal extends javax.swing.JFrame {
         jSeparator4 = new javax.swing.JSeparator();
         TxLocalizar = new javax.swing.JTextField();
         Localizar = new javax.swing.JButton();
+        SinResultado = new javax.swing.JLabel();
+        PanelTabla = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tablaLoc = new javax.swing.JTable();
+        idError = new javax.swing.JLabel();
         panelLogin = new javax.swing.JPanel();
         textoUsuario = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -115,6 +142,11 @@ public class VPrincipal extends javax.swing.JFrame {
         panelLocPaquete.setBackground(new java.awt.Color(255, 255, 255));
         panelLocPaquete.setBorder(javax.swing.BorderFactory.createMatteBorder(5, 0, 0, 0, new java.awt.Color(253, 156, 104)));
         panelLocPaquete.setForeground(new java.awt.Color(255, 255, 255));
+        panelLocPaquete.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                panelLocPaqueteMouseClicked(evt);
+            }
+        });
         panelLocPaquete.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         textoUsuario4.setBackground(new java.awt.Color(65, 105, 225));
@@ -135,7 +167,7 @@ public class VPrincipal extends javax.swing.JFrame {
 
         TxLocalizar.setForeground(new java.awt.Color(153, 153, 153));
         TxLocalizar.setBorder(null);
-        panelLocPaquete.add(TxLocalizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 70, 250, 30));
+        panelLocPaquete.add(TxLocalizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 70, 280, 30));
 
         Localizar.setBackground(new java.awt.Color(255, 255, 255));
         Localizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8_Search_30px.png"))); // NOI18N
@@ -143,12 +175,43 @@ public class VPrincipal extends javax.swing.JFrame {
         Localizar.setBorderPainted(false);
         Localizar.setContentAreaFilled(false);
         Localizar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Localizar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                LocalizarMouseClicked(evt);
+            }
+        });
         Localizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 LocalizarActionPerformed(evt);
             }
         });
         panelLocPaquete.add(Localizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 60, -1, -1));
+
+        SinResultado.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        SinResultado.setForeground(new java.awt.Color(204, 0, 0));
+        SinResultado.setText("No hay datos de ese pedido");
+        panelLocPaquete.add(SinResultado, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 100, -1, -1));
+
+        PanelTabla.setBackground(new java.awt.Color(255, 255, 255));
+        PanelTabla.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jScrollPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+
+        tablaLoc.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        tablaLoc.setModel(new ModeloTablaLocalizador());
+        tablaLoc.setGridColor(new java.awt.Color(255, 255, 255));
+        tablaLoc.setSelectionBackground(new java.awt.Color(89, 136, 235));
+        tablaLoc.setSelectionForeground(new java.awt.Color(255, 255, 255));
+        jScrollPane1.setViewportView(tablaLoc);
+
+        PanelTabla.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 680, 140));
+
+        panelLocPaquete.add(PanelTabla, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, 680, 160));
+
+        idError.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        idError.setForeground(new java.awt.Color(204, 0, 0));
+        idError.setText("Introduce un id");
+        panelLocPaquete.add(idError, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 100, -1, -1));
 
         panelBase.add(panelLocPaquete, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 290, 740, 290));
 
@@ -287,7 +350,9 @@ public class VPrincipal extends javax.swing.JFrame {
 
     private void botonCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCerrarActionPerformed
         // TODO add your handling code here:
-        if(usuario!=null) fa.conexion(this.usuario.getUsuario(), false);
+        if (usuario != null) {
+            fa.conexion(this.usuario.getUsuario(), false);
+        }
         this.dispose();
     }//GEN-LAST:event_botonCerrarActionPerformed
 
@@ -302,13 +367,7 @@ public class VPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_botonRegistrarseActionPerformed
 
     private void LocalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LocalizarActionPerformed
-        // TODO add your handling code here:
-        String codigo=TxLocalizar.getText();
-        if (codigo.equals("")){
-            VAviso vaviso = new VAviso(this, true, "No se ha indicado ningún código de búsqueda.");
-        }else{
-            fa.localizar(Integer.parseInt(codigo));
-        }
+
     }//GEN-LAST:event_LocalizarActionPerformed
 
     private void JUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JUsuarioActionPerformed
@@ -371,11 +430,43 @@ public class VPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_JContrasenaKeyPressed
 
+    private void LocalizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LocalizarMouseClicked
+        // TODO add your handling code here:
+        if (!TxLocalizar.getText().isEmpty()) {
+            if (fa.localizar(Integer.parseInt(TxLocalizar.getText())).size() > 0) {
+                this.SinResultado.setVisible(false);
+                idError.setVisible(false);
+                PanelTabla.setVisible(true);
+                ModeloTablaLocalizador t;
+                t = (ModeloTablaLocalizador) this.tablaLoc.getModel();
+                tablaLoc.setModel(t);
+                t.setFilas(fa.localizar(Integer.parseInt(TxLocalizar.getText())));
+            } else {
+                this.SinResultado.setVisible(true);
+                PanelTabla.setVisible(false);
+            }
+        } else {
+            idError.setVisible(true);
+            this.SinResultado.setVisible(false);
+        }
+
+    }//GEN-LAST:event_LocalizarMouseClicked
+
+    private void panelLocPaqueteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelLocPaqueteMouseClicked
+        // TODO add your handling code here:
+        PanelTabla.setVisible(false);
+        idError.setVisible(false);
+        this.SinResultado.setVisible(false);
+    }//GEN-LAST:event_panelLocPaqueteMouseClicked
+
     public void ventanaPedido(Usuario usuario) {
         panelActivo.setVisible(false);
         VPedido panelPedido;
-        if(usuario!=null) panelPedido = new VPedido(fa, usuario);
-        else panelPedido = new VPedido(fa, fa.consultarUsuario(JUsuario.getText(), JContrasena.getText()));
+        if (usuario != null) {
+            panelPedido = new VPedido(fa, usuario);
+        } else {
+            panelPedido = new VPedido(fa, fa.consultarUsuario(JUsuario.getText(), JContrasena.getText()));
+        }
         panelBase.add(panelPedido, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 680, 580));
         panelActivo = panelPedido;
     }
@@ -389,7 +480,7 @@ public class VPrincipal extends javax.swing.JFrame {
         if (panelActivo != null) {
             panelActivo.setVisible(false);
         }
-        this.usuario=usuario;
+        this.usuario = usuario;
         panelLocPaquete.setVisible(false);
         panelLogin.setVisible(false);
         panelLogo.setVisible(false);
@@ -404,10 +495,9 @@ public class VPrincipal extends javax.swing.JFrame {
     public void ventanaPerfilAdmin(Usuario usuario) {
         panelActivo.setVisible(false);
         VPerfilAdmin panel;
-        if(usuario!=null){
-            panel = new VPerfilAdmin(fa,usuario);
-        }
-        else{
+        if (usuario != null) {
+            panel = new VPerfilAdmin(fa, usuario);
+        } else {
             panel = new VPerfilAdmin(fa, fa.consultarUsuario(JUsuario.getText(), JContrasena.getText()));
         }
         panelBase.add(panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 680, 580));
@@ -417,34 +507,32 @@ public class VPrincipal extends javax.swing.JFrame {
     public void ventanaPerfilTransportista(Usuario usuario) {
         panelActivo.setVisible(false);
         VPerfilTransportista panel;
-        if(usuario!=null){
+        if (usuario != null) {
             panel = new VPerfilTransportista(fa, usuario);
-        }
-        else{
+        } else {
             panel = new VPerfilTransportista(fa, fa.consultarUsuario(JUsuario.getText(), JContrasena.getText()));
         }
         panelBase.add(panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 680, 580));
         panelActivo = panel;
     }
-    
-    public void ventanaPerfilOficinista(Usuario usuario){
+
+    public void ventanaPerfilOficinista(Usuario usuario) {
         panelActivo.setVisible(false);
         VPerfilOficinista panel;
-        if(usuario!=null){
+        if (usuario != null) {
             panel = new VPerfilOficinista(fa, usuario);
-        }
-        else{
+        } else {
             panel = new VPerfilOficinista(fa, fa.consultarUsuario(JUsuario.getText(), JContrasena.getText()));
         }
         panelBase.add(panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 680, 580));
         panelActivo = panel;
     }
-    
+
     public void ventanaTransportista(Usuario usuario) {
         if (panelActivo != null) {
             panelActivo.setVisible(false);
         }
-        this.usuario=usuario;
+        this.usuario = usuario;
         panelLocPaquete.setVisible(false);
         panelLogin.setVisible(false);
         panelLogo.setVisible(false);
@@ -460,7 +548,7 @@ public class VPrincipal extends javax.swing.JFrame {
         if (panelActivo != null) {
             panelActivo.setVisible(false);
         }
-        this.usuario=usuario;
+        this.usuario = usuario;
         panelLocPaquete.setVisible(false);
         panelLogin.setVisible(false);
         panelLogo.setVisible(false);
@@ -476,7 +564,7 @@ public class VPrincipal extends javax.swing.JFrame {
         if (panelActivo != null) {
             panelActivo.setVisible(false);
         }
-        this.usuario=usuario;
+        this.usuario = usuario;
         panelLocPaquete.setVisible(false);
         panelLogin.setVisible(false);
         panelLogo.setVisible(false);
@@ -501,29 +589,28 @@ public class VPrincipal extends javax.swing.JFrame {
         panelBase.add(panelGU, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 680, 580));
         panelActivo = panelGU;
     }
-    
+
     public void ventanagestionUsuariosOficinista() {
         panelActivo.setVisible(false);
         VGestionClientesOficinista panelGU = new VGestionClientesOficinista(fa);
         panelBase.add(panelGU, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 680, 580));
         panelActivo = panelGU;
     }
-    
+
     public void ventanaGestionPedidosOficinista(Usuario u) {
         panelActivo.setVisible(false);
         VGestionPedidosOficinista panelGU = new VGestionPedidosOficinista(fa, u);
         panelBase.add(panelGU, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 680, 580));
         panelActivo = panelGU;
     }
-    
-    
+
     public void ventanaGestionPedidosTransportista(Usuario u) {
         panelActivo.setVisible(false);
         VGestionPaquetesTransportista panelGU = new VGestionPaquetesTransportista(fa, u);
         panelBase.add(panelGU, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 680, 580));
         panelActivo = panelGU;
-    }   
-    
+    }
+
     public void ventanagestionPaquetes() {
         panelActivo.setVisible(false);
         VGestionPaquetes panelGU = new VGestionPaquetes(fa);
@@ -559,25 +646,25 @@ public class VPrincipal extends javax.swing.JFrame {
         panelLogin.setVisible(true);
         panelLogo.setVisible(true);
     }
-    
-    public void ventanaGestionVehiculos(Usuario usr){
-        
+
+    public void ventanaGestionVehiculos(Usuario usr) {
+
         panelActivo.setVisible(false);
-        VGestionVehiculos panelGV = new VGestionVehiculos(fa,usr);
+        VGestionVehiculos panelGV = new VGestionVehiculos(fa, usr);
         panelBase.add(panelGV, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 680, 580));
         panelGV.setVisible(true);
         panelActivo = panelGV;
-        
+
     }
-    
-    public void ventanaGestionLocales(){
-        
+
+    public void ventanaGestionLocales() {
+
         panelActivo.setVisible(false);
         VGestionLocales panelGL = new VGestionLocales(fa);
         panelBase.add(panelGL, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 680, 580));
         panelGL.setVisible(true);
         panelActivo = panelGL;
-        
+
     }
 
 
@@ -585,10 +672,13 @@ public class VPrincipal extends javax.swing.JFrame {
     private javax.swing.JPasswordField JContrasena;
     private javax.swing.JTextField JUsuario;
     private javax.swing.JButton Localizar;
+    private javax.swing.JPanel PanelTabla;
+    private javax.swing.JLabel SinResultado;
     private javax.swing.JTextField TxLocalizar;
     private javax.swing.JLabel autentificacionIncorrecta;
     private javax.swing.JButton botonCerrar;
     private javax.swing.JButton botonRegistrarse;
+    private javax.swing.JLabel idError;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -596,6 +686,7 @@ public class VPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
@@ -604,6 +695,7 @@ public class VPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel panelLocPaquete;
     private javax.swing.JPanel panelLogin;
     private javax.swing.JPanel panelLogo;
+    private javax.swing.JTable tablaLoc;
     private javax.swing.JLabel textoUsuario;
     private javax.swing.JLabel textoUsuario3;
     private javax.swing.JLabel textoUsuario4;

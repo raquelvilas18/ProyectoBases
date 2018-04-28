@@ -34,6 +34,7 @@ public class VUsr extends javax.swing.JPanel {
         initComponents();
         this.parent = parent;
         this.usuario = usuario;
+        this.PanelEliminar.setVisible(false);
     }
 
     /**
@@ -61,6 +62,14 @@ public class VUsr extends javax.swing.JPanel {
         jLabel13 = new javax.swing.JLabel();
         Maps = new javax.swing.JLabel();
         CerrarSesion = new javax.swing.JLabel();
+        PanelEliminar = new javax.swing.JPanel();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        no = new javax.swing.JPanel();
+        jLabel20 = new javax.swing.JLabel();
+        Si = new javax.swing.JPanel();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(65, 105, 225));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -286,6 +295,55 @@ public class VUsr extends javax.swing.JPanel {
             }
         });
         add(CerrarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(-40, 120, 40, -1));
+
+        PanelEliminar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel19.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        jLabel19.setText("Estás seguro de que quieres ");
+        PanelEliminar.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, -10, -1, 40));
+
+        jLabel14.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        jLabel14.setText("eliminar tu cuenta de usuario ?");
+        PanelEliminar.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
+
+        no.setBackground(new java.awt.Color(204, 204, 204));
+        no.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        no.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                noMouseClicked(evt);
+            }
+        });
+        no.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel20.setText("no");
+        no.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, -5, -1, 30));
+
+        PanelEliminar.add(no, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 40, 90, 20));
+
+        Si.setBackground(new java.awt.Color(204, 204, 204));
+        Si.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Si.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                SiMouseClicked(evt);
+            }
+        });
+        Si.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel21.setText("si");
+        Si.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, -5, -1, 30));
+
+        PanelEliminar.add(Si, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 90, 20));
+
+        add(PanelEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 490, 220, 70));
+
+        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-retire-hombre-usuario-26.png"))); // NOI18N
+        jLabel15.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel15.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel15MouseClicked(evt);
+            }
+        });
+        add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 550, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseClicked
@@ -376,6 +434,24 @@ public class VUsr extends javax.swing.JPanel {
         parent.ventanaInicial();
     }//GEN-LAST:event_CerrarSesionMouseClicked
 
+    private void noMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_noMouseClicked
+        // TODO add your handling code here:
+        this.PanelEliminar.setVisible(false);
+    }//GEN-LAST:event_noMouseClicked
+
+    private void SiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SiMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_SiMouseClicked
+
+    private void jLabel15MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel15MouseClicked
+        // TODO add your handling code here:
+        if (PanelEliminar.isVisible()) {
+            this.PanelEliminar.setVisible(false);
+        } else {
+            this.PanelEliminar.setVisible(true);
+        }
+    }//GEN-LAST:event_jLabel15MouseClicked
+
     public void openInternet(){
         try{
             Desktop.getDesktop().browse(URI.create("https://www.google.es/maps"));
@@ -387,12 +463,19 @@ public class VUsr extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel CerrarSesion;
     private javax.swing.JLabel Maps;
+    private javax.swing.JPanel PanelEliminar;
+    private javax.swing.JPanel Si;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -401,5 +484,6 @@ public class VUsr extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel no;
     // End of variables declaration//GEN-END:variables
 }

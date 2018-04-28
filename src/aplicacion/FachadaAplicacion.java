@@ -130,7 +130,7 @@ public class FachadaAplicacion {
     }
 
     public void tramitarPedido(Integer codigo, String transportista, String tramitador) {
-        gPedidos.tramitarPedido(codigo, transportista, tramitador);
+        gPedidos.tramitarPedido(this, codigo, transportista, tramitador);
     }
 
     public void actualizarDireccion() {
@@ -230,8 +230,8 @@ public class FachadaAplicacion {
         return gPedidos.pedidosActivosPrecio(u);
     }
 
-    public void localizar(Integer codigo){
-        gPaquetes.localizar(codigo);
+    public java.util.List<Paquete> localizar(Integer codigo){
+        return gPaquetes.localizar(codigo);
     }
     
 }

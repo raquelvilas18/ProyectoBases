@@ -312,17 +312,20 @@ public class DAOEmpleados extends AbstractDAO {
         con = super.getConexion();
 
         try {
-            stmEmpleados = con.prepareStatement("SELECT empl.empleado,empl.nombre, empl.dni, empl.correo, empl.telefono, empl.sexo,empl.direccion, empl.nomina, empl.anoingreso, paq.numPaquetes "
-                    + " FROM (	SELECT * "
-                    + "	FROM empleados e, transportistas t, usuarios u "
-                    + "	WHERE e.usuario = t.empleado "
-                    + "	AND u.usuario = e.usuario ) as empl LEFT JOIN (SELECT empleado, COUNT(*) as numPaquetes "
-                    + "							FROM transportistas as t LEFT JOIN paquetes as p  on (t.empleado = p.transportista) "
-                    + "							GROUP BY t.empleado) as paq on (empl.empleado = paq.empleado)");
+            stmEmpleados = con.prepareStatement("SELECT empl.empleado,empl.nombre, empl.dni, empl.correo, empl.telefono, empl.sexo,u.direccion, empl.nomina, empl.anoingreso,  COALESCE(paq.numPaquetes,0) as numPaquetes , empl.capacidad - COALESCE(paq.numPaquetes,0) as capacidadrestante\n" +
+"FROM (SELECT * \n" +
+"FROM empleados e, transportistas t, usuarios u , vehiculos v\n" +
+"WHERE e.usuario = t.empleado \n" +
+"AND u.usuario = e.usuario\n" +
+"AND  t.empleado = v.conductor) as empl \n" +
+"LEFT JOIN (SELECT empleado, COUNT(*) as numPaquetes \n" +
+"FROM transportistas as t RIGHT JOIN paquetes as p  on (t.empleado = p.transportista) \n" +
+"GROUP BY t.empleado) as paq on (empl.empleado = paq.empleado), usuarios u\n" +
+"WHERE empl.empleado=u.usuario");
             rs = stmEmpleados.executeQuery();
 
             while (rs.next()) {
-                resultado.add( new Transportista(rs.getString("empleado"), rs.getString("nombre"), rs.getString("dni"),rs.getString("correo"),  rs.getString("telefono"), rs.getString("sexo"), rs.getString("direccion"), rs.getInt("nomina"), rs.getString("anoingreso"), rs.getInt("numPaquetes")));
+                resultado.add( new Transportista(rs.getString("empleado"), rs.getString("nombre"), rs.getString("dni"),rs.getString("correo"),  rs.getString("telefono"), rs.getString("sexo"), rs.getString("direccion"), rs.getInt("nomina"), rs.getString("anoingreso"), rs.getInt("numPaquetes"), rs.getInt("capacidadrestante" )));
             }
 
         } catch (SQLException e) {

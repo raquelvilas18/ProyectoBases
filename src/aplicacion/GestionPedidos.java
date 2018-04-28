@@ -7,6 +7,7 @@ package aplicacion;
 
 import baseDatos.FachadaBaseDatos;
 import gui.FachadaGui;
+import gui.VAviso;
 import java.util.ArrayList;
 
 /**
@@ -50,8 +51,16 @@ public class GestionPedidos {
         return fbd.comprobarLocalizacion(codigo);
     }
     
-    public void tramitarPedido(Integer codigo, String transportista, String tramitador) {
-        fbd.tramitarPedido(codigo, transportista, tramitador);
+    public void tramitarPedido(FachadaAplicacion fa, Integer codigo, String transportista, String tramitador) {
+        int res;
+        res = fbd.tramitarPedido(codigo, transportista, tramitador);
+        if(res > 0){
+            fa.muestraExcepcion("No se pudo asignar dicho conductor a todos los "
+                    + "paquetes.\n Se han asignado " + res + " paquetes, por favor "
+                    + "asigne los restantes a otro/s transportista/s.");
+        }else if (res < 0){
+            fa.muestraExcepcion("El transportista seleccionado no puede llevar más paquetes.");
+        }
     }
     
     public ArrayList<Pedido> pedidosPrecio(String u){

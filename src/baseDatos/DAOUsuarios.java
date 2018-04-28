@@ -87,6 +87,7 @@ public class DAOUsuarios extends AbstractDAO {
                 con.commit();
 
                 try {
+                    con.commit();
                     con.setAutoCommit(true);
                 } catch (SQLException ex) {
                     

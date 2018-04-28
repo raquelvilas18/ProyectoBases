@@ -43,6 +43,9 @@ public class ModeloTablaTransportistas  extends AbstractTableModel {
             case 4:
                 nombre = "NºPaquetes";
                 break;    
+            case 5:
+                nombre = "Capacidad restante";
+                break;    
         }
         return nombre;
     }
@@ -65,6 +68,9 @@ public class ModeloTablaTransportistas  extends AbstractTableModel {
                 clase = java.lang.String.class;
                 break;
             case 4:
+                clase = java.lang.Integer.class;
+                break;
+            case 5:
                 clase = java.lang.Integer.class;
                 break;
         }
@@ -94,13 +100,16 @@ public class ModeloTablaTransportistas  extends AbstractTableModel {
             case 4:
                 resultado = transportistas.get(row).getNumPaquetes();
                 break;
+            case 5:
+                resultado = transportistas.get(row).getCapacidadrestante();;
+                break;
         }
         return resultado;
     }
 
     @Override
     public int getColumnCount() {
-        return 5;
+        return 6;
     }
 
     @Override

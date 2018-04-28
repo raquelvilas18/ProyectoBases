@@ -13,6 +13,7 @@ import java.awt.Font;
 import javax.swing.JLabel;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.JTableHeader;
+import javax.swing.table.TableColumnModel;
 
 /**
  *
@@ -22,7 +23,8 @@ public class VGestionPedidosOficinista extends javax.swing.JPanel {
 
     aplicacion.FachadaAplicacion fa;
     Usuario u;
-
+    ModeloTablaTransportistas tt;
+    ModeloTablaPedidos2 tp;
     /**
      * Creates new form VGestionPaquetes
      */
@@ -30,11 +32,11 @@ public class VGestionPedidosOficinista extends javax.swing.JPanel {
         initComponents();
         this.fa = fa;
         this.u = u;
-        ModeloTablaPedidos2 tp = new ModeloTablaPedidos2();
+        tp = new ModeloTablaPedidos2();
         tablaPedidos.setModel(tp);
         tp.setFilas(fa.pedidosSinTramitar());
 
-        ModeloTablaTransportistas tt = new ModeloTablaTransportistas();
+        tt = new ModeloTablaTransportistas();
         tablaTransp.setModel(tt);
         tt.setFilas(fa.obtenerTransportistas());
 
@@ -44,14 +46,21 @@ public class VGestionPedidosOficinista extends javax.swing.JPanel {
         th.setFont(fuente);
         th.setForeground(new Color(89, 171, 36));
         th.setBackground(Color.WHITE);
-
+        BtTramitar.setEnabled(false); //DEBERIAMOS DESACTIVAR EL BOTON
         JTableHeader th2;
         th2 = this.tablaTransp.getTableHeader();
         th2.setFont(fuente);
         th2.setForeground(new Color(89, 171, 36));
         th2.setBackground(Color.WHITE);
         tablaPedidos.changeSelection(0, 0, false, false);
+        
+        TableColumnModel columnModel = tablaTransp.getColumnModel();
+        columnModel.getColumn(5).setPreferredWidth(150);
 
+        
+        TableColumnModel columnModel2 = tablaPedidos.getColumnModel();
+        columnModel2.getColumn(2).setPreferredWidth(30);
+        
         LabelTramitar.setVisible(false);
         LabelEliminar.setVisible(false);
         errorLabel.setVisible(false);
@@ -226,6 +235,11 @@ public class VGestionPedidosOficinista extends javax.swing.JPanel {
         tablaTransp.setGridColor(new java.awt.Color(255, 255, 255));
         tablaTransp.setSelectionBackground(new java.awt.Color(89, 171, 36));
         tablaTransp.setSelectionForeground(new java.awt.Color(255, 255, 255));
+        tablaTransp.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tablaTranspMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(tablaTransp);
 
         add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 330, 630, 150));
@@ -286,6 +300,14 @@ public class VGestionPedidosOficinista extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_BtEliminarMouseClicked
 
+    private void tablaTranspMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaTranspMouseClicked
+        if(tt.getFila(tablaTransp.getSelectedRow()).getCapacidadrestante()>0 || tp.getFila(tablaPedidos.getSelectedRow()).getNumPaquetes() > tt.getFila(tablaTransp.getSelectedRow()).getCapacidadrestante() )
+        {
+            //DEBERIAMOS ACTIVAR EL BOTON
+        }
+        else { //DEBERIAMOS DESACTIVAR EL BOTON
+    }//GEN-LAST:event_tablaTranspMouseClicked
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel BtEliminar;
