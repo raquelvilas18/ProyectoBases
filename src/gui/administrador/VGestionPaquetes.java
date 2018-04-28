@@ -123,6 +123,7 @@ public class VGestionPaquetes extends javax.swing.JPanel {
         tablaPedidos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         tablaPedidos.setGridColor(new java.awt.Color(255, 189, 72));
         tablaPedidos.setSelectionBackground(new java.awt.Color(255, 189, 72));
+        tablaPedidos.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         tablaPedidos.setShowHorizontalLines(false);
         tablaPedidos.setShowVerticalLines(false);
         tablaPedidos.setSurrendersFocusOnKeystroke(true);
