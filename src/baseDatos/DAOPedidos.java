@@ -128,6 +128,25 @@ public class DAOPedidos extends AbstractDAO {
             Logger.getLogger(DAOUsuarios.class.getName()).log(Level.SEVERE, null, ex);
         }
         try {
+                stm3 = con.prepareStatement("UPDATE pedidos \n" +
+                                                "SET tramitador = ? \n" +
+                                                "WHERE codigo = ? \n" +
+                                                "AND (SELECT capacidad - (SELECT count(*) as restante\n" +
+                                                "	FROM paquetes\n" +
+                                                "	WHERE transportista=?) - \n" +
+                                                "	(SELECT count(*)\n" +
+                                                "	FROM paquetes\n" +
+                                                "	WHERE pedido=?)\n" +
+                                                "	FROM vehiculos\n" +
+                                                "	WHERE conductor=?\n" +
+                                                ") >=0");
+                    stm3.setString(1, transportista);
+                    stm3.setInt(2, codigo);
+                    stm3.setString(3, transportista);
+                    stm3.setInt(4, codigo);
+                    stm3.setString(5, transportista);
+                    stm3.executeUpdate();
+      
                     stm2 = con.prepareStatement("UPDATE paquetes\n" +
                                                 "SET transportista = ?\n" +
                                                 "WHERE pedido = ? AND fecha_entrega IS NULL AND transportista IS NULL\n" +
@@ -148,24 +167,7 @@ public class DAOPedidos extends AbstractDAO {
                     stm2.setString(5, transportista);
                     stm2.executeUpdate();
                     
-                    stm3 = con.prepareStatement("UPDATE pedidos \n" +
-                                                "SET tramitador = ? \n" +
-                                                "WHERE codigo = ? \n" +
-                                                "AND (SELECT capacidad - (SELECT count(*) as restante\n" +
-                                                "	FROM paquetes\n" +
-                                                "	WHERE transportista=?) - \n" +
-                                                "	(SELECT count(*)\n" +
-                                                "	FROM paquetes\n" +
-                                                "	WHERE pedido=?)\n" +
-                                                "	FROM vehiculos\n" +
-                                                "	WHERE conductor=?\n" +
-                                                ") >=0");
-                    stm3.setString(1, transportista);
-                    stm3.setInt(2, codigo);
-                    stm3.setString(3, transportista);
-                    stm3.setInt(4, codigo);
-                    stm3.setString(5, transportista);
-                    stm3.executeUpdate();
+
                     
                     con.commit();
                     con.setAutoCommit(true);
