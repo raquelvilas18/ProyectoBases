@@ -36,13 +36,11 @@ public class VPerfilTransportista extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
         jId = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         JActualizar = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
@@ -51,14 +49,16 @@ public class VPerfilTransportista extends javax.swing.JPanel {
         JCorreo = new javax.swing.JTextField();
         JTelefono = new javax.swing.JTextField();
         JDireccion = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        jPanel4 = new javax.swing.JPanel();
         JLabelMensaje = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         sexo = new javax.swing.JComboBox<String>();
         jLabel18 = new javax.swing.JLabel();
         JDNI = new javax.swing.JTextField();
         ActualizarLabel = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jPanel6 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         addMouseListener(new java.awt.event.MouseAdapter() {
@@ -67,10 +67,6 @@ public class VPerfilTransportista extends javax.swing.JPanel {
             }
         });
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/logoPequeno.png"))); // NOI18N
-        jLabel1.setText("jLabel1");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(348, 0, 300, 110));
 
         jId.setBackground(new java.awt.Color(194, 133, 248));
         jId.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
@@ -129,21 +125,6 @@ public class VPerfilTransportista extends javax.swing.JPanel {
 
         add(JActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 510, -1, -1));
 
-        jPanel2.setPreferredSize(new java.awt.Dimension(10, 550));
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 10, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 550, Short.MAX_VALUE)
-        );
-
-        add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 2, -1, -1));
-
         jLabel12.setBackground(new java.awt.Color(183, 112, 255));
         jLabel12.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(183, 112, 255));
@@ -200,26 +181,6 @@ public class VPerfilTransportista extends javax.swing.JPanel {
         JDireccion.setBorder(null);
         add(JDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(178, 410, 470, 30));
 
-        jLabel2.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(221, 61, 1));
-        jLabel2.setText("Datos personales");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(48, 100, 260, -1));
-
-        jPanel4.setBackground(new java.awt.Color(225, 181, 158));
-
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 600, Short.MAX_VALUE)
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 10, Short.MAX_VALUE)
-        );
-
-        add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(48, 120, -1, -1));
-
         JLabelMensaje.setForeground(new java.awt.Color(255, 0, 0));
         JLabelMensaje.setText("Id ya existente!");
         add(JLabelMensaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(348, 130, -1, 20));
@@ -259,6 +220,45 @@ public class VPerfilTransportista extends javax.swing.JPanel {
         ActualizarLabel.setForeground(new java.awt.Color(0, 153, 0));
         ActualizarLabel.setText("Datos actualizados correctamente");
         add(ActualizarLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 490, 270, -1));
+
+        jLabel2.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(60, 60, 159));
+        jLabel2.setText("Datos personales");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 80, 260, -1));
+
+        jPanel6.setBackground(new java.awt.Color(116, 126, 173));
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 600, Short.MAX_VALUE)
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 10, Short.MAX_VALUE)
+        );
+
+        add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, 600, 10));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/logoPequeno.png"))); // NOI18N
+        jLabel1.setText("jLabel1");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 10, 300, 110));
+
+        jPanel2.setPreferredSize(new java.awt.Dimension(10, 550));
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 10, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 550, Short.MAX_VALUE)
+        );
+
+        add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 12, 10, 550));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jLabel11MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel11MousePressed
@@ -326,7 +326,7 @@ public class VPerfilTransportista extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel6;
     private javax.swing.JComboBox<String> sexo;
     // End of variables declaration//GEN-END:variables
 }

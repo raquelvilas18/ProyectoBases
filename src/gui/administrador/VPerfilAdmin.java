@@ -44,7 +44,6 @@ public class VPerfilAdmin extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
         TxId = new javax.swing.JTextField();
         TxNombre = new javax.swing.JTextField();
         TxCorreo = new javax.swing.JTextField();
@@ -67,6 +66,7 @@ public class VPerfilAdmin extends javax.swing.JPanel {
         LabelActualizar = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         addMouseListener(new java.awt.event.MouseAdapter() {
@@ -75,10 +75,6 @@ public class VPerfilAdmin extends javax.swing.JPanel {
             }
         });
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/logoPequeno.png"))); // NOI18N
-        jLabel1.setText("jLabel1");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(359, 14, 300, 110));
 
         TxId.setBackground(new java.awt.Color(255, 226, 154));
         TxId.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
@@ -262,6 +258,10 @@ public class VPerfilAdmin extends javax.swing.JPanel {
         );
 
         add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, 600, 10));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/logoPequeno.png"))); // NOI18N
+        jLabel1.setText("jLabel1");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 10, 300, 110));
     }// </editor-fold>//GEN-END:initComponents
 
     private void sexoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sexoActionPerformed
