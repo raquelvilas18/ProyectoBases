@@ -103,10 +103,13 @@ public class FachadaBaseDatos {
     public boolean consultarId(String idUsuario) {
         return daoUsuarios.consultarId(idUsuario);
     }
-
-    public void conexion(String idUsuario, boolean accion) {
-        daoUsuarios.conexion(idUsuario, accion);
+    public java.util.List<Paquete> obtenerPaquetes(String codigo){
+        return daoPedidos.obtenerPaquetes(codigo);
     }
+     public void conexion(String idUsuario,boolean accion)
+     {
+         daoUsuarios.conexion(idUsuario, accion);
+     }
 
     public String trabajaEn(String id) {
         return daoEmpleados.trabajaEn(id);
@@ -184,8 +187,11 @@ public class FachadaBaseDatos {
     public ArrayList<Pedido> pedidosSinTramitar() {
         return daoPedidos.pedidosSinTramitar();
     }
-
-    public void eliminarPedido(int codigo) {
+    public void elimarPaquete(Integer pedido,Integer codigo){
+        daoPedidos.elimarPaquete(pedido, codigo);
+    }
+    
+    public void eliminarPedido(int codigo){
         daoPedidos.eliminarPedido(codigo);
     }
 

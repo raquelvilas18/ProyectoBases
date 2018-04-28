@@ -64,7 +64,8 @@ public class VGestionPedidosOficinista extends javax.swing.JPanel {
         LabelTramitar.setVisible(false);
         LabelEliminar.setVisible(false);
         errorLabel.setVisible(false);
-
+        errorCupoMaximo.setVisible(false);
+        errorTramitacionAMedias.setVisible(false);
         //SELECCION Y CENTRADO DE TEXTO
         tablaPedidos.changeSelection(0, 0, false, false);
         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
@@ -108,6 +109,8 @@ public class VGestionPedidosOficinista extends javax.swing.JPanel {
         tablaTransp = new javax.swing.JTable();
         jLabel4 = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
+        errorCupoMaximo = new java.awt.Label();
+        errorTramitacionAMedias = new java.awt.Label();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -263,6 +266,14 @@ public class VGestionPedidosOficinista extends javax.swing.JPanel {
         );
 
         add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, 600, 5));
+
+        errorCupoMaximo.setForeground(new java.awt.Color(255, 0, 0));
+        errorCupoMaximo.setText("Cupo máximo del transportista alcanzado, pedido no tramitado");
+        add(errorCupoMaximo, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 500, -1, -1));
+
+        errorTramitacionAMedias.setForeground(new java.awt.Color(255, 153, 51));
+        errorTramitacionAMedias.setText("Cupo máximo del transportista alcanzado, no se han podido asignar todos los paquetes.");
+        add(errorTramitacionAMedias, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 500, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void tablaPedidosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaPedidosMouseClicked
@@ -270,17 +281,32 @@ public class VGestionPedidosOficinista extends javax.swing.JPanel {
         LabelTramitar.setVisible(false);
         LabelEliminar.setVisible(false);
         errorLabel.setVisible(false);
+        errorCupoMaximo.setVisible(false);
+        errorTramitacionAMedias.setVisible(false);
     }//GEN-LAST:event_tablaPedidosMouseClicked
 
     private void BtTramitarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtTramitarMouseClicked
         // TODO add your handling code here:
+        int res=0;
         if (tablaPedidos.getRowCount() > 0 && tablaTransp.getRowCount() > 0) {
             ModeloTablaPedidos2 tp;
             tp = (ModeloTablaPedidos2) tablaPedidos.getModel();
             ModeloTablaTransportistas t;
             t = (ModeloTablaTransportistas) tablaTransp.getModel();
-            fa.tramitarPedido(tp.getFila(tablaPedidos.getSelectedRow()).getCodigo(), t.getFila(tablaTransp.getSelectedRow()).getUsuario(), u.getUsuario());
-            LabelTramitar.setVisible(true);
+            res=fa.tramitarPedido(tp.getFila(tablaPedidos.getSelectedRow()).getCodigo(), t.getFila(tablaTransp.getSelectedRow()).getUsuario(), u.getUsuario());
+            if(res == 0){
+                errorCupoMaximo.setVisible(false);
+                errorTramitacionAMedias.setVisible(false);
+                LabelTramitar.setVisible(true);
+            }else if(res < 0){
+                errorCupoMaximo.setVisible(true);
+                errorTramitacionAMedias.setVisible(false);
+                LabelTramitar.setVisible(false);
+            }else{
+                errorCupoMaximo.setVisible(false);
+                errorTramitacionAMedias.setVisible(true);
+                LabelTramitar.setVisible(false);
+            }
             actualizarTablaPedidos();
         } else {
             errorLabel.setVisible(true);
@@ -315,7 +341,9 @@ public class VGestionPedidosOficinista extends javax.swing.JPanel {
     private javax.swing.JPanel BtTramitar;
     private java.awt.Label LabelEliminar;
     private java.awt.Label LabelTramitar;
+    private java.awt.Label errorCupoMaximo;
     private java.awt.Label errorLabel;
+    private java.awt.Label errorTramitacionAMedias;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;

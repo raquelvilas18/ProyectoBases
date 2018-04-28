@@ -48,7 +48,9 @@ public class FachadaAplicacion {
     public void muestraExcepcion(String e) {
         fgui.muestraExcepcion(e);
     }
-
+    public java.util.List<Paquete> obtenerPaquetes(String codigo){
+        return gPedidos.obtenerPaquetes(codigo);
+    }
     public Boolean comprobarAutentificacion(String idUsuario, String clave) {
         return gUsuarios.comprobarAutentificacion(idUsuario, clave);
     }
@@ -116,6 +118,9 @@ public class FachadaAplicacion {
     public ArrayList<Pedido> pedidosSinTramitar() {
         return gPedidos.pedidosSinTramitar();
     }
+    public void elimarPaquete(Integer pedido,Integer codigo){
+        gPedidos.elimarPaquete(pedido, codigo);
+    }
 
     public Empleado nuevoEmpleado(String usuario, String password, String dni, String nombre, String correo, String direccion, String telefono, String sexo, String tipo, int nomina, String local) {
         return gEmpleados.nuevoEmpleado(usuario, password, dni, nombre, correo, direccion, telefono, sexo, tipo, nomina, local);
@@ -129,8 +134,8 @@ public class FachadaAplicacion {
         gEmpleados.actualizarEmpleado(id, emp);
     }
 
-    public void tramitarPedido(Integer codigo, String transportista, String tramitador) {
-        gPedidos.tramitarPedido(this, codigo, transportista, tramitador);
+    public int tramitarPedido(Integer codigo, String transportista, String tramitador) {
+        return gPedidos.tramitarPedido(codigo, transportista, tramitador);
     }
 
     public void actualizarDireccion() {
