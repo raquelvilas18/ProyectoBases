@@ -86,6 +86,7 @@ public class DAOUsuarios extends AbstractDAO {
                 stmUsuario2.executeUpdate();
 
                 try {
+                    con.commit();
                     con.setAutoCommit(true);
                 } catch (SQLException ex) {
                     
