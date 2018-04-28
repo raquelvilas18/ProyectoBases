@@ -295,19 +295,20 @@ public class VGestionPedidosOficinista extends javax.swing.JPanel {
             fa.eliminarPedido(tp.getFila(tablaPedidos.getSelectedRow()).getCodigo());
             LabelEliminar.setVisible(true);
             actualizarTablaPedidos();
+            actualizarTablaTransportistas();
         } else {
             errorLabel.setVisible(true);
         }
     }//GEN-LAST:event_BtEliminarMouseClicked
 
     private void tablaTranspMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaTranspMouseClicked
-        if(tt.getFila(tablaTransp.getSelectedRow()).getCapacidadrestante()>0 || tp.getFila(tablaPedidos.getSelectedRow()).getNumPaquetes() > tt.getFila(tablaTransp.getSelectedRow()).getCapacidadrestante() )
+        /*if(tt.getFila(tablaTransp.getSelectedRow()).getCapacidadrestante()>0 || tp.getFila(tablaPedidos.getSelectedRow()).getNumPaquetes() > tt.getFila(tablaTransp.getSelectedRow()).getCapacidadrestante() )
         {
             //DEBERIAMOS ACTIVAR EL BOTON
         }
-        else { //DEBERIAMOS DESACTIVAR EL BOTON
+        else { }*/
     }//GEN-LAST:event_tablaTranspMouseClicked
-    }
+   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel BtEliminar;
@@ -335,6 +336,11 @@ public class VGestionPedidosOficinista extends javax.swing.JPanel {
         ModeloTablaPedidos2 tp;
         tp = (ModeloTablaPedidos2) tablaPedidos.getModel();
         tp.setFilas(fa.pedidosSinTramitar());
+    }
+    
+    public void actualizarTablaTransportistas() {
+        tt = (ModeloTablaTransportistas) tablaTransp.getModel();
+        tt.setFilas(fa.obtenerTransportistas());
     }
 
 }
