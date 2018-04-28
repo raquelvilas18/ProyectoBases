@@ -60,7 +60,7 @@ public class ModeloTablaLocalizador extends AbstractTableModel {
             case 0: resultado= paquetes.get(row).getPedido(); break;
             case 1: resultado= paquetes.get(row).getCodigo(); break;
             case 2: resultado= paquetes.get(row).getPeso(); break;
-            case 3: resultado= coches.get(row); break;
+            case 3: resultado= paquetes.get(row).getPosicion(); break;
         }
         return resultado;
     }
@@ -78,6 +78,11 @@ public class ModeloTablaLocalizador extends AbstractTableModel {
     public void setFilas(java.util.List<Paquete> paquetes, java.util.List<String> coches){
         this.paquetes=paquetes;
         this.coches=coches;
+        fireTableDataChanged();
+    }
+    
+    public void setFilas(java.util.List<Paquete> paquetes){
+        this.paquetes=paquetes;
         fireTableDataChanged();
     }
 

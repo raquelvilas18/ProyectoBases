@@ -134,8 +134,8 @@ public class FachadaAplicacion {
         gEmpleados.actualizarEmpleado(id, emp);
     }
 
-    public void tramitarPedido(Integer codigo, String transportista, String tramitador) {
-        gPedidos.tramitarPedido(codigo, transportista, tramitador);
+    public int tramitarPedido(Integer codigo, String transportista, String tramitador) {
+        return gPedidos.tramitarPedido(codigo, transportista, tramitador);
     }
 
     public void actualizarDireccion() {
@@ -162,7 +162,7 @@ public class FachadaAplicacion {
         return fbd.obtenerUsuarios(id, nombre);
     }
     
-    public ArrayList<Usuario> obtenerClientes(String id, String nombre) {
+    public ArrayList<Cliente> obtenerClientes(String id, String nombre) {
         return fbd.obtenerClientes(id, nombre);
     }
 
@@ -235,8 +235,8 @@ public class FachadaAplicacion {
         return gPedidos.pedidosActivosPrecio(u);
     }
 
-    public void localizar(Integer codigo){
-        gPaquetes.localizar(codigo);
+    public java.util.List<Paquete> localizar(Integer codigo){
+        return gPaquetes.localizar(codigo);
     }
     
 }

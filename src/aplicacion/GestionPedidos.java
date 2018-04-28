@@ -7,6 +7,7 @@ package aplicacion;
 
 import baseDatos.FachadaBaseDatos;
 import gui.FachadaGui;
+import gui.VAviso;
 import java.util.ArrayList;
 
 /**
@@ -54,8 +55,8 @@ public class GestionPedidos {
         return fbd.comprobarLocalizacion(codigo);
     }
     
-    public void tramitarPedido(Integer codigo, String transportista, String tramitador) {
-        fbd.tramitarPedido(codigo, transportista, tramitador);
+    public int tramitarPedido(Integer codigo, String transportista, String tramitador) {
+        return fbd.tramitarPedido(codigo, transportista, tramitador);  
     }
     
     public ArrayList<Pedido> pedidosPrecio(String u){

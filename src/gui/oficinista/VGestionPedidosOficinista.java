@@ -13,6 +13,7 @@ import java.awt.Font;
 import javax.swing.JLabel;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.JTableHeader;
+import javax.swing.table.TableColumnModel;
 
 /**
  *
@@ -22,7 +23,8 @@ public class VGestionPedidosOficinista extends javax.swing.JPanel {
 
     aplicacion.FachadaAplicacion fa;
     Usuario u;
-
+    ModeloTablaTransportistas tt;
+    ModeloTablaPedidos2 tp;
     /**
      * Creates new form VGestionPaquetes
      */
@@ -30,11 +32,11 @@ public class VGestionPedidosOficinista extends javax.swing.JPanel {
         initComponents();
         this.fa = fa;
         this.u = u;
-        ModeloTablaPedidos2 tp = new ModeloTablaPedidos2();
+        tp = new ModeloTablaPedidos2();
         tablaPedidos.setModel(tp);
         tp.setFilas(fa.pedidosSinTramitar());
 
-        ModeloTablaTransportistas tt = new ModeloTablaTransportistas();
+        tt = new ModeloTablaTransportistas();
         tablaTransp.setModel(tt);
         tt.setFilas(fa.obtenerTransportistas());
 
@@ -44,18 +46,26 @@ public class VGestionPedidosOficinista extends javax.swing.JPanel {
         th.setFont(fuente);
         th.setForeground(new Color(89, 171, 36));
         th.setBackground(Color.WHITE);
-
+        BtTramitar.setEnabled(false); //DEBERIAMOS DESACTIVAR EL BOTON
         JTableHeader th2;
         th2 = this.tablaTransp.getTableHeader();
         th2.setFont(fuente);
         th2.setForeground(new Color(89, 171, 36));
         th2.setBackground(Color.WHITE);
         tablaPedidos.changeSelection(0, 0, false, false);
+        
+        TableColumnModel columnModel = tablaTransp.getColumnModel();
+        columnModel.getColumn(5).setPreferredWidth(150);
 
+        
+        TableColumnModel columnModel2 = tablaPedidos.getColumnModel();
+        columnModel2.getColumn(2).setPreferredWidth(30);
+        
         LabelTramitar.setVisible(false);
         LabelEliminar.setVisible(false);
         errorLabel.setVisible(false);
-
+        errorCupoMaximo.setVisible(false);
+        errorTramitacionAMedias.setVisible(false);
         //SELECCION Y CENTRADO DE TEXTO
         tablaPedidos.changeSelection(0, 0, false, false);
         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
@@ -99,6 +109,8 @@ public class VGestionPedidosOficinista extends javax.swing.JPanel {
         tablaTransp = new javax.swing.JTable();
         jLabel4 = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
+        errorCupoMaximo = new java.awt.Label();
+        errorTramitacionAMedias = new java.awt.Label();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -226,6 +238,11 @@ public class VGestionPedidosOficinista extends javax.swing.JPanel {
         tablaTransp.setGridColor(new java.awt.Color(255, 255, 255));
         tablaTransp.setSelectionBackground(new java.awt.Color(89, 171, 36));
         tablaTransp.setSelectionForeground(new java.awt.Color(255, 255, 255));
+        tablaTransp.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tablaTranspMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(tablaTransp);
 
         add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 330, 630, 150));
@@ -249,6 +266,14 @@ public class VGestionPedidosOficinista extends javax.swing.JPanel {
         );
 
         add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, 600, 5));
+
+        errorCupoMaximo.setForeground(new java.awt.Color(255, 0, 0));
+        errorCupoMaximo.setText("Cupo máximo del transportista alcanzado, pedido no tramitado");
+        add(errorCupoMaximo, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 500, -1, -1));
+
+        errorTramitacionAMedias.setForeground(new java.awt.Color(255, 153, 51));
+        errorTramitacionAMedias.setText("Cupo máximo del transportista alcanzado, no se han podido asignar todos los paquetes.");
+        add(errorTramitacionAMedias, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 500, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void tablaPedidosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaPedidosMouseClicked
@@ -256,17 +281,32 @@ public class VGestionPedidosOficinista extends javax.swing.JPanel {
         LabelTramitar.setVisible(false);
         LabelEliminar.setVisible(false);
         errorLabel.setVisible(false);
+        errorCupoMaximo.setVisible(false);
+        errorTramitacionAMedias.setVisible(false);
     }//GEN-LAST:event_tablaPedidosMouseClicked
 
     private void BtTramitarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtTramitarMouseClicked
         // TODO add your handling code here:
+        int res=0;
         if (tablaPedidos.getRowCount() > 0 && tablaTransp.getRowCount() > 0) {
             ModeloTablaPedidos2 tp;
             tp = (ModeloTablaPedidos2) tablaPedidos.getModel();
             ModeloTablaTransportistas t;
             t = (ModeloTablaTransportistas) tablaTransp.getModel();
-            fa.tramitarPedido(tp.getFila(tablaPedidos.getSelectedRow()).getCodigo(), t.getFila(tablaTransp.getSelectedRow()).getUsuario(), u.getUsuario());
-            LabelTramitar.setVisible(true);
+            res=fa.tramitarPedido(tp.getFila(tablaPedidos.getSelectedRow()).getCodigo(), t.getFila(tablaTransp.getSelectedRow()).getUsuario(), u.getUsuario());
+            if(res == 0){
+                errorCupoMaximo.setVisible(false);
+                errorTramitacionAMedias.setVisible(false);
+                LabelTramitar.setVisible(true);
+            }else if(res < 0){
+                errorCupoMaximo.setVisible(true);
+                errorTramitacionAMedias.setVisible(false);
+                LabelTramitar.setVisible(false);
+            }else{
+                errorCupoMaximo.setVisible(false);
+                errorTramitacionAMedias.setVisible(true);
+                LabelTramitar.setVisible(false);
+            }
             actualizarTablaPedidos();
         } else {
             errorLabel.setVisible(true);
@@ -286,13 +326,23 @@ public class VGestionPedidosOficinista extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_BtEliminarMouseClicked
 
+    private void tablaTranspMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaTranspMouseClicked
+        if(tt.getFila(tablaTransp.getSelectedRow()).getCapacidadrestante()>0 || tp.getFila(tablaPedidos.getSelectedRow()).getNumPaquetes() > tt.getFila(tablaTransp.getSelectedRow()).getCapacidadrestante() )
+        {
+            //DEBERIAMOS ACTIVAR EL BOTON
+        }
+        else { //DEBERIAMOS DESACTIVAR EL BOTON
+    }//GEN-LAST:event_tablaTranspMouseClicked
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel BtEliminar;
     private javax.swing.JPanel BtTramitar;
     private java.awt.Label LabelEliminar;
     private java.awt.Label LabelTramitar;
+    private java.awt.Label errorCupoMaximo;
     private java.awt.Label errorLabel;
+    private java.awt.Label errorTramitacionAMedias;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;

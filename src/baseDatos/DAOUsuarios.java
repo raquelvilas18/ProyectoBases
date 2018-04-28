@@ -1,10 +1,7 @@
 package baseDatos;
 
 import aplicacion.*;
-import gui.*;
-import static java.lang.Thread.sleep;
 import java.sql.*;
-import static java.sql.Connection.TRANSACTION_NONE;
 import static java.sql.Connection.TRANSACTION_SERIALIZABLE;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -86,9 +83,10 @@ public class DAOUsuarios extends AbstractDAO {
                 stmUsuario2.executeUpdate();
 
                 try {
+                    con.commit();
                     con.setAutoCommit(true);
                 } catch (SQLException ex) {
-                    
+
                     Logger.getLogger(DAOUsuarios.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 if (rsUsuario.next()) {
@@ -327,9 +325,9 @@ public class DAOUsuarios extends AbstractDAO {
         }
         return resultado;
     }
-    
-    public ArrayList<Usuario> obtenerClientes(String id, String nombre) {
-        java.util.ArrayList<Usuario> resultado = new java.util.ArrayList<Usuario>();
+
+    public ArrayList<Cliente> obtenerClientes(String id, String nombre) {
+        java.util.ArrayList<Cliente> resultado = new java.util.ArrayList<Cliente>();
         Connection con;
         PreparedStatement stm = null;
         ResultSet rs;
@@ -337,16 +335,26 @@ public class DAOUsuarios extends AbstractDAO {
         con = super.getConexion();
 
         try {
-            stm = con.prepareStatement("SELECT * "
-                    + "FROM clientes c, usuarios u "
-                    + "WHERE c.usuario LIKE ? "
-                    + "AND c.usuario = u.usuario "
-                    + "AND u.nombre LIKE ? ");
+            stm = con.prepareStatement("SELECT usuario, password, dni, nombre, correo, direccion, telefono, sexo, pedidosActivos\n"
+                    + "FROM\n"
+                    + "(SELECT c.usuario, password, dni, nombre, correo, direccion, telefono, sexo\n"
+                    + "FROM clientes c, usuarios u\n"
+                    + "WHERE c.usuario = u.usuario) as clientes\n"
+                    + "LEFT JOIN (\n"
+                    + "SELECT cliente, count(*) as pedidosActivos\n"
+                    + "FROM pedidos\n"
+                    + "WHERE codigo IN (SELECT p.codigo\n"
+                    + "		FROM pedidos p, paquetes pa\n"
+                    + "		WHERE p.codigo = pa.pedido\n"
+                    + "		AND fecha_entrega ISNULL)\n"
+                    + "         GROUP BY cliente ) as pedidosActivos on pedidosActivos.cliente = clientes.usuario\n"
+                    + "WHERE nombre LIKE ? \n"
+                    + "AND usuario LIKE ? ");
             stm.setString(1, "%" + id + "%");
             stm.setString(2, "%" + nombre + "%");
             rs = stm.executeQuery();
             while (rs.next()) {
-                resultado.add(new Usuario(rs.getString("usuario"), rs.getString("password"), rs.getString("dni"), rs.getString("nombre"), rs.getString("correo"), rs.getString("direccion"), rs.getString("telefono"), rs.getString("sexo"), rs.getString("tipo")));
+                resultado.add(new Cliente(rs.getString("usuario"), rs.getString("password"), rs.getString("dni"), rs.getString("nombre"), rs.getString("correo"), rs.getString("direccion"), rs.getString("telefono"), rs.getString("sexo"),"cliente", rs.getInt("pedidosActivos")));
             }
 
         } catch (SQLException e) {

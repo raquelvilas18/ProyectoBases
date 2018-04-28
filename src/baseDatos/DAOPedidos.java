@@ -3,7 +3,10 @@ package baseDatos;
 import aplicacion.*;
 import gui.*;
 import java.sql.*;
+import static java.sql.Connection.TRANSACTION_SERIALIZABLE;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -108,41 +111,91 @@ public class DAOPedidos extends AbstractDAO {
 
     }
 
-    public void tramitarPedido(Integer codigo, String transportista, String tramitador) {
+    public int tramitarPedido(Integer codigo, String transportista, String tramitador) {
         Connection con;
         PreparedStatement stm = null, stm2 = null, stm3 = null;
         ResultSet rs;
-
+        int count = 0, NPaq = 0, resultado = 0;
         con = super.getConexion();
-
         try {
-            stm = con.prepareStatement("SELECT * "
-                    + "FROM vehiculos "
-                    + "WHERE conductor = ?");
+            con.setAutoCommit(false);
+        } catch (SQLException ex) {
+            Logger.getLogger(DAOUsuarios.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            con.setTransactionIsolation(TRANSACTION_SERIALIZABLE);
+        } catch (SQLException ex) {
+            Logger.getLogger(DAOUsuarios.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            stm = con.prepareStatement("SELECT (SELECT capacidad - (SELECT count(*) from paquetes where transportista = ?)\n" +
+"                    FROM vehiculos\n" +
+"                    WHERE conductor=?)-count(*),count(*)\n" +
+"			FROM paquetes NATURAL LEFT JOIN pedidos\n" +
+"	WHERE pedido = ? AND fecha_entrega IS NULL AND tramitador is null");
             stm.setString(1, transportista);
-
+            stm.setString(2, transportista);
+            stm.setInt(3, codigo);
             rs = stm.executeQuery();
             if (rs.next()) {
-                String matricula = rs.getString("matricula");
-                stm2 = con.prepareStatement("UPDATE paquetes "
-                        + "SET transportista = ? "
-                        + "WHERE pedido =  ?");
-                stm2.setString(1, transportista);
-                // stm2.setString(2, matricula);
-                stm2.setInt(2, codigo);
+                count = rs.getInt(1);
+                NPaq = rs.getInt(2);
+                if(count >= 0){
+                    stm2 = con.prepareStatement("UPDATE paquetes "
+                            + "SET transportista = ? \n"
+                            + "WHERE pedido =  ? AND fecha_entrega IS NULL AND transportista IS NULL");
+                    stm2.setString(1, transportista);
+                    stm2.setInt(2, codigo);
 
-                stm2.executeUpdate();
+                    stm2.executeUpdate();
+                    stm3 = con.prepareStatement("UPDATE pedidos "
+                            + "SET tramitador = ?, fecha = current_date"
+                            + "WHERE codigo = ? ");
+                    stm3.setString(1, tramitador);
+                    stm3.setInt(2, codigo);
+                    stm3.executeUpdate();
+                }else if ((count+NPaq) > 0) {
+                     resultado = count + NPaq;
+                    stm2 = con.prepareStatement("UPDATE paquetes "
+                            + "SET transportista = ? \n"
+                            + "WHERE pedido =  ? AND fecha_entrega IS NULL AND transportista IS NULL AND codigo<="
+                            + " (SELECT ? + count(*) FROM paquetes\n"
+                            + "WHERE pedido = ? AND fecha_entrega IS NOT NULL AND codigo<=? AND transportista IS NOT NULL)");
+                    stm2.setString(1, transportista);
+                    stm2.setInt(2, codigo);
+                    stm2.setInt(3, resultado);
+                    stm2.setInt(4, codigo);
+                    stm2.setInt(5, resultado);
 
-                stm3 = con.prepareStatement("UPDATE pedidos "
-                        + "SET tramitador = ? ");
-                stm3.setString(1, tramitador);
-                stm3.executeUpdate();
+                    stm2.executeUpdate();
+                    stm3 = con.prepareStatement("UPDATE pedidos "
+                            + "SET tramitador = ?"
+                            + "WHERE codigo = ? ");
+                    stm3.setString(1, tramitador);
+                    stm3.setInt(2, codigo);
+                    stm3.executeUpdate();
 
+                } else {
+                    resultado = count;
+                }
+                try {
+                    con.commit();
+                    con.setAutoCommit(true);
+                } catch (SQLException ex) {
+
+                    Logger.getLogger(DAOUsuarios.class.getName()).log(Level.SEVERE, null, ex);
+                }
             } else {
                 System.out.println("Chungo");
             }
 
         } catch (SQLException e) {
+            try {
+                System.out.println("Rollback");
+                con.rollback();
+            } catch (SQLException ex) {
+                Logger.getLogger(DAOUsuarios.class.getName()).log(Level.SEVERE, null, ex);
+            }
             System.out.println(e.getMessage());
             this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
         } finally {
@@ -154,6 +207,7 @@ public class DAOPedidos extends AbstractDAO {
                 System.out.println("Imposible cerrar cursores");
             }
         }
+        return resultado;
     }
     public java.util.List<Paquete> obtenerPaquetes(String codigo){
         java.util.List<Paquete> resultado=new java.util.ArrayList<>();
@@ -480,7 +534,7 @@ public class DAOPedidos extends AbstractDAO {
                         rsPedidos.getBoolean("express"),
                         rsPedidos.getString("direccion"),
                         rsPedidos.getString("destinatario"),
-                        rsPedidos.getString("tramitador"), 
+                        rsPedidos.getString("tramitador"),
                         rsPedidos.getFloat("precio")));
             }
         } catch (SQLException e) {
@@ -496,7 +550,7 @@ public class DAOPedidos extends AbstractDAO {
 
         return resultado;
     }
-    
+
     public ArrayList<Pedido> pedidosActivosPrecio(String usuario) {
         ArrayList<Pedido> resultado = new ArrayList<Pedido>();
         Connection con;
@@ -524,7 +578,7 @@ public class DAOPedidos extends AbstractDAO {
                         rsPedidos.getBoolean("express"),
                         rsPedidos.getString("direccion"),
                         rsPedidos.getString("destinatario"),
-                        rsPedidos.getString("tramitador"), 
+                        rsPedidos.getString("tramitador"),
                         rsPedidos.getFloat("precio")));
             }
         } catch (SQLException e) {

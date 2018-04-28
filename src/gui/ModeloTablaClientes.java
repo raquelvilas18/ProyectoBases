@@ -5,6 +5,7 @@
  */
 package gui;
 
+import aplicacion.Cliente;
 import aplicacion.Empleado;
 import aplicacion.Usuario;
 import javax.swing.table.AbstractTableModel;
@@ -13,12 +14,12 @@ import javax.swing.table.AbstractTableModel;
  *
  * @author alumnogreibd
  */
-public class ModeloTablaUsuarios extends AbstractTableModel {
+public class ModeloTablaClientes extends AbstractTableModel {
 
-    private java.util.List<Usuario> usuarios;
+    private java.util.List<Cliente> clientes;
 
-    public ModeloTablaUsuarios() {
-        this.usuarios = new java.util.ArrayList<>();
+    public ModeloTablaClientes() {
+        this.clientes = new java.util.ArrayList<>();
     }
 
     @Override
@@ -39,7 +40,7 @@ public class ModeloTablaUsuarios extends AbstractTableModel {
                 nombre = "sexo";
                 break;
             case 4:
-                nombre = "Tipo";
+                nombre = "PedidosActivos";
                 break;    
         }
         return nombre;
@@ -63,7 +64,7 @@ public class ModeloTablaUsuarios extends AbstractTableModel {
                 clase = java.lang.String.class;
                 break;
             case 4:
-                clase = java.lang.String.class;
+                clase = java.lang.Integer.class;
                 break;
         }
         return clase;
@@ -78,19 +79,19 @@ public class ModeloTablaUsuarios extends AbstractTableModel {
         Object resultado = null;
         switch (col) {
             case 0:
-                resultado = usuarios.get(row).getUsuario();
+                resultado = clientes.get(row).getUsuario();
                 break;
             case 1:
-                resultado = usuarios.get(row).getNombre();
+                resultado = clientes.get(row).getNombre();
                 break;
             case 2:
-                resultado = usuarios.get(row).getDireccion();
+                resultado = clientes.get(row).getDireccion();
                 break;
             case 3:
-                resultado = usuarios.get(row).getSexo();
+                resultado = clientes.get(row).getSexo();
                 break;
             case 4:
-                resultado = usuarios.get(row).getTipo();
+                resultado = clientes.get(row).getPedidosActivos();
                 break;
         }
         return resultado;
@@ -103,16 +104,16 @@ public class ModeloTablaUsuarios extends AbstractTableModel {
 
     @Override
     public int getRowCount() {
-        return usuarios.size();
+        return clientes.size();
     }
 
-    public void setFilas(java.util.List<Usuario> usuarios) {
-        this.usuarios = usuarios;
+    public void setFilas(java.util.List<Cliente> clientes) {
+        this.clientes = clientes;
         fireTableDataChanged();
     }
     
-    public Usuario getFila(int fila){
-        return usuarios.get(fila);
+    public Cliente getFila(int fila){
+        return clientes.get(fila);
     }
 
 }
