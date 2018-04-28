@@ -26,7 +26,9 @@ public class GestionPedidos {
     public Pedido nuevoPedido(Pedido pd) {
         return fbd.nuevoPedido(pd);
     }
-
+    public java.util.List<Paquete> obtenerPaquetes(String codigo){
+        return fbd.obtenerPaquetes(codigo);
+    }
      public Pedido getPedido(Pedido p) {
         return fbd.getPedido(p);
     }
@@ -45,7 +47,9 @@ public class GestionPedidos {
     public ArrayList<Pedido> pedidosSinTramitar(){
         return fbd.pedidosSinTramitar();
     }
-
+    public void elimarPaquete(Integer pedido,Integer codigo){
+        fbd.elimarPaquete(pedido, codigo);
+    }
     public java.util.List<Paquete> comprobarLocalizacion(Integer codigo) {
         return fbd.comprobarLocalizacion(codigo);
     }

@@ -155,7 +155,59 @@ public class DAOPedidos extends AbstractDAO {
             }
         }
     }
+    public java.util.List<Paquete> obtenerPaquetes(String codigo){
+        java.util.List<Paquete> resultado=new java.util.ArrayList<>();
+        Connection con;
+        PreparedStatement stmPaquetes = null;
+        ResultSet rsPaquetes;
+        con=super.getConexion();
+        try {
+            stmPaquetes = con.prepareStatement("SELECT *\n"
+                    + "FROM paquetes\n"
+                    + "WHERE pedido=? ");
+            stmPaquetes.setInt(1, Integer.parseInt(codigo));
+            rsPaquetes = stmPaquetes.executeQuery();
+            while (rsPaquetes.next()) {
+                resultado.add(new Paquete(rsPaquetes.getInt("codigo"),
+                                rsPaquetes.getInt("pedido"),rsPaquetes.getFloat("peso"),
+                                rsPaquetes.getFloat("alto"),rsPaquetes.getFloat("ancho"),
+                                rsPaquetes.getFloat("largo"),rsPaquetes.getString("fecha_entrega"),
+                                rsPaquetes.getString("transportista"),rsPaquetes.getString("cliente")));
+            }
 
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
+        } finally {
+            try {
+                stmPaquetes.close();
+            } catch (SQLException e) {
+                System.out.println("Imposible cerrar cursores");
+            }
+        }
+        return resultado;
+        
+    }
+    public void elimarPaquete(Integer pedido,Integer codigo){
+        Connection con=super.getConexion();
+        PreparedStatement stmPaquete=null;
+        try {
+            stmPaquete = con.prepareStatement("delete from paquetes where pedido=? and codigo=? ");
+            stmPaquete.setInt(1, pedido);
+            stmPaquete.setInt(2,codigo);
+            stmPaquete.execute();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
+        } finally {
+            try {
+                stmPaquete.close();
+            } catch (SQLException e) {
+                System.out.println("Imposible cerrar cursores");
+            }
+        }
+        
+    }
     public java.util.List<Pedido> obtenerHistorialPedidos(String usuario) {
         java.util.List<Pedido> resultado = new java.util.ArrayList<Pedido>();
         Connection con;

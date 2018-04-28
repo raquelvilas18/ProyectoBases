@@ -130,6 +130,10 @@ public class ModeloTablaPaquetes extends AbstractTableModel {
         this.paquetes = paquetes;
         fireTableDataChanged();
     }
+    public void vaciarLista(){
+        this.paquetes.clear();
+        fireTableDataChanged();
+    }
 
     public Paquete getFila(int row) {
         return paquetes.get(row);
