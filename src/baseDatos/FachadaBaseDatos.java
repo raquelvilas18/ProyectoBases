@@ -59,14 +59,14 @@ public class FachadaBaseDatos {
             
             usuario.setProperty("user", configuracion.getProperty("usuario"));
             usuario.setProperty("password", configuracion.getProperty("clave"));
-            /*this.conexion = java.sql.DriverManager.getConnection("jdbc:" + gestor + "://"
+            this.conexion = java.sql.DriverManager.getConnection("jdbc:" + gestor + "://"
                     + configuracion.getProperty("servidor") + ":"
                     + configuracion.getProperty("puerto") + "/"
                     + configuracion.getProperty("baseDatos"),
                     usuario);
-            */
+            
             Class.forName("org.postgresql.Driver");
-
+            /*
             usuario.setProperty("user", configuracion.getProperty("usuario"));
             usuario.setProperty("password", configuracion.getProperty("clave"));
             URI dbUri = new URI("postgresql://jlljsgmqotjqed:95739ed75a6f8c4f255732e7c530e0106943700f87d161dc98e9edb65217737e@ec2-54-75-227-92.eu-west-1.compute.amazonaws.com:5432/dej1fq8t5tg60l");
@@ -75,7 +75,7 @@ public class FachadaBaseDatos {
             String password = dbUri.getUserInfo().split(":")[1];
             String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + dbUri.getPath() + "?sslmode=require";
             
-            this.conexion = java.sql.DriverManager.getConnection(dbUrl,username,password);
+            this.conexion = java.sql.DriverManager.getConnection(dbUrl,username,password);*/
             
             daoUsuarios = new DAOUsuarios(conexion, this.fa);
             daoPedidos = new DAOPedidos(conexion, this.fa);
@@ -95,9 +95,9 @@ public class FachadaBaseDatos {
             fa.muestraExcepcion(e.getMessage());
         }catch (ClassNotFoundException ex) {
             Logger.getLogger(FachadaBaseDatos.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (URISyntaxException ex) {
+        }/* catch (URISyntaxException ex) {
             Logger.getLogger(FachadaBaseDatos.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        }*/
     }
 
     public boolean consultarId(String idUsuario) {
