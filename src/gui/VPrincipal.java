@@ -406,6 +406,7 @@ public class VPrincipal extends javax.swing.JFrame {
             }
         } else {
             autentificacionIncorrecta.setVisible(true);
+            JContrasena.setText("");
         }    }//GEN-LAST:event_jPanel1MouseClicked
 
     private void JContrasenaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JContrasenaKeyPressed
@@ -448,6 +449,7 @@ public class VPrincipal extends javax.swing.JFrame {
                 t.setFilas(fa.localizar(Integer.parseInt(TxLocalizar.getText())));
             } else {
                 this.SinResultado.setVisible(true);
+                idError.setVisible(false);
                 PanelTabla.setVisible(false);
             }
         } else {

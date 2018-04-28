@@ -129,8 +129,8 @@ public class FachadaAplicacion {
         gEmpleados.actualizarEmpleado(id, emp);
     }
 
-    public void tramitarPedido(Integer codigo, String transportista, String tramitador) {
-        gPedidos.tramitarPedido(this, codigo, transportista, tramitador);
+    public int tramitarPedido(Integer codigo, String transportista, String tramitador) {
+        return gPedidos.tramitarPedido(codigo, transportista, tramitador);
     }
 
     public void actualizarDireccion() {
