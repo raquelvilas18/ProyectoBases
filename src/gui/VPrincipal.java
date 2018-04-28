@@ -75,8 +75,8 @@ public class VPrincipal extends javax.swing.JFrame {
         th = this.tablaLoc.getTableHeader();
         Font fuente = new Font("SansSerif", Font.PLAIN, 13);
         th.setFont(fuente);
-        th.setForeground(new Color(65, 105, 225));
-        th.setBackground(Color.WHITE);
+        th.setForeground(Color.WHITE);
+        th.setBackground(new Color(135,168,255));
 
         tablaLoc.changeSelection(0, 0, false, false);
         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
@@ -205,8 +205,8 @@ public class VPrincipal extends javax.swing.JFrame {
         tablaLoc.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         tablaLoc.setModel(new ModeloTablaLocalizador());
         tablaLoc.setGridColor(new java.awt.Color(255, 255, 255));
-        tablaLoc.setSelectionBackground(new java.awt.Color(89, 136, 235));
-        tablaLoc.setSelectionForeground(new java.awt.Color(255, 255, 255));
+        tablaLoc.setSelectionBackground(new java.awt.Color(255, 255, 255));
+        tablaLoc.setSelectionForeground(new java.awt.Color(0, 0, 0));
         jScrollPane1.setViewportView(tablaLoc);
 
         PanelTabla.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 680, 140));
