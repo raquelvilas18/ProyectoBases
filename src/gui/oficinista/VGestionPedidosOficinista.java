@@ -100,9 +100,6 @@ public class VGestionPedidosOficinista extends javax.swing.JPanel {
         BtTramitar = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel16 = new javax.swing.JLabel();
-        jLabel18 = new javax.swing.JLabel();
         BtEliminar = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
@@ -115,6 +112,9 @@ public class VGestionPedidosOficinista extends javax.swing.JPanel {
         jPanel7 = new javax.swing.JPanel();
         errorCupoMaximo = new java.awt.Label();
         errorTramitacionAMedias = new java.awt.Label();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -166,7 +166,6 @@ public class VGestionPedidosOficinista extends javax.swing.JPanel {
         tablaPedidos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         tablaPedidos.setGridColor(new java.awt.Color(255, 255, 255));
         tablaPedidos.setSelectionBackground(new java.awt.Color(89, 171, 36));
-        tablaPedidos.setSelectionForeground(new java.awt.Color(255, 255, 255));
         tablaPedidos.setShowHorizontalLines(false);
         tablaPedidos.setShowVerticalLines(false);
         tablaPedidos.getTableHeader().setResizingAllowed(false);
@@ -198,22 +197,6 @@ public class VGestionPedidosOficinista extends javax.swing.JPanel {
         jLabel14.setForeground(new java.awt.Color(215, 215, 215));
         jLabel14.setText("Asignar pedido");
         BtTramitar.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 150, -1));
-
-        jPanel1.setBackground(new java.awt.Color(89, 171, 36));
-        jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel16.setFont(new java.awt.Font("Noto Sans", 0, 18)); // NOI18N
-        jLabel16.setForeground(new java.awt.Color(215, 215, 215));
-        jLabel16.setText("Asignar pedido");
-        jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 150, -1));
-
-        jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-actualizar-26.png"))); // NOI18N
-        jLabel18.setText("jLabel1");
-        jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 33, 36));
-
-        BtTramitar.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 270, 40));
-        jPanel1.getAccessibleContext().setAccessibleParent(this);
 
         add(BtTramitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 526, 270, 40));
 
@@ -257,7 +240,6 @@ public class VGestionPedidosOficinista extends javax.swing.JPanel {
         tablaTransp.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         tablaTransp.setGridColor(new java.awt.Color(255, 255, 255));
         tablaTransp.setSelectionBackground(new java.awt.Color(89, 171, 36));
-        tablaTransp.setSelectionForeground(new java.awt.Color(255, 255, 255));
         tablaTransp.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tablaTranspMouseClicked(evt);
@@ -294,6 +276,22 @@ public class VGestionPedidosOficinista extends javax.swing.JPanel {
         errorTramitacionAMedias.setForeground(new java.awt.Color(255, 153, 51));
         errorTramitacionAMedias.setText("Cupo máximo del transportista alcanzado, no se han podido asignar todos los paquetes.");
         add(errorTramitacionAMedias, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 500, -1, -1));
+
+        jPanel1.setBackground(new java.awt.Color(89, 171, 36));
+        jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel16.setFont(new java.awt.Font("Noto Sans", 0, 18)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(215, 215, 215));
+        jLabel16.setText("Asignar pedido");
+        jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 150, -1));
+
+        jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-actualizar-26.png"))); // NOI18N
+        jLabel18.setText("jLabel1");
+        jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 33, 36));
+
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 270, 40));
+        jPanel1.getAccessibleContext().setAccessibleParent(this);
     }// </editor-fold>//GEN-END:initComponents
 
     private void tablaPedidosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaPedidosMouseClicked
@@ -348,13 +346,11 @@ public class VGestionPedidosOficinista extends javax.swing.JPanel {
     }//GEN-LAST:event_BtEliminarMouseClicked
 
     private void tablaTranspMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaTranspMouseClicked
-        /*if(tt.getFila(tablaTransp.getSelectedRow()).getCapacidadrestante()>0 || tp.getFila(tablaPedidos.getSelectedRow()).getNumPaquetes() > tt.getFila(tablaTransp.getSelectedRow()).getCapacidadrestante() )
-        {
+
             //DEBERIAMOS ACTIVAR EL BOTON
             BtTramitar.setVisible(true);
             jPanel1.setVisible(false);
-        }
-        else { }*/
+
     }//GEN-LAST:event_tablaTranspMouseClicked
    
 

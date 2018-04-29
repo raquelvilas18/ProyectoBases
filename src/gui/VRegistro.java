@@ -12,6 +12,7 @@ import aplicacion.Usuario;
  * @author carlo
  */
 public class VRegistro extends javax.swing.JPanel {
+
     private aplicacion.FachadaAplicacion fa;
     private boolean captcha;
     private VPrincipal vp;
@@ -267,7 +268,7 @@ public class VRegistro extends javax.swing.JPanel {
         jLabel7.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(204, 204, 204));
         jLabel7.setText("Registrarse");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, 120, 20));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 120, 20));
 
         panelRegistro.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 520, 190, 40));
 
@@ -324,12 +325,20 @@ public class VRegistro extends javax.swing.JPanel {
         String contraseña = textContraseña.getText();
         String id = textID.getText();
         String sexo = textSexo.getText();
-        if(nombre!=null && dni!=null && email!=null && contraseña!=null && id!=null && captcha==true){
-            if(!nombre.equals("") && !dni.equals("") && !email.equals("") && !contraseña.equals("") && !id.equals("")){
-            Usuario usuario = fa.registrarUsuario(id, contraseña, dni, nombre, email, direccion, telefono, sexo, "cliente");
-            if (usuario!=null) vp.ventanaUsuario(fa.consultarUsuario(id, contraseña));
+        if (nombre != null && dni != null && email != null && contraseña != null && id != null && captcha == true) {
+            if (!nombre.equals("") && !dni.equals("") && !email.equals("") && !contraseña.equals("") && !id.equals("")) {
+                if (!fa.existeId(id)) {
+                    fa.registrarUsuario(id, contraseña, dni, nombre, email, direccion, telefono, sexo, "cliente");
+                    vp.ventanaUsuario(fa.consultarUsuario(id, contraseña));
+                } else {
+                    error.setVisible(true);
+                }
+
             }
-        } else error.setVisible(true);
+
+        } else {
+            error.setVisible(true);
+        }
     }//GEN-LAST:event_jPanel1MouseClicked
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked

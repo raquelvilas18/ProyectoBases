@@ -155,6 +155,10 @@ public class FachadaBaseDatos {
         return usr;
     }
 
+    public boolean existeId(String id){
+        return daoUsuarios.existeId(id);
+    }
+    
     public String getTipo(String id) {
         return daoUsuarios.getTipo(id);
     }

@@ -90,6 +90,10 @@ public class FachadaAplicacion {
     public Usuario registrarUsuario(String id, String clave, String dni, String nombre, String email, String direccion, String telefono, String sexo, String tipo) {
         return gUsuarios.registrarUsuario(id, clave, dni, nombre, email, direccion, telefono, sexo, tipo);
     }
+    
+    public boolean existeId(String id){
+        return gUsuarios.existeId(id);
+    }
 
     public void eliminarUsuario(String id) {
         gUsuarios.eliminarUsuario(id);
