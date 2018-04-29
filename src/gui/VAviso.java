@@ -40,6 +40,9 @@ public class VAviso extends javax.swing.JDialog {
         botonCerrar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setBackground(new java.awt.Color(255, 255, 255));
+        setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        setUndecorated(true);
 
         textoExcepcion.setColumns(20);
         textoExcepcion.setForeground(new java.awt.Color(65, 105, 225));
@@ -76,6 +79,8 @@ public class VAviso extends javax.swing.JDialog {
                 .addGap(1, 1, 1)
                 .addComponent(botonCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
+
+        getAccessibleContext().setAccessibleParent(this);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
