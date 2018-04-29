@@ -210,7 +210,7 @@ public class DAOPedidos extends AbstractDAO {
                                 rsPaquetes.getInt("pedido"),rsPaquetes.getFloat("peso"),
                                 rsPaquetes.getFloat("alto"),rsPaquetes.getFloat("ancho"),
                                 rsPaquetes.getFloat("largo"),rsPaquetes.getString("fecha_entrega"),
-                                rsPaquetes.getString("transportista"),rsPaquetes.getString("cliente")));
+                                rsPaquetes.getString("transportista")));
             }
 
         } catch (SQLException e) {
