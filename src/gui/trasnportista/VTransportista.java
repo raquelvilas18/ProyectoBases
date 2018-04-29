@@ -304,6 +304,8 @@ public class VTransportista extends javax.swing.JPanel {
 
     private void SiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SiMouseClicked
         // TODO add your handling code here:
+        this.parent.getFa().eliminarEmpleado(this.usuario.getUsuario());
+        this.parent.ventanaPrincipal();
     }//GEN-LAST:event_SiMouseClicked
 
     private void jLabel15MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel15MouseClicked

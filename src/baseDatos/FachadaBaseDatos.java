@@ -56,7 +56,7 @@ public class FachadaBaseDatos {
             Properties usuario = new Properties();
 
             String gestor = configuracion.getProperty("gestor");
-
+           
             usuario.setProperty("user", configuracion.getProperty("usuario"));
             usuario.setProperty("password", configuracion.getProperty("clave"));
             this.conexion = java.sql.DriverManager.getConnection("jdbc:" + gestor + "://"
@@ -99,7 +99,7 @@ public class FachadaBaseDatos {
          } catch (URISyntaxException ex) {
          Logger.getLogger(FachadaBaseDatos.class.getName()).log(Level.SEVERE, null, ex);
          }*/
-
+        
     }
 
     public boolean consultarId(String idUsuario) {
@@ -139,6 +139,9 @@ public class FachadaBaseDatos {
 
     public Usuario validarUsuario(String idUsuario, String clave) {
         return daoUsuarios.validarUsuario(idUsuario, clave);
+    }
+    public void actualizarLocal2(String id, String local) {
+        daoEmpleados.actualizarLocal2(id, local);
     }
 
     public Usuario registrarUsuario(String id, String clave, String dni, String nombre, String email, String direccion, String telefono, String sexo, String tipo) {
