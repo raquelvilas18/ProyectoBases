@@ -321,7 +321,7 @@ public class DAOEmpleados extends AbstractDAO {
 "LEFT JOIN (SELECT empleado, COUNT(*) as numPaquetes \n" +
 "FROM transportistas as t RIGHT JOIN paquetes as p  on (t.empleado = p.transportista) \n" +
 "GROUP BY t.empleado) as paq on (empl.empleado = paq.empleado), usuarios u\n" +
-"WHERE empl.empleado=u.usuario");
+"WHERE empl.empleado=u.usuario AND empl.capacidad - COALESCE(paq.numPaquetes,0) > 0");
             rs = stmEmpleados.executeQuery();
 
             while (rs.next()) {
