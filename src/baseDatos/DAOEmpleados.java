@@ -433,10 +433,10 @@ public class DAOEmpleados extends AbstractDAO {
 "WHERE t.empleado not in\n" +
 "(SELECT empleado\n" +
 "FROM transportistas as tr, vehiculos as v\n" +
-"WHERE v.conductor = tr.empleado) UNION \n" +
+"WHERE v.conductor = tr.empleado) union \n" +
 "SELECT empleado\n" +
 "FROM transportistas as tra, vehiculos as vs\n" +
-"WHERE vs.matricula=?");
+"WHERE tra.empleado = vs.conductor AND vs.matricula=?");
             stmEmpleados.setString(1, matricula);
             
             rs = stmEmpleados.executeQuery();

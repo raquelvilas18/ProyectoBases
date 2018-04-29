@@ -554,7 +554,8 @@ public void eliminarVehiculo(){
         mv = (ModeloTablaVehiculos) tablaVehi.getModel();
         this.TxMatricula.setText(mv.getFila(tablaVehi.getSelectedRow()).getMatricula());
         this.TxMatricula.setText(mv.getFila(tablaVehi.getSelectedRow()).getMatricula());
-            for(int j=0;j<TxTransp.getItemCount()-1;j++){
+        int contador =TxTransp.getItemCount();
+            for(int j=0;j<contador-1;j++){
                 TxTransp.removeItemAt(1);
             }
         ArrayList<String> transportistas = fa.transportistasComboBox(TxMatricula.getText());
