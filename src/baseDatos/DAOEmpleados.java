@@ -374,5 +374,34 @@ public class DAOEmpleados extends AbstractDAO {
         }
     }
     
+    public ArrayList<String> transportistasComboBox() {
+        java.util.ArrayList<String> resultado = new ArrayList<String>();
+        Connection con;
+        PreparedStatement stmEmpleados = null;
+        ResultSet rs;
+
+        con = super.getConexion();
+
+        try {
+            stmEmpleados = con.prepareStatement("SELECT * FROM transportistas");
+            rs = stmEmpleados.executeQuery();
+
+            while (rs.next()) {
+                resultado.add( rs.getString("empleado"));
+            }
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
+        } finally {
+            try {
+                stmEmpleados.close();
+            } catch (SQLException e) {
+                System.out.println("Imposible cerrar cursores");
+            }
+        }
+        return resultado;
+    }
+    
 }
                  

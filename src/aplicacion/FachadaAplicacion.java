@@ -239,4 +239,8 @@ public class FachadaAplicacion {
         return gPaquetes.localizar(codigo);
     }
     
+    public ArrayList<String> transportistasComboBox() {
+        return fbd.transportistasComboBox();
+    }
+    
 }
