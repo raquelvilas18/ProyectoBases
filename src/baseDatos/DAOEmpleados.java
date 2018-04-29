@@ -312,16 +312,16 @@ public class DAOEmpleados extends AbstractDAO {
         con = super.getConexion();
 
         try {
-            stmEmpleados = con.prepareStatement("SELECT empl.empleado,empl.nombre, empl.dni, empl.correo, empl.telefono, empl.sexo,u.direccion, empl.nomina, empl.anoingreso,  COALESCE(paq.numPaquetes,0) as numPaquetes , empl.capacidad - COALESCE(paq.numPaquetes,0) as capacidadrestante\n"
-                    + "FROM (SELECT * \n"
-                    + "FROM empleados e, transportistas t, usuarios u , vehiculos v\n"
-                    + "WHERE e.usuario = t.empleado \n"
-                    + "AND u.usuario = e.usuario\n"
-                    + "AND  t.empleado = v.conductor) as empl \n"
-                    + "LEFT JOIN (SELECT empleado, COUNT(*) as numPaquetes \n"
-                    + "FROM transportistas as t RIGHT JOIN paquetes as p  on (t.empleado = p.transportista) \n"
-                    + "GROUP BY t.empleado) as paq on (empl.empleado = paq.empleado), usuarios u\n"
-                    + "WHERE empl.empleado=u.usuario");
+            stmEmpleados = con.prepareStatement("SELECT empl.empleado,empl.nombre, empl.dni, empl.correo, empl.telefono, empl.sexo,u.direccion, empl.nomina, empl.anoingreso,  COALESCE(paq.numPaquetes,0) as numPaquetes , empl.capacidad - COALESCE(paq.numPaquetes,0) as capacidadrestante\n" +
+"FROM (SELECT * \n" +
+"FROM empleados e, transportistas t, usuarios u , vehiculos v\n" +
+"WHERE e.usuario = t.empleado \n" +
+"AND u.usuario = e.usuario\n" +
+"AND  t.empleado = v.conductor) as empl \n" +
+"LEFT JOIN (SELECT empleado, COUNT(*) as numPaquetes \n" +
+"FROM transportistas as t RIGHT JOIN paquetes as p  on (t.empleado = p.transportista) \n" +
+"GROUP BY t.empleado) as paq on (empl.empleado = paq.empleado), usuarios u\n" +
+"WHERE empl.empleado=u.usuario AND empl.capacidad - COALESCE(paq.numPaquetes,0) > 0");
             rs = stmEmpleados.executeQuery();
 
             while (rs.next()) {
@@ -373,5 +373,34 @@ public class DAOEmpleados extends AbstractDAO {
             }
         }
     }
+    
+    public ArrayList<String> transportistasComboBox() {
+        java.util.ArrayList<String> resultado = new ArrayList<String>();
+        Connection con;
+        PreparedStatement stmEmpleados = null;
+        ResultSet rs;
 
+        con = super.getConexion();
+
+        try {
+            stmEmpleados = con.prepareStatement("SELECT * FROM transportistas");
+            rs = stmEmpleados.executeQuery();
+
+            while (rs.next()) {
+                resultado.add( rs.getString("empleado"));
+            }
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
+        } finally {
+            try {
+                stmEmpleados.close();
+            } catch (SQLException e) {
+                System.out.println("Imposible cerrar cursores");
+            }
+        }
+        return resultado;
+    }
+    
 }

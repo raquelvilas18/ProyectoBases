@@ -27,7 +27,9 @@ public class GestionPedidos {
     public Pedido nuevoPedido(Pedido pd) {
         return fbd.nuevoPedido(pd);
     }
-
+    public java.util.List<Paquete> obtenerPaquetes(String codigo){
+        return fbd.obtenerPaquetes(codigo);
+    }
      public Pedido getPedido(Pedido p) {
         return fbd.getPedido(p);
     }
@@ -46,21 +48,15 @@ public class GestionPedidos {
     public ArrayList<Pedido> pedidosSinTramitar(){
         return fbd.pedidosSinTramitar();
     }
-
+    public void elimarPaquete(Integer pedido,Integer codigo){
+        fbd.elimarPaquete(pedido, codigo);
+    }
     public java.util.List<Paquete> comprobarLocalizacion(Integer codigo) {
         return fbd.comprobarLocalizacion(codigo);
     }
     
-    public void tramitarPedido(FachadaAplicacion fa, Integer codigo, String transportista, String tramitador) {
-        int res;
-        res = fbd.tramitarPedido(codigo, transportista, tramitador);
-        if(res > 0){
-            fa.muestraExcepcion("No se pudo asignar dicho conductor a todos los "
-                    + "paquetes.\n Se han asignado " + res + " paquetes, por favor "
-                    + "asigne los restantes a otro/s transportista/s.");
-        }else if (res < 0){
-            fa.muestraExcepcion("El transportista seleccionado no puede llevar más paquetes.");
-        }
+    public int tramitarPedido(Integer codigo, String transportista, String tramitador) {
+        return fbd.tramitarPedido(codigo, transportista, tramitador);  
     }
     
     public ArrayList<Pedido> pedidosPrecio(String u){

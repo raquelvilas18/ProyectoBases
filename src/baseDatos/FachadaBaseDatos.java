@@ -40,6 +40,7 @@ public class FachadaBaseDatos {
     private DAOVehiculos daoVehiculos;
     private DAOPaquetes daoPaquetes;
     private DAOLocales daoLocales;
+    private DAOClientes daoClientes;
 
     public FachadaBaseDatos(aplicacion.FachadaAplicacion fa) {
 
@@ -63,10 +64,9 @@ public class FachadaBaseDatos {
                     + configuracion.getProperty("puerto") + "/"
                     + configuracion.getProperty("baseDatos"),
                     usuario);
-            */
             
-             Class.forName("org.postgresql.Driver");
-
+            /* Class.forName("org.postgresql.Driver");
+             
              usuario.setProperty("user", configuracion.getProperty("usuario"));
              usuario.setProperty("password", configuracion.getProperty("clave"));
              URI dbUri = new URI("postgresql://jlljsgmqotjqed:95739ed75a6f8c4f255732e7c530e0106943700f87d161dc98e9edb65217737e@ec2-54-75-227-92.eu-west-1.compute.amazonaws.com:5432/dej1fq8t5tg60l");
@@ -75,15 +75,16 @@ public class FachadaBaseDatos {
              String password = dbUri.getUserInfo().split(":")[1];
              String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + dbUri.getPath() + "?sslmode=require";
             
-             this.conexion = java.sql.DriverManager.getConnection(dbUrl,username,password);
+             this.conexion = java.sql.DriverManager.getConnection(dbUrl,username,password);*/
              
             daoUsuarios = new DAOUsuarios(conexion, this.fa);
             daoPedidos = new DAOPedidos(conexion, this.fa);
             daoEmpleados = new DAOEmpleados(conexion, this.fa);
             daoPaquetes = new DAOPaquetes(conexion, this.fa);
-            daoVehiculos = new DAOVehiculos(conexion, this.fa);
-            daoLocales = new DAOLocales(conexion, this.fa);
-
+            daoVehiculos = new DAOVehiculos(conexion,this.fa);
+            daoLocales = new DAOLocales(conexion,this.fa);
+            daoClientes = new DAOClientes(conexion,this.fa);
+            
         } catch (FileNotFoundException f) {
             System.out.println(f.getMessage());
             fa.muestraExcepcion(f.getMessage());
@@ -104,10 +105,13 @@ public class FachadaBaseDatos {
     public boolean consultarId(String idUsuario) {
         return daoUsuarios.consultarId(idUsuario);
     }
-
-    public void conexion(String idUsuario, boolean accion) {
-        daoUsuarios.conexion(idUsuario, accion);
+    public java.util.List<Paquete> obtenerPaquetes(String codigo){
+        return daoPedidos.obtenerPaquetes(codigo);
     }
+     public void conexion(String idUsuario,boolean accion)
+     {
+         daoUsuarios.conexion(idUsuario, accion);
+     }
 
     public String trabajaEn(String id) {
         return daoEmpleados.trabajaEn(id);
@@ -138,7 +142,14 @@ public class FachadaBaseDatos {
     }
 
     public Usuario registrarUsuario(String id, String clave, String dni, String nombre, String email, String direccion, String telefono, String sexo, String tipo) {
-        return daoUsuarios.registrarUsuario(id, clave, dni, nombre, email, direccion, telefono, sexo, tipo);
+        
+        Usuario usr;
+        
+        usr= daoUsuarios.registrarUsuario(id, clave, dni, nombre, email, direccion, telefono, sexo, tipo);
+        if(tipo.equals("cliente")){
+         daoClientes.registrarClientes(id);
+        }
+        return usr;
     }
 
     public String getTipo(String id) {
@@ -185,8 +196,11 @@ public class FachadaBaseDatos {
     public ArrayList<Pedido> pedidosSinTramitar() {
         return daoPedidos.pedidosSinTramitar();
     }
-
-    public void eliminarPedido(int codigo) {
+    public void elimarPaquete(Integer pedido,Integer codigo){
+        daoPedidos.elimarPaquete(pedido, codigo);
+    }
+    
+    public void eliminarPedido(int codigo){
         daoPedidos.eliminarPedido(codigo);
     }
 
@@ -302,6 +316,11 @@ public class FachadaBaseDatos {
 
     public void actualizarPosicion(String posicion, String transportista) {
         daoVehiculos.actualizarPosicion(posicion, transportista);
+    }
+    
+    //------COMBO BOX-----//
+    public ArrayList<String> transportistasComboBox() {
+        return daoEmpleados.transportistasComboBox();
     }
 
 }

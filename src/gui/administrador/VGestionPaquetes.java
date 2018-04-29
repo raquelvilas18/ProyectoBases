@@ -5,8 +5,11 @@
  */
 package gui.administrador;
 
-import gui.ModeloTablaPedidos;
+import aplicacion.Paquete;
+import aplicacion.Pedido;
 import gui.ModeloTablaClientes;
+import gui.ModeloTablaPaquetes;
+import gui.ModeloTablaPedidos3;
 
 /**
  *
@@ -18,10 +21,14 @@ public class VGestionPaquetes extends javax.swing.JPanel {
 
     /**
      * Creates new form VGestionPaquetes
+     * @param fa
      */
     public VGestionPaquetes(aplicacion.FachadaAplicacion fa) {
         initComponents();
         this.fa=fa;
+        ModeloTablaPedidos3 tp = new ModeloTablaPedidos3();
+        tablaPedidos.setModel(tp);
+        tp.setFilas(fa.pedidosSinTramitar());
     }
 
     /**
@@ -41,37 +48,25 @@ public class VGestionPaquetes extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaPedidos = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
-        BtActualizar = new javax.swing.JPanel();
-        jLabel14 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
         BtBaja = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
-        jLabel21 = new javax.swing.JLabel();
-        TxCliente = new javax.swing.JTextField();
-        TxDestinatario = new javax.swing.JTextField();
+        TxDireccion = new javax.swing.JTextField();
+        TxPaquetes = new javax.swing.JTextField();
         TxCodigo = new javax.swing.JTextField();
-        TxFecha = new javax.swing.JTextField();
-        TxTelefono = new javax.swing.JTextField();
         jLabel22 = new javax.swing.JLabel();
-        sexo = new javax.swing.JComboBox();
-        TxTramitador = new javax.swing.JTextField();
         jLabel23 = new javax.swing.JLabel();
-        ErrorAlta = new javax.swing.JLabel();
-        BtAlta = new javax.swing.JPanel();
-        LConfirmar = new javax.swing.JLabel();
-        jLabel18 = new javax.swing.JLabel();
-        LAlta = new javax.swing.JLabel();
-        LabelActualizar = new javax.swing.JLabel();
-        AltaCorrecta = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
+        TxDestinatario = new javax.swing.JTextField();
+        TxExpress = new javax.swing.JCheckBox();
         jLabel4 = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
         FiltroId = new javax.swing.JTextField();
         FiltroNombre = new javax.swing.JTextField();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tablaPaquetes = new javax.swing.JTable();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -124,10 +119,11 @@ public class VGestionPaquetes extends javax.swing.JPanel {
         });
         add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 120, -1, -1));
 
-        tablaPedidos.setModel(new ModeloTablaPedidos());
+        tablaPedidos.setModel(new ModeloTablaPedidos3());
         tablaPedidos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         tablaPedidos.setGridColor(new java.awt.Color(255, 189, 72));
         tablaPedidos.setSelectionBackground(new java.awt.Color(255, 189, 72));
+        tablaPedidos.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         tablaPedidos.setShowHorizontalLines(false);
         tablaPedidos.setShowVerticalLines(false);
         tablaPedidos.setSurrendersFocusOnKeystroke(true);
@@ -140,37 +136,16 @@ public class VGestionPaquetes extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tablaPedidos);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(63, 190, 590, 170));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(63, 190, 590, 120));
 
         jPanel1.setBackground(new java.awt.Color(255, 226, 154));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        BtActualizar.setBackground(new java.awt.Color(255, 148, 42));
-        BtActualizar.setToolTipText("");
-        BtActualizar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        BtActualizar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                BtActualizarMouseClicked(evt);
-            }
-        });
-        BtActualizar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel14.setFont(new java.awt.Font("Noto Sans", 0, 18)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(215, 215, 215));
-        jLabel14.setText("Actualizar");
-        BtActualizar.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, 110, -1));
-
-        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-actualizar-26.png"))); // NOI18N
-        jLabel15.setText("jLabel1");
-        BtActualizar.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 33, 36));
-
-        jPanel1.add(BtActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 170, 41));
 
         BtBaja.setBackground(new java.awt.Color(255, 148, 42));
         BtBaja.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BtBaja.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                BtBajaMouseClicked(evt);
+                BtEliminar(evt);
             }
         });
         BtBaja.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -178,147 +153,102 @@ public class VGestionPaquetes extends javax.swing.JPanel {
         jLabel17.setFont(new java.awt.Font("Noto Sans", 0, 18)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(215, 215, 215));
         jLabel17.setText("Eliminar");
-        BtBaja.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, 110, -1));
+        BtBaja.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 10, 110, -1));
 
         jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-eliminar-26.png"))); // NOI18N
         jLabel19.setText("jLabel1");
-        BtBaja.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 33, 36));
+        BtBaja.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 33, 36));
 
-        jPanel1.add(BtBaja, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 120, 200, 41));
+        jPanel1.add(BtBaja, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 80, 380, 41));
 
         jLabel7.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        jLabel7.setText("Cliente:");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 10, -1, -1));
-
-        jLabel9.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        jLabel9.setText("Codigo:");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+        jLabel7.setText("Dirección");
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, -1, -1));
 
         jLabel20.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        jLabel20.setText("Fecha:");
-        jPanel1.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, -1, -1));
+        jLabel20.setText("Codigo");
+        jPanel1.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, 40));
 
-        jLabel21.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        jLabel21.setText("Direccion:");
-        jPanel1.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, -1, -1));
-
-        TxCliente.setBackground(new java.awt.Color(255, 232, 185));
-        TxCliente.setForeground(new java.awt.Color(102, 102, 102));
-        TxCliente.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 1));
-        TxCliente.addActionListener(new java.awt.event.ActionListener() {
+        TxDireccion.setBackground(new java.awt.Color(255, 232, 185));
+        TxDireccion.setForeground(new java.awt.Color(102, 102, 102));
+        TxDireccion.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 1));
+        TxDireccion.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        TxDireccion.setEnabled(false);
+        TxDireccion.setFocusable(false);
+        TxDireccion.setSelectedTextColor(new java.awt.Color(0, 0, 0));
+        TxDireccion.setSelectionColor(new java.awt.Color(0, 0, 0));
+        TxDireccion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TxClienteActionPerformed(evt);
+                TxDireccionActionPerformed(evt);
             }
         });
-        jPanel1.add(TxCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 10, 220, -1));
+        jPanel1.add(TxDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 50, 180, -1));
 
-        TxDestinatario.setBackground(new java.awt.Color(255, 232, 185));
-        TxDestinatario.setForeground(new java.awt.Color(102, 102, 102));
-        TxDestinatario.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 1));
-        TxDestinatario.addActionListener(new java.awt.event.ActionListener() {
+        TxPaquetes.setBackground(new java.awt.Color(255, 232, 185));
+        TxPaquetes.setForeground(new java.awt.Color(102, 102, 102));
+        TxPaquetes.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 1));
+        TxPaquetes.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        TxPaquetes.setEnabled(false);
+        TxPaquetes.setSelectedTextColor(new java.awt.Color(0, 0, 0));
+        TxPaquetes.setSelectionColor(new java.awt.Color(0, 0, 0));
+        TxPaquetes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TxDestinatarioActionPerformed(evt);
+                TxPaquetesActionPerformed(evt);
             }
         });
-        jPanel1.add(TxDestinatario, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 30, 220, -1));
+        jPanel1.add(TxPaquetes, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 50, 220, -1));
 
         TxCodigo.setBackground(new java.awt.Color(255, 232, 185));
         TxCodigo.setForeground(new java.awt.Color(102, 102, 102));
         TxCodigo.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 1));
+        TxCodigo.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        TxCodigo.setEnabled(false);
+        TxCodigo.setSelectionColor(new java.awt.Color(0, 0, 0));
         TxCodigo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TxCodigoActionPerformed(evt);
             }
         });
-        jPanel1.add(TxCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 10, 180, -1));
-
-        TxFecha.setBackground(new java.awt.Color(255, 232, 185));
-        TxFecha.setForeground(new java.awt.Color(102, 102, 102));
-        TxFecha.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 1));
-        TxFecha.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TxFechaActionPerformed(evt);
-            }
-        });
-        jPanel1.add(TxFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 30, 180, -1));
-
-        TxTelefono.setBackground(new java.awt.Color(255, 232, 185));
-        TxTelefono.setForeground(new java.awt.Color(102, 102, 102));
-        TxTelefono.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 1));
-        TxTelefono.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TxTelefonoActionPerformed(evt);
-            }
-        });
-        jPanel1.add(TxTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 70, 500, -1));
+        jPanel1.add(TxCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 20, 180, -1));
 
         jLabel22.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        jLabel22.setText("Express");
-        jPanel1.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 50, -1, -1));
-
-        sexo.setBackground(new java.awt.Color(255, 232, 185));
-        sexo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "si", "no" }));
-        jPanel1.add(sexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 50, -1, 20));
-
-        TxTramitador.setBackground(new java.awt.Color(255, 232, 185));
-        TxTramitador.setForeground(new java.awt.Color(102, 102, 102));
-        TxTramitador.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 1));
-        TxTramitador.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TxTramitadorActionPerformed(evt);
-            }
-        });
-        jPanel1.add(TxTramitador, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, 160, -1));
+        jLabel22.setText("Nº Paquetes");
+        jPanel1.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 40, -1, 30));
 
         jLabel23.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        jLabel23.setText("Tramitador:");
-        jPanel1.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, -1, -1));
-
-        ErrorAlta.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
-        ErrorAlta.setForeground(new java.awt.Color(255, 51, 51));
-        ErrorAlta.setText("Todos los campos son obligatorios");
-        jPanel1.add(ErrorAlta, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 100, -1, -1));
-
-        BtAlta.setBackground(new java.awt.Color(255, 148, 42));
-        BtAlta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        BtAlta.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                BtAltaMouseClicked(evt);
-            }
-        });
-        BtAlta.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        LConfirmar.setFont(new java.awt.Font("Noto Sans", 0, 18)); // NOI18N
-        LConfirmar.setForeground(new java.awt.Color(215, 215, 215));
-        LConfirmar.setText("Confirmar");
-        BtAlta.add(LConfirmar, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, 140, -1));
-
-        jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-añadir-32.png"))); // NOI18N
-        jLabel18.setText("jLabel1");
-        BtAlta.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 33, 36));
-
-        LAlta.setFont(new java.awt.Font("Noto Sans", 0, 18)); // NOI18N
-        LAlta.setForeground(new java.awt.Color(215, 215, 215));
-        LAlta.setText("nuevo");
-        BtAlta.add(LAlta, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, 110, -1));
-
-        jPanel1.add(BtAlta, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 120, 190, 41));
-
-        LabelActualizar.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
-        LabelActualizar.setForeground(new java.awt.Color(0, 153, 0));
-        LabelActualizar.setText("Datos actualizados");
-        jPanel1.add(LabelActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, -1, -1));
-
-        AltaCorrecta.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
-        AltaCorrecta.setForeground(new java.awt.Color(0, 153, 0));
-        AltaCorrecta.setText("Usuario registrado correctamente");
-        jPanel1.add(AltaCorrecta, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 100, -1, -1));
+        jLabel23.setText("Express:");
+        jPanel1.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, -1, -1));
 
         jLabel10.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel10.setText("Destinatario:");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 30, -1, -1));
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 20, -1, -1));
 
-        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 381, 600, 170));
+        TxDestinatario.setBackground(new java.awt.Color(255, 232, 185));
+        TxDestinatario.setForeground(new java.awt.Color(102, 102, 102));
+        TxDestinatario.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 1));
+        TxDestinatario.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        TxDestinatario.setEnabled(false);
+        TxDestinatario.setFocusable(false);
+        TxDestinatario.setSelectedTextColor(new java.awt.Color(0, 0, 0));
+        TxDestinatario.setSelectionColor(new java.awt.Color(0, 0, 0));
+        TxDestinatario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TxDestinatarioActionPerformed(evt);
+            }
+        });
+        jPanel1.add(TxDestinatario, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 20, 220, -1));
+
+        TxExpress.setBackground(new java.awt.Color(255, 232, 185));
+        TxExpress.setContentAreaFilled(false);
+        TxExpress.setEnabled(false);
+        TxExpress.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TxExpressActionPerformed(evt);
+            }
+        });
+        jPanel1.add(TxExpress, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 90, -1, -1));
+
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 421, 600, 130));
 
         jLabel4.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 133, 74));
@@ -346,6 +276,11 @@ public class VGestionPaquetes extends javax.swing.JPanel {
             }
         });
         add(FiltroNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 130, 150, -1));
+
+        tablaPaquetes.setModel(new ModeloTablaPaquetes());
+        jScrollPane3.setViewportView(tablaPaquetes);
+
+        add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(63, 319, 590, 90));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
@@ -357,66 +292,29 @@ public class VGestionPaquetes extends javax.swing.JPanel {
 
     private void tablaPedidosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaPedidosMouseClicked
         // TODO add your handling code here:
-        ErrorAlta.setVisible(false);
-        AltaCorrecta.setVisible(false);
-        LabelActualizar.setVisible(false);
+        ModeloTablaPedidos3 m;
+        ModeloTablaPaquetes p;
+        m = (ModeloTablaPedidos3) tablaPedidos.getModel();
+        p = (ModeloTablaPaquetes) tablaPaquetes.getModel();
+        this.TxCodigo.setText(m.getFila(tablaPedidos.getSelectedRow()).getCodigo().toString());
+        this.TxExpress.setSelected(m.getFila(tablaPedidos.getSelectedRow()).isExpress());
+        this.TxDireccion.setText(m.getFila(tablaPedidos.getSelectedRow()).getDireccion());
+        this.TxDestinatario.setText(m.getFila(tablaPedidos.getSelectedRow()).getDestinatario());
+        this.TxPaquetes.setText(Integer.toHexString(m.getFila(tablaPedidos.getSelectedRow()).getNumPaquetes()));
+        p.setFilas(fa.obtenerPaquetes(m.getFila(tablaPedidos.getSelectedRow()).getCodigo().toString()));
     }//GEN-LAST:event_tablaPedidosMouseClicked
 
-    private void BtActualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtActualizarMouseClicked
-        
+    private void TxDireccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxDireccionActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_BtActualizarMouseClicked
+    }//GEN-LAST:event_TxDireccionActionPerformed
 
-    private void BtBajaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtBajaMouseClicked
-
+    private void TxPaquetesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxPaquetesActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_BtBajaMouseClicked
-
-    private void TxClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxClienteActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TxClienteActionPerformed
-
-    private void TxDestinatarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxDestinatarioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TxDestinatarioActionPerformed
+    }//GEN-LAST:event_TxPaquetesActionPerformed
 
     private void TxCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxCodigoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_TxCodigoActionPerformed
-
-    private void TxFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxFechaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TxFechaActionPerformed
-
-    private void TxTelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxTelefonoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TxTelefonoActionPerformed
-
-    private void TxTramitadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxTramitadorActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TxTramitadorActionPerformed
-
-    private void BtAltaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtAltaMouseClicked
-       /* if (!nuevo) {
-            BtAlta.setBackground(new Color(245, 184, 0));
-            LConfirmar.setVisible(true);
-            LAlta.setVisible(false);
-            vaciarTxt();
-            nuevo = true;
-            ContrasenaL.setVisible(true);
-            TxContrasena.setVisible(true);
-        } else {
-            if (TxCodigo.getText().isEmpty() || TxCliente.getText().isEmpty() || TxFecha.getText().isEmpty() || TxDestinatario.getText().isEmpty() || TxTelefono.getText().isEmpty() || TxContrasena.getText().isEmpty()) {
-                ErrorAlta.setVisible(true);
-            } else {
-                fa.registrarUsuario(TxCodigo.getText(), TxContrasena.getText(), TxTramitador.getText(), TxCliente.getText(), TxFecha.getText(), TxDestinatario.getText(), TxTelefono.getText(), null);
-                AltaCorrecta.setVisible(true);
-                restablecerBoton();
-                actualizarTabla();
-            }
-        }*/
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BtAltaMouseClicked
 
     private void FiltroIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FiltroIdActionPerformed
         // TODO add your handling code here:
@@ -426,46 +324,84 @@ public class VGestionPaquetes extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_FiltroNombreActionPerformed
 
+    private void TxDestinatarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxDestinatarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TxDestinatarioActionPerformed
+
+    private void TxExpressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxExpressActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TxExpressActionPerformed
+
+    private void BtEliminar(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtEliminar
+        // TODO add your handling code here:
+        ModeloTablaPedidos3 m;
+        ModeloTablaPaquetes p;
+        Paquete paquete;
+        m = (ModeloTablaPedidos3) tablaPedidos.getModel();
+        p = (ModeloTablaPaquetes) tablaPaquetes.getModel();
+        int [] Indices;
+        Indices = tablaPaquetes.getSelectedRows();
+        Pedido pedido=m.getFila(tablaPedidos.getSelectedRow());
+        if(Indices.length!=0){
+            if(Indices.length==pedido.getNumPaquetes()){
+                fa.eliminarPedido(pedido.getCodigo());
+            }
+            else{
+                for(int i=0;i<Indices.length;i++){
+                    paquete=p.getFila(Indices[i]);
+                    fa.elimarPaquete(paquete.getPedido(), paquete.getCodigo());
+                }
+            }
+        }
+        else{
+            fa.eliminarPedido(pedido.getCodigo());
+        }
+        actualizarTablaPedidos();
+        p.vaciarLista();
+        vaciaText();
+    }//GEN-LAST:event_BtEliminar
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel AltaCorrecta;
-    private javax.swing.JPanel BtActualizar;
-    private javax.swing.JPanel BtAlta;
     private javax.swing.JPanel BtBaja;
-    private javax.swing.JLabel ErrorAlta;
     private javax.swing.JTextField FiltroId;
     private javax.swing.JTextField FiltroNombre;
-    private javax.swing.JLabel LAlta;
-    private javax.swing.JLabel LConfirmar;
-    private javax.swing.JLabel LabelActualizar;
-    private javax.swing.JTextField TxCliente;
     private javax.swing.JTextField TxCodigo;
     private javax.swing.JTextField TxDestinatario;
-    private javax.swing.JTextField TxFecha;
-    private javax.swing.JTextField TxTelefono;
-    private javax.swing.JTextField TxTramitador;
+    private javax.swing.JTextField TxDireccion;
+    private javax.swing.JCheckBox TxExpress;
+    private javax.swing.JTextField TxPaquetes;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JComboBox sexo;
+    private javax.swing.JTable tablaPaquetes;
     private javax.swing.JTable tablaPedidos;
     // End of variables declaration//GEN-END:variables
+    
+    public void actualizarTablaPedidos() {
+        ModeloTablaPedidos3 tp;
+        tp = (ModeloTablaPedidos3) tablaPedidos.getModel();
+        tp.setFilas(fa.pedidosSinTramitar());
+    }
+    public void vaciaText(){
+        this.TxCodigo.setText(null);
+        this.TxExpress.setSelected(false);
+        this.TxDireccion.setText(null);
+        this.TxDestinatario.setText(null);
+        this.TxPaquetes.setText(null);
+    }
 }
