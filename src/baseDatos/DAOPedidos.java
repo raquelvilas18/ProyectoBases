@@ -140,7 +140,7 @@ public class DAOPedidos extends AbstractDAO {
                                                 "	FROM vehiculos\n" +
                                                 "	WHERE conductor=?\n" +
                                                 ") >=0");
-                    stm3.setString(1, transportista);
+                    stm3.setString(1, tramitador);
                     stm3.setInt(2, codigo);
                     stm3.setString(3, transportista);
                     stm3.setInt(4, codigo);

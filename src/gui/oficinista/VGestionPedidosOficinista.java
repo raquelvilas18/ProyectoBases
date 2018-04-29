@@ -293,22 +293,13 @@ public class VGestionPedidosOficinista extends javax.swing.JPanel {
             tp = (ModeloTablaPedidos2) tablaPedidos.getModel();
             ModeloTablaTransportistas t;
             t = (ModeloTablaTransportistas) tablaTransp.getModel();
-            res=fa.tramitarPedido(tp.getFila(tablaPedidos.getSelectedRow()).getCodigo(), t.getFila(tablaTransp.getSelectedRow()).getUsuario(), u.getUsuario());
-            if(res == 0){
-                errorCupoMaximo.setVisible(false);
-                errorTramitacionAMedias.setVisible(false);
-                LabelTramitar.setVisible(true);
-            }else if(res < 0){
-                errorCupoMaximo.setVisible(true);
-                errorTramitacionAMedias.setVisible(false);
-                LabelTramitar.setVisible(false);
-            }else{
-                errorCupoMaximo.setVisible(false);
-                errorTramitacionAMedias.setVisible(true);
-                LabelTramitar.setVisible(false);
-            }
+            fa.tramitarPedido(tp.getFila(tablaPedidos.getSelectedRow()).getCodigo(), t.getFila(tablaTransp.getSelectedRow()).getUsuario(), u.getUsuario());
             actualizarTablaPedidos();
+            actualizarTablaTransportistas();
+            LabelTramitar.setVisible(true);
+            
         } else {
+            LabelTramitar.setVisible(false);
             errorLabel.setVisible(true);
         }
     }//GEN-LAST:event_BtTramitarMouseClicked
