@@ -5,9 +5,9 @@
  */
 package gui;
 
-import gui.trasnportista.VGestionPaquetesTransportista;
-import gui.trasnportista.VPerfilTransportista;
-import gui.trasnportista.VTransportista;
+import gui.transportista.VGestionPaquetesTransportista;
+import gui.transportista.VPerfilTransportista;
+import gui.transportista.VTransportista;
 import gui.cliente.VPedido;
 import gui.cliente.VHistorialPedidos;
 import gui.cliente.VPedidosActivos;

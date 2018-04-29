@@ -143,6 +143,9 @@ public class FachadaBaseDatos {
     public void actualizarLocal2(String id, String local) {
         daoEmpleados.actualizarLocal2(id, local);
     }
+    public void actualizarLocal2(String id, String local) {
+        daoEmpleados.actualizarLocal2(id, local);
+    }
 
     public Usuario registrarUsuario(String id, String clave, String dni, String nombre, String email, String direccion, String telefono, String sexo, String tipo) {
         
@@ -322,8 +325,12 @@ public class FachadaBaseDatos {
     }
     
     //------COMBO BOX-----//
-    public ArrayList<String> transportistasComboBox() {
-        return daoEmpleados.transportistasComboBox();
+    public ArrayList<String> transportistasComboBox(String matricula) {
+        return daoEmpleados.transportistasComboBox(matricula);
+    }
+    
+    public ArrayList<String> oficinistasComboBox(String local){
+        return daoLocales.oficinistasComboBox(local);
     }
 
 }

@@ -243,8 +243,12 @@ public class FachadaAplicacion {
         return gPaquetes.localizar(codigo);
     }
     
-    public ArrayList<String> transportistasComboBox() {
-        return fbd.transportistasComboBox();
+    public ArrayList<String> transportistasComboBox(String matricula) {
+        return fbd.transportistasComboBox(matricula);
+    }
+    
+    public ArrayList<String> oficinistasComboBox(String local){
+        return fbd.oficinistasComboBox(local);
     }
     
 }

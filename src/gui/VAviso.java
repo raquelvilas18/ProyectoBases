@@ -17,13 +17,7 @@ public class VAviso extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         textoExcepcion.setText(txtExcepcion);
-        this.addWindowListener(new java.awt.event.WindowAdapter() {
-
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
+        this.setLocation(715,755);
     }
 
     /**
@@ -40,8 +34,12 @@ public class VAviso extends javax.swing.JDialog {
         botonCerrar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setBackground(new java.awt.Color(255, 255, 255));
+        setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        setUndecorated(true);
 
         textoExcepcion.setColumns(20);
+        textoExcepcion.setFont(new java.awt.Font("Dialog", 1, 15)); // NOI18N
         textoExcepcion.setForeground(new java.awt.Color(65, 105, 225));
         textoExcepcion.setRows(5);
         jScrollPane1.setViewportView(textoExcepcion);
@@ -76,6 +74,8 @@ public class VAviso extends javax.swing.JDialog {
                 .addGap(1, 1, 1)
                 .addComponent(botonCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
+
+        getAccessibleContext().setAccessibleParent(this);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
