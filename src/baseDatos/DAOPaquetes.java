@@ -98,7 +98,8 @@ public class DAOPaquetes extends AbstractDAO {
 
         try {
             stm = con.prepareStatement("UPDATE paquetes "
-                    + "SET fecha_entrega = TO_DATE(?, 'DD-MM-YYYY') "
+                    + "SET fecha_entrega = TO_DATE(?, 'DD-MM-YYYY'), "
+                    + " transportista = NULL "
                     + "WHERE  pedido = ? "
                     + "AND codigo = ? ");
             Calendar cal = Calendar.getInstance();

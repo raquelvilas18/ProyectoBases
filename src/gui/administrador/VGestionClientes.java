@@ -12,6 +12,7 @@ import java.awt.Font;
 import javax.swing.JLabel;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.JTableHeader;
+import javax.swing.table.TableColumnModel;
 
 /**
  *
@@ -67,6 +68,9 @@ public class VGestionClientes extends javax.swing.JPanel {
         centerRenderer.setHorizontalAlignment( JLabel.CENTER );
         tablaUsr.setDefaultRenderer(String.class, centerRenderer);
         tablaUsr.setDefaultRenderer(Integer.class, centerRenderer);
+        
+        TableColumnModel columnModel = tablaUsr.getColumnModel();
+        columnModel.getColumn(4).setPreferredWidth(180);
 
     }
 

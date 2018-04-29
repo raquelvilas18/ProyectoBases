@@ -25,6 +25,7 @@ public class VGestionPedidosOficinista extends javax.swing.JPanel {
     Usuario u;
     ModeloTablaTransportistas tt;
     ModeloTablaPedidos2 tp;
+
     /**
      * Creates new form VGestionPaquetes
      */
@@ -46,22 +47,19 @@ public class VGestionPedidosOficinista extends javax.swing.JPanel {
         th.setFont(fuente);
         th.setForeground(new Color(89, 171, 36));
         th.setBackground(Color.WHITE);
-        BtTramitar.setVisible(false);
-        jPanel1.setVisible(true);
         JTableHeader th2;
         th2 = this.tablaTransp.getTableHeader();
         th2.setFont(fuente);
         th2.setForeground(new Color(89, 171, 36));
         th2.setBackground(Color.WHITE);
         tablaPedidos.changeSelection(0, 0, false, false);
-        
+
         TableColumnModel columnModel = tablaTransp.getColumnModel();
         columnModel.getColumn(5).setPreferredWidth(150);
 
-        
         TableColumnModel columnModel2 = tablaPedidos.getColumnModel();
         columnModel2.getColumn(2).setPreferredWidth(30);
-        
+
         LabelTramitar.setVisible(false);
         LabelEliminar.setVisible(false);
         errorLabel.setVisible(false);
@@ -305,22 +303,22 @@ public class VGestionPedidosOficinista extends javax.swing.JPanel {
 
     private void BtTramitarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtTramitarMouseClicked
         // TODO add your handling code here:
-        int res=0;
+        int res = 0;
         if (tablaPedidos.getRowCount() > 0 && tablaTransp.getRowCount() > 0) {
             ModeloTablaPedidos2 tp;
             tp = (ModeloTablaPedidos2) tablaPedidos.getModel();
             ModeloTablaTransportistas t;
             t = (ModeloTablaTransportistas) tablaTransp.getModel();
-            res=fa.tramitarPedido(tp.getFila(tablaPedidos.getSelectedRow()).getCodigo(), t.getFila(tablaTransp.getSelectedRow()).getUsuario(), u.getUsuario());
-            if(res == 0){
+            res = fa.tramitarPedido(tp.getFila(tablaPedidos.getSelectedRow()).getCodigo(), t.getFila(tablaTransp.getSelectedRow()).getUsuario(), u.getUsuario());
+            if (res == 0) {
                 errorCupoMaximo.setVisible(false);
                 errorTramitacionAMedias.setVisible(false);
                 LabelTramitar.setVisible(true);
-            }else if(res < 0){
+            } else if (res < 0) {
                 errorCupoMaximo.setVisible(true);
                 errorTramitacionAMedias.setVisible(false);
                 LabelTramitar.setVisible(false);
-            }else{
+            } else {
                 errorCupoMaximo.setVisible(false);
                 errorTramitacionAMedias.setVisible(true);
                 LabelTramitar.setVisible(false);
@@ -347,12 +345,9 @@ public class VGestionPedidosOficinista extends javax.swing.JPanel {
 
     private void tablaTranspMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaTranspMouseClicked
 
-            //DEBERIAMOS ACTIVAR EL BOTON
-            BtTramitar.setVisible(true);
-            jPanel1.setVisible(false);
-
+        BtTramitar.setVisible(true);
     }//GEN-LAST:event_tablaTranspMouseClicked
-   
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel BtEliminar;
@@ -365,13 +360,10 @@ public class VGestionPedidosOficinista extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
@@ -386,7 +378,7 @@ public class VGestionPedidosOficinista extends javax.swing.JPanel {
         tp = (ModeloTablaPedidos2) tablaPedidos.getModel();
         tp.setFilas(fa.pedidosSinTramitar());
     }
-    
+
     public void actualizarTablaTransportistas() {
         tt = (ModeloTablaTransportistas) tablaTransp.getModel();
         tt.setFilas(fa.obtenerTransportistas());
