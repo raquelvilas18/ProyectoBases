@@ -524,17 +524,22 @@ public class VGestionLocales extends javax.swing.JPanel {
     //public Usuario(String usuario, String password, String dni, String nombre, String correo, String direccion, String telefono, String sexo) {
     public void actualizarLocal(String codigo) {
         ModeloTablaLocales m;
-        String local;
+        String encargado;
         m = (ModeloTablaLocales) tablaLoc.getModel();
-        local=fa.trabajaEn(TxEncargado.getSelectedItem().toString());
-        if(local.equals(codigo) || local.equals(TxEncargado.getSelectedItem())){
-        fa.actualizarLocal(codigo, new Local(TxCodigo.getText(),TxDireccion.getText(), TxEncargado.getSelectedItem().toString(), Integer.parseInt(TxCapacidad.getText())));
+        //local=fa.trabajaEn(TxEncargado.getSelectedItem().toString());
+        if(TxCodigo.getText().isEmpty() || TxDireccion.getText().isEmpty() || TxCapacidad.getText().isEmpty()){
+           ErrorEncargado.setVisible(true);
+        }else{          
+            if(TxEncargado.getSelectedItem().equals("")){
+                encargado=null;
+            }else{
+                encargado=TxEncargado.getSelectedItem().toString();
+            }
+        fa.actualizarLocal(codigo, new Local(TxCodigo.getText(),TxDireccion.getText(), encargado, Integer.parseInt(TxCapacidad.getText())));
         ErrorEncargado.setVisible(false);
         LabelActualizar.setVisible(true);
         m.setFilas(fa.obtenerLocales(this.FiltroCodigo.getText()));
         BtActualizar.setEnabled(false);
-        }else{
-            ErrorEncargado.setVisible(true);
         }
     }
 
