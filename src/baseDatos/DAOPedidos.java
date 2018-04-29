@@ -128,79 +128,63 @@ public class DAOPedidos extends AbstractDAO {
             Logger.getLogger(DAOUsuarios.class.getName()).log(Level.SEVERE, null, ex);
         }
         try {
-            stm = con.prepareStatement("SELECT (SELECT capacidad - (SELECT count(*) from paquetes where transportista = ?)\n" +
-"                    FROM vehiculos\n" +
-"                    WHERE conductor=?)-count(*),count(*)\n" +
-"			FROM paquetes NATURAL LEFT JOIN pedidos\n" +
-"	WHERE pedido = ? AND fecha_entrega IS NULL AND tramitador is null");
-            stm.setString(1, transportista);
-            stm.setString(2, transportista);
-            stm.setInt(3, codigo);
-            rs = stm.executeQuery();
-            if (rs.next()) {
-                count = rs.getInt(1);
-                NPaq = rs.getInt(2);
-                if(count >= 0){
-                    stm2 = con.prepareStatement("UPDATE paquetes "
-                            + "SET transportista = ? \n"
-                            + "WHERE pedido =  ? AND fecha_entrega IS NULL AND transportista IS NULL");
-                    stm2.setString(1, transportista);
-                    stm2.setInt(2, codigo);
-
-                    stm2.executeUpdate();
-                    stm3 = con.prepareStatement("UPDATE pedidos "
-                            + "SET tramitador = ?, fecha = current_date"
-                            + "WHERE codigo = ? ");
-                    stm3.setString(1, tramitador);
+                stm3 = con.prepareStatement("UPDATE pedidos \n" +
+                                                "SET tramitador = ? \n" +
+                                                "WHERE codigo = ? \n" +
+                                                "AND (SELECT capacidad - (SELECT count(*) as restante\n" +
+                                                "	FROM paquetes\n" +
+                                                "	WHERE transportista=?) - \n" +
+                                                "	(SELECT count(*)\n" +
+                                                "	FROM paquetes\n" +
+                                                "	WHERE pedido=?)\n" +
+                                                "	FROM vehiculos\n" +
+                                                "	WHERE conductor=?\n" +
+                                                ") >=0");
+                    stm3.setString(1, transportista);
                     stm3.setInt(2, codigo);
+                    stm3.setString(3, transportista);
+                    stm3.setInt(4, codigo);
+                    stm3.setString(5, transportista);
                     stm3.executeUpdate();
-                }else if ((count+NPaq) > 0) {
-                     resultado = count + NPaq;
-                    stm2 = con.prepareStatement("UPDATE paquetes "
-                            + "SET transportista = ? \n"
-                            + "WHERE pedido =  ? AND fecha_entrega IS NULL AND transportista IS NULL AND codigo<="
-                            + " (SELECT ? + count(*) FROM paquetes\n"
-                            + "WHERE pedido = ? AND fecha_entrega IS NOT NULL AND codigo<=? AND transportista IS NOT NULL)");
+      
+                    stm2 = con.prepareStatement("UPDATE paquetes\n" +
+                                                "SET transportista = ?\n" +
+                                                "WHERE pedido = ? AND fecha_entrega IS NULL AND transportista IS NULL\n" +
+                                                "AND\n" +
+                                                "(\n" +
+                                                "	SELECT capacidad - (SELECT count(*) as restante\n" +
+                                                "	FROM paquetes\n" +
+                                                "	WHERE transportista=?) - (SELECT count(*)\n" +
+                                                "	FROM paquetes\n" +
+                                                "	WHERE pedido=?)\n" +
+                                                "	FROM vehiculos\n" +
+                                                "	WHERE conductor=?\n" +
+                                                ") >=0");
                     stm2.setString(1, transportista);
                     stm2.setInt(2, codigo);
-                    stm2.setInt(3, resultado);
+                    stm2.setString(3, transportista);
                     stm2.setInt(4, codigo);
-                    stm2.setInt(5, resultado);
-
+                    stm2.setString(5, transportista);
                     stm2.executeUpdate();
-                    stm3 = con.prepareStatement("UPDATE pedidos "
-                            + "SET tramitador = ?"
-                            + "WHERE codigo = ? ");
-                    stm3.setString(1, tramitador);
-                    stm3.setInt(2, codigo);
-                    stm3.executeUpdate();
+                    
 
-                } else {
-                    resultado = count;
-                }
-                try {
+                    
                     con.commit();
                     con.setAutoCommit(true);
-                } catch (SQLException ex) {
-
-                    Logger.getLogger(DAOUsuarios.class.getName()).log(Level.SEVERE, null, ex);
                 }
-            } else {
-                System.out.println("Chungo");
-            }
-
-        } catch (SQLException e) {
+                catch (SQLException ex) 
+                {
+                try {
+                        System.out.println("Rollback");
+                        con.rollback();
+                    } 
+                    catch (SQLException exe)
+                    {
+                        Logger.getLogger(DAOUsuarios.class.getName()).log(Level.SEVERE, null, exe);
+                    }
+                }
+        finally {
             try {
-                System.out.println("Rollback");
-                con.rollback();
-            } catch (SQLException ex) {
-                Logger.getLogger(DAOUsuarios.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            System.out.println(e.getMessage());
-            this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
-        } finally {
-            try {
-                stm.close();
                 stm2.close();
                 stm3.close();
             } catch (SQLException e) {
@@ -209,7 +193,59 @@ public class DAOPedidos extends AbstractDAO {
         }
         return resultado;
     }
+    public java.util.List<Paquete> obtenerPaquetes(String codigo){
+        java.util.List<Paquete> resultado=new java.util.ArrayList<>();
+        Connection con;
+        PreparedStatement stmPaquetes = null;
+        ResultSet rsPaquetes;
+        con=super.getConexion();
+        try {
+            stmPaquetes = con.prepareStatement("SELECT *\n"
+                    + "FROM paquetes\n"
+                    + "WHERE pedido=? ");
+            stmPaquetes.setInt(1, Integer.parseInt(codigo));
+            rsPaquetes = stmPaquetes.executeQuery();
+            while (rsPaquetes.next()) {
+                resultado.add(new Paquete(rsPaquetes.getInt("codigo"),
+                                rsPaquetes.getInt("pedido"),rsPaquetes.getFloat("peso"),
+                                rsPaquetes.getFloat("alto"),rsPaquetes.getFloat("ancho"),
+                                rsPaquetes.getFloat("largo"),rsPaquetes.getString("fecha_entrega"),
+                                rsPaquetes.getString("transportista"),rsPaquetes.getString("cliente")));
+            }
 
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
+        } finally {
+            try {
+                stmPaquetes.close();
+            } catch (SQLException e) {
+                System.out.println("Imposible cerrar cursores");
+            }
+        }
+        return resultado;
+        
+    }
+    public void elimarPaquete(Integer pedido,Integer codigo){
+        Connection con=super.getConexion();
+        PreparedStatement stmPaquete=null;
+        try {
+            stmPaquete = con.prepareStatement("delete from paquetes where pedido=? and codigo=? ");
+            stmPaquete.setInt(1, pedido);
+            stmPaquete.setInt(2,codigo);
+            stmPaquete.execute();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
+        } finally {
+            try {
+                stmPaquete.close();
+            } catch (SQLException e) {
+                System.out.println("Imposible cerrar cursores");
+            }
+        }
+        
+    }
     public java.util.List<Pedido> obtenerHistorialPedidos(String usuario) {
         java.util.List<Pedido> resultado = new java.util.ArrayList<Pedido>();
         Connection con;
