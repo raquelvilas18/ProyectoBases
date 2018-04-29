@@ -43,15 +43,16 @@ public class VGestionVehiculos extends javax.swing.JPanel {
         AltaCorrecta.setVisible(false);
         LabelActualizar.setVisible(false);
         
-        ArrayList<String> transportistas = fa.transportistasComboBox();
-        
-        for(int i= 0; i<transportistas.size();i++){
-            TxTransp.insertItemAt(transportistas.get(i), i+1);
-        }
+
         
         ModeloTablaVehiculos mv = (ModeloTablaVehiculos) tablaVehi.getModel();
         if(mv.getRowCount()>0){
             this.TxMatricula.setText(mv.getFila(tablaVehi.getSelectedRow()).getMatricula());
+            ArrayList<String> transportistas = fa.transportistasComboBox(TxMatricula.getText());
+        
+            for(int i= 0; i<transportistas.size();i++){
+                TxTransp.insertItemAt(transportistas.get(i), i+1);
+            }
             this.TxCapacidad.setText(mv.getFila(tablaVehi.getSelectedRow()).getCapacidad().toString());
             this.TxItv.setText(mv.getFila(tablaVehi.getSelectedRow()).getItv());
             this.TxDireccion.setText(mv.getFila(tablaVehi.getSelectedRow()).getDireccion());
@@ -552,6 +553,15 @@ public void eliminarVehiculo(){
 
         mv = (ModeloTablaVehiculos) tablaVehi.getModel();
         this.TxMatricula.setText(mv.getFila(tablaVehi.getSelectedRow()).getMatricula());
+        this.TxMatricula.setText(mv.getFila(tablaVehi.getSelectedRow()).getMatricula());
+            for(int j=0;j<TxTransp.getItemCount()-1;j++){
+                TxTransp.removeItemAt(1);
+            }
+        ArrayList<String> transportistas = fa.transportistasComboBox(TxMatricula.getText());
+        
+            for(int i= 0; i<transportistas.size();i++){
+                TxTransp.insertItemAt(transportistas.get(i), i+1);
+            }
         this.TxItv.setText(mv.getFila(tablaVehi.getSelectedRow()).getItv());
         this.TxCapacidad.setText(mv.getFila(tablaVehi.getSelectedRow()).getCapacidad().toString());
         this.TxDireccion.setText(mv.getFila(tablaVehi.getSelectedRow()).getDireccion());
@@ -564,6 +574,14 @@ public void eliminarVehiculo(){
         tablaVehi.changeSelection(0,0,false,false);
         ModeloTablaVehiculos mv = (ModeloTablaVehiculos) tablaVehi.getModel();
         this.TxMatricula.setText(mv.getFila(tablaVehi.getSelectedRow()).getMatricula());
+            for(int j=0;j<TxTransp.getItemCount()-1;j++){
+                TxTransp.removeItemAt(1);
+            }
+        ArrayList<String> transportistas = fa.transportistasComboBox(TxMatricula.getText());
+        
+            for(int i= 0; i<transportistas.size();i++){
+                TxTransp.insertItemAt(transportistas.get(i), i+1);
+            }
         this.TxItv.setText(mv.getFila(tablaVehi.getSelectedRow()).getItv());
         this.TxCapacidad.setText(mv.getFila(tablaVehi.getSelectedRow()).getCapacidad().toString());
         this.TxDireccion.setText(mv.getFila(tablaVehi.getSelectedRow()).getDireccion());

@@ -419,7 +419,7 @@ public class DAOEmpleados extends AbstractDAO {
         }
     }
 
-    public ArrayList<String> transportistasComboBox() {
+    public ArrayList<String> transportistasComboBox(String matricula) {
         java.util.ArrayList<String> resultado = new ArrayList<String>();
         Connection con;
         PreparedStatement stmEmpleados = null;
@@ -428,7 +428,17 @@ public class DAOEmpleados extends AbstractDAO {
         con = super.getConexion();
 
         try {
-            stmEmpleados = con.prepareStatement("SELECT * FROM transportistas where ");
+            stmEmpleados = con.prepareStatement("SELECT empleado\n" +
+"FROM transportistas as t\n" +
+"WHERE t.empleado not in\n" +
+"(SELECT empleado\n" +
+"FROM transportistas as tr, vehiculos as v\n" +
+"WHERE v.conductor = tr.empleado) UNION \n" +
+"SELECT empleado\n" +
+"FROM transportistas as tra, vehiculos as vs\n" +
+"WHERE vs.matricula=?");
+            stmEmpleados.setString(1, matricula);
+            
             rs = stmEmpleados.executeQuery();
 
             while (rs.next()) {

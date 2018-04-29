@@ -322,8 +322,8 @@ public class FachadaBaseDatos {
     }
     
     //------COMBO BOX-----//
-    public ArrayList<String> transportistasComboBox() {
-        return daoEmpleados.transportistasComboBox();
+    public ArrayList<String> transportistasComboBox(String matricula) {
+        return daoEmpleados.transportistasComboBox(matricula);
     }
     
     public ArrayList<String> oficinistasComboBox(String local){
