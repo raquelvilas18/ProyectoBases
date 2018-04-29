@@ -17,6 +17,7 @@ import java.net.URI;
  * @author alumnogreibd
  */
 public class VOficinista extends javax.swing.JPanel {
+
     private VPrincipal parent;
     private Usuario usuario;
 
@@ -27,6 +28,7 @@ public class VOficinista extends javax.swing.JPanel {
         initComponents();
         this.parent = parent;
         this.usuario = usuario;
+        PanelEliminar.setVisible(false);
     }
 
     /**
@@ -51,6 +53,14 @@ public class VOficinista extends javax.swing.JPanel {
         jLabel9 = new javax.swing.JLabel();
         Maps = new javax.swing.JLabel();
         CerrarSesion = new javax.swing.JLabel();
+        PanelEliminar = new javax.swing.JPanel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        no = new javax.swing.JPanel();
+        jLabel11 = new javax.swing.JLabel();
+        Si = new javax.swing.JPanel();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(87, 179, 57));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -224,6 +234,55 @@ public class VOficinista extends javax.swing.JPanel {
             }
         });
         add(CerrarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(-40, 120, 40, -1));
+
+        PanelEliminar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel12.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        jLabel12.setText("Estás seguro de que quieres ");
+        PanelEliminar.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, -10, -1, 40));
+
+        jLabel14.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        jLabel14.setText("eliminar tu cuenta de usuario ?");
+        PanelEliminar.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
+
+        no.setBackground(new java.awt.Color(204, 204, 204));
+        no.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        no.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                noMouseClicked(evt);
+            }
+        });
+        no.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel11.setText("no");
+        no.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, -5, -1, 30));
+
+        PanelEliminar.add(no, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 40, 90, 20));
+
+        Si.setBackground(new java.awt.Color(204, 204, 204));
+        Si.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Si.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                SiMouseClicked(evt);
+            }
+        });
+        Si.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel17.setText("si");
+        Si.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, -5, -1, 30));
+
+        PanelEliminar.add(Si, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 90, 20));
+
+        add(PanelEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 490, 220, 70));
+
+        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-retire-hombre-usuario-26.png"))); // NOI18N
+        jLabel15.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel15.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel15MouseClicked(evt);
+            }
+        });
+        add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 550, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jLabel13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel13MouseClicked
@@ -233,58 +292,58 @@ public class VOficinista extends javax.swing.JPanel {
         AnimationClass sesion = new AnimationClass();
         maps.jLabelXRight(-40, 10, 10, 5, CerrarSesion);
 
-        AnimationClass mapsl= new AnimationClass();
-        maps.jLabelXLeft(10,-40, 10, 5, Maps);
+        AnimationClass mapsl = new AnimationClass();
+        maps.jLabelXLeft(10, -40, 10, 5, Maps);
 
         AnimationClass sesionl = new AnimationClass();
-        maps.jLabelXLeft(10,-40, 10, 5, CerrarSesion);
+        maps.jLabelXLeft(10, -40, 10, 5, CerrarSesion);
 
     }//GEN-LAST:event_jLabel13MouseClicked
 
     private void jPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseClicked
         // TODO add your handling code here:
-       parent.ventanaPerfilOficinista(this.usuario);
+        parent.ventanaPerfilOficinista(this.usuario);
     }//GEN-LAST:event_jPanel1MouseClicked
 
     private void jPanel1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseExited
         // TODO add your handling code here:
-        jPanel1.setBackground(new Color(113,189,46));
+        jPanel1.setBackground(new Color(113, 189, 46));
     }//GEN-LAST:event_jPanel1MouseExited
 
     private void jPanel1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseEntered
         // TODO add your handling code here:
-        jPanel1.setBackground(new Color(132,210,64));
+        jPanel1.setBackground(new Color(132, 210, 64));
     }//GEN-LAST:event_jPanel1MouseEntered
 
     private void jPanel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseClicked
         // TODO add your handling code here:
         parent.ventanaGestionPedidosOficinista(usuario);
-       
+
     }//GEN-LAST:event_jPanel3MouseClicked
 
     private void jPanel3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseExited
         // TODO add your handling code here:
-        jPanel3.setBackground(new Color(113,189,46));
+        jPanel3.setBackground(new Color(113, 189, 46));
     }//GEN-LAST:event_jPanel3MouseExited
 
     private void jPanel3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseEntered
         // TODO add your handling code here:
-        jPanel3.setBackground(new Color(132,210,64));
+        jPanel3.setBackground(new Color(132, 210, 64));
     }//GEN-LAST:event_jPanel3MouseEntered
 
     private void jPanel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseClicked
         // TODO add your handling code here:
-         parent.ventanagestionUsuariosOficinista();
+        parent.ventanagestionUsuariosOficinista();
     }//GEN-LAST:event_jPanel4MouseClicked
 
     private void jPanel4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseExited
         // TODO add your handling code here:
-        jPanel4.setBackground(new Color(113,189,46));
+        jPanel4.setBackground(new Color(113, 189, 46));
     }//GEN-LAST:event_jPanel4MouseExited
 
     private void jPanel4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseEntered
         // TODO add your handling code here:
-        jPanel4.setBackground(new Color(132,210,64));
+        jPanel4.setBackground(new Color(132, 210, 64));
     }//GEN-LAST:event_jPanel4MouseEntered
 
     private void MapsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MapsMouseClicked
@@ -293,19 +352,46 @@ public class VOficinista extends javax.swing.JPanel {
 
     private void CerrarSesionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CerrarSesionMouseClicked
         // TODO add your handling code here:
-        if(usuario!=null) parent.getFa().conexion(this.usuario.getUsuario(), false);
+        if (usuario != null) {
+            parent.getFa().conexion(this.usuario.getUsuario(), false);
+        }
         parent.setUsuario(null);
         this.setVisible(false);
         parent.ventanaInicial();
     }//GEN-LAST:event_CerrarSesionMouseClicked
 
+    private void noMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_noMouseClicked
+        // TODO add your handling code here:
+        this.PanelEliminar.setVisible(false);
+    }//GEN-LAST:event_noMouseClicked
+
+    private void SiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SiMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_SiMouseClicked
+
+    private void jLabel15MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel15MouseClicked
+        // TODO add your handling code here:
+        if (PanelEliminar.isVisible()) {
+            this.PanelEliminar.setVisible(false);
+        } else {
+            this.PanelEliminar.setVisible(true);
+        }
+    }//GEN-LAST:event_jLabel15MouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel CerrarSesion;
     private javax.swing.JLabel Maps;
+    private javax.swing.JPanel PanelEliminar;
+    private javax.swing.JPanel Si;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel7;
@@ -314,13 +400,14 @@ public class VOficinista extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel no;
     // End of variables declaration//GEN-END:variables
 
-    public void openInternet(){
-        try{
+    public void openInternet() {
+        try {
             Desktop.getDesktop().browse(URI.create("https://www.google.es/maps"));
-        }catch(Exception e){
-            
+        } catch (Exception e) {
+
         }
     }
 

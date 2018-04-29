@@ -7,6 +7,7 @@ package aplicacion;
 
 import baseDatos.FachadaBaseDatos;
 import gui.FachadaGui;
+import gui.VAviso;
 import java.util.ArrayList;
 
 /**
@@ -26,7 +27,9 @@ public class GestionPedidos {
     public Pedido nuevoPedido(Pedido pd) {
         return fbd.nuevoPedido(pd);
     }
-
+    public java.util.List<Paquete> obtenerPaquetes(String codigo){
+        return fbd.obtenerPaquetes(codigo);
+    }
      public Pedido getPedido(Pedido p) {
         return fbd.getPedido(p);
     }
@@ -45,13 +48,15 @@ public class GestionPedidos {
     public ArrayList<Pedido> pedidosSinTramitar(){
         return fbd.pedidosSinTramitar();
     }
-
+    public void elimarPaquete(Integer pedido,Integer codigo){
+        fbd.elimarPaquete(pedido, codigo);
+    }
     public java.util.List<Paquete> comprobarLocalizacion(Integer codigo) {
         return fbd.comprobarLocalizacion(codigo);
     }
     
-    public void tramitarPedido(Integer codigo, String transportista, String tramitador) {
-        fbd.tramitarPedido(codigo, transportista, tramitador);
+    public int tramitarPedido(Integer codigo, String transportista, String tramitador) {
+        return fbd.tramitarPedido(codigo, transportista, tramitador);  
     }
     
     public ArrayList<Pedido> pedidosPrecio(String u){

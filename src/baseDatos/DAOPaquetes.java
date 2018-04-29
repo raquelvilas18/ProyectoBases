@@ -129,13 +129,30 @@ public class DAOPaquetes extends AbstractDAO {
         con = super.getConexion();
 
         try {
-            stmPaquetes = con.prepareStatement("SELECT * "
-                    + "FROM paquetes "
-                    + "WHERE pedido=?");
+            stmPaquetes = con.prepareStatement("SELECT cliente, pedido, codigo, peso, ancho, alto, largo, coste, transportista, fecha_entrega, direccion as posicion\n"
+                    + "FROM paquetes p, vehiculos v\n"
+                    + "WHERE p.transportista = v.conductor "
+                    + "AND pedido = ? "
+                    + "UNION\n"
+                    + "SELECT cliente, pedido, codigo, peso, ancho, alto,  largo, coste, transportista, fecha_entrega, 'entregado' as posicion\n"
+                    + "FROM paquetes \n"
+                    + "WHERE fecha_entrega IS NOT NULL \n"
+                    + "AND transportista ISNULL \n"
+                    + "AND pedido = ? "
+                    + "UNION\n"
+                    + "SELECT cliente, pedido, codigo, peso, ancho, alto,  largo, coste, transportista, fecha_entrega, 'En tramitacion' as posicion\n"
+                    + "FROM paquetes \n"
+                    + "WHERE fecha_entrega ISNULL \n"
+                    + "AND transportista ISNULL "
+                    + "AND pedido = ?");
             stmPaquetes.setInt(1, codigo);
+            stmPaquetes.setInt(2, codigo);
+            stmPaquetes.setInt(3, codigo);
+
             rsPaquetes = stmPaquetes.executeQuery();
 
             while (rsPaquetes.next()) {
+
                 resultado.add(new Paquete(rsPaquetes.getInt("codigo"),
                         rsPaquetes.getInt("pedido"),
                         rsPaquetes.getFloat("peso"),
@@ -144,7 +161,8 @@ public class DAOPaquetes extends AbstractDAO {
                         rsPaquetes.getFloat("largo"),
                         rsPaquetes.getString("fecha_entrega"),
                         rsPaquetes.getString("transportista"),
-                        rsPaquetes.getString("cliente")));
+                        rsPaquetes.getString("cliente"),
+                        rsPaquetes.getString("posicion")));
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());

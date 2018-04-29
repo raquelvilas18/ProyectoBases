@@ -5,6 +5,7 @@
  */
 package baseDatos;
 
+import aplicacion.Cliente;
 import aplicacion.Empleado;
 import aplicacion.Local;
 import aplicacion.Paquete;
@@ -53,10 +54,9 @@ public class FachadaBaseDatos {
             arqConfiguracion.close();
 
             Properties usuario = new Properties();
-            
-            String gestor = configuracion.getProperty("gestor");
 
-            
+            String gestor = configuracion.getProperty("gestor");
+/*
             usuario.setProperty("user", configuracion.getProperty("usuario"));
             usuario.setProperty("password", configuracion.getProperty("clave"));
             this.conexion = java.sql.DriverManager.getConnection("jdbc:" + gestor + "://"
@@ -64,19 +64,19 @@ public class FachadaBaseDatos {
                     + configuracion.getProperty("puerto") + "/"
                     + configuracion.getProperty("baseDatos"),
                     usuario);
-            /*
-            Class.forName("org.postgresql.Driver");
+         */   
+             Class.forName("org.postgresql.Driver");
 
-            usuario.setProperty("user", configuracion.getProperty("usuario"));
-            usuario.setProperty("password", configuracion.getProperty("clave"));
-            URI dbUri = new URI("postgresql://jlljsgmqotjqed:95739ed75a6f8c4f255732e7c530e0106943700f87d161dc98e9edb65217737e@ec2-54-75-227-92.eu-west-1.compute.amazonaws.com:5432/dej1fq8t5tg60l");
+             usuario.setProperty("user", configuracion.getProperty("usuario"));
+             usuario.setProperty("password", configuracion.getProperty("clave"));
+             URI dbUri = new URI("postgresql://jlljsgmqotjqed:95739ed75a6f8c4f255732e7c530e0106943700f87d161dc98e9edb65217737e@ec2-54-75-227-92.eu-west-1.compute.amazonaws.com:5432/dej1fq8t5tg60l");
 
-            String username = dbUri.getUserInfo().split(":")[0];
-            String password = dbUri.getUserInfo().split(":")[1];
-            String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + dbUri.getPath() + "?sslmode=require";
+             String username = dbUri.getUserInfo().split(":")[0];
+             String password = dbUri.getUserInfo().split(":")[1];
+             String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + dbUri.getPath() + "?sslmode=require";
             
-            this.conexion = java.sql.DriverManager.getConnection(dbUrl,username,password);
-            */
+             this.conexion = java.sql.DriverManager.getConnection(dbUrl,username,password);
+             
             daoUsuarios = new DAOUsuarios(conexion, this.fa);
             daoPedidos = new DAOPedidos(conexion, this.fa);
             daoEmpleados = new DAOEmpleados(conexion, this.fa);
@@ -85,54 +85,61 @@ public class FachadaBaseDatos {
             daoLocales = new DAOLocales(conexion,this.fa);
             daoClientes = new DAOClientes(conexion,this.fa);
             
+            daoVehiculos = new DAOVehiculos(conexion, this.fa);
+            daoLocales = new DAOLocales(conexion, this.fa);
+
         } catch (FileNotFoundException f) {
             System.out.println(f.getMessage());
             fa.muestraExcepcion(f.getMessage());
         } catch (IOException i) {
             System.out.println(i.getMessage());
             fa.muestraExcepcion(i.getMessage());
-        }catch (java.sql.SQLException e) {
+        } catch (java.sql.SQLException e) {
             System.out.println(e.getMessage());
             fa.muestraExcepcion(e.getMessage());
-        }/*catch (ClassNotFoundException ex) {
-            Logger.getLogger(FachadaBaseDatos.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (URISyntaxException ex) {
-            Logger.getLogger(FachadaBaseDatos.class.getName()).log(Level.SEVERE, null, ex);
-        }*/
+        }catch (ClassNotFoundException ex) {
+         Logger.getLogger(FachadaBaseDatos.class.getName()).log(Level.SEVERE, null, ex);
+         } catch (URISyntaxException ex) {
+         Logger.getLogger(FachadaBaseDatos.class.getName()).log(Level.SEVERE, null, ex);
+         }
+
     }
 
     public boolean consultarId(String idUsuario) {
         return daoUsuarios.consultarId(idUsuario);
     }
-    
+    public java.util.List<Paquete> obtenerPaquetes(String codigo){
+        return daoPedidos.obtenerPaquetes(codigo);
+    }
      public void conexion(String idUsuario,boolean accion)
      {
          daoUsuarios.conexion(idUsuario, accion);
      }
 
-    public String trabajaEn(String id) {  
+    public String trabajaEn(String id) {
         return daoEmpleados.trabajaEn(id);
-    }  
+    }
+
     public void actualizar(Usuario usuario) {
         daoUsuarios.actualizar(usuario);
     }
-    
-    public void actualizarUsr(String id,Usuario usuario) {
+
+    public void actualizarUsr(String id, Usuario usuario) {
         daoUsuarios.actualizarUsr(id, usuario);
     }
-    
-    public void eliminarUsuario(String id){
+
+    public void eliminarUsuario(String id) {
         daoUsuarios.eliminarUsuario(id);
     }
-    
-    public void eliminarEmpleado(String id){
+
+    public void eliminarEmpleado(String id) {
         daoEmpleados.eliminarEmpleado(id);
     }
 
     public Usuario validarUsuario1(String idUsuario, String clave) {
         return daoUsuarios.validarUsuario1(idUsuario, clave);
     }
-    
+
     public Usuario validarUsuario(String idUsuario, String clave) {
         return daoUsuarios.validarUsuario(idUsuario, clave);
     }
@@ -151,28 +158,26 @@ public class FachadaBaseDatos {
     public String getTipo(String id) {
         return daoUsuarios.getTipo(id);
     }
-    
-    public ArrayList<Usuario> obtenerUsuarios(String id, String nombre){
+
+    public ArrayList<Usuario> obtenerUsuarios(String id, String nombre) {
         return daoUsuarios.obtenerUsuarios(id, nombre);
     }
-    
-    public ArrayList<Usuario> obtenerClientes(String id, String nombre) {
+
+    public ArrayList<Cliente> obtenerClientes(String id, String nombre) {
         return daoUsuarios.obtenerClientes(id, nombre);
     }
-    
-
 
     /*----------  PEDIDOS ----------*/
     public Pedido nuevoPedido(Pedido pd) {
         return daoPedidos.nuevoPedido(pd);
     }
-    
-     public Pedido getPedido(Pedido p) {
+
+    public Pedido getPedido(Pedido p) {
         return daoPedidos.getPedido(p);
     }
 
-    public void tramitarPedido(Integer codigo, String transportista, String tramitador) {
-        daoPedidos.tramitarPedido(codigo, transportista, tramitador);
+    public int tramitarPedido(Integer codigo, String transportista, String tramitador) {
+        return daoPedidos.tramitarPedido(codigo, transportista, tramitador);
     }
 
     public java.util.List<Pedido> obtenerHistorialPedidos(String usuario) {
@@ -186,130 +191,132 @@ public class FachadaBaseDatos {
     public java.util.List<Paquete> comprobarLocalizacion(Integer codigo) {
         return daoPedidos.comprobarLocalizacion(codigo);
     }
-    
-    public ArrayList<Pedido> pedidosSinTramitar(int codigo){
+
+    public ArrayList<Pedido> pedidosSinTramitar(int codigo) {
         return daoPedidos.pedidosSinTramitar(codigo);
     }
-    
-    public ArrayList<Pedido> pedidosSinTramitar(){
+
+    public ArrayList<Pedido> pedidosSinTramitar() {
         return daoPedidos.pedidosSinTramitar();
+    }
+    public void elimarPaquete(Integer pedido,Integer codigo){
+        daoPedidos.elimarPaquete(pedido, codigo);
     }
     
     public void eliminarPedido(int codigo){
         daoPedidos.eliminarPedido(codigo);
     }
-    
-    public ArrayList<Pedido> pedidosPrecio(String u){
+
+    public ArrayList<Pedido> pedidosPrecio(String u) {
         return daoPedidos.pedidosPrecio(u);
     }
-    
-    public ArrayList<Pedido> pedidosActivosPrecio(String u){
+
+    public ArrayList<Pedido> pedidosActivosPrecio(String u) {
         return daoPedidos.pedidosActivosPrecio(u);
     }
-    
-    
+
     //------PAQUETES---------//
-    
-    public void nuevoPaquete(Paquete p){
+    public void nuevoPaquete(Paquete p) {
         daoPaquetes.nuevoPaquete(p);
     }
-    
-    public List<Paquete> obtenerPaquetes(Integer codigo){
+
+    public List<Paquete> obtenerPaquetes(Integer codigo) {
         return daoPaquetes.obtenerPaquetes(codigo);
     }
-    
-    public void paqueteEntregado(String pedido, String codigo){
-         daoPaquetes.paqueteEntregado(pedido, codigo);
-     }
-    
+
+    public void paqueteEntregado(String pedido, String codigo) {
+        daoPaquetes.paqueteEntregado(pedido, codigo);
+    }
 
     //------EMPLEADOS-------//
-    public ArrayList<Empleado> obtenerEmpleados(String id ) {
+    public ArrayList<Empleado> obtenerEmpleados(String id) {
         return daoEmpleados.obtenerEmpleados(id);
     }
-    
-    public ArrayList<Integer> datosEmpleado(String id){
+
+    public ArrayList<Integer> datosEmpleado(String id) {
         return daoEmpleados.datosEmpleado(id);
     }
-    
-    public Empleado nuevoEmpleado(String usuario, int nomina){
+
+    public Empleado nuevoEmpleado(String usuario, int nomina) {
         return daoEmpleados.nuevoEmpleado(usuario, nomina);
     }
-    public void nuevoTransportista(String usuario){
+
+    public void nuevoTransportista(String usuario) {
         daoEmpleados.nuevoTransportista(usuario);
     }
-    public void nuevoOficinista(String usuario,String local){
-        daoEmpleados.nuevoOficinista(usuario,local);
+
+    public void nuevoOficinista(String usuario, String local) {
+        daoEmpleados.nuevoOficinista(usuario, local);
     }
-    
-    public void actualizarEmpleado(Empleado emp){
+
+    public void actualizarEmpleado(Empleado emp) {
         daoEmpleados.actualizarEmpleado(emp);
     }
-    
-    public void actualizarEmp(String id, Empleado emp){
-        daoEmpleados.actualizarEmp(id,emp);
+
+    public void actualizarEmp(String id, Empleado emp) {
+        daoEmpleados.actualizarEmp(id, emp);
     }
-    
+
     //------VEHICULOS-----//
-    
-    public ArrayList<Vehiculo> obtenerVehiculos(String matricula){
+    public ArrayList<Vehiculo> obtenerVehiculos(String matricula) {
         return daoVehiculos.obtenerVehiculos(matricula);
     }
-    
-    public void actualizarVehi(String matricula, Vehiculo vehi){
-        daoVehiculos.actualizarVehi(matricula,vehi);
+
+    public void actualizarVehi(String matricula, Vehiculo vehi) {
+        daoVehiculos.actualizarVehi(matricula, vehi);
     }
-    
-    public boolean consultarMatricula(String matricula){
+
+    public boolean consultarMatricula(String matricula) {
         return daoVehiculos.consultarMatricula(matricula);
     }
-    
-    public void registrarVehi(Vehiculo vehi){
+
+    public void registrarVehi(Vehiculo vehi) {
         daoVehiculos.registrarVehi(vehi);
     }
-    public void eliminarVehi(String matricula){
+
+    public void eliminarVehi(String matricula) {
         daoVehiculos.eliminarVehi(matricula);
     }
-    
+
     public ArrayList<Paquete> paquetesTransportista(String id) {
-         return daoPaquetes.paquetesTransportista(id);
-     }
-    
-     public ArrayList<Transportista> obtenerTransportistas(){
-         return daoEmpleados.obtenerTransportistas();
-     }
-     
-     public String localizarVehiculo(String Trasportista){
+        return daoPaquetes.paquetesTransportista(id);
+    }
+
+    public ArrayList<Transportista> obtenerTransportistas() {
+        return daoEmpleados.obtenerTransportistas();
+    }
+
+    public String localizarVehiculo(String Trasportista) {
         Vehiculo vehiculo = null;
         vehiculo = daoVehiculos.obtenerVehiculo(Trasportista);
-        if(vehiculo != null)
+        if (vehiculo != null) {
             return vehiculo.getDireccion();
-        else 
+        } else {
             return null;
+        }
     }
-     
+
      //------LOCALES------//
-     
-    public ArrayList<Local> obtenerLocales(String codigo){
-         return daoLocales.obtenerLocales(codigo);
+    public ArrayList<Local> obtenerLocales(String codigo) {
+        return daoLocales.obtenerLocales(codigo);
     }
-    
-    public boolean consultarCodigo(String codigo){
+
+    public boolean consultarCodigo(String codigo) {
         return daoLocales.consultarCodigo(codigo);
     }
-    
-    public void registrarLocal(Local local){
+
+    public void registrarLocal(Local local) {
         daoLocales.registrarLocal(local);
     }
-    
-    public void actualizarLocal(String codigo,Local local){
-         daoLocales.actualizarLocal(codigo,local);
-     }
-    
-    public void eliminarLocal(Local local){
+
+    public void actualizarLocal(String codigo, Local local) {
+        daoLocales.actualizarLocal(codigo, local);
+    }
+
+    public void eliminarLocal(Local local) {
         daoLocales.eliminarLocal(local);
     }
-     
+
     public void actualizarPosicion(String posicion, String transportista) {
         daoVehiculos.actualizarPosicion(posicion, transportista);
     }
