@@ -25,6 +25,7 @@ public class VGestionPedidosOficinista extends javax.swing.JPanel {
     Usuario u;
     ModeloTablaTransportistas tt;
     ModeloTablaPedidos2 tp;
+
     /**
      * Creates new form VGestionPaquetes
      */
@@ -46,22 +47,19 @@ public class VGestionPedidosOficinista extends javax.swing.JPanel {
         th.setFont(fuente);
         th.setForeground(new Color(89, 171, 36));
         th.setBackground(Color.WHITE);
-        BtTramitar.setVisible(false);
-        jPanel1.setVisible(true);
         JTableHeader th2;
         th2 = this.tablaTransp.getTableHeader();
         th2.setFont(fuente);
         th2.setForeground(new Color(89, 171, 36));
         th2.setBackground(Color.WHITE);
         tablaPedidos.changeSelection(0, 0, false, false);
-        
+
         TableColumnModel columnModel = tablaTransp.getColumnModel();
         columnModel.getColumn(5).setPreferredWidth(150);
 
-        
         TableColumnModel columnModel2 = tablaPedidos.getColumnModel();
         columnModel2.getColumn(2).setPreferredWidth(30);
-        
+
         LabelTramitar.setVisible(false);
         LabelEliminar.setVisible(false);
         errorLabel.setVisible(false);
@@ -100,9 +98,6 @@ public class VGestionPedidosOficinista extends javax.swing.JPanel {
         BtTramitar = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel16 = new javax.swing.JLabel();
-        jLabel18 = new javax.swing.JLabel();
         BtEliminar = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
@@ -166,7 +161,6 @@ public class VGestionPedidosOficinista extends javax.swing.JPanel {
         tablaPedidos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         tablaPedidos.setGridColor(new java.awt.Color(255, 255, 255));
         tablaPedidos.setSelectionBackground(new java.awt.Color(89, 171, 36));
-        tablaPedidos.setSelectionForeground(new java.awt.Color(255, 255, 255));
         tablaPedidos.setShowHorizontalLines(false);
         tablaPedidos.setShowVerticalLines(false);
         tablaPedidos.getTableHeader().setResizingAllowed(false);
@@ -198,22 +192,6 @@ public class VGestionPedidosOficinista extends javax.swing.JPanel {
         jLabel14.setForeground(new java.awt.Color(215, 215, 215));
         jLabel14.setText("Asignar pedido");
         BtTramitar.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 150, -1));
-
-        jPanel1.setBackground(new java.awt.Color(89, 171, 36));
-        jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel16.setFont(new java.awt.Font("Noto Sans", 0, 18)); // NOI18N
-        jLabel16.setForeground(new java.awt.Color(215, 215, 215));
-        jLabel16.setText("Asignar pedido");
-        jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 150, -1));
-
-        jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-actualizar-26.png"))); // NOI18N
-        jLabel18.setText("jLabel1");
-        jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 33, 36));
-
-        BtTramitar.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 270, 40));
-        jPanel1.getAccessibleContext().setAccessibleParent(this);
 
         add(BtTramitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 526, 270, 40));
 
@@ -257,7 +235,6 @@ public class VGestionPedidosOficinista extends javax.swing.JPanel {
         tablaTransp.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         tablaTransp.setGridColor(new java.awt.Color(255, 255, 255));
         tablaTransp.setSelectionBackground(new java.awt.Color(89, 171, 36));
-        tablaTransp.setSelectionForeground(new java.awt.Color(255, 255, 255));
         tablaTransp.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tablaTranspMouseClicked(evt);
@@ -307,22 +284,22 @@ public class VGestionPedidosOficinista extends javax.swing.JPanel {
 
     private void BtTramitarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtTramitarMouseClicked
         // TODO add your handling code here:
-        int res=0;
+        int res = 0;
         if (tablaPedidos.getRowCount() > 0 && tablaTransp.getRowCount() > 0) {
             ModeloTablaPedidos2 tp;
             tp = (ModeloTablaPedidos2) tablaPedidos.getModel();
             ModeloTablaTransportistas t;
             t = (ModeloTablaTransportistas) tablaTransp.getModel();
-            res=fa.tramitarPedido(tp.getFila(tablaPedidos.getSelectedRow()).getCodigo(), t.getFila(tablaTransp.getSelectedRow()).getUsuario(), u.getUsuario());
-            if(res == 0){
+            res = fa.tramitarPedido(tp.getFila(tablaPedidos.getSelectedRow()).getCodigo(), t.getFila(tablaTransp.getSelectedRow()).getUsuario(), u.getUsuario());
+            if (res == 0) {
                 errorCupoMaximo.setVisible(false);
                 errorTramitacionAMedias.setVisible(false);
                 LabelTramitar.setVisible(true);
-            }else if(res < 0){
+            } else if (res < 0) {
                 errorCupoMaximo.setVisible(true);
                 errorTramitacionAMedias.setVisible(false);
                 LabelTramitar.setVisible(false);
-            }else{
+            } else {
                 errorCupoMaximo.setVisible(false);
                 errorTramitacionAMedias.setVisible(true);
                 LabelTramitar.setVisible(false);
@@ -348,15 +325,10 @@ public class VGestionPedidosOficinista extends javax.swing.JPanel {
     }//GEN-LAST:event_BtEliminarMouseClicked
 
     private void tablaTranspMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaTranspMouseClicked
-        /*if(tt.getFila(tablaTransp.getSelectedRow()).getCapacidadrestante()>0 || tp.getFila(tablaPedidos.getSelectedRow()).getNumPaquetes() > tt.getFila(tablaTransp.getSelectedRow()).getCapacidadrestante() )
-        {
-            //DEBERIAMOS ACTIVAR EL BOTON
-            BtTramitar.setVisible(true);
-            jPanel1.setVisible(false);
-        }
-        else { }*/
+
+        BtTramitar.setVisible(true);
     }//GEN-LAST:event_tablaTranspMouseClicked
-   
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel BtEliminar;
@@ -369,13 +341,10 @@ public class VGestionPedidosOficinista extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
@@ -390,7 +359,7 @@ public class VGestionPedidosOficinista extends javax.swing.JPanel {
         tp = (ModeloTablaPedidos2) tablaPedidos.getModel();
         tp.setFilas(fa.pedidosSinTramitar());
     }
-    
+
     public void actualizarTablaTransportistas() {
         tt = (ModeloTablaTransportistas) tablaTransp.getModel();
         tt.setFilas(fa.obtenerTransportistas());

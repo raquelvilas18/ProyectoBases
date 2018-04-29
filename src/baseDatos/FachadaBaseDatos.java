@@ -143,9 +143,6 @@ public class FachadaBaseDatos {
     public void actualizarLocal2(String id, String local) {
         daoEmpleados.actualizarLocal2(id, local);
     }
-    public void actualizarLocal2(String id, String local) {
-        daoEmpleados.actualizarLocal2(id, local);
-    }
 
     public Usuario registrarUsuario(String id, String clave, String dni, String nombre, String email, String direccion, String telefono, String sexo, String tipo) {
         
