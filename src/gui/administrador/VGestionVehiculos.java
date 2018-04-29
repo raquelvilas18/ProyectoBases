@@ -432,7 +432,11 @@ public class VGestionVehiculos extends javax.swing.JPanel {
             if (TxMatricula.getText().isEmpty() || TxCapacidad.getText().isEmpty() || TxItv.getText().isEmpty() || TxFechaCompra.getText().isEmpty()  || TxDireccion.getText().isEmpty()) {
                 ErrorAlta1.setVisible(true);
             } else {
-                fa.registrarVehi(new Vehiculo(TxMatricula.getText(),TxItv.getText(),TxFechaCompra.getText(),Integer.parseInt(TxCapacidad.getText()),TxTransp.getSelectedItem().toString(),TxDireccion.getText()));
+                if(TxTransp.getSelectedIndex()==0){
+                   fa.registrarVehi(new Vehiculo(TxMatricula.getText(),TxItv.getText(),TxFechaCompra.getText(),Integer.parseInt(TxCapacidad.getText()),null,TxDireccion.getText()));
+ 
+                }
+                else fa.registrarVehi(new Vehiculo(TxMatricula.getText(),TxItv.getText(),TxFechaCompra.getText(),Integer.parseInt(TxCapacidad.getText()),TxTransp.getSelectedItem().toString(),TxDireccion.getText()));
                 AltaCorrecta.setVisible(true);
                 restablecerBoton();
                 actualizarTabla();
@@ -522,9 +526,13 @@ public void restablecerBoton(){
 public void actualizarVehiculo(String matricula){
     
     ModeloTablaVehiculos mv;
-    
     mv = (ModeloTablaVehiculos) tablaVehi.getModel();
-    fa.actualizarVehi(matricula, new Vehiculo(TxMatricula.getText(), TxItv.getText(), TxFechaCompra.getText(), Integer.parseInt(TxCapacidad.getText()), TxTransp.getSelectedItem().toString(), TxDireccion.getText()));
+    if(TxTransp.getSelectedIndex()==0){
+            fa.actualizarVehi(matricula, new Vehiculo(TxMatricula.getText(), TxItv.getText(), TxFechaCompra.getText(), Integer.parseInt(TxCapacidad.getText()), null, TxDireccion.getText()));
+    }
+    else{
+     fa.actualizarVehi(matricula, new Vehiculo(TxMatricula.getText(), TxItv.getText(), TxFechaCompra.getText(), Integer.parseInt(TxCapacidad.getText()), TxTransp.getSelectedItem().toString(), TxDireccion.getText()));
+    }
     LabelActualizar.setVisible(true);
     mv.setFilas(fa.obtenerVehiculos(FiltroMatricula.getText()));
     BtActualizar.setEnabled(false);

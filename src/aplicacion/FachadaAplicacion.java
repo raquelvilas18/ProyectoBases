@@ -133,6 +133,10 @@ public class FachadaAplicacion {
     public void actualizarEmpleado(String id, Empleado emp) {
         gEmpleados.actualizarEmpleado(id, emp);
     }
+    
+    public void actualizarLocal2(String id, String local) {
+        gEmpleados.actualizarLocal2(id, local);
+    }
 
     public int tramitarPedido(Integer codigo, String transportista, String tramitador) {
         return gPedidos.tramitarPedido(codigo, transportista, tramitador);
