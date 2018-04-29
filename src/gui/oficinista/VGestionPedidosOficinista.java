@@ -11,6 +11,7 @@ import aplicacion.*;
 import java.awt.Color;
 import java.awt.Font;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableColumnModel;
@@ -362,7 +363,10 @@ public class VGestionPedidosOficinista extends javax.swing.JPanel {
     private javax.swing.JTable tablaPedidos;
     private javax.swing.JTable tablaTransp;
     // End of variables declaration//GEN-END:variables
-
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel18;
+    
     public void actualizarTablaPedidos() {
         ModeloTablaPedidos2 tp;
         tp = (ModeloTablaPedidos2) tablaPedidos.getModel();
