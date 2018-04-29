@@ -186,7 +186,7 @@ public class VOficinista extends javax.swing.JPanel {
 
         jLabel9.setFont(new java.awt.Font("Noto Sans", 0, 18)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(215, 215, 215));
-        jLabel9.setText("Gestión usuarios");
+        jLabel9.setText("Gestión clientes");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);

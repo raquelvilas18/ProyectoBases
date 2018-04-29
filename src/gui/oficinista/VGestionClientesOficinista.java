@@ -146,7 +146,7 @@ public class VGestionClientesOficinista extends javax.swing.JPanel {
 
         jLabel2.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(60, 60, 159));
-        jLabel2.setText("Gestion Usuarios");
+        jLabel2.setText("Gestion Clientes");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 80, 260, -1));
 
         jPanel6.setBackground(new java.awt.Color(116, 126, 173));
@@ -426,7 +426,7 @@ public class VGestionClientesOficinista extends javax.swing.JPanel {
 
         tablaUsr.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
         tablaUsr.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
-        tablaUsr.setModel(new ModeloTablaClientes());
+        tablaUsr.setModel(new gui.ModeloTablaClientes());
         tablaUsr.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         tablaUsr.setGridColor(new java.awt.Color(255, 255, 255));
         tablaUsr.setOpaque(false);
