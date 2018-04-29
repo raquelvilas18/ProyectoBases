@@ -49,6 +49,11 @@ public class GestionUsuarios {
     public Usuario registrarUsuario(String id, String clave, String dni, String nombre,String email,String direccion,String telefono,String sexo, String tipo){
         return fbd.registrarUsuario(id, clave, dni, nombre, email, direccion, telefono, sexo, tipo);
     }
+    
+    public boolean existeId(String id){
+        return fbd.existeId(id);
+    }
+    
     public boolean consultarId(String idUsuario){
         return fbd.consultarId(idUsuario);
     }

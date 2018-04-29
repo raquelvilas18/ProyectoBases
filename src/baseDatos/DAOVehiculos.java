@@ -33,9 +33,46 @@ public class DAOVehiculos extends AbstractDAO {
 
         try {
             stmVehiculos = con.prepareStatement("SELECT * "
-                    + "FROM vehiculos WHERE matricula like ?;");
+                    + "FROM vehiculos WHERE matricula like ?");
 
             stmVehiculos.setString(1, "%" + matricula + "%");
+
+            rsVehiculos = stmVehiculos.executeQuery();
+
+            while (rsVehiculos.next()) {
+                resultado.add(new Vehiculo(rsVehiculos.getString("matricula"),
+                        rsVehiculos.getString("proximaITV"),
+                        rsVehiculos.getString("fechaCompra"),
+                        rsVehiculos.getInt("capacidad"),
+                        rsVehiculos.getString("conductor"),
+                        rsVehiculos.getString("direccion")));
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
+        } finally {
+            try {
+                stmVehiculos.close();
+            } catch (SQLException e) {
+                System.out.println("Imposible cerrar cursores");
+            }
+        }
+
+        return resultado;
+    }
+    
+    public ArrayList<Vehiculo> vehiculosSinConductor() {
+        ArrayList<Vehiculo> resultado = new ArrayList<Vehiculo>();
+        Connection con;
+        PreparedStatement stmVehiculos = null;
+        ResultSet rsVehiculos = null;
+
+        con = super.getConexion();
+
+        try {
+            stmVehiculos = con.prepareStatement("SELECT * "
+                    + "FROM vehiculos "
+                    + "WHERE conductor ISNULL");
 
             rsVehiculos = stmVehiculos.executeQuery();
 
@@ -241,6 +278,8 @@ public class DAOVehiculos extends AbstractDAO {
 
         return resultado;
     }
+    
+    
 
     public void actualizarPosicion(String posicion, String transportista) {
         Vehiculo resultado = null;
@@ -254,6 +293,32 @@ public class DAOVehiculos extends AbstractDAO {
                     + "WHERE conductor = ? ");
             stm.setString(1, posicion);
             stm.setString(2, transportista);
+            
+            stm.executeUpdate();
+           
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
+        } finally {
+            try {
+                stm.close();
+            } catch (SQLException e) {
+                System.out.println("Imposible cerrar cursores");
+            }
+        }
+    }
+    
+    public void actualizarConductor(String usuario,String matricula){
+        Connection con;
+        PreparedStatement stm = null;
+        con = super.getConexion();
+
+        try {
+            stm = con.prepareStatement("UPDATE vehiculos "
+                    + " SET conductor = ? "
+                    + " WHERE matricula = ? ");
+            stm.setString(1, usuario);
+            stm.setString(2, matricula);
             
             stm.executeUpdate();
            

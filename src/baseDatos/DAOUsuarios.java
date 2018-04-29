@@ -155,6 +155,40 @@ public class DAOUsuarios extends AbstractDAO {
         return resultado;
     }
 
+    public boolean existeId(String id) {
+        Usuario resultado = null;
+        Connection con;
+        PreparedStatement stmUsuario = null;
+        ResultSet rsUsuario;
+
+        con = this.getConexion();
+
+        try {
+            stmUsuario = con.prepareStatement("SELECT *\n"
+                    + "FROM usuarios\n"
+                    + "WHERE usuario=?");
+            stmUsuario.setString(1, id);
+            rsUsuario = stmUsuario.executeQuery();
+            if (rsUsuario.next()) {
+                return true;
+
+            }
+            else return false;
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
+        } finally {
+            try {
+                stmUsuario.close();
+            } catch (SQLException e) {
+                System.out.println("Imposible cerrar cursores");
+            }
+        }
+
+        return false;
+    }
+
     public Usuario registrarUsuario(String id, String clave, String dni, String nombre, String email, String direccion, String telefono, String sexo, String tipo) {
         Usuario resultado = null;
         Connection con;
@@ -355,7 +389,7 @@ public class DAOUsuarios extends AbstractDAO {
             stm.setString(2, "%" + nombre + "%");
             rs = stm.executeQuery();
             while (rs.next()) {
-                resultado.add(new Cliente(rs.getString("usuario"), rs.getString("password"), rs.getString("dni"), rs.getString("nombre"), rs.getString("correo"), rs.getString("direccion"), rs.getString("telefono"), rs.getString("sexo"),"cliente", rs.getInt("pedidosActivos")));
+                resultado.add(new Cliente(rs.getString("usuario"), rs.getString("password"), rs.getString("dni"), rs.getString("nombre"), rs.getString("correo"), rs.getString("direccion"), rs.getString("telefono"), rs.getString("sexo"), "cliente", rs.getInt("pedidosActivos")));
             }
 
         } catch (SQLException e) {

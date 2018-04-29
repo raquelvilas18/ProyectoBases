@@ -66,6 +66,8 @@ public class FachadaAplicacion {
     public String trabajaEn(String id) {
         return gEmpleados.trabajaEn(id);
     }
+    
+  
 
     public void actualizar(Usuario usuario) {
         gUsuarios.actualizar(usuario);
@@ -89,6 +91,10 @@ public class FachadaAplicacion {
 
     public Usuario registrarUsuario(String id, String clave, String dni, String nombre, String email, String direccion, String telefono, String sexo, String tipo) {
         return gUsuarios.registrarUsuario(id, clave, dni, nombre, email, direccion, telefono, sexo, tipo);
+    }
+    
+    public boolean existeId(String id){
+        return gUsuarios.existeId(id);
     }
 
     public void eliminarUsuario(String id) {
@@ -173,6 +179,10 @@ public class FachadaAplicacion {
     public ArrayList<Vehiculo> obtenerVehiculos(String matricula) {
         return fbd.obtenerVehiculos(matricula);
     }
+    
+    public ArrayList<Vehiculo> vehiculosSinConductor() {
+        return fbd.vehiculosSinConductor();
+    }
 
     public void actualizarVehi(String matricula, Vehiculo vehi) {
         fbd.actualizarVehi(matricula, vehi);
@@ -243,8 +253,8 @@ public class FachadaAplicacion {
         return gPaquetes.localizar(codigo);
     }
     
-    public ArrayList<String> transportistasComboBox() {
-        return fbd.transportistasComboBox();
+    public ArrayList<String> transportistasComboBox(String matricula) {
+        return fbd.transportistasComboBox(matricula);
     }
     
     public ArrayList<String> oficinistasComboBox(String local){

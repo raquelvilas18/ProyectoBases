@@ -470,6 +470,10 @@ public class VAdmin extends javax.swing.JPanel {
 
     private void SiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SiMouseClicked
         // TODO add your handling code here:
+        this.parent.getFa().eliminarUsuario(this.usuario.getUsuario());
+        parent.setUsuario(null);
+        this.setVisible(false);
+        parent.ventanaInicial();
     }//GEN-LAST:event_SiMouseClicked
 
     private void jLabel24MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel24MouseClicked

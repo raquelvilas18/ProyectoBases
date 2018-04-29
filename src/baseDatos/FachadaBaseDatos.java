@@ -155,6 +155,10 @@ public class FachadaBaseDatos {
         return usr;
     }
 
+    public boolean existeId(String id){
+        return daoUsuarios.existeId(id);
+    }
+    
     public String getTipo(String id) {
         return daoUsuarios.getTipo(id);
     }
@@ -241,8 +245,9 @@ public class FachadaBaseDatos {
         return daoEmpleados.nuevoEmpleado(usuario, nomina);
     }
 
-    public void nuevoTransportista(String usuario) {
+    public void nuevoTransportista(String usuario, String matricula) {
         daoEmpleados.nuevoTransportista(usuario);
+        daoVehiculos.actualizarConductor(usuario,matricula);
     }
 
     public void nuevoOficinista(String usuario, String local) {
@@ -260,6 +265,10 @@ public class FachadaBaseDatos {
     //------VEHICULOS-----//
     public ArrayList<Vehiculo> obtenerVehiculos(String matricula) {
         return daoVehiculos.obtenerVehiculos(matricula);
+    }
+    
+    public ArrayList<Vehiculo> vehiculosSinConductor() {
+        return daoVehiculos.vehiculosSinConductor();
     }
 
     public void actualizarVehi(String matricula, Vehiculo vehi) {
@@ -295,6 +304,10 @@ public class FachadaBaseDatos {
             return null;
         }
     }
+    
+     public String getVehiculo(String id){
+        return daoVehiculos.obtenerVehiculo(id).getMatricula();
+    }
 
      //------LOCALES------//
     public ArrayList<Local> obtenerLocales(String codigo) {
@@ -322,8 +335,8 @@ public class FachadaBaseDatos {
     }
     
     //------COMBO BOX-----//
-    public ArrayList<String> transportistasComboBox() {
-        return daoEmpleados.transportistasComboBox();
+    public ArrayList<String> transportistasComboBox(String matricula) {
+        return daoEmpleados.transportistasComboBox(matricula);
     }
     
     public ArrayList<String> oficinistasComboBox(String local){
