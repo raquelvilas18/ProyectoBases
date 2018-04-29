@@ -35,6 +35,7 @@ public class VUsr extends javax.swing.JPanel {
         this.parent = parent;
         this.usuario = usuario;
         this.PanelEliminar.setVisible(false);
+        this.labelError.setVisible(false);
     }
 
     /**
@@ -70,8 +71,14 @@ public class VUsr extends javax.swing.JPanel {
         Si = new javax.swing.JPanel();
         jLabel21 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
+        labelError = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(65, 105, 225));
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                formMouseClicked(evt);
+            }
+        });
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-colaborador-hombre-96.png"))); // NOI18N
@@ -344,6 +351,10 @@ public class VUsr extends javax.swing.JPanel {
             }
         });
         add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 550, -1, -1));
+
+        labelError.setForeground(new java.awt.Color(255, 0, 0));
+        labelError.setText("No se puede eliminar.");
+        add(labelError, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 560, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseClicked
@@ -441,6 +452,18 @@ public class VUsr extends javax.swing.JPanel {
 
     private void SiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SiMouseClicked
         // TODO add your handling code here:
+        if(this.parent.getFa().obtenerPedidosActivos(this.usuario.getUsuario()).size()==0){
+            this.parent.getFa().eliminarUsuario(this.usuario.getUsuario());
+            parent.setUsuario(null);
+            this.setVisible(false);
+            parent.ventanaInicial();
+        }
+        else {
+            PanelEliminar.setVisible(false);
+            labelError.setVisible(true);
+        }
+        
+        
     }//GEN-LAST:event_SiMouseClicked
 
     private void jLabel15MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel15MouseClicked
@@ -451,6 +474,12 @@ public class VUsr extends javax.swing.JPanel {
             this.PanelEliminar.setVisible(true);
         }
     }//GEN-LAST:event_jLabel15MouseClicked
+
+    private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
+        // TODO add your handling code here:
+        labelError.setVisible(false);
+        
+    }//GEN-LAST:event_formMouseClicked
 
     public void openInternet(){
         try{
@@ -484,6 +513,7 @@ public class VUsr extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JLabel labelError;
     private javax.swing.JPanel no;
     // End of variables declaration//GEN-END:variables
 }
