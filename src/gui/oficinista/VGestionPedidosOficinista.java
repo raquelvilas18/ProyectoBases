@@ -46,7 +46,8 @@ public class VGestionPedidosOficinista extends javax.swing.JPanel {
         th.setFont(fuente);
         th.setForeground(new Color(89, 171, 36));
         th.setBackground(Color.WHITE);
-        BtTramitar.setEnabled(false); //DEBERIAMOS DESACTIVAR EL BOTON
+        BtTramitar.setVisible(false);
+        jPanel1.setVisible(true);
         JTableHeader th2;
         th2 = this.tablaTransp.getTableHeader();
         th2.setFont(fuente);
@@ -97,8 +98,11 @@ public class VGestionPedidosOficinista extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaPedidos = new javax.swing.JTable();
         BtTramitar = new javax.swing.JPanel();
-        jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
         BtEliminar = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
@@ -186,14 +190,30 @@ public class VGestionPedidosOficinista extends javax.swing.JPanel {
         });
         BtTramitar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-actualizar-26.png"))); // NOI18N
+        jLabel15.setText("jLabel1");
+        BtTramitar.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 33, 36));
+
         jLabel14.setFont(new java.awt.Font("Noto Sans", 0, 18)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(215, 215, 215));
         jLabel14.setText("Asignar pedido");
         BtTramitar.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 150, -1));
 
-        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-actualizar-26.png"))); // NOI18N
-        jLabel15.setText("jLabel1");
-        BtTramitar.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 33, 36));
+        jPanel1.setBackground(new java.awt.Color(89, 171, 36));
+        jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel16.setFont(new java.awt.Font("Noto Sans", 0, 18)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(215, 215, 215));
+        jLabel16.setText("Asignar pedido");
+        jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 150, -1));
+
+        jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-actualizar-26.png"))); // NOI18N
+        jLabel18.setText("jLabel1");
+        jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 33, 36));
+
+        BtTramitar.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 270, 40));
+        jPanel1.getAccessibleContext().setAccessibleParent(this);
 
         add(BtTramitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 526, 270, 40));
 
@@ -331,6 +351,8 @@ public class VGestionPedidosOficinista extends javax.swing.JPanel {
         /*if(tt.getFila(tablaTransp.getSelectedRow()).getCapacidadrestante()>0 || tp.getFila(tablaPedidos.getSelectedRow()).getNumPaquetes() > tt.getFila(tablaTransp.getSelectedRow()).getCapacidadrestante() )
         {
             //DEBERIAMOS ACTIVAR EL BOTON
+            BtTramitar.setVisible(true);
+            jPanel1.setVisible(false);
         }
         else { }*/
     }//GEN-LAST:event_tablaTranspMouseClicked
@@ -347,10 +369,13 @@ public class VGestionPedidosOficinista extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;

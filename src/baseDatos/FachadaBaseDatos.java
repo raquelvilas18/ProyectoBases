@@ -40,6 +40,7 @@ public class FachadaBaseDatos {
     private DAOVehiculos daoVehiculos;
     private DAOPaquetes daoPaquetes;
     private DAOLocales daoLocales;
+    private DAOClientes daoClientes;
 
     public FachadaBaseDatos(aplicacion.FachadaAplicacion fa) {
 
@@ -80,9 +81,10 @@ public class FachadaBaseDatos {
             daoPedidos = new DAOPedidos(conexion, this.fa);
             daoEmpleados = new DAOEmpleados(conexion, this.fa);
             daoPaquetes = new DAOPaquetes(conexion, this.fa);
-            daoVehiculos = new DAOVehiculos(conexion, this.fa);
-            daoLocales = new DAOLocales(conexion, this.fa);
-
+            daoVehiculos = new DAOVehiculos(conexion,this.fa);
+            daoLocales = new DAOLocales(conexion,this.fa);
+            daoClientes = new DAOClientes(conexion,this.fa);
+            
         } catch (FileNotFoundException f) {
             System.out.println(f.getMessage());
             fa.muestraExcepcion(f.getMessage());
@@ -138,9 +140,19 @@ public class FachadaBaseDatos {
     public Usuario validarUsuario(String idUsuario, String clave) {
         return daoUsuarios.validarUsuario(idUsuario, clave);
     }
+    public void actualizarLocal2(String id, String local) {
+        daoEmpleados.actualizarLocal2(id, local);
+    }
 
     public Usuario registrarUsuario(String id, String clave, String dni, String nombre, String email, String direccion, String telefono, String sexo, String tipo) {
-        return daoUsuarios.registrarUsuario(id, clave, dni, nombre, email, direccion, telefono, sexo, tipo);
+        
+        Usuario usr;
+        
+        usr= daoUsuarios.registrarUsuario(id, clave, dni, nombre, email, direccion, telefono, sexo, tipo);
+        if(tipo.equals("cliente")){
+         daoClientes.registrarClientes(id);
+        }
+        return usr;
     }
 
     public String getTipo(String id) {
@@ -307,6 +319,15 @@ public class FachadaBaseDatos {
 
     public void actualizarPosicion(String posicion, String transportista) {
         daoVehiculos.actualizarPosicion(posicion, transportista);
+    }
+    
+    //------COMBO BOX-----//
+    public ArrayList<String> transportistasComboBox() {
+        return daoEmpleados.transportistasComboBox();
+    }
+    
+    public ArrayList<String> oficinistasComboBox(String local){
+        return daoLocales.oficinistasComboBox(local);
     }
 
 }
