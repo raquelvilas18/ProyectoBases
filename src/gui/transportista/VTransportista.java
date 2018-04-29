@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gui.trasnportista;
+package gui.transportista;
 
 import AppPackage.AnimationClass;
 import aplicacion.Usuario;
@@ -304,6 +304,10 @@ public class VTransportista extends javax.swing.JPanel {
 
     private void SiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SiMouseClicked
         // TODO add your handling code here:
+        this.parent.getFa().eliminarEmpleado(this.usuario.getUsuario());
+        parent.setUsuario(null);
+        this.setVisible(false);
+        parent.ventanaInicial();
     }//GEN-LAST:event_SiMouseClicked
 
     private void jLabel15MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel15MouseClicked

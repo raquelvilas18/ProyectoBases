@@ -11,6 +11,7 @@ import gui.ModeloTablaLocales;
 import gui.ModeloTablaClientes;
 import java.awt.Color;
 import java.awt.Font;
+import java.util.ArrayList;
 import javax.swing.table.JTableHeader;
 
 /**
@@ -33,7 +34,6 @@ public class VGestionLocales extends javax.swing.JPanel {
         initComponents();
         tablaLoc.setModel(tl);
         tl.setFilas(fa.obtenerLocales(this.FiltroCodigo.getText()));
-        tablaLoc.changeSelection(0,0,false,false);
         ErrorID.setVisible(false);
         LConfirmar.setVisible(false);
         LAlta.setVisible(true);
@@ -43,10 +43,18 @@ public class VGestionLocales extends javax.swing.JPanel {
         AltaCorrecta.setVisible(false);
         LabelActualizar.setVisible(false);
         ErrorEncargado.setVisible(false);
+        
+       
+        
         ModeloTablaLocales m = (ModeloTablaLocales) tablaLoc.getModel();
         if(m.getRowCount()>0){
+            tablaLoc.changeSelection(0,0,false,false);
             this.TxCodigo.setText(m.getFila(tablaLoc.getSelectedRow()).getCodigo());
-            this.TxEncargado.setText(m.getFila(tablaLoc.getSelectedRow()).getEncargado());
+            ArrayList<String>  oficinistas= fa.oficinistasComboBox(TxCodigo.getText());
+            for(int i= 0; i<oficinistas.size();i++){
+                TxEncargado.insertItemAt(oficinistas.get(i), i+1);
+            }
+            this.TxEncargado.setSelectedItem(m.getFila(tablaLoc.getSelectedRow()).getEncargado());
             this.TxCapacidad.setText(m.getFila(tablaLoc.getSelectedRow()).getCapacidad().toString());
             this.TxDireccion.setText(m.getFila(tablaLoc.getSelectedRow()).getDireccion());
 
@@ -87,10 +95,9 @@ public class VGestionLocales extends javax.swing.JPanel {
         BtBaja = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        LEncargado = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
-        TxEncargado = new javax.swing.JTextField();
         TxDireccion = new javax.swing.JTextField();
         TxCodigo = new javax.swing.JTextField();
         TxCapacidad = new javax.swing.JTextField();
@@ -104,6 +111,7 @@ public class VGestionLocales extends javax.swing.JPanel {
         AltaCorrecta = new javax.swing.JLabel();
         ErrorAlta1 = new javax.swing.JLabel();
         ErrorEncargado = new javax.swing.JLabel();
+        TxEncargado = new javax.swing.JComboBox();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaLoc = new javax.swing.JTable();
 
@@ -227,9 +235,9 @@ public class VGestionLocales extends javax.swing.JPanel {
 
         jPanel1.add(BtBaja, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 150, 200, 41));
 
-        jLabel7.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        jLabel7.setText("Encargado");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 20, -1, -1));
+        LEncargado.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        LEncargado.setText("Encargado");
+        jPanel1.add(LEncargado, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 20, -1, -1));
 
         jLabel9.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel9.setText("Código:");
@@ -238,16 +246,6 @@ public class VGestionLocales extends javax.swing.JPanel {
         jLabel20.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel20.setText("Capacidad");
         jPanel1.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, -1, -1));
-
-        TxEncargado.setBackground(new java.awt.Color(255, 232, 185));
-        TxEncargado.setForeground(new java.awt.Color(102, 102, 102));
-        TxEncargado.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 1));
-        TxEncargado.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TxEncargadoActionPerformed(evt);
-            }
-        });
-        jPanel1.add(TxEncargado, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 20, 220, -1));
 
         TxDireccion.setBackground(new java.awt.Color(255, 232, 185));
         TxDireccion.setForeground(new java.awt.Color(102, 102, 102));
@@ -320,7 +318,7 @@ public class VGestionLocales extends javax.swing.JPanel {
 
         AltaCorrecta.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         AltaCorrecta.setForeground(new java.awt.Color(0, 153, 0));
-        AltaCorrecta.setText("Usuario registrado correctamente");
+        AltaCorrecta.setText("Local registrado correctamente");
         jPanel1.add(AltaCorrecta, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 110, -1, 40));
 
         ErrorAlta1.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
@@ -332,6 +330,11 @@ public class VGestionLocales extends javax.swing.JPanel {
         ErrorEncargado.setForeground(new java.awt.Color(255, 51, 51));
         ErrorEncargado.setText("Encargado no válido");
         jPanel1.add(ErrorEncargado, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, -1, -1));
+
+        TxEncargado.setBackground(new java.awt.Color(255, 232, 185));
+        TxEncargado.setMaximumRowCount(20);
+        TxEncargado.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "" }));
+        jPanel1.add(TxEncargado, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 14, 220, 20));
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 360, 600, 200));
 
@@ -371,10 +374,6 @@ public class VGestionLocales extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_FiltroCodigoActionPerformed
 
-    private void TxEncargadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxEncargadoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TxEncargadoActionPerformed
-
     private void TxDireccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxDireccionActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_TxDireccionActionPerformed
@@ -391,8 +390,16 @@ public class VGestionLocales extends javax.swing.JPanel {
     {
         tablaLoc.changeSelection(0,0,false,false);
         ModeloTablaLocales m = (ModeloTablaLocales) tablaLoc.getModel();
+        ArrayList<String>  oficinistas= fa.oficinistasComboBox(TxCodigo.getText());
+        int contador = TxEncargado.getItemCount();
+        for(int j = 0; j <contador-1 ; j++){
+            TxEncargado.removeItemAt(1);
+        }
+        for(int i= 0; i<oficinistas.size();i++){
+            TxEncargado.insertItemAt(oficinistas.get(i), i+1);
+        }
         this.TxCodigo.setText(m.getFila(tablaLoc.getSelectedRow()).getCodigo());
-        this.TxEncargado.setText(m.getFila(tablaLoc.getSelectedRow()).getEncargado());
+        this.TxEncargado.setSelectedItem(m.getFila(tablaLoc.getSelectedRow()).getEncargado());
         this.TxCapacidad.setText(m.getFila(tablaLoc.getSelectedRow()).getCapacidad().toString());
         this.TxDireccion.setText(m.getFila(tablaLoc.getSelectedRow()).getDireccion());
     }
@@ -440,13 +447,15 @@ public class VGestionLocales extends javax.swing.JPanel {
             BtAlta.setBackground(new Color(245, 184, 0));
             LConfirmar.setVisible(true);
             LAlta.setVisible(false);
+            LEncargado.setVisible(false);
+            TxEncargado.setVisible(false);
             vaciarTxt();
             nuevo = true;
         } else {
-            if (TxCodigo.getText().isEmpty() || TxEncargado.getText().isEmpty() || TxCapacidad.getText().isEmpty() || TxDireccion.getText().isEmpty() ) {
+            if (TxCodigo.getText().isEmpty() || TxCapacidad.getText().isEmpty() || TxDireccion.getText().isEmpty() ) {
                 ErrorAlta1.setVisible(true);
             } else {
-                fa.registrarLocal(new Local(TxCodigo.getText(), TxDireccion.getText(), TxEncargado.getText(), Integer.parseInt(TxCapacidad.getText())));
+                fa.registrarLocal(new Local(TxCodigo.getText(), TxDireccion.getText(), null, Integer.parseInt(TxCapacidad.getText())));
                 AltaCorrecta.setVisible(true);
                 restablecerBoton();
                 actualizarTabla();
@@ -467,11 +476,12 @@ public class VGestionLocales extends javax.swing.JPanel {
     private javax.swing.JTextField FiltroCodigo;
     private javax.swing.JLabel LAlta;
     private javax.swing.JLabel LConfirmar;
+    private javax.swing.JLabel LEncargado;
     private javax.swing.JLabel LabelActualizar;
     private javax.swing.JTextField TxCapacidad;
     private javax.swing.JTextField TxCodigo;
     private javax.swing.JTextField TxDireccion;
-    private javax.swing.JTextField TxEncargado;
+    private javax.swing.JComboBox TxEncargado;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel14;
@@ -484,7 +494,6 @@ public class VGestionLocales extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -499,7 +508,15 @@ public class VGestionLocales extends javax.swing.JPanel {
 
         m = (ModeloTablaLocales) tablaLoc.getModel();
         this.TxCodigo.setText(m.getFila(tablaLoc.getSelectedRow()).getCodigo());
-        this.TxEncargado.setText(m.getFila(tablaLoc.getSelectedRow()).getEncargado());
+        ArrayList<String>  oficinistas= fa.oficinistasComboBox(TxCodigo.getText());
+        int contador = TxEncargado.getItemCount();
+        for(int j = 0; j <contador-1 ; j++){
+            TxEncargado.removeItemAt(1);
+        }
+        for(int i= 0; i<oficinistas.size();i++){
+            TxEncargado.insertItemAt(oficinistas.get(i), i+1);
+        }
+        this.TxEncargado.setSelectedItem(m.getFila(tablaLoc.getSelectedRow()).getEncargado());
         this.TxCapacidad.setText(m.getFila(tablaLoc.getSelectedRow()).getCapacidad().toString());
         this.TxDireccion.setText(m.getFila(tablaLoc.getSelectedRow()).getDireccion());
     }
@@ -507,17 +524,22 @@ public class VGestionLocales extends javax.swing.JPanel {
     //public Usuario(String usuario, String password, String dni, String nombre, String correo, String direccion, String telefono, String sexo) {
     public void actualizarLocal(String codigo) {
         ModeloTablaLocales m;
-        String local;
+        String encargado;
         m = (ModeloTablaLocales) tablaLoc.getModel();
-        local=fa.trabajaEn(TxEncargado.getText());
-        if(local.equals(codigo) || local.equals(TxEncargado.getText())){
-        fa.actualizarLocal(codigo, new Local(TxCodigo.getText(),TxDireccion.getText(), TxEncargado.getText(), Integer.parseInt(TxCapacidad.getText())));
+        //local=fa.trabajaEn(TxEncargado.getSelectedItem().toString());
+        if(TxCodigo.getText().isEmpty() || TxDireccion.getText().isEmpty() || TxCapacidad.getText().isEmpty()){
+           ErrorEncargado.setVisible(true);
+        }else{          
+            if(TxEncargado.getSelectedItem().equals("")){
+                encargado=null;
+            }else{
+                encargado=TxEncargado.getSelectedItem().toString();
+            }
+        fa.actualizarLocal(codigo, new Local(TxCodigo.getText(),TxDireccion.getText(), encargado, Integer.parseInt(TxCapacidad.getText())));
         ErrorEncargado.setVisible(false);
         LabelActualizar.setVisible(true);
         m.setFilas(fa.obtenerLocales(this.FiltroCodigo.getText()));
         BtActualizar.setEnabled(false);
-        }else{
-            ErrorEncargado.setVisible(true);
         }
     }
 
@@ -541,7 +563,7 @@ public class VGestionLocales extends javax.swing.JPanel {
 
         m = (ModeloTablaLocales) tablaLoc.getModel();
         this.TxCodigo.setText(null);
-        this.TxEncargado.setText(null);
+        //this.TxEncargado.set(null);
         this.TxCapacidad.setText(null);
         this.TxDireccion.setText(null);
     }
@@ -553,6 +575,8 @@ public class VGestionLocales extends javax.swing.JPanel {
         ErrorID.setVisible(false);
         LConfirmar.setVisible(false);
         LAlta.setVisible(true);
+        LEncargado.setVisible(true);
+        TxEncargado.setVisible(true);
         //tablaLoc.changeSelection(0,0,false,false);
     }
 }

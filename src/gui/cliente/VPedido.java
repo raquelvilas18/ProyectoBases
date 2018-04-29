@@ -70,9 +70,9 @@ public class VPedido extends javax.swing.JPanel {
         SinPaquetesLabel = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         Express = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         Txdestino = new javax.swing.JTextField();
@@ -326,16 +326,6 @@ public class VPedido extends javax.swing.JPanel {
 
         add(PanelPaquete, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, 620, 450));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/logoPequeno.png"))); // NOI18N
-        jLabel1.setText("jLabel1");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 10, 300, 110));
-
-        jLabel3.setBackground(new java.awt.Color(65, 105, 225));
-        jLabel3.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(65, 105, 225));
-        jLabel3.setText("Destinatario");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 250, -1, -1));
-
         jPanel2.setPreferredSize(new java.awt.Dimension(10, 550));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -350,6 +340,16 @@ public class VPedido extends javax.swing.JPanel {
         );
 
         add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 12, 10, 550));
+
+        jLabel3.setBackground(new java.awt.Color(65, 105, 225));
+        jLabel3.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(65, 105, 225));
+        jLabel3.setText("Destinatario");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 250, -1, -1));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/logoPequeno.png"))); // NOI18N
+        jLabel1.setText("jLabel1");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 10, 300, 110));
 
         Express.setBackground(new java.awt.Color(65, 105, 225));
         Express.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
@@ -538,6 +538,7 @@ public class VPedido extends javax.swing.JPanel {
             pd = fa.nuevoPedido(new Pedido(u.getUsuario(), jRadioButton1.isSelected(), Txdestino.getText(), TxNombre.getText()));
             PanelPaquete.setVisible(true);
             label2.setVisible(true);
+            ocultar();
         }
     }//GEN-LAST:event_jPanel3MouseClicked
 
@@ -612,6 +613,7 @@ public class VPedido extends javax.swing.JPanel {
             vaciarTxtPaquetes();
             this.LabelAnadirError.setVisible(false);
             this.LabelAñadirCorrecto.setVisible(true);
+            mostrar();
         }
         if (numPaquetes > 0) {
             vaciarTxtPaquetes();
@@ -629,6 +631,7 @@ public class VPedido extends javax.swing.JPanel {
             this.SinPaquetesLabel.setVisible(true);
             this.LabelAnadirError.setVisible(false);
             this.LabelAñadirCorrecto.setVisible(false);
+            mostrar();
         }
 
 
@@ -649,7 +652,25 @@ public class VPedido extends javax.swing.JPanel {
         numPaquetes = 0;
 // TODO add your handling code here:
     }//GEN-LAST:event_jLabel20MouseClicked
-
+    private void ocultar(){
+            TxApellidos.setVisible(false);
+            TxNombre.setVisible(false);
+            TxOrigen.setVisible(false);
+            Txdestino.setVisible(false);
+            TxDni.setVisible(false);
+            TxTlf.setVisible(false);
+            jRadioButton1.setVisible(false);
+    }
+    
+    private void mostrar(){
+            TxApellidos.setVisible(true);
+            TxNombre.setVisible(true);
+            TxOrigen.setVisible(true);
+            Txdestino.setVisible(true);
+            TxDni.setVisible(true);
+            TxTlf.setVisible(true);
+            jRadioButton1.setVisible(true);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel BtAñadir;
@@ -702,6 +723,7 @@ public class VPedido extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     public void vaciarTxtPaquetes() {
+        mostrar();
         TxPeso.setText("");
         TxAlto.setText("");
         TxAncho.setText("");

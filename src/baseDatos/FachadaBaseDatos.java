@@ -40,6 +40,7 @@ public class FachadaBaseDatos {
     private DAOVehiculos daoVehiculos;
     private DAOPaquetes daoPaquetes;
     private DAOLocales daoLocales;
+    private DAOClientes daoClientes;
 
     public FachadaBaseDatos(aplicacion.FachadaAplicacion fa) {
 
@@ -55,7 +56,7 @@ public class FachadaBaseDatos {
             Properties usuario = new Properties();
 
             String gestor = configuracion.getProperty("gestor");
-/*
+           
             usuario.setProperty("user", configuracion.getProperty("usuario"));
             usuario.setProperty("password", configuracion.getProperty("clave"));
             this.conexion = java.sql.DriverManager.getConnection("jdbc:" + gestor + "://"
@@ -63,9 +64,9 @@ public class FachadaBaseDatos {
                     + configuracion.getProperty("puerto") + "/"
                     + configuracion.getProperty("baseDatos"),
                     usuario);
-         */   
-             Class.forName("org.postgresql.Driver");
-
+            
+            /* Class.forName("org.postgresql.Driver");
+             
              usuario.setProperty("user", configuracion.getProperty("usuario"));
              usuario.setProperty("password", configuracion.getProperty("clave"));
              URI dbUri = new URI("postgresql://jlljsgmqotjqed:95739ed75a6f8c4f255732e7c530e0106943700f87d161dc98e9edb65217737e@ec2-54-75-227-92.eu-west-1.compute.amazonaws.com:5432/dej1fq8t5tg60l");
@@ -74,15 +75,16 @@ public class FachadaBaseDatos {
              String password = dbUri.getUserInfo().split(":")[1];
              String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + dbUri.getPath() + "?sslmode=require";
             
-             this.conexion = java.sql.DriverManager.getConnection(dbUrl,username,password);
+             this.conexion = java.sql.DriverManager.getConnection(dbUrl,username,password);*/
              
             daoUsuarios = new DAOUsuarios(conexion, this.fa);
             daoPedidos = new DAOPedidos(conexion, this.fa);
             daoEmpleados = new DAOEmpleados(conexion, this.fa);
             daoPaquetes = new DAOPaquetes(conexion, this.fa);
-            daoVehiculos = new DAOVehiculos(conexion, this.fa);
-            daoLocales = new DAOLocales(conexion, this.fa);
-
+            daoVehiculos = new DAOVehiculos(conexion,this.fa);
+            daoLocales = new DAOLocales(conexion,this.fa);
+            daoClientes = new DAOClientes(conexion,this.fa);
+            
         } catch (FileNotFoundException f) {
             System.out.println(f.getMessage());
             fa.muestraExcepcion(f.getMessage());
@@ -92,12 +94,12 @@ public class FachadaBaseDatos {
         } catch (java.sql.SQLException e) {
             System.out.println(e.getMessage());
             fa.muestraExcepcion(e.getMessage());
-        }catch (ClassNotFoundException ex) {
+        }/*catch (ClassNotFoundException ex) {
          Logger.getLogger(FachadaBaseDatos.class.getName()).log(Level.SEVERE, null, ex);
          } catch (URISyntaxException ex) {
          Logger.getLogger(FachadaBaseDatos.class.getName()).log(Level.SEVERE, null, ex);
-         }
-
+         }*/
+        
     }
 
     public boolean consultarId(String idUsuario) {
@@ -138,11 +140,25 @@ public class FachadaBaseDatos {
     public Usuario validarUsuario(String idUsuario, String clave) {
         return daoUsuarios.validarUsuario(idUsuario, clave);
     }
-
-    public Usuario registrarUsuario(String id, String clave, String dni, String nombre, String email, String direccion, String telefono, String sexo, String tipo) {
-        return daoUsuarios.registrarUsuario(id, clave, dni, nombre, email, direccion, telefono, sexo, tipo);
+    public void actualizarLocal2(String id, String local) {
+        daoEmpleados.actualizarLocal2(id, local);
     }
 
+    public Usuario registrarUsuario(String id, String clave, String dni, String nombre, String email, String direccion, String telefono, String sexo, String tipo) {
+        
+        Usuario usr;
+        
+        usr= daoUsuarios.registrarUsuario(id, clave, dni, nombre, email, direccion, telefono, sexo, tipo);
+        if(tipo.equals("cliente")){
+         daoClientes.registrarClientes(id);
+        }
+        return usr;
+    }
+
+    public boolean existeId(String id){
+        return daoUsuarios.existeId(id);
+    }
+    
     public String getTipo(String id) {
         return daoUsuarios.getTipo(id);
     }
@@ -307,6 +323,15 @@ public class FachadaBaseDatos {
 
     public void actualizarPosicion(String posicion, String transportista) {
         daoVehiculos.actualizarPosicion(posicion, transportista);
+    }
+    
+    //------COMBO BOX-----//
+    public ArrayList<String> transportistasComboBox(String matricula) {
+        return daoEmpleados.transportistasComboBox(matricula);
+    }
+    
+    public ArrayList<String> oficinistasComboBox(String local){
+        return daoLocales.oficinistasComboBox(local);
     }
 
 }

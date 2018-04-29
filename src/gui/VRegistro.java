@@ -5,11 +5,14 @@
  */
 package gui;
 
+import aplicacion.Usuario;
+
 /**
  *
  * @author carlo
  */
 public class VRegistro extends javax.swing.JPanel {
+
     private aplicacion.FachadaAplicacion fa;
     private boolean captcha;
     private VPrincipal vp;
@@ -24,6 +27,7 @@ public class VRegistro extends javax.swing.JPanel {
         captcha = false;
         this.vp = vp;
         jButton2.setVisible(false);
+        error.setVisible(false);
     }
 
     /**
@@ -69,11 +73,17 @@ public class VRegistro extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        error = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         panelRegistro.setBackground(new java.awt.Color(214, 225, 254));
         panelRegistro.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        panelRegistro.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                panelRegistroMouseClicked(evt);
+            }
+        });
         panelRegistro.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         textoUsuario6.setBackground(new java.awt.Color(65, 105, 225));
@@ -90,7 +100,7 @@ public class VRegistro extends javax.swing.JPanel {
                 textNombreActionPerformed(evt);
             }
         });
-        panelRegistro.add(textNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 70, 210, 30));
+        panelRegistro.add(textNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 70, 160, 30));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8_User_32px.png"))); // NOI18N
         panelRegistro.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, -1, -1));
@@ -104,7 +114,7 @@ public class VRegistro extends javax.swing.JPanel {
         textDni.setBackground(new java.awt.Color(214, 225, 254));
         textDni.setForeground(new java.awt.Color(153, 153, 153));
         textDni.setBorder(null);
-        panelRegistro.add(textDni, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, 240, 30));
+        panelRegistro.add(textDni, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 110, 160, 30));
 
         textoUsuario8.setBackground(new java.awt.Color(65, 105, 225));
         textoUsuario8.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
@@ -115,7 +125,7 @@ public class VRegistro extends javax.swing.JPanel {
         textID.setBackground(new java.awt.Color(214, 225, 254));
         textID.setForeground(new java.awt.Color(153, 153, 153));
         textID.setBorder(null);
-        panelRegistro.add(textID, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, 250, 30));
+        panelRegistro.add(textID, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 150, 160, 30));
 
         textoUsuario9.setBackground(new java.awt.Color(65, 105, 225));
         textoUsuario9.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
@@ -126,7 +136,7 @@ public class VRegistro extends javax.swing.JPanel {
         textEmail.setBackground(new java.awt.Color(214, 225, 254));
         textEmail.setForeground(new java.awt.Color(153, 153, 153));
         textEmail.setBorder(null);
-        panelRegistro.add(textEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 190, 230, 30));
+        panelRegistro.add(textEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 190, 160, 30));
 
         textoUsuario10.setBackground(new java.awt.Color(65, 105, 225));
         textoUsuario10.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
@@ -144,7 +154,7 @@ public class VRegistro extends javax.swing.JPanel {
         unchecked.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8_Unchecked_Checkbox_36px_1.png"))); // NOI18N
         unchecked.setBorderPainted(false);
         unchecked.setContentAreaFilled(false);
-        unchecked.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        unchecked.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         unchecked.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 uncheckedActionPerformed(evt);
@@ -162,7 +172,7 @@ public class VRegistro extends javax.swing.JPanel {
                 jButton2ActionPerformed(evt);
             }
         });
-        panelRegistro.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 430, 30, 50));
+        panelRegistro.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(27, 430, 30, 50));
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/captcha_1.JPG"))); // NOI18N
         panelRegistro.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 420, 300, 70));
@@ -182,7 +192,7 @@ public class VRegistro extends javax.swing.JPanel {
                 textTelefonoActionPerformed(evt);
             }
         });
-        panelRegistro.add(textTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 270, 210, 30));
+        panelRegistro.add(textTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 270, 160, 30));
 
         textDireccion.setBackground(new java.awt.Color(214, 225, 254));
         textDireccion.setForeground(new java.awt.Color(153, 153, 153));
@@ -192,7 +202,7 @@ public class VRegistro extends javax.swing.JPanel {
                 textDireccionActionPerformed(evt);
             }
         });
-        panelRegistro.add(textDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 310, 190, 30));
+        panelRegistro.add(textDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 310, 160, 30));
 
         textoUsuario13.setBackground(new java.awt.Color(65, 105, 225));
         textoUsuario13.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
@@ -202,7 +212,7 @@ public class VRegistro extends javax.swing.JPanel {
 
         textContraseña.setBackground(new java.awt.Color(214, 225, 254));
         textContraseña.setBorder(null);
-        panelRegistro.add(textContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 230, 190, 30));
+        panelRegistro.add(textContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 230, 160, 30));
 
         textoUsuario14.setBackground(new java.awt.Color(65, 105, 225));
         textoUsuario14.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
@@ -221,7 +231,7 @@ public class VRegistro extends javax.swing.JPanel {
                 textSexoActionPerformed(evt);
             }
         });
-        panelRegistro.add(textSexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 350, 190, 30));
+        panelRegistro.add(textSexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 350, 160, 30));
 
         jSeparator5.setForeground(new java.awt.Color(0, 51, 153));
         panelRegistro.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 100, 160, 10));
@@ -258,7 +268,7 @@ public class VRegistro extends javax.swing.JPanel {
         jLabel7.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(204, 204, 204));
         jLabel7.setText("Registrarse");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, 120, 20));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 120, 20));
 
         panelRegistro.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 520, 190, 40));
 
@@ -270,6 +280,10 @@ public class VRegistro extends javax.swing.JPanel {
             }
         });
         panelRegistro.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+
+        error.setForeground(new java.awt.Color(244, 0, 8));
+        error.setText("Registro incorrecto");
+        panelRegistro.add(error, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 500, -1, -1));
 
         add(panelRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 310, 580));
     }// </editor-fold>//GEN-END:initComponents
@@ -303,7 +317,7 @@ public class VRegistro extends javax.swing.JPanel {
     }//GEN-LAST:event_textSexoActionPerformed
 
     private void jPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseClicked
-         String nombre = textNombre.getText();
+        String nombre = textNombre.getText();
         String dni = textDni.getText();
         String email = textEmail.getText();
         String direccion = textDireccion.getText();
@@ -311,11 +325,19 @@ public class VRegistro extends javax.swing.JPanel {
         String contraseña = textContraseña.getText();
         String id = textID.getText();
         String sexo = textSexo.getText();
-        if(nombre!=null && dni!=null && email!=null && contraseña!=null && id!=null && captcha==true){
-            if(!nombre.equals("") && !dni.equals("") && !email.equals("") && !contraseña.equals("") && !id.equals("")){
-            fa.registrarUsuario(id, contraseña, dni, nombre, email, direccion, telefono, sexo, "cliente");
-            vp.ventanaUsuario(fa.consultarUsuario(id, contraseña));
+        if (nombre != null && dni != null && email != null && contraseña != null && id != null && captcha == true) {
+            if (!nombre.equals("") && !dni.equals("") && !email.equals("") && !contraseña.equals("") && !id.equals("")) {
+                if (!fa.existeId(id)) {
+                    fa.registrarUsuario(id, contraseña, dni, nombre, email, direccion, telefono, sexo, "cliente");
+                    vp.ventanaUsuario(fa.consultarUsuario(id, contraseña));
+                } else {
+                    error.setVisible(true);
+                }
+
             }
+
+        } else {
+            error.setVisible(true);
         }
     }//GEN-LAST:event_jPanel1MouseClicked
 
@@ -323,8 +345,14 @@ public class VRegistro extends javax.swing.JPanel {
         vp.ventanaPrincipal();
     }//GEN-LAST:event_jLabel2MouseClicked
 
+    private void panelRegistroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelRegistroMouseClicked
+        // TODO add your handling code here:
+        error.setVisible(false);
+    }//GEN-LAST:event_panelRegistroMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel error;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel5;

@@ -10,6 +10,9 @@ import aplicacion.Pedido;
 import gui.ModeloTablaClientes;
 import gui.ModeloTablaPaquetes;
 import gui.ModeloTablaPedidos3;
+import java.awt.Color;
+import java.awt.Font;
+import javax.swing.table.JTableHeader;
 
 /**
  *
@@ -29,6 +32,21 @@ public class VGestionPaquetes extends javax.swing.JPanel {
         ModeloTablaPedidos3 tp = new ModeloTablaPedidos3();
         tablaPedidos.setModel(tp);
         tp.setFilas(fa.pedidosSinTramitar());
+        
+        tablaPedidos.clearSelection();
+        JTableHeader th;
+        th = this.tablaPedidos.getTableHeader();
+        Font fuente = new Font("SansSerif", Font.PLAIN, 16);
+        th.setFont(fuente);
+        th.setForeground(new Color(255,148,42));
+        th.setBackground(Color.WHITE);
+        
+        tablaPaquetes.clearSelection();
+        th = this.tablaPaquetes.getTableHeader();
+        fuente = new Font("SansSerif", Font.PLAIN, 16);
+        th.setFont(fuente);
+        th.setForeground(new Color(255,148,42));
+        th.setBackground(Color.WHITE);
     }
 
     /**
@@ -119,12 +137,15 @@ public class VGestionPaquetes extends javax.swing.JPanel {
         });
         add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 120, -1, -1));
 
+        jScrollPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+
+        tablaPedidos.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         tablaPedidos.setModel(new ModeloTablaPedidos3());
         tablaPedidos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        tablaPedidos.setGridColor(new java.awt.Color(255, 189, 72));
+        tablaPedidos.setGridColor(java.awt.Color.white);
         tablaPedidos.setSelectionBackground(new java.awt.Color(255, 189, 72));
+        tablaPedidos.setSelectionForeground(new java.awt.Color(255, 255, 255));
         tablaPedidos.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        tablaPedidos.setShowHorizontalLines(false);
         tablaPedidos.setShowVerticalLines(false);
         tablaPedidos.setSurrendersFocusOnKeystroke(true);
         tablaPedidos.getTableHeader().setResizingAllowed(false);
@@ -277,7 +298,13 @@ public class VGestionPaquetes extends javax.swing.JPanel {
         });
         add(FiltroNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 130, 150, -1));
 
+        jScrollPane3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+
+        tablaPaquetes.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         tablaPaquetes.setModel(new ModeloTablaPaquetes());
+        tablaPaquetes.setGridColor(java.awt.Color.white);
+        tablaPaquetes.setSelectionBackground(new java.awt.Color(255, 189, 72));
+        tablaPaquetes.setSelectionForeground(new java.awt.Color(255, 255, 255));
         jScrollPane3.setViewportView(tablaPaquetes);
 
         add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(63, 319, 590, 90));
