@@ -42,6 +42,7 @@ public class VGestionClientesOficinista extends javax.swing.JPanel {
         LabelActualizar.setVisible(false);
         ContrasenaL.setVisible(false);
         TxContrasena.setVisible(false);
+        EliminarError.setVisible(false);
         ModeloTablaClientes m = (ModeloTablaClientes) tablaUsr.getModel();
         if (m.getRowCount() > 0) {
             this.TxId.setText(m.getFila(tablaUsr.getSelectedRow()).getUsuario());
@@ -116,6 +117,7 @@ public class VGestionClientesOficinista extends javax.swing.JPanel {
         AltaCorrecta = new javax.swing.JLabel();
         ErrorAlta1 = new javax.swing.JLabel();
         scrollPane1 = new java.awt.ScrollPane();
+        EliminarError = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaUsr = new javax.swing.JTable();
 
@@ -216,6 +218,11 @@ public class VGestionClientesOficinista extends javax.swing.JPanel {
         add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 130, -1, -1));
 
         jPanel1.setBackground(new java.awt.Color(211, 223, 211));
+        jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel1MouseClicked(evt);
+            }
+        });
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         BtActualizar.setBackground(new java.awt.Color(89, 171, 36));
@@ -419,6 +426,11 @@ public class VGestionClientesOficinista extends javax.swing.JPanel {
         jPanel1.add(ErrorAlta1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 100, -1, -1));
         jPanel1.add(scrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 190, 170, 30));
 
+        EliminarError.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        EliminarError.setForeground(new java.awt.Color(153, 0, 0));
+        EliminarError.setText("No puedes eliminar clientes con pedidos activos");
+        jPanel1.add(EliminarError, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 100, -1, -1));
+
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 381, 600, 170));
 
         jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
@@ -502,6 +514,7 @@ public class VGestionClientesOficinista extends javax.swing.JPanel {
         ErrorAlta1.setVisible(false);
         AltaCorrecta.setVisible(false);
         LabelActualizar.setVisible(false);
+        EliminarError.setVisible(false);
 
     }//GEN-LAST:event_tablaUsrMouseClicked
 
@@ -529,8 +542,14 @@ public class VGestionClientesOficinista extends javax.swing.JPanel {
     }//GEN-LAST:event_formMouseClicked
 
     private void BtBajaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtBajaMouseClicked
-        restablecerBoton();
-        eliminarUsuario();
+        ModeloTablaClientes m = (ModeloTablaClientes) tablaUsr.getModel();
+        if ((int) m.getFila(tablaUsr.getSelectedRow()).getPedidosActivos() > 0) {
+            EliminarError.setVisible(true);
+        } else {
+            restablecerBoton();
+            eliminarUsuario();
+            tablaUsr.changeSelection(0, 0, false, false);
+        }
         // TODO add your handling code here:
     }//GEN-LAST:event_BtBajaMouseClicked
 
@@ -561,6 +580,10 @@ public class VGestionClientesOficinista extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_TxContrasenaActionPerformed
 
+    private void jPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPanel1MouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel AltaCorrecta;
@@ -568,6 +591,7 @@ public class VGestionClientesOficinista extends javax.swing.JPanel {
     private javax.swing.JPanel BtAlta;
     private javax.swing.JPanel BtBaja;
     private javax.swing.JLabel ContrasenaL;
+    private javax.swing.JLabel EliminarError;
     private javax.swing.JLabel ErrorAlta1;
     private javax.swing.JLabel ErrorID;
     private javax.swing.JTextField FiltroId;
@@ -670,6 +694,7 @@ public class VGestionClientesOficinista extends javax.swing.JPanel {
         LAlta.setVisible(true);
         ContrasenaL.setVisible(false);
         TxContrasena.setVisible(false);
+        EliminarError.setVisible(false);
         tablaUsr.changeSelection(0, 0, false, false);
     }
 
