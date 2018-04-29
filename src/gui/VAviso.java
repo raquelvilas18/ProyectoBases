@@ -17,13 +17,7 @@ public class VAviso extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         textoExcepcion.setText(txtExcepcion);
-        this.addWindowListener(new java.awt.event.WindowAdapter() {
-
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
+        this.setLocation(715,755);
     }
 
     /**
@@ -45,6 +39,7 @@ public class VAviso extends javax.swing.JDialog {
         setUndecorated(true);
 
         textoExcepcion.setColumns(20);
+        textoExcepcion.setFont(new java.awt.Font("Dialog", 1, 15)); // NOI18N
         textoExcepcion.setForeground(new java.awt.Color(65, 105, 225));
         textoExcepcion.setRows(5);
         jScrollPane1.setViewportView(textoExcepcion);
