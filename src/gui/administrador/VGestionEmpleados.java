@@ -7,6 +7,7 @@ package gui.administrador;
 
 import aplicacion.Empleado;
 import aplicacion.Local;
+import aplicacion.Vehiculo;
 import gui.ModeloTablaEmpleados;
 import java.awt.Color;
 import java.awt.Font;
@@ -23,25 +24,26 @@ public class VGestionEmpleados extends javax.swing.JPanel {
 
     aplicacion.FachadaAplicacion fa;
     private boolean nuevo;
+
     /**
      * Creates new form VGestionUsuarios
      */
     public VGestionEmpleados(aplicacion.FachadaAplicacion fa) {
         initComponents();
-        this.fa=fa;
-        nuevo=false;
+        this.fa = fa;
+        nuevo = false;
         ModeloTablaEmpleados tp = new ModeloTablaEmpleados();
         initComponents();
         tablaEmpleados.setModel(tp);
         //SELECCION Y CENTRADO DE TEXTO
-        tablaEmpleados.changeSelection(0,0,false,false);
+        tablaEmpleados.changeSelection(0, 0, false, false);
         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
-        centerRenderer.setHorizontalAlignment( JLabel.CENTER );
+        centerRenderer.setHorizontalAlignment(JLabel.CENTER);
         tablaEmpleados.setDefaultRenderer(String.class, centerRenderer);
         tablaEmpleados.setDefaultRenderer(Integer.class, centerRenderer);
         /////////////////////////////////
         tp.setFilas(fa.obtenerEmpleados(this.FiltroId.getText()));
-        tablaEmpleados.changeSelection(0,0,false,false);
+        tablaEmpleados.changeSelection(0, 0, false, false);
         ErrorID.setVisible(false);
         LConfirmar.setVisible(false);
         LAlta.setVisible(true);
@@ -51,6 +53,8 @@ public class VGestionEmpleados extends javax.swing.JPanel {
         AltaCorrecta.setVisible(false);
         LabelActualizar.setVisible(false);
         LocalLabel.setVisible(false);
+        labelVehiculo.setVisible(false);
+        ComboVehiculo.setVisible(false);
         TxPassword.setVisible(false);
         ContrasenaL1.setVisible(false);
         ComboLocal.setVisible(false);
@@ -58,21 +62,20 @@ public class VGestionEmpleados extends javax.swing.JPanel {
         labelTipo.setVisible(false);
         labelEliminado.setVisible(false);
         ErrorAlta2.setVisible(false);
-        
+
         ArrayList<Local> locales = fa.obtenerLocales("");
-        for(int i= 0; i<locales.size();i++){
-            ComboLocal.insertItemAt(locales.get(i).getCodigo(), i+1);
+        for (int i = 0; i < locales.size(); i++) {
+            ComboLocal.insertItemAt(locales.get(i).getCodigo(), i + 1);
         }
-        
 
         tablaEmpleados.clearSelection();
         JTableHeader th;
         th = this.tablaEmpleados.getTableHeader();
         Font fuente = new Font("SansSerif", Font.PLAIN, 16);
         th.setFont(fuente);
-        th.setForeground(new Color(255,148,42));
+        th.setForeground(new Color(255, 148, 42));
         th.setBackground(Color.WHITE);
-        
+
     }
 
     /**
@@ -133,6 +136,8 @@ public class VGestionEmpleados extends javax.swing.JPanel {
         TxPassword = new javax.swing.JPasswordField();
         ErrorAlta2 = new javax.swing.JLabel();
         ComboLocal = new javax.swing.JComboBox();
+        labelVehiculo = new javax.swing.JLabel();
+        ComboVehiculo = new javax.swing.JComboBox();
         FiltroId = new javax.swing.JTextField();
 
         jLabel3.setText("jLabel3");
@@ -469,6 +474,16 @@ public class VGestionEmpleados extends javax.swing.JPanel {
         ComboLocal.setToolTipText("");
         jPanel1.add(ComboLocal, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 80, 210, 20));
 
+        labelVehiculo.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        labelVehiculo.setText("Vehículo");
+        jPanel1.add(labelVehiculo, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 80, -1, -1));
+
+        ComboVehiculo.setBackground(new java.awt.Color(255, 232, 185));
+        ComboVehiculo.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        ComboVehiculo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", " " }));
+        ComboVehiculo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel1.add(ComboVehiculo, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 80, 210, 20));
+
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 350, 600, 210));
 
         FiltroId.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
@@ -527,17 +542,15 @@ public class VGestionEmpleados extends javax.swing.JPanel {
         // TODO add your handling code here:
         ModeloTablaEmpleados m;
         m = (ModeloTablaEmpleados) tablaEmpleados.getModel();
-        if((fa.consultarId(TxId.getText()) || (TxId.getText().equals(m.getFila(tablaEmpleados.getSelectedRow()).getUsuario()))) && !TxId.getText().isEmpty())
-        {
-            String id=m.getFila(tablaEmpleados.getSelectedRow()).getUsuario();
+        if ((fa.consultarId(TxId.getText()) || (TxId.getText().equals(m.getFila(tablaEmpleados.getSelectedRow()).getUsuario()))) && !TxId.getText().isEmpty()) {
+            String id = m.getFila(tablaEmpleados.getSelectedRow()).getUsuario();
             actualizarEmpleado(id);
             actualizarCampos();
             vaciarTxt();
             restablecerBoton();
             tablaEmpleados.clearSelection();
-        
-        }
-        else{
+
+        } else {
             ErrorID.setVisible(true);
             LabelActualizar.setVisible((false));
             actualizarCampos();
@@ -545,7 +558,7 @@ public class VGestionEmpleados extends javax.swing.JPanel {
             restablecerBoton();
             tablaEmpleados.clearSelection();
         }
-        
+
     }//GEN-LAST:event_panelActualizarMouseClicked
 
     private void BtDarAlta(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtDarAlta
@@ -560,32 +573,47 @@ public class VGestionEmpleados extends javax.swing.JPanel {
             TxTipo.setVisible(true);
             labelTipo.setVisible(true);
             nuevo = true;
-            if(TxTipo.getSelectedItem().equals("oficinista")){
+            if (TxTipo.getSelectedItem().equals("oficinista")) {
                 LocalLabel.setVisible(true);
                 ComboLocal.setVisible(true);
+            } else if (TxTipo.getSelectedItem().equals("transportista")) {
+                labelVehiculo.setVisible(true);
+                ComboVehiculo.setVisible(true);
+                ArrayList<Vehiculo> vehiculos = fa.vehiculosSinConductor();
+                for (int i = 0; i < vehiculos.size(); i++) {
+                    ComboVehiculo.insertItemAt(vehiculos.get(i).getMatricula(), i + 1);
+                }
+
             }
             TxPassword.setVisible(true);
             ContrasenaL1.setVisible(true);
         } else {
             if (TxId.getText().isEmpty() || TxNombre.getText().isEmpty() || TxEmail.getText().isEmpty() || TxDireccion.getText().isEmpty() || TxTelefono.getText().isEmpty()) {
                 ErrorAlta2.setVisible(true);
-                
-            } 
-            else if(!fa.consultarId(TxId.getText())){
+            } else if (!fa.consultarId(TxId.getText())) {
                 ErrorID.setVisible(true);
                 labelEliminado.setVisible(false);
-                
-                
-            }
-            else {
-                if(ComboLocal.getSelectedIndex()==0){
-                    fa.nuevoEmpleado(TxId.getText(), TxPassword.getText(), TxDni.getText(), TxNombre.getText(), TxEmail.getText(), TxDireccion.getText(), TxTelefono.getText(), (String) TxSexo.getSelectedItem(), (String) TxTipo.getSelectedItem(),Integer.parseInt(TxNomina.getText()),null);
+            } else {
+                if (TxTipo.getSelectedItem().equals("oficinista")) {
+                    if (ComboLocal.getSelectedIndex() == 0) {
+                        fa.nuevoEmpleado(TxId.getText(), TxPassword.getText(), TxDni.getText(), TxNombre.getText(), TxEmail.getText(), TxDireccion.getText(), TxTelefono.getText(), (String) TxSexo.getSelectedItem(), (String) TxTipo.getSelectedItem(), Integer.parseInt(TxNomina.getText()), null);
 
+                    } else {
+                        fa.nuevoEmpleado(TxId.getText(), TxPassword.getText(), TxDni.getText(), TxNombre.getText(), TxEmail.getText(), TxDireccion.getText(), TxTelefono.getText(), (String) TxSexo.getSelectedItem(), (String) TxTipo.getSelectedItem(), Integer.parseInt(TxNomina.getText()), (String) ComboLocal.getSelectedItem());
+                    }
+                } else {
+                    if (ComboVehiculo.getSelectedIndex() == 0) {
+                        fa.nuevoEmpleado(TxId.getText(), TxPassword.getText(), TxDni.getText(), TxNombre.getText(), TxEmail.getText(), TxDireccion.getText(), TxTelefono.getText(), (String) TxSexo.getSelectedItem(), (String) TxTipo.getSelectedItem(), Integer.parseInt(TxNomina.getText()), null);
+
+                    } else {
+                        fa.nuevoEmpleado(TxId.getText(), TxPassword.getText(), TxDni.getText(), TxNombre.getText(), TxEmail.getText(), TxDireccion.getText(), TxTelefono.getText(), (String) TxSexo.getSelectedItem(), (String) TxTipo.getSelectedItem(), Integer.parseInt(TxNomina.getText()), (String) ComboVehiculo.getSelectedItem());
+                    }
                 }
-                else fa.nuevoEmpleado(TxId.getText(), TxPassword.getText(), TxDni.getText(), TxNombre.getText(), TxEmail.getText(), TxDireccion.getText(), TxTelefono.getText(), (String) TxSexo.getSelectedItem(), (String) TxTipo.getSelectedItem(),Integer.parseInt(TxNomina.getText()),(String)ComboLocal.getSelectedItem());
                 AltaCorrecta.setVisible(true);
                 ErrorID.setVisible(false);
                 labelEliminado.setVisible(false);
+                labelVehiculo.setVisible(false);
+                ComboVehiculo.setVisible(false);
                 restablecerBoton();
                 actualizarTabla();
                 vaciarTxt();
@@ -600,18 +628,17 @@ public class VGestionEmpleados extends javax.swing.JPanel {
         ModeloTablaEmpleados m;
         LabelActualizar.setVisible(false);
         AltaCorrecta.setVisible(false);
-        
+
         labelEliminado.setVisible(false);
         m = (ModeloTablaEmpleados) tablaEmpleados.getModel();
-        if(m.getFila(0)!=null){
-            String tipo=m.getFila(tablaEmpleados.getSelectedRow()).getTipo();
-            if(tipo.equals("oficinista")){
+        if (m.getFila(0) != null) {
+            String tipo = m.getFila(tablaEmpleados.getSelectedRow()).getTipo();
+            if (tipo.equals("oficinista")) {
                 LocalLabel.setVisible(true);
                 ComboLocal.setVisible(true);
                 ComboLocal.setSelectedItem(fa.trabajaEn(m.getFila(tablaEmpleados.getSelectedRow()).getUsuario()));
-                
-            }
-            else{
+
+            } else {
                 LocalLabel.setVisible(false);
                 ComboLocal.setVisible(false);
             }
@@ -625,7 +652,7 @@ public class VGestionEmpleados extends javax.swing.JPanel {
         this.TxSexo.setSelectedItem((m.getFila(tablaEmpleados.getSelectedRow())).getSexo());
         this.TxNomina.setText(m.getFila(tablaEmpleados.getSelectedRow()).getNomina().toString());
         this.TxTipo.setSelectedItem(fa.getTipo(m.getFila(tablaEmpleados.getSelectedRow()).getUsuario()));
-        if("oficinista".equals(m.getFila(tablaEmpleados.getSelectedRow()).getTipo())){
+        if ("oficinista".equals(m.getFila(tablaEmpleados.getSelectedRow()).getTipo())) {
             ComboLocal.setSelectedItem(fa.trabajaEn(m.getFila(tablaEmpleados.getSelectedRow()).getUsuario()));
         }
     }//GEN-LAST:event_clickTabla
@@ -640,13 +667,23 @@ public class VGestionEmpleados extends javax.swing.JPanel {
 
     private void TxTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxTipoActionPerformed
         // TODO add your handling code here:
-        if(((String)TxTipo.getSelectedItem()).equals("oficinista")){
+        if (((String) TxTipo.getSelectedItem()).equals("oficinista")) {
             LocalLabel.setVisible(true);
             ComboLocal.setVisible(true);
-        }
-        else{
+            labelVehiculo.setVisible(false);
+            ComboVehiculo.setVisible(false);
+        } else if (((String) TxTipo.getSelectedItem()).equals("transportista")) {
+            if (nuevo) {
+                labelVehiculo.setVisible(true);
+                ComboVehiculo.setVisible(true);
+                LocalLabel.setVisible(false);
+                ComboLocal.setVisible(false);
+            }
+        } else {
             LocalLabel.setVisible(false);
             ComboLocal.setVisible(false);
+            labelVehiculo.setVisible(false);
+            ComboVehiculo.setVisible(false);
         }
     }//GEN-LAST:event_TxTipoActionPerformed
 
@@ -654,13 +691,13 @@ public class VGestionEmpleados extends javax.swing.JPanel {
         // TODO add your handling code here:
         ModeloTablaEmpleados m;
         m = (ModeloTablaEmpleados) tablaEmpleados.getModel();
-        String id=m.getFila(tablaEmpleados.getSelectedRow()).getUsuario();
+        String id = m.getFila(tablaEmpleados.getSelectedRow()).getUsuario();
         fa.eliminarEmpleado(id);
         labelEliminado.setVisible(true);
         actualizarTabla();
         vaciarTxt();
-        tablaEmpleados.changeSelection(0,0,false,false);
-        
+        tablaEmpleados.changeSelection(0, 0, false, false);
+
     }//GEN-LAST:event_DarBajaMouseClicked
 
     private void clearMouseClick(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_clearMouseClick
@@ -675,6 +712,7 @@ public class VGestionEmpleados extends javax.swing.JPanel {
     private javax.swing.JLabel BtActualizar;
     private javax.swing.JPanel BtAlta;
     private javax.swing.JComboBox ComboLocal;
+    private javax.swing.JComboBox ComboVehiculo;
     private javax.swing.JLabel ContrasenaL1;
     private javax.swing.JPanel DarBaja;
     private javax.swing.JLabel ErrorAlta2;
@@ -719,6 +757,7 @@ public class VGestionEmpleados extends javax.swing.JPanel {
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JLabel labelEliminado;
     private javax.swing.JLabel labelTipo;
+    private javax.swing.JLabel labelVehiculo;
     private javax.swing.JPanel panelActualizar;
     private javax.swing.JTable tablaEmpleados;
     // End of variables declaration//GEN-END:variables
@@ -734,60 +773,62 @@ public class VGestionEmpleados extends javax.swing.JPanel {
         this.TxNombre.setText(null);
         this.TxNomina.setText(null);
         this.ComboLocal.setSelectedIndex(0);
+        this.ComboVehiculo.setSelectedIndex(0);
         this.TxPassword.setText(null);
-        
+
     }
-    
+
     public void restablecerBoton() {
         nuevo = false;
         BtAlta.setBackground(new Color(255, 148, 42));
         ErrorID.setVisible(false);
         LConfirmar.setVisible(false);
         LAlta.setVisible(true);
-        //LocalLabel.setVisible(false);
-        //TxLocal.setVisible(false);
         TxPassword.setVisible(false);
         ContrasenaL1.setVisible(false);
         TxTipo.setVisible(false);
         labelTipo.setVisible(false);
         ErrorAlta2.setVisible(false);
-        //tablaEmpleados.clearSelection();
     }
-    
+
     public void actualizarEmpleado(String id) {
         ModeloTablaEmpleados m;
 
         m = (ModeloTablaEmpleados) tablaEmpleados.getModel();
         ArrayList<Integer> datos = new ArrayList<>();
-        fa.actualizarEmpleado(id, new Empleado(TxId.getText(), TxPassword.getText(), TxDni.getText(), TxNombre.getText(), TxEmail.getText(), TxDireccion.getText(), TxTelefono.getText(), (String) TxSexo.getSelectedItem(),null ,Integer.parseInt(TxNomina.getText()),null));
+        fa.actualizarEmpleado(id, new Empleado(TxId.getText(), TxPassword.getText(), TxDni.getText(), TxNombre.getText(), TxEmail.getText(), TxDireccion.getText(), TxTelefono.getText(), (String) TxSexo.getSelectedItem(), null, Integer.parseInt(TxNomina.getText()), null));
         LabelActualizar.setVisible(true);
-        if(ComboLocal.getSelectedIndex()==0) fa.actualizarLocal2(TxId.getText(), null);
-        else fa.actualizarLocal2(TxId.getText(), ComboLocal.getSelectedItem().toString());
+        if (ComboLocal.getSelectedIndex() == 0) {
+            fa.actualizarLocal2(TxId.getText(), null);
+        } else {
+            fa.actualizarLocal2(TxId.getText(), ComboLocal.getSelectedItem().toString());
+        }
         m.setFilas(fa.obtenerEmpleados(this.FiltroId.getText()));
     }
-    
-    public void actualizarTabla(){
+
+    public void actualizarTabla() {
         ModeloTablaEmpleados m;
 
         m = (ModeloTablaEmpleados) tablaEmpleados.getModel();
         m.setFilas(fa.obtenerEmpleados(this.FiltroId.getText()));
-        tablaEmpleados.changeSelection(0,0,false,false);
-        if(m.getFila(0)!=null){
-            String tipo=m.getFila(tablaEmpleados.getSelectedRow()).getTipo();
-            if(tipo.equals("oficinista")){
+        tablaEmpleados.changeSelection(0, 0, false, false);
+        if (m.getFila(0) != null) {
+            String tipo = m.getFila(tablaEmpleados.getSelectedRow()).getTipo();
+            if (tipo.equals("oficinista")) {
                 LocalLabel.setVisible(true);
                 ComboLocal.setVisible(true);
-            }
-            else{
+            } /*else if (tipo.equals("transportista")) {
+             labelVehiculo.setVisible(true);
+             ComboVehiculo.setVisible(true);
+             }*/ else {
                 LocalLabel.setVisible(false);
                 ComboLocal.setVisible(false);
             }
         }
     }
-    
-    private void actualizarCampos()
-    {
-        tablaEmpleados.changeSelection(0,0,false,false);
+
+    private void actualizarCampos() {
+        tablaEmpleados.changeSelection(0, 0, false, false);
         ModeloTablaEmpleados m = (ModeloTablaEmpleados) tablaEmpleados.getModel();
         this.TxId.setText(m.getFila(tablaEmpleados.getSelectedRow()).getUsuario());
         this.TxNombre.setText(m.getFila(tablaEmpleados.getSelectedRow()).getNombre());
@@ -798,9 +839,13 @@ public class VGestionEmpleados extends javax.swing.JPanel {
         this.TxSexo.setSelectedItem((m.getFila(tablaEmpleados.getSelectedRow())).getSexo());
         this.TxTipo.setSelectedItem(fa.getTipo(m.getFila(tablaEmpleados.getSelectedRow()).getUsuario()));
         this.TxNomina.setText(m.getFila(tablaEmpleados.getSelectedRow()).getNomina().toString());
-        if("oficinista".equals(m.getFila(tablaEmpleados.getSelectedRow()).getTipo())){
+        if ("oficinista".equals(m.getFila(tablaEmpleados.getSelectedRow()).getTipo())) {
             ComboLocal.setSelectedItem(fa.trabajaEn(m.getFila(tablaEmpleados.getSelectedRow()).getUsuario()));
         }
+
+        /*if ("transportista".equals(m.getFila(tablaEmpleados.getSelectedRow()).getTipo())) {
+         ComboVehiculo.setSelectedItem(fa.getVehiculo(m.getFila(tablaEmpleados.getSelectedRow()).getUsuario()));
+         }*/
     }
 
 }

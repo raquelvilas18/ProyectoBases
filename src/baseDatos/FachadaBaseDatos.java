@@ -245,8 +245,9 @@ public class FachadaBaseDatos {
         return daoEmpleados.nuevoEmpleado(usuario, nomina);
     }
 
-    public void nuevoTransportista(String usuario) {
+    public void nuevoTransportista(String usuario, String matricula) {
         daoEmpleados.nuevoTransportista(usuario);
+        daoVehiculos.actualizarConductor(usuario,matricula);
     }
 
     public void nuevoOficinista(String usuario, String local) {
@@ -264,6 +265,10 @@ public class FachadaBaseDatos {
     //------VEHICULOS-----//
     public ArrayList<Vehiculo> obtenerVehiculos(String matricula) {
         return daoVehiculos.obtenerVehiculos(matricula);
+    }
+    
+    public ArrayList<Vehiculo> vehiculosSinConductor() {
+        return daoVehiculos.vehiculosSinConductor();
     }
 
     public void actualizarVehi(String matricula, Vehiculo vehi) {
@@ -298,6 +303,10 @@ public class FachadaBaseDatos {
         } else {
             return null;
         }
+    }
+    
+     public String getVehiculo(String id){
+        return daoVehiculos.obtenerVehiculo(id).getMatricula();
     }
 
      //------LOCALES------//

@@ -24,7 +24,7 @@ public class GestionEmpleados extends GestionUsuarios{
         Empleado empleado;
         empleado=super.getFbd().nuevoEmpleado(usr.getUsuario(), nomina);
         if("transportista".equals(tipo)){
-            super.getFbd().nuevoTransportista(usuario);
+            super.getFbd().nuevoTransportista(usuario, local);
         }
         if("oficinista".equals(tipo)){
             super.getFbd().nuevoOficinista(usuario, local);
@@ -58,5 +58,9 @@ public class GestionEmpleados extends GestionUsuarios{
      public ArrayList<Transportista> obtenerTransportistas(){
          return super.getFbd().obtenerTransportistas();
      }
+     
+     public String getVehiculo(String id){
+        return super.getFbd().getVehiculo(id);
+    }
 
 }

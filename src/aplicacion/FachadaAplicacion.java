@@ -66,6 +66,8 @@ public class FachadaAplicacion {
     public String trabajaEn(String id) {
         return gEmpleados.trabajaEn(id);
     }
+    
+  
 
     public void actualizar(Usuario usuario) {
         gUsuarios.actualizar(usuario);
@@ -176,6 +178,10 @@ public class FachadaAplicacion {
 
     public ArrayList<Vehiculo> obtenerVehiculos(String matricula) {
         return fbd.obtenerVehiculos(matricula);
+    }
+    
+    public ArrayList<Vehiculo> vehiculosSinConductor() {
+        return fbd.vehiculosSinConductor();
     }
 
     public void actualizarVehi(String matricula, Vehiculo vehi) {
