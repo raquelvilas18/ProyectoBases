@@ -149,6 +149,7 @@ public class DAOLocales extends AbstractDAO {
             } finally {
                 try {
                     stmLocal.close();
+                    stmOficinista.close();
                 } catch (SQLException e) {
                     System.out.println("Imposible cerrar cursores");
                 }
@@ -178,10 +179,45 @@ public class DAOLocales extends AbstractDAO {
             this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
         } finally {
             try {
+                stmOficinista.close();
                 stmLocal.close();
             } catch (SQLException e) {
                 System.out.println("Imposible cerrar cursores");
             }
         }
+    }
+    
+    public ArrayList<String> oficinistasComboBox(String local){
+        Connection con;
+        PreparedStatement stmOficinistas = null;
+        ResultSet rsOficinistas = null;
+        
+        ArrayList<String> resultado = new ArrayList<String>();
+        
+        
+        con = this.getConexion();
+        try {
+            
+            stmOficinistas= con.prepareStatement("SELECT * FROM oficinistas WHERE local=?;");
+            stmOficinistas.setString(1, local);
+
+            rsOficinistas = stmOficinistas.executeQuery();
+            
+            while(rsOficinistas.next()){
+                resultado.add(rsOficinistas.getString("empleado"));
+            }
+            
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
+        } finally {
+            try {
+                stmOficinistas.close();
+            } catch (SQLException e) {
+                System.out.println("Imposible cerrar cursores");
+            }
+        }
+        return resultado;
     }
 }

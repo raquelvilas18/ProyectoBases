@@ -247,4 +247,8 @@ public class FachadaAplicacion {
         return fbd.transportistasComboBox();
     }
     
+    public ArrayList<String> oficinistasComboBox(String local){
+        return fbd.oficinistasComboBox(local);
+    }
+    
 }

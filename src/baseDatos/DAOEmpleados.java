@@ -428,7 +428,7 @@ public class DAOEmpleados extends AbstractDAO {
         con = super.getConexion();
 
         try {
-            stmEmpleados = con.prepareStatement("SELECT * FROM transportistas");
+            stmEmpleados = con.prepareStatement("SELECT * FROM transportistas where ");
             rs = stmEmpleados.executeQuery();
 
             while (rs.next()) {

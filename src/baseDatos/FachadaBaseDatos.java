@@ -325,5 +325,9 @@ public class FachadaBaseDatos {
     public ArrayList<String> transportistasComboBox() {
         return daoEmpleados.transportistasComboBox();
     }
+    
+    public ArrayList<String> oficinistasComboBox(String local){
+        return daoLocales.oficinistasComboBox(local);
+    }
 
 }
