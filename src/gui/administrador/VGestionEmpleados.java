@@ -761,6 +761,8 @@ public class VGestionEmpleados extends javax.swing.JPanel {
         ArrayList<Integer> datos = new ArrayList<>();
         fa.actualizarEmpleado(id, new Empleado(TxId.getText(), TxPassword.getText(), TxDni.getText(), TxNombre.getText(), TxEmail.getText(), TxDireccion.getText(), TxTelefono.getText(), (String) TxSexo.getSelectedItem(),null ,Integer.parseInt(TxNomina.getText()),null));
         LabelActualizar.setVisible(true);
+        if(ComboLocal.getSelectedIndex()==0) fa.actualizarLocal2(TxId.getText(), null);
+        else fa.actualizarLocal2(TxId.getText(), ComboLocal.getSelectedItem().toString());
         m.setFilas(fa.obtenerEmpleados(this.FiltroId.getText()));
     }
     

@@ -43,6 +43,9 @@ public class GestionEmpleados extends GestionUsuarios{
         super.getFbd().actualizarEmp(id,emp);
         
     }
+    public void actualizarLocal2(String id, String local) {
+        super.getFbd().actualizarLocal2(id, local);
+    }
     
     
     public String trabajaEn(String id) {  

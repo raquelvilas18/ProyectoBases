@@ -191,6 +191,51 @@ public class DAOEmpleados extends AbstractDAO {
         return resultado;
     }
 
+    public void actualizarLocal2(String id, String local) {
+        Boolean encargado = false;
+        Connection con;
+        PreparedStatement stmEmpleado = null, stmEmpleado2 = null, stmEmpleado3 = null;
+        ResultSet rsEncargados;
+
+        con = this.getConexion();
+
+        try {
+
+            stmEmpleado2 = con.prepareStatement("SELECT encargado\n"
+                    + " FROM locales"
+                    + " WHERE encargado=? ");
+            stmEmpleado2.setString(1, id);
+            rsEncargados = stmEmpleado2.executeQuery();
+            while (rsEncargados.next()) {
+                encargado=true;
+                stmEmpleado = con.prepareStatement("UPDATE locales\n"
+                        + " SET encargado=null\n"
+                        + " WHERE encargado=? ");
+                stmEmpleado.setString(1, id);
+                stmEmpleado.executeUpdate();
+            }
+            stmEmpleado3 = con.prepareStatement("UPDATE oficinistas\n"
+                    + " SET local=?\n"
+                    + " WHERE empleado=? ");
+            stmEmpleado3.setString(1, local);
+            stmEmpleado3.setString(2, id);
+            stmEmpleado3.executeUpdate();
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
+        } finally {
+            try {
+                if(encargado==true)
+                    stmEmpleado.close();
+                stmEmpleado2.close();
+                stmEmpleado3.close();
+            } catch (SQLException e) {
+                System.out.println("Imposible cerrar cursores");
+            }
+        }
+    }
+
     public void actualizarEmpleado(Empleado empleado) {
         Connection con;
         PreparedStatement stmEmpleado = null;
@@ -312,16 +357,16 @@ public class DAOEmpleados extends AbstractDAO {
         con = super.getConexion();
 
         try {
-            stmEmpleados = con.prepareStatement("SELECT empl.empleado,empl.nombre, empl.dni, empl.correo, empl.telefono, empl.sexo,u.direccion, empl.nomina, empl.anoingreso,  COALESCE(paq.numPaquetes,0) as numPaquetes , empl.capacidad - COALESCE(paq.numPaquetes,0) as capacidadrestante\n" +
-"FROM (SELECT * \n" +
-"FROM empleados e, transportistas t, usuarios u , vehiculos v\n" +
-"WHERE e.usuario = t.empleado \n" +
-"AND u.usuario = e.usuario\n" +
-"AND  t.empleado = v.conductor) as empl \n" +
-"LEFT JOIN (SELECT empleado, COUNT(*) as numPaquetes \n" +
-"FROM transportistas as t RIGHT JOIN paquetes as p  on (t.empleado = p.transportista) \n" +
-"GROUP BY t.empleado) as paq on (empl.empleado = paq.empleado), usuarios u\n" +
-"WHERE empl.empleado=u.usuario AND empl.capacidad - COALESCE(paq.numPaquetes,0) > 0");
+            stmEmpleados = con.prepareStatement("SELECT empl.empleado,empl.nombre, empl.dni, empl.correo, empl.telefono, empl.sexo,u.direccion, empl.nomina, empl.anoingreso,  COALESCE(paq.numPaquetes,0) as numPaquetes , empl.capacidad - COALESCE(paq.numPaquetes,0) as capacidadrestante\n"
+                    + "FROM (SELECT * \n"
+                    + "FROM empleados e, transportistas t, usuarios u , vehiculos v\n"
+                    + "WHERE e.usuario = t.empleado \n"
+                    + "AND u.usuario = e.usuario\n"
+                    + "AND  t.empleado = v.conductor) as empl \n"
+                    + "LEFT JOIN (SELECT empleado, COUNT(*) as numPaquetes \n"
+                    + "FROM transportistas as t RIGHT JOIN paquetes as p  on (t.empleado = p.transportista) \n"
+                    + "GROUP BY t.empleado) as paq on (empl.empleado = paq.empleado), usuarios u\n"
+                    + "WHERE empl.empleado=u.usuario AND empl.capacidad - COALESCE(paq.numPaquetes,0) > 0");
             rs = stmEmpleados.executeQuery();
 
             while (rs.next()) {
@@ -373,7 +418,7 @@ public class DAOEmpleados extends AbstractDAO {
             }
         }
     }
-    
+
     public ArrayList<String> transportistasComboBox() {
         java.util.ArrayList<String> resultado = new ArrayList<String>();
         Connection con;
@@ -387,7 +432,7 @@ public class DAOEmpleados extends AbstractDAO {
             rs = stmEmpleados.executeQuery();
 
             while (rs.next()) {
-                resultado.add( rs.getString("empleado"));
+                resultado.add(rs.getString("empleado"));
             }
 
         } catch (SQLException e) {
@@ -402,5 +447,5 @@ public class DAOEmpleados extends AbstractDAO {
         }
         return resultado;
     }
-    
+
 }
